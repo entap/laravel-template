@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fac753ae2702317b354e7eb283f28cbc",
+    "content-hash": "125fb95d8daf291601f6587cb0518aeb",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -427,6 +427,72 @@
                 }
             ],
             "time": "2020-11-14T15:56:27+00:00"
+        },
+        {
+            "name": "entap/laravel-admin",
+            "version": "0.0.3",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:entap/laravel-admin.git",
+                "reference": "31c6c5dc8e9d41eff8529283f2846873137087ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/31c6c5dc8e9d41eff8529283f2846873137087ca",
+                "reference": "31c6c5dc8e9d41eff8529283f2846873137087ca",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "laravel/laravel": "^8.4",
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "^6.4",
+                "phpunit/phpunit": "^9.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Entap\\Admin\\AdminServiceProvider"
+                    ],
+                    "aliases": {
+                        "Admin": "Etanp\\Admin\\Admin"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Entap\\Admin\\": "src/",
+                    "Database\\Factories\\Entap\\Admin\\Database\\Models\\": "database/factories"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ii masamitsu",
+                    "email": "ii@entap.co.jp"
+                }
+            ],
+            "description": "Laravel Admin",
+            "support": {
+                "source": "https://github.com/entap/laravel-admin/tree/0.0.3",
+                "issues": "https://github.com/entap/laravel-admin/issues"
+            },
+            "time": "2020-11-20T07:32:40+00:00"
         },
         {
             "name": "fideloper/proxy",
