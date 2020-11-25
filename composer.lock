@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "58771151d2a6eaa7a8614a80a99decbc",
+    "content-hash": "c91a503d6bd71c02f3ff6d0ff8536e3a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -433,16 +433,16 @@
         },
         {
             "name": "entap/laravel-admin",
-            "version": "0.0.10",
+            "version": "0.0.11",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-admin.git",
-                "reference": "62eec5424d358a4aae1a755a56eea41080b1dfd8"
+                "reference": "a153e61136e6b466b5aa043e2f5ae114eb1f9591"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/62eec5424d358a4aae1a755a56eea41080b1dfd8",
-                "reference": "62eec5424d358a4aae1a755a56eea41080b1dfd8",
+                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/a153e61136e6b466b5aa043e2f5ae114eb1f9591",
+                "reference": "a153e61136e6b466b5aa043e2f5ae114eb1f9591",
                 "shasum": ""
             },
             "require": {
@@ -492,10 +492,10 @@
             ],
             "description": "Laravel Admin",
             "support": {
-                "source": "https://github.com/entap/laravel-admin/tree/0.0.10",
+                "source": "https://github.com/entap/laravel-admin/tree/0.0.11",
                 "issues": "https://github.com/entap/laravel-admin/issues"
             },
-            "time": "2020-11-25T04:17:42+00:00"
+            "time": "2020-11-25T21:36:00+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -908,16 +908,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.16.0",
+            "version": "v8.16.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "0be6761601feb3cc1f51ac04b5cc5fbdde7928c1"
+                "reference": "f7dfc22e6c42e9ed4dda14c05814349af6943206"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/0be6761601feb3cc1f51ac04b5cc5fbdde7928c1",
-                "reference": "0be6761601feb3cc1f51ac04b5cc5fbdde7928c1",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/f7dfc22e6c42e9ed4dda14c05814349af6943206",
+                "reference": "f7dfc22e6c42e9ed4dda14c05814349af6943206",
                 "shasum": ""
             },
             "require": {
@@ -1067,7 +1067,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-11-24T16:13:01+00:00"
+            "time": "2020-11-25T15:01:02+00:00"
         },
         {
             "name": "laravel/tinker",
