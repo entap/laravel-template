@@ -26,7 +26,7 @@ class PackageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.packages.create');
     }
 
     /**
@@ -37,7 +37,9 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Package::create($request->all());
+
+        return redirect()->route('admin.packages.index');
     }
 
     /**
