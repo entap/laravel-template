@@ -1,7 +1,18 @@
 @extends('admin::layouts.sidebar')
 
 @section('content')
-    @foreach ($packages as $package)
-        {{ $package->name }}
-    @endforeach
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ __('Name') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($packages as $package)
+                <tr>
+                    <td>{{ $package->name }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 @endsection
