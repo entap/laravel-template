@@ -48,7 +48,7 @@ class PackageController extends Controller
      */
     public function show(Package $package)
     {
-        //
+        return view('admin.packages.show', compact('package'));
     }
 
     /**
