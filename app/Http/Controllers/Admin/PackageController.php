@@ -105,6 +105,13 @@ class PackageController extends Controller
      */
     public function destroy(Package $package)
     {
-        //
+        // TODO PackageのbeforeDeleteとかに移した方がいいか？
+        foreach ($package->releases as $release) {
+            $release->delete();
+        }
+
+        $package->delete();
+
+        return redirect()->route('admin.packages.index');
     }
 }
