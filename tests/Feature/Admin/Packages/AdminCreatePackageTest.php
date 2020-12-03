@@ -31,4 +31,28 @@ class AdminCreatePackageTest extends TestCase
             'name' => $newPackage->name,
         ]);
     }
+
+    public function test_名前は必須()
+    {
+        $response = $this->post(route('admin.packages.store'), [
+            'name' => '',
+        ]);
+
+        $response
+            ->assertRedirect(url()->previous())
+            ->assertSessionHasErrors('name');
+    }
+
+    public function test_名前は重複禁止()
+    {
+        $package = Package::factory()->create();
+
+        $response = $this->post(route('admin.packages.store'), [
+            'name' => $package->name,
+        ]);
+
+        $response
+            ->assertRedirect(url()->previous())
+            ->assertSessionHasErrors('name');
+    }
 }

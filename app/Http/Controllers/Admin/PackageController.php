@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Package;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PackageController extends Controller
 {
@@ -37,6 +38,15 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('packages'),
+            ],
+        ]);
+
         Package::create($request->all());
 
         return redirect()->route('admin.packages.index');
