@@ -83,6 +83,15 @@ class PackageController extends Controller
      */
     public function update(Request $request, Package $package)
     {
+        $request->validate([
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('packages')->ignore($package->id),
+            ],
+        ]);
+
         $package->update($request->all());
 
         return redirect()->route('admin.packages.show', $package);
