@@ -17,8 +17,9 @@ class AdminDeletePackageTest extends TestCase
 
         $response = $this->delete(route('admin.packages.destroy', $package));
 
-        // TODO flash出してもいいかも
-        $response->assertRedirect(route('admin.packages.index'));
+        $response
+            ->assertRedirect(route('admin.packages.index'))
+            ->assertSessionHas('success');
 
         $this->assertDeleted('packages', [
             'id' => $package->id,

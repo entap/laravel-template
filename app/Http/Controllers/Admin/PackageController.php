@@ -112,6 +112,8 @@ class PackageController extends Controller
 
         $package->delete();
 
-        return redirect()->route('admin.packages.index');
+        return redirect()
+            ->route('admin.packages.index')
+            ->with('success', "{$package->name} has deleted.");
     }
 }
