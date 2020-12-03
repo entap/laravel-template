@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PackageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('packages', PackageController::class)->names(
+        'admin.packages'
+    );
 });
