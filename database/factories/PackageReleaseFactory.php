@@ -24,9 +24,7 @@ class PackageReleaseFactory extends Factory
     public function definition()
     {
         return [
-            'package_id' => function () {
-                return Package::factory()->create();
-            },
+            'package_id' => Package::factory(),
             'version' => $this->faker->randomNumber(),
             'uri' => $this->faker->url,
             'publish_date' => new Carbon('0000-01-01 00:00:00'),
