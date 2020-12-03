@@ -11,9 +11,7 @@ class AdminUpdatePackageTest extends TestCase
 {
     public function test_編集フォームを表示する()
     {
-        $package = Package::factory()->create();
-
-        $this->get(route('admin.packages.edit', $package))
+        $this->get(route('admin.packages.edit', $this->package))
             ->assertOk()
             ->assertSee(__('Name'))
             ->assertSee(__('Update'));
@@ -21,14 +19,13 @@ class AdminUpdatePackageTest extends TestCase
 
     public function test_パッケージを更新する()
     {
-        $package = Package::factory()->create();
         $newPackage = Package::factory()->make();
 
-        $response = $this->put(route('admin.packages.update', $package), [
+        $response = $this->updatePackage([
             'name' => $newPackage->name,
         ]);
 
-        $response->assertRedirect(route('admin.packages.show', $package));
+        $response->assertRedirect(route('admin.packages.show', $this->package));
 
         $this->assertDatabaseHas('packages', [
             'name' => $newPackage->name,
@@ -37,9 +34,7 @@ class AdminUpdatePackageTest extends TestCase
 
     public function test_名前は必須()
     {
-        $package = Package::factory()->create();
-
-        $response = $this->put(route('admin.packages.update', $package), [
+        $response = $this->updatePackage([
             'name' => '',
         ]);
 
@@ -50,10 +45,9 @@ class AdminUpdatePackageTest extends TestCase
 
     public function test_名前は重複禁止()
     {
-        $package = Package::factory()->create();
         $otherPackage = Package::factory()->create();
 
-        $response = $this->put(route('admin.packages.update', $package), [
+        $response = $this->updatePackage([
             'name' => $otherPackage->name,
         ]);
 
@@ -64,12 +58,25 @@ class AdminUpdatePackageTest extends TestCase
 
     public function test_元の名前とは重複してもよい()
     {
-        $package = Package::factory()->create();
-
-        $response = $this->put(route('admin.packages.update', $package), [
-            'name' => $package->name,
+        $response = $this->updatePackage([
+            'name' => $this->package->name,
         ]);
 
-        $response->assertRedirect(route('admin.packages.show', $package));
+        $response->assertRedirect(route('admin.packages.show', $this->package));
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->package = Package::factory()->create();
+    }
+
+    private function updatePackage($params)
+    {
+        return $this->put(
+            route('admin.packages.update', $this->package),
+            $params
+        );
     }
 }
