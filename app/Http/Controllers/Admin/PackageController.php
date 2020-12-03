@@ -71,7 +71,7 @@ class PackageController extends Controller
      */
     public function edit(Package $package)
     {
-        //
+        return view('admin.packages.edit', compact('package'));
     }
 
     /**
@@ -83,7 +83,9 @@ class PackageController extends Controller
      */
     public function update(Request $request, Package $package)
     {
-        //
+        $package->update($request->all());
+
+        return redirect()->route('admin.packages.show', $package);
     }
 
     /**
