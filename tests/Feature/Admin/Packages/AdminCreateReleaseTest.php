@@ -77,6 +77,50 @@ class AdminCreateReleaseTest extends TestCase
         ]);
     }
 
+    public function test_バージョンは必須()
+    {
+        $response = $this->createRelease([
+            'version' => '',
+        ]);
+
+        $response
+            ->assertRedirect(url()->previous())
+            ->assertSessionHasErrors('version');
+    }
+
+    public function test_URLはURL形式のみ()
+    {
+        $response = $this->createRelease([
+            'uri' => 'helloworld',
+        ]);
+
+        $response
+            ->assertRedirect(url()->previous())
+            ->assertSessionHasErrors('uri');
+    }
+
+    public function test_公開日は日付のみ()
+    {
+        $response = $this->createRelease([
+            'publish_date' => 'abcde',
+        ]);
+
+        $response
+            ->assertRedirect(url()->previous())
+            ->assertSessionHasErrors('publish_date');
+    }
+
+    public function test_廃止日は日付のみ()
+    {
+        $response = $this->createRelease([
+            'expire_date' => 'abcde',
+        ]);
+
+        $response
+            ->assertRedirect(url()->previous())
+            ->assertSessionHasErrors('expire_date');
+    }
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -92,6 +136,9 @@ class AdminCreateReleaseTest extends TestCase
             array_merge(
                 [
                     'version' => $this->newRelease->version,
+                    'url' => '',
+                    'publish_date' => '',
+                    'expire_date' => '',
                 ],
                 $params
             )
