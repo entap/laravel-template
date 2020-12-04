@@ -90,8 +90,10 @@ class PackageReleaseController extends Controller
      * @param  \App\Models\PackageRelease  $release
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PackageRelease $release)
+    public function destroy(Package $package, PackageRelease $release)
     {
-        //
+        $release->delete();
+
+        return redirect()->route('admin.packages.show', $package);
     }
 }
