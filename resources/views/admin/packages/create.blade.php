@@ -30,7 +30,7 @@
     <hr>
 
     <div>
-        <a href="{{ route('admin.users.index') }}" class="btn btn-link">
+        <a href="{{ route('admin.packages.index') }}" class="btn btn-link">
             {{ __('Back') }}
         </a>
     </div>
