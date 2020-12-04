@@ -28,4 +28,13 @@ class AdminGetPackageTest extends TestCase
                 ->assertSee($release->expire_date);
         }
     }
+
+    public function test_リリースがない場合はフィードバックする()
+    {
+        $package = Package::factory()->create();
+
+        $response = $this->get(route('admin.packages.show', $package));
+
+        $response->assertOk()->assertSee(__('No Release'));
+    }
 }
