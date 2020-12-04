@@ -1,6 +1,12 @@
 @extends('admin::layouts.sidebar')
 
 @section('content')
+    <div class="text-right">
+        <a href="{{ route('admin.packages.create') }}" class="btn btn-link">
+            + {{ __('Create Package') }}
+        </a>
+    </div>
+
     <table class="table">
         <thead>
             <tr>
