@@ -41,8 +41,14 @@ class PackageReleaseController extends Controller
         $package->releases()->create([
             'version' => $request->input('version'),
             'uri' => $request->input('uri'),
-            'publish_date' => $request->input('publish_date', ''),
-            'expire_date' => $request->input('expire_date', ''),
+            'publish_date' => $request->input(
+                'publish_date',
+                '0000-01-01 00:00:00'
+            ),
+            'expire_date' => $request->input(
+                'expire_date',
+                '9999-12-31 23:59:59'
+            ),
         ]);
 
         return redirect()->route('admin.packages.show', $package);
