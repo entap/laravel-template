@@ -11,16 +11,6 @@ use PhpParser\Node\Expr\FuncCall;
 class PackageReleaseController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -55,17 +45,6 @@ class PackageReleaseController extends Controller
         ]);
 
         return redirect()->route('admin.packages.show', $package);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PackageRelease  $release
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PackageRelease $release)
-    {
-        //
     }
 
     /**
