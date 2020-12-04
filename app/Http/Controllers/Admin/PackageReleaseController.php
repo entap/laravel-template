@@ -35,11 +35,12 @@ class PackageReleaseController extends Controller
             'expire_date' => ['nullable', 'date'],
         ]);
 
+        // TODO dateは必須にしてビューから渡す方がいいかも
         $package->releases()->create([
             'version' => $request->input('version'),
             'uri' => $request->input('uri'),
             'publish_date' =>
-                $request->input('publish_date') ?? '0000-01-01 00:00:00',
+                $request->input('publish_date') ?? '0001-01-01 00:00:00',
             'expire_date' =>
                 $request->input('expire_date') ?? '9999-12-31 23:59:59',
         ]);

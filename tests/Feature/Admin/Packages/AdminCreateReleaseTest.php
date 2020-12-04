@@ -30,7 +30,7 @@ class AdminCreateReleaseTest extends TestCase
         $this->assertDatabaseHas('package_releases', [
             'version' => $this->newRelease->version,
             'uri' => null,
-            'publish_date' => '0000-01-01 00:00:00',
+            'publish_date' => '0001-01-01 00:00:00',
             'expire_date' => '9999-12-31 23:59:59',
         ]);
     }
