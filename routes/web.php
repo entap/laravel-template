@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\PackageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\PackageReleaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('packages', PackageController::class)->names(
         'admin.packages'
     );
+    Route::resource(
+        'packages.releases',
+        PackageReleaseController::class
+    )->names('admin.packages.releases');
 });
