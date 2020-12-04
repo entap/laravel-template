@@ -21,6 +21,11 @@
                             {{ $package->name }}
                         </a>
                     </td>
+                    <td>
+                        <a href="{{ route('admin.packages.edit', $package) }}">
+                            {{ __('Edit') }}
+                        </a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
