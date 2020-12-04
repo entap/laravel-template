@@ -56,6 +56,7 @@ class PackageReleaseController extends Controller
     public function edit(Package $package, PackageRelease $release)
     {
         return view('admin.packages.releases.edit', [
+            'package' => $package,
             'release' => $release,
         ]);
     }

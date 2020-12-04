@@ -20,6 +20,7 @@
                     <th>{{ __('Publish Date') }}</th>
                     <th>{{ __('Expire Date') }}</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,12 @@
                         <td>{{ $release->uri }}</td>
                         <td>{{ $release->publish_date }}</td>
                         <td>{{ $release->expire_date }}</td>
+                        <td>
+                            <a href="{{ route('admin.packages.releases.edit', [$package, $release]) }}"
+                                class="btn btn-link">
+                                {{ __('Edit') }}
+                            </a>
+                        </td>
                         <td>
                             <form method="POST"
                                 action="{{ route('admin.packages.releases.destroy', [$package, $release]) }}">
