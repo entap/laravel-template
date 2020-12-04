@@ -60,10 +60,10 @@ class PackageReleaseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PackageRelease  $packageRelease
+     * @param  \App\Models\PackageRelease  $release
      * @return \Illuminate\Http\Response
      */
-    public function show(PackageRelease $packageRelease)
+    public function show(PackageRelease $release)
     {
         //
     }
@@ -71,33 +71,47 @@ class PackageReleaseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PackageRelease  $packageRelease
+     * @param  \App\Models\PackageRelease  $release
      * @return \Illuminate\Http\Response
      */
-    public function edit(PackageRelease $packageRelease)
+    public function edit(Package $package, PackageRelease $release)
     {
-        //
+        return view('admin.packages.releases.edit', [
+            'release' => $release,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PackageRelease  $packageRelease
+     * @param  \App\Models\PackageRelease  $release
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PackageRelease $packageRelease)
-    {
-        //
+    public function update(
+        Request $request,
+        Package $package,
+        PackageRelease $release
+    ) {
+        $request->validate([
+            'version' => ['required', 'string', 'max:255'],
+            'uri' => ['nullable', 'url', 'max:1000'],
+            'publish_date' => ['required', 'date'],
+            'expire_date' => ['required', 'date'],
+        ]);
+
+        $release->update($request->all());
+
+        return redirect()->route('admin.packages.show', $package);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PackageRelease  $packageRelease
+     * @param  \App\Models\PackageRelease  $release
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PackageRelease $packageRelease)
+    public function destroy(PackageRelease $release)
     {
         //
     }
