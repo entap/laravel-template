@@ -35,6 +35,36 @@ class AdminCreateReleaseTest extends TestCase
         ]);
     }
 
+    public function test_公開日を設定できる()
+    {
+        $response = $this->createRelease([
+            'publish_date' => '2020-12-04 20:00',
+        ]);
+
+        $response->assertRedirect(route('admin.packages.show', $this->package));
+
+        $this->assertDatabaseHas('package_releases', [
+            'version' => $this->newRelease->version,
+            'uri' => $this->newRelease->uri,
+            'publish_date' => '2020-12-04 20:00:00',
+        ]);
+    }
+
+    public function test_廃止日を公開できる()
+    {
+        $response = $this->createRelease([
+            'expire_date' => '2021-05-24 12:30',
+        ]);
+
+        $response->assertRedirect(route('admin.packages.show', $this->package));
+
+        $this->assertDatabaseHas('package_releases', [
+            'version' => $this->newRelease->version,
+            'uri' => $this->newRelease->uri,
+            'expire_date' => '2021-05-24 12:30:00',
+        ]);
+    }
+
     protected function setUp(): void
     {
         parent::setUp();

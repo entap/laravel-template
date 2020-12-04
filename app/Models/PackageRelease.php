@@ -11,6 +11,8 @@ class PackageRelease extends Model
 
     protected $fillable = ['version', 'uri', 'publish_date', 'expire_date'];
 
+    protected $dates = ['publish_date', 'expire_date'];
+
     public function package()
     {
         return $this->belongsTo(Package::class);
