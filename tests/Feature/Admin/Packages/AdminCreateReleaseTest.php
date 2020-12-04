@@ -29,9 +29,23 @@ class AdminCreateReleaseTest extends TestCase
 
         $this->assertDatabaseHas('package_releases', [
             'version' => $this->newRelease->version,
-            'uri' => $this->newRelease->uri,
+            'uri' => null,
             'publish_date' => '0000-01-01 00:00:00',
             'expire_date' => '9999-12-31 23:59:59',
+        ]);
+    }
+
+    public function test_URLを設定できる()
+    {
+        $response = $this->createRelease([
+            'uri' => $this->newRelease->uri,
+        ]);
+
+        $response->assertRedirect(route('admin.packages.show', $this->package));
+
+        $this->assertDatabaseHas('package_releases', [
+            'version' => $this->newRelease->version,
+            'uri' => $this->newRelease->uri,
         ]);
     }
 
@@ -45,7 +59,6 @@ class AdminCreateReleaseTest extends TestCase
 
         $this->assertDatabaseHas('package_releases', [
             'version' => $this->newRelease->version,
-            'uri' => $this->newRelease->uri,
             'publish_date' => '2020-12-04 20:00:00',
         ]);
     }
@@ -60,7 +73,6 @@ class AdminCreateReleaseTest extends TestCase
 
         $this->assertDatabaseHas('package_releases', [
             'version' => $this->newRelease->version,
-            'uri' => $this->newRelease->uri,
             'expire_date' => '2021-05-24 12:30:00',
         ]);
     }
@@ -80,7 +92,6 @@ class AdminCreateReleaseTest extends TestCase
             array_merge(
                 [
                     'version' => $this->newRelease->version,
-                    'uri' => $this->newRelease->uri,
                 ],
                 $params
             )

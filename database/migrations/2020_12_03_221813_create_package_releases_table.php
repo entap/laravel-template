@@ -17,7 +17,7 @@ class CreatePackageReleasesTable extends Migration
             $table->id();
             $table->foreignId('package_id')->constrained();
             $table->string('version')->unique();
-            $table->string('uri');
+            $table->string('uri')->nullable();
             $table->dateTime('publish_date');
             $table->dateTime('expire_date');
             $table->timestamps();
