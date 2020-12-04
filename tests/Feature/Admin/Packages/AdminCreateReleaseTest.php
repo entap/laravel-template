@@ -99,6 +99,17 @@ class AdminCreateReleaseTest extends TestCase
             ->assertSessionHasErrors('uri');
     }
 
+    public function test_URLの長さは1000文字まで()
+    {
+        $response = $this->createRelease([
+            'uri' => "http://" . str_repeat("a", 996),
+        ]);
+
+        $response
+            ->assertRedirect(url()->previous())
+            ->assertSessionHasErrors('uri');
+    }
+
     public function test_公開日は日付のみ()
     {
         $response = $this->createRelease([

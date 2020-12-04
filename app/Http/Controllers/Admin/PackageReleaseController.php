@@ -40,7 +40,7 @@ class PackageReleaseController extends Controller
     {
         $request->validate([
             'version' => ['required', 'string', 'max:255'],
-            'uri' => ['nullable', 'url'],
+            'uri' => ['nullable', 'url', 'max:1000'],
             'publish_date' => ['nullable', 'date'],
             'expire_date' => ['nullable', 'date'],
         ]);
