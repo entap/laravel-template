@@ -11,6 +11,8 @@
         <thead>
             <tr>
                 <th>{{ __('Name') }}</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +27,16 @@
                         <a href="{{ route('admin.packages.edit', $package) }}">
                             {{ __('Edit') }}
                         </a>
+                    </td>
+                    <td>
+                        <form method="POST" action="{{ route('admin.packages.destroy', $package) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger"
+                                onclick="return confirm('{{ __('Are you sure you want to delete?') }}')">
+                                {{ __('Delete') }}
+                            </button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
