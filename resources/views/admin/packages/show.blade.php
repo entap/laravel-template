@@ -13,6 +13,7 @@
                     <th>{{ __('URL') }}</th>
                     <th>{{ __('Publish Date') }}</th>
                     <th>{{ __('Expire Date') }}</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +23,17 @@
                         <td>{{ $release->uri }}</td>
                         <td>{{ $release->publish_date }}</td>
                         <td>{{ $release->expire_date }}</td>
+                        <td>
+                            <form method="POST"
+                                action="{{ route('admin.packages.releases.destroy', [$package, $release]) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger"
+                                    onclick="return confirm('{{ __('Are you sure you want to delete?') }}')">
+                                    {{ __('Delete') }}
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
