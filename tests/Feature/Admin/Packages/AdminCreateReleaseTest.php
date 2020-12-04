@@ -147,7 +147,7 @@ class AdminCreateReleaseTest extends TestCase
             array_merge(
                 [
                     'version' => $this->newRelease->version,
-                    'url' => '',
+                    'uri' => '',
                     'publish_date' => '',
                     'expire_date' => '',
                 ],
