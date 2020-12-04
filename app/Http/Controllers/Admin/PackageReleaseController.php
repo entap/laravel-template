@@ -17,7 +17,7 @@ class PackageReleaseController extends Controller
      */
     public function create(Package $package)
     {
-        return view('admin.packages.releases.create', $package);
+        return view('admin.packages.releases.create', compact('package'));
     }
 
     /**

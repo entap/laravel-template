@@ -3,6 +3,12 @@
 @section('content')
     <h1>{{ $package->name }}</h1>
 
+    <div class="text-right">
+        <a href="{{ route('admin.packages.releases.create', $package) }}" class="btn btn-link">
+            + {{ __('Create Release') }}
+        </a>
+    </div>
+
     @if (empty($package->releases->count()))
         {{ __('No Release') }}
     @else
