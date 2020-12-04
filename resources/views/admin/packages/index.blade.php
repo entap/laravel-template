@@ -10,7 +10,11 @@
         <tbody>
             @foreach ($packages as $package)
                 <tr>
-                    <td>{{ $package->name }}</td>
+                    <td>
+                        <a href="{{ route('admin.packages.show', $package) }}">
+                            {{ $package->name }}
+                        </a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

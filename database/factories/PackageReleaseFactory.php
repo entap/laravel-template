@@ -25,10 +25,15 @@ class PackageReleaseFactory extends Factory
     {
         return [
             'package_id' => Package::factory(),
-            'version' => $this->faker->randomNumber(),
+            'version' => $this->fakeVersion(),
             'uri' => $this->faker->url,
             'publish_date' => new Carbon('0000-01-01 00:00:00'),
             'expire_date' => new Carbon("9999-12-31 23:59:59"),
         ];
+    }
+
+    private function fakeVersion()
+    {
+        return "{$this->faker->randomNumber()}.{$this->faker->randomNumber()}.{$this->faker->randomNumber()}";
     }
 }
