@@ -16,11 +16,13 @@ class CreatePackageReleasesTable extends Migration
         Schema::create('package_releases', function (Blueprint $table) {
             $table->id();
             $table->foreignId('package_id')->constrained();
-            $table->string('version')->unique();
+            $table->string('version');
             $table->string('uri')->nullable();
             $table->dateTime('publish_date');
             $table->dateTime('expire_date');
             $table->timestamps();
+
+            $table->unique(['package_id', 'version']);
         });
     }
 
