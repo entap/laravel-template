@@ -22,4 +22,9 @@ class PackageRelease extends Model
     {
         return $query->where('publish_date', '>=', now());
     }
+
+    public function scopeNotExpired($query)
+    {
+        return $query->where('expire_date', '<', now());
+    }
 }
