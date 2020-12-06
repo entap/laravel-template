@@ -17,4 +17,9 @@ class PackageRelease extends Model
     {
         return $this->belongsTo(Package::class);
     }
+
+    public function scopePublished($query)
+    {
+        return $query->where('publish_date', '>=', now());
+    }
 }
