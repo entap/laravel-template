@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Package;
 use App\Models\PackageRelease;
 use Illuminate\Http\Request;
-use PhpParser\Node\Expr\FuncCall;
+use Illuminate\Validation\Rule;
 
 class PackageReleaseController extends Controller
 {
@@ -29,7 +29,16 @@ class PackageReleaseController extends Controller
     public function store(Request $request, Package $package)
     {
         $request->validate([
-            'version' => ['required', 'string', 'max:255'],
+            'version' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('package_releases')->where(function ($query) use (
+                    $package
+                ) {
+                    return $query->where('package_id', $package->id);
+                }),
+            ],
             'uri' => ['nullable', 'url', 'max:1000'],
             'publish_date' => ['nullable', 'date'],
             'expire_date' => ['nullable', 'date'],
@@ -75,7 +84,16 @@ class PackageReleaseController extends Controller
         PackageRelease $release
     ) {
         $request->validate([
-            'version' => ['required', 'string', 'max:255'],
+            'version' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('package_releases')
+                    ->ignore($release->id)
+                    ->where(function ($query) use ($package) {
+                        return $query->where('package_id', $package->id);
+                    }),
+            ],
             'uri' => ['nullable', 'url', 'max:1000'],
             'publish_date' => ['required', 'date'],
             'expire_date' => ['required', 'date'],

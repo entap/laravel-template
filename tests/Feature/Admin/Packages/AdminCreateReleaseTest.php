@@ -88,6 +88,32 @@ class AdminCreateReleaseTest extends TestCase
             ->assertSessionHasErrors('version');
     }
 
+    public function test_バージョンはパッケージ内で重複禁止()
+    {
+        // パッケージ内では重複禁止
+        $release = PackageRelease::factory()->create([
+            'package_id' => $this->package->id,
+        ]);
+
+        $response = $this->createRelease([
+            'version' => $release->version,
+        ]);
+
+        $response
+            ->assertRedirect(url()->previous())
+            ->assertSessionHasErrors('version');
+
+        // 別のパッケージのリリースとは重複しても構わない
+        $otherPackage = Package::factory()->create();
+        $otherPackage->releases()->save($release);
+
+        $res2 = $this->createRelease([
+            'version' => $release->version,
+        ]);
+
+        $res2->assertSessionHasNoErrors();
+    }
+
     public function test_URLはURL形式のみ()
     {
         $response = $this->createRelease([
