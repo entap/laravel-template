@@ -20,11 +20,16 @@ class PackageRelease extends Model
 
     public function scopePublished($query)
     {
-        return $query->where('publish_date', '>=', now());
+        return $query->where('publish_date', '<=', now());
     }
 
     public function scopeNotExpired($query)
     {
-        return $query->where('expire_date', '<', now());
+        return $query->where('expire_date', '>', now());
+    }
+
+    public function scopeAvailable($query)
+    {
+        return $query->published()->notExpired();
     }
 }

@@ -6,20 +6,19 @@ use App\Models\PackageRelease;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Crypt;
 use Tests\TestCase;
 
 class PackageReleaseTest extends TestCase
 {
-    public function test_公開されたリリースを検索できる()
+    public function test_公開されたリリースを絞り込む()
     {
-        $this->travelTo(new Carbon('2020-05-05 12:30'));
+        $this->travelTo(new Carbon('2020-05-05 12:30:00'));
 
         $p1 = PackageRelease::factory()->create([
-            'publish_date' => '2020-05-05 12:29:59',
+            'publish_date' => '2020-05-05 12:30:01',
         ]);
         $p2 = PackageRelease::factory()->create([
-            'publish_date' => '2020-05-05 12:30',
+            'publish_date' => '2020-05-05 12:30:00',
         ]);
 
         $packages = PackageRelease::published()->get();
@@ -28,12 +27,12 @@ class PackageReleaseTest extends TestCase
         $this->assertEquals($p2->id, $packages[0]->id);
     }
 
-    public function test_廃止されていないリソースを検索できる()
+    public function test_廃止されていないリソースを絞り込む()
     {
         $this->travelTo(new Carbon('2020-04-30 16:00'));
 
         $p1 = PackageRelease::factory()->create([
-            'expire_date' => '2020-04-30 15:59:59',
+            'expire_date' => '2020-04-30 16:00:01',
         ]);
         $p2 = PackageRelease::factory()->create([
             'expire_date' => '2020-04-30 16:00',

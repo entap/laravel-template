@@ -27,7 +27,7 @@ class PackageReleaseFactory extends Factory
             'package_id' => Package::factory(),
             'version' => $this->fakeVersion(),
             'uri' => $this->faker->url,
-            'publish_date' => new Carbon('0000-01-01 00:00:00'),
+            'publish_date' => new Carbon('0001-01-01 00:00:00'),
             'expire_date' => new Carbon("9999-12-31 23:59:59"),
         ];
     }
