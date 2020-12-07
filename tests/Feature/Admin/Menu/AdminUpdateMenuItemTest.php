@@ -69,6 +69,20 @@ class AdminUpdateMenuItemTest extends TestCase
         $response->assertRedirect(route('admin.menu.items.index'));
     }
 
+    public function test_URLの形式が間違っていると失敗する()
+    {
+        $newMenuItem = MenuItem::factory()->make();
+
+        $response = $this->saveMenuItem([
+            'title' => $newMenuItem->title,
+            'uri' => 'abcd',
+        ]);
+
+        $response
+            ->assertRedirect(url()->previous())
+            ->assertSessionHasErrors('uri');
+    }
+
     protected function setUp(): void
     {
         parent::setUp();
