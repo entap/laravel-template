@@ -11,5 +11,5 @@ class MenuItem extends Model
 
     protected $table = 'admin_menu_items';
 
-    protected $fillable = ['title'];
+    protected $fillable = ['title', 'uri', 'order'];
 }

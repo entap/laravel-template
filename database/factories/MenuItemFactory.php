@@ -24,6 +24,7 @@ class MenuItemFactory extends Factory
         return [
             'title' => $this->faker->title,
             'uri' => $this->faker->url,
+            'order' => $this->faker->randomNumber(),
         ];
     }
 }

@@ -38,6 +38,10 @@ class MenuItemController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+        ]);
+
         MenuItem::create($request->all());
 
         return redirect()->route('admin.menu.items.index');
