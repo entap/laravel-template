@@ -1,6 +1,11 @@
 @extends('admin::layouts.sidebar')
 
 @section('content')
+    <div class="text-right">
+        <a href="{{ route('admin.menu.items.create') }}" class="btn btn-link text-nowrap">
+            <span>+</span> <span>{{ __('Add Menu Item') }}</span>
+        </a>
+    </div>
     <table class="table">
         <thead>
             <tr>
