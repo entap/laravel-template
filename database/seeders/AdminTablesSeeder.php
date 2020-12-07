@@ -1,6 +1,7 @@
 <?php
 namespace Database\Seeders;
 
+use App\Models\MenuItem;
 use Entap\Admin\Database\Models\Operation;
 use Entap\Admin\Database\Models\Permission;
 use Entap\Admin\Database\Models\Role;
@@ -13,16 +14,24 @@ class AdminTablesSeeder extends Seeder
     public function run()
     {
         $role = $this->createSuperRole();
+        $this->createSuperUser($role);
 
+        $this->createMenu();
+    }
+
+    protected function createSuperUser($superRole)
+    {
         $user = User::create([
             'name' => 'admin',
             'username' => 'admin',
             'password' => Hash::make('password'),
         ]);
-        $user->roles()->save($role);
+        $user->roles()->save($superRole);
+
+        return $user;
     }
 
-    private function createSuperRole()
+    protected function createSuperRole()
     {
         $operation = Operation::create([
             'method' => 'any',
@@ -40,5 +49,21 @@ class AdminTablesSeeder extends Seeder
         $role->permissions()->save($permission);
 
         return $role;
+    }
+
+    protected function createMenu()
+    {
+        MenuItem::create([
+            'title' => '管理者',
+            'uri' => route('admin.users.index', null, false),
+        ]);
+        MenuItem::create([
+            'title' => '管理権限',
+            'uri' => route('admin.roles.index', null, false),
+        ]);
+        MenuItem::create([
+            'title' => '管理メニュー',
+            'uri' => route('admin.menu.items.index', null, false),
+        ]);
     }
 }

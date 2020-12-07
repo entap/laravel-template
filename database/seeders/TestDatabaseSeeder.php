@@ -21,13 +21,18 @@ class TestDatabaseSeeder extends Seeder
             die();
         }
 
-        PackageRelease::truncate();
-        Package::truncate();
-        Package::factory(3)
-            ->hasReleases(3)
-            ->create();
+        MenuItem::create([
+            'title' => 'クライアントパッケージ',
+            'uri' => route('admin.packages.index', null, false),
+        ]);
 
-        MenuItem::truncate();
-        MenuItem::factory(3)->create();
+        // PackageRelease::truncate();
+        // Package::truncate();
+        // Package::factory(3)
+        //     ->hasReleases(3)
+        //     ->create();
+
+        // MenuItem::truncate();
+        // MenuItem::factory(3)->create();
     }
 }
