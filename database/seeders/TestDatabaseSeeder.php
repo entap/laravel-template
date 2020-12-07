@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\MenuItem;
 use Illuminate\Database\Seeder;
 use Entap\ClientPackager\Models\Package;
 use Entap\ClientPackager\Models\PackageRelease;
@@ -25,5 +26,8 @@ class TestDatabaseSeeder extends Seeder
         Package::factory(3)
             ->hasReleases(3)
             ->create();
+
+        MenuItem::truncate();
+        MenuItem::factory(3)->create();
     }
 }
