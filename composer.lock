@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a0cc8175bb6e94bc8a8c9db418e8304",
+    "content-hash": "01f475d20a8035e276ea5ab80cdbae1f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -500,16 +500,16 @@
         },
         {
             "name": "entap/laravel-client-packager",
-            "version": "0.0.2",
+            "version": "0.0.4",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-client-packager.git",
-                "reference": "2287e1a602101a084aed6884a1fb4681b0b51d88"
+                "reference": "23023a4aa09f12f10f9be38cd960030011161216"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-client-packager/zipball/2287e1a602101a084aed6884a1fb4681b0b51d88",
-                "reference": "2287e1a602101a084aed6884a1fb4681b0b51d88",
+                "url": "https://api.github.com/repos/entap/laravel-client-packager/zipball/23023a4aa09f12f10f9be38cd960030011161216",
+                "reference": "23023a4aa09f12f10f9be38cd960030011161216",
                 "shasum": ""
             },
             "require": {
@@ -557,10 +557,10 @@
             ],
             "description": "Client Packager on Laravel",
             "support": {
-                "source": "https://github.com/entap/laravel-client-packager/tree/0.0.2",
+                "source": "https://github.com/entap/laravel-client-packager/tree/0.0.4",
                 "issues": "https://github.com/entap/laravel-client-packager/issues"
             },
-            "time": "2020-12-07T01:11:15+00:00"
+            "time": "2020-12-07T22:48:56+00:00"
         },
         {
             "name": "fideloper/proxy",

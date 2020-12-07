@@ -10,7 +10,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "entap/laravel-admin": "^0.0.14",
-        "entap/laravel-client-packager": "^0.0.2",
+        "entap/laravel-client-packager": "^0.0.4",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
