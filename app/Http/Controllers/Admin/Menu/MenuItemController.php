@@ -71,7 +71,6 @@ class MenuItemController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'uri' => ['nullable', 'url'],
         ]);
 
         $item->update($request->all());
