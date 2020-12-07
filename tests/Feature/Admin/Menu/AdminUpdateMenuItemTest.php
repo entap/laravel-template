@@ -34,6 +34,7 @@ class AdminUpdateMenuItemTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('admin_menu_items', [
+            'id' => $this->item->id,
             'title' => $newMenuItem->title,
         ]);
 
@@ -59,6 +60,7 @@ class AdminUpdateMenuItemTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('admin_menu_items', [
+            'id' => $this->item->id,
             'title' => $newMenuItem->title,
             'uri' => $newMenuItem->uri,
             'order' => $newMenuItem->order,

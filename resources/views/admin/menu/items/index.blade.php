@@ -18,6 +18,11 @@
                 <tr>
                     <td>{{ $item->title }}</td>
                     <td>{{ $item->uri }}</td>
+                    <td>
+                        <a href="{{ route('admin.menu.items.edit', $item) }}" class="btn btn-link text-nowrap">
+                            {{ __('Edit') }}
+                        </a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
