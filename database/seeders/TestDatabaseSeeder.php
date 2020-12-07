@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Package;
-use App\Models\PackageRelease;
 use Illuminate\Database\Seeder;
+use Entap\ClientPackager\Models\Package;
+use Entap\ClientPackager\Models\PackageRelease;
 
 class TestDatabaseSeeder extends Seeder
 {
