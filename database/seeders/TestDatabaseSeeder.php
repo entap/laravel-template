@@ -26,13 +26,13 @@ class TestDatabaseSeeder extends Seeder
             'uri' => route('admin.packages.index', null, false),
         ]);
 
-        // PackageRelease::truncate();
-        // Package::truncate();
-        // Package::factory(3)
-        //     ->hasReleases(3)
-        //     ->create();
+        PackageRelease::truncate();
+        Package::truncate();
+        Package::factory(3)
+            ->hasReleases(3)
+            ->create();
 
-        // MenuItem::truncate();
-        // MenuItem::factory(3)->create();
+        MenuItem::truncate();
+        MenuItem::factory(3)->create();
     }
 }
