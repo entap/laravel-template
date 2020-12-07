@@ -46,11 +46,9 @@ class AdminCreateMenuItemTest extends TestCase
     {
         $newMenuItem = MenuItem::factory()->make();
 
-        $response = $this->saveMenuItem([
-            'title' => $newMenuItem->title,
-            'uri' => $newMenuItem->uri,
-            'order' => $newMenuItem->order,
-        ]);
+        $response = $this->saveMenuItem(
+            $newMenuItem->only('title', 'uri', 'order')
+        );
 
         $this->assertDatabaseHas('admin_menu_items', [
             'title' => $newMenuItem->title,
