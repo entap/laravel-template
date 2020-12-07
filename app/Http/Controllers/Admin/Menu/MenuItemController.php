@@ -27,7 +27,7 @@ class MenuItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.menu.items.create');
     }
 
     /**
@@ -38,7 +38,9 @@ class MenuItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        MenuItem::create($request->all());
+
+        return redirect()->route('admin.menu.items.index');
     }
 
     /**

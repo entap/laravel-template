@@ -10,4 +10,6 @@ class MenuItem extends Model
     use HasFactory;
 
     protected $table = 'admin_menu_items';
+
+    protected $fillable = ['title'];
 }
