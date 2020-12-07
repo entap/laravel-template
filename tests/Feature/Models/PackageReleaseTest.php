@@ -14,33 +14,48 @@ class PackageReleaseTest extends TestCase
     {
         $this->travelTo(new Carbon('2020-05-05 12:30:00'));
 
-        $p1 = PackageRelease::factory()->create([
+        $r1 = PackageRelease::factory()->create([
             'publish_date' => '2020-05-05 12:30:01',
         ]);
-        $p2 = PackageRelease::factory()->create([
+        $r2 = PackageRelease::factory()->create([
             'publish_date' => '2020-05-05 12:30:00',
         ]);
 
-        $packages = PackageRelease::published()->get();
+        $releases = PackageRelease::published()->get();
 
-        $this->assertEquals(1, $packages->count());
-        $this->assertEquals($p2->id, $packages[0]->id);
+        $this->assertEquals(1, $releases->count());
+        $this->assertEquals($r2->id, $releases[0]->id);
     }
 
     public function test_廃止されていないリソースを絞り込む()
     {
         $this->travelTo(new Carbon('2020-04-30 16:00'));
 
-        $p1 = PackageRelease::factory()->create([
+        $r1 = PackageRelease::factory()->create([
             'expire_date' => '2020-04-30 16:00:01',
         ]);
-        $p2 = PackageRelease::factory()->create([
+        $r2 = PackageRelease::factory()->create([
             'expire_date' => '2020-04-30 16:00',
         ]);
 
-        $packages = PackageRelease::notExpired()->get();
+        $releases = PackageRelease::notExpired()->get();
 
-        $this->assertEquals(1, $packages->count());
-        $this->assertEquals($p1->id, $packages[0]->id);
+        $this->assertEquals(1, $releases->count());
+        $this->assertEquals($r1->id, $releases[0]->id);
+    }
+
+    public function test_最新版を絞り込める()
+    {
+        // TODO Serviceとかにまとめる
+
+        $r0 = PackageRelease::factory()->create(['version' => '5.0.1']);
+        $r1 = PackageRelease::factory()->create(['version' => '20.0.1']);
+        $r2 = PackageRelease::factory()->create(['version' => '5.103.1']);
+        $r3 = PackageRelease::factory()->create(['version' => '2.13.15']);
+
+        $releases = PackageRelease::available()->get();
+        $release = $releases->sortBy('version', SORT_NATURAL)->last();
+
+        $this->assertEquals($r1->id, $release->id);
     }
 }
