@@ -59,26 +59,18 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Show edit form.
      */
-    public function edit($id)
+    public function edit(MenuItem $item)
     {
-        //
+        return view('admin.menu.items.edit', compact('item'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, MenuItem $item)
     {
-        //
+        $item->update($request->all());
+
+        return redirect()->route('admin.menu.items.index');
     }
 
     /**
