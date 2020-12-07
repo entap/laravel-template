@@ -18,12 +18,3 @@ use App\Http\Controllers\Admin\PackageReleaseController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::group(['prefix' => 'admin'], function () {
-    Route::resource('packages', PackageController::class)->names(
-        'admin.packages'
-    );
-    Route::resource('packages.releases', PackageReleaseController::class, [
-        'except' => ['index', 'show'],
-    ])->names('admin.packages.releases');
-});
