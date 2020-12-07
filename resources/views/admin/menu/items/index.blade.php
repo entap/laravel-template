@@ -23,6 +23,17 @@
                             {{ __('Edit') }}
                         </a>
                     </td>
+                    <td>
+                        <form method="POST" action="{{ route('admin.menu.items.destroy', $item) }}">
+                            @csrf
+                            @method('DELETE')
+
+                            <button class="btn btn-danger"
+                                onclick="return confirm('{{ __('Are you sure you want to delete?') }}')">
+                                {{ __('Delete') }}
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
