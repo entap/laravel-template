@@ -1,8 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\Menu\MenuItemController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\PackageController;
-use App\Http\Controllers\Admin\PackageReleaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +17,15 @@ use App\Http\Controllers\Admin\PackageReleaseController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(
+    [
+        'prefix' => 'admin/menu',
+        'middleware' => ['web'],
+    ],
+    function () {
+        Route::resource('items', MenuItemController::class)->names(
+            'admin.menu.items'
+        );
+    }
+);
