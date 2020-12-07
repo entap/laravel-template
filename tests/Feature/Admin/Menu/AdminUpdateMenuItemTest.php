@@ -27,10 +27,9 @@ class AdminUpdateMenuItemTest extends TestCase
 
     public function test_MenuItemを更新する()
     {
-        $item = MenuItem::factory()->create();
         $newMenuItem = MenuItem::factory()->make();
 
-        $response = $this->saveMenuItem($item, [
+        $response = $this->saveMenuItem([
             'title' => $newMenuItem->title,
         ]);
 
@@ -41,10 +40,44 @@ class AdminUpdateMenuItemTest extends TestCase
         $response->assertRedirect(route('admin.menu.items.index'));
     }
 
-    private function saveMenuItem($item, $params = [])
+    public function test_titleは必須()
+    {
+        $response = $this->saveMenuItem(['title' => '']);
+        $response
+            ->assertRedirect(url()->previous())
+            ->assertSessionHasErrors('title');
+    }
+
+    public function test_任意入力項目を設定できる()
+    {
+        $newMenuItem = MenuItem::factory()->make();
+
+        $response = $this->saveMenuItem([
+            'title' => $newMenuItem->title,
+            'uri' => $newMenuItem->uri,
+            'order' => $newMenuItem->order,
+        ]);
+
+        $this->assertDatabaseHas('admin_menu_items', [
+            'title' => $newMenuItem->title,
+            'uri' => $newMenuItem->uri,
+            'order' => $newMenuItem->order,
+        ]);
+
+        $response->assertRedirect(route('admin.menu.items.index'));
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->item = MenuItem::factory()->create();
+    }
+
+    private function saveMenuItem($params = [])
     {
         return $this->put(
-            route('admin.menu.items.update', $item),
+            route('admin.menu.items.update', $this->item),
             array_merge([], $params)
         );
     }

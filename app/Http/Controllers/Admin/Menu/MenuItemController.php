@@ -68,6 +68,10 @@ class MenuItemController extends Controller
 
     public function update(Request $request, MenuItem $item)
     {
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+        ]);
+
         $item->update($request->all());
 
         return redirect()->route('admin.menu.items.index');
