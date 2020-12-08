@@ -17,15 +17,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::group(
-    [
-        'prefix' => 'admin/menu',
-        'middleware' => ['web'],
-    ],
-    function () {
-        Route::resource('items', MenuItemController::class)->names(
-            'admin.menu.items'
-        );
-    }
-);
