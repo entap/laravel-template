@@ -433,16 +433,16 @@
         },
         {
             "name": "entap/laravel-admin",
-            "version": "0.0.15",
+            "version": "0.0.16",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-admin.git",
-                "reference": "1f6777d005144cb71c38397ad6904ef121d8f25f"
+                "reference": "02acdd764afa72d7bcc99385879694862db93363"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/1f6777d005144cb71c38397ad6904ef121d8f25f",
-                "reference": "1f6777d005144cb71c38397ad6904ef121d8f25f",
+                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/02acdd764afa72d7bcc99385879694862db93363",
+                "reference": "02acdd764afa72d7bcc99385879694862db93363",
                 "shasum": ""
             },
             "require": {
@@ -493,10 +493,10 @@
             ],
             "description": "Laravel Admin",
             "support": {
-                "source": "https://github.com/entap/laravel-admin/tree/0.0.15",
+                "source": "https://github.com/entap/laravel-admin/tree/0.0.16",
                 "issues": "https://github.com/entap/laravel-admin/issues"
             },
-            "time": "2020-12-08T01:24:15+00:00"
+            "time": "2020-12-08T01:34:33+00:00"
         },
         {
             "name": "entap/laravel-client-packager",
