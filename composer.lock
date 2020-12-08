@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4125a5053a6a9c4d5dda41551e9c0cba",
+    "content-hash": "978e0a84905cbeef5390c14636412139",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -433,16 +433,16 @@
         },
         {
             "name": "entap/laravel-admin",
-            "version": "0.0.18",
+            "version": "0.0.19",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-admin.git",
-                "reference": "aa535932ea6b5444ca1bd8f8d463860027262c36"
+                "reference": "7703e98cbc84463571c9a53e32828160895157b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/aa535932ea6b5444ca1bd8f8d463860027262c36",
-                "reference": "aa535932ea6b5444ca1bd8f8d463860027262c36",
+                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/7703e98cbc84463571c9a53e32828160895157b8",
+                "reference": "7703e98cbc84463571c9a53e32828160895157b8",
                 "shasum": ""
             },
             "require": {
@@ -493,10 +493,10 @@
             ],
             "description": "Laravel Admin",
             "support": {
-                "source": "https://github.com/entap/laravel-admin/tree/0.0.18",
+                "source": "https://github.com/entap/laravel-admin/tree/0.0.19",
                 "issues": "https://github.com/entap/laravel-admin/issues"
             },
-            "time": "2020-12-08T22:32:37+00:00"
+            "time": "2020-12-08T23:03:29+00:00"
         },
         {
             "name": "entap/laravel-client-packager",
