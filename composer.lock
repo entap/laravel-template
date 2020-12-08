@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "01f475d20a8035e276ea5ab80cdbae1f",
+    "content-hash": "4125a5053a6a9c4d5dda41551e9c0cba",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -433,16 +433,16 @@
         },
         {
             "name": "entap/laravel-admin",
-            "version": "0.0.14",
+            "version": "0.0.15",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-admin.git",
-                "reference": "6300cfcc43db032bd3c659452b856eaf020fbd10"
+                "reference": "1f6777d005144cb71c38397ad6904ef121d8f25f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/6300cfcc43db032bd3c659452b856eaf020fbd10",
-                "reference": "6300cfcc43db032bd3c659452b856eaf020fbd10",
+                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/1f6777d005144cb71c38397ad6904ef121d8f25f",
+                "reference": "1f6777d005144cb71c38397ad6904ef121d8f25f",
                 "shasum": ""
             },
             "require": {
@@ -493,27 +493,27 @@
             ],
             "description": "Laravel Admin",
             "support": {
-                "source": "https://github.com/entap/laravel-admin/tree/0.0.14",
+                "source": "https://github.com/entap/laravel-admin/tree/0.0.15",
                 "issues": "https://github.com/entap/laravel-admin/issues"
             },
-            "time": "2020-12-06T21:15:27+00:00"
+            "time": "2020-12-08T01:24:15+00:00"
         },
         {
             "name": "entap/laravel-client-packager",
-            "version": "0.0.4",
+            "version": "0.0.5",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-client-packager.git",
-                "reference": "23023a4aa09f12f10f9be38cd960030011161216"
+                "reference": "a7e1731028b0d005394deb145fbc06ba91cd9cee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-client-packager/zipball/23023a4aa09f12f10f9be38cd960030011161216",
-                "reference": "23023a4aa09f12f10f9be38cd960030011161216",
+                "url": "https://api.github.com/repos/entap/laravel-client-packager/zipball/a7e1731028b0d005394deb145fbc06ba91cd9cee",
+                "reference": "a7e1731028b0d005394deb145fbc06ba91cd9cee",
                 "shasum": ""
             },
             "require": {
-                "entap/laravel-admin": "^0.0.14",
+                "entap/laravel-admin": ">=0.0.14",
                 "php": ">=7.0.0"
             },
             "require-dev": {
@@ -557,10 +557,10 @@
             ],
             "description": "Client Packager on Laravel",
             "support": {
-                "source": "https://github.com/entap/laravel-client-packager/tree/0.0.4",
+                "source": "https://github.com/entap/laravel-client-packager/tree/0.0.5",
                 "issues": "https://github.com/entap/laravel-client-packager/issues"
             },
-            "time": "2020-12-07T22:48:56+00:00"
+            "time": "2020-12-08T01:29:16+00:00"
         },
         {
             "name": "fideloper/proxy",
