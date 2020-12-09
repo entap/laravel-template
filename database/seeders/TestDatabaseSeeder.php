@@ -38,15 +38,15 @@ class TestDatabaseSeeder extends Seeder
         $usersPermission = Permission::create(['name' => 'admin.users']);
         $usersPermission
             ->operations()
-            ->create(['method' => '*', 'action' => '/admin/auth/users*']);
+            ->create(['method' => '*', 'action' => 'admin/auth/users*']);
         $rolesPermission = Permission::create(['name' => 'admin.roles']);
         $rolesPermission
             ->operations()
-            ->create(['method' => '*', 'action' => '/admin/auth/roles*']);
+            ->create(['method' => '*', 'action' => 'admin/auth/roles*']);
         $packagesPermission = Permission::create(['name' => 'admin.packages']);
         $packagesPermission
             ->operations()
-            ->create(['method' => '*', 'action' => '/admin/packages']);
+            ->create(['method' => '*', 'action' => 'admin/packages']);
 
         $authRole = Role::create(['name' => 'Auth administrator']);
         $authRole->permissions()->save($usersPermission);
@@ -64,14 +64,14 @@ class TestDatabaseSeeder extends Seeder
         $packageAdministrator = AdminUser::factory()->create();
         $packageAdministrator->permissions()->save($packagesPermission);
         $this->command->info(
-            'Package administrator username: ' . $authAdministrator->username
+            'Package administrator username: ' . $packageAdministrator->username
         );
 
         $superAdministrator = AdminUser::factory()->create();
         $superAdministrator->roles()->save($authRole);
         $superAdministrator->roles()->save($packageRole);
         $this->command->info(
-            'Super administrator username: ' . $authAdministrator->username
+            'Super administrator username: ' . $superAdministrator->username
         );
     }
 }
