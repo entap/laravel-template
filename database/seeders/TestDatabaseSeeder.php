@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Entap\ClientPackager\Models\Package;
 use Entap\Admin\Database\Models\MenuItem;
@@ -24,6 +25,17 @@ class TestDatabaseSeeder extends Seeder
             die();
         }
 
+        $this->runForApp();
+        $this->runForAdmin();
+    }
+
+    protected function runForApp()
+    {
+        User::factory(3)->create();
+    }
+
+    protected function runForAdmin()
+    {
         MenuItem::create([
             'title' => 'クライアントパッケージ',
             'uri' => route('admin.packages.index', null, false),

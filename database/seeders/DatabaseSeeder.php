@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(MenuSeeder::class);
+
         if (config('app.env') === 'local') {
             $this->call(TestDatabaseSeeder::class);
         }

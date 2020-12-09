@@ -1,21 +1,27 @@
 <?php
 
 return [
-  'title' => 'Laravel Admin',
+    'title' => 'Laravel Admin',
 
-  'auth' => [
-    'guards' => [
-      'admin' => [
-        'driver' => 'session',
-        'provider' => 'admin',
-      ],
+    'view' => [
+        'layouts' => [
+            'default' => 'admin::layouts.sidebar',
+        ],
     ],
 
-    'providers' => [
-      'admin' => [
-        'driver' => 'eloquent',
-        'model' => Entap\Admin\Database\Models\User::class,
-      ],
+    'auth' => [
+        'guards' => [
+            'admin' => [
+                'driver' => 'session',
+                'provider' => 'admin',
+            ],
+        ],
+
+        'providers' => [
+            'admin' => [
+                'driver' => 'eloquent',
+                'model' => Entap\Admin\Database\Models\User::class,
+            ],
+        ],
     ],
-  ],
 ];
