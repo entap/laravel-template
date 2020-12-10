@@ -70,6 +70,46 @@ class AdminListUserTest extends TestCase
             });
     }
 
+    public function test_登録日の始点で絞り込む()
+    {
+        $user1 = User::factory()->create();
+        $this->travel(1)->seconds();
+        $user2 = User::factory()->create();
+
+        $response = $this->listUsers([
+            'start_created_at' => now()->format('c'),
+        ]);
+
+        $response
+            ->assertOk()
+            ->assertViewHas('users', function ($users) use ($user1) {
+                return !$users->contains('id', $user1->id);
+            })
+            ->assertViewHas('users', function ($users) use ($user2) {
+                return $users->contains('id', $user2->id);
+            });
+    }
+
+    public function test_登録日の終点で絞り込む()
+    {
+        $user1 = User::factory()->create();
+        $this->travel(1)->seconds();
+        $user2 = User::factory()->create();
+
+        $response = $this->listUsers([
+            'stop_created_at' => now()->format('c'),
+        ]);
+
+        $response
+            ->assertOk()
+            ->assertViewHas('users', function ($users) use ($user1) {
+                return $users->contains('id', $user1->id);
+            })
+            ->assertViewHas('users', function ($users) use ($user2) {
+                return !$users->contains('id', $user2->id);
+            });
+    }
+
     private function listUsers($params = [])
     {
         return $this->get(route('admin.app.users.index', $params));
