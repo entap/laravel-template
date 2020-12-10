@@ -17,7 +17,7 @@ class AdminListUserTest extends TestCase
     {
         $items = User::factory(2)->create();
 
-        $response = $this->get(route('admin.app.users.index'));
+        $response = $this->listUsers();
 
         $response->assertOk();
         foreach ($items as $item) {
@@ -28,7 +28,7 @@ class AdminListUserTest extends TestCase
 
     public function test_データがない場合はそれを表示する()
     {
-        $response = $this->get(route('admin.app.users.index'));
+        $response = $this->listUsers();
 
         $response->assertOk();
         $response->assertSee(__('No User'));
@@ -39,9 +39,7 @@ class AdminListUserTest extends TestCase
         $user1 = User::factory()->create(['name' => '佐藤かずま']);
         $user2 = User::factory()->create(['name' => 'めぐみん']);
 
-        $response = $this->get(
-            route('admin.app.users.index', ['name' => 'かず'])
-        );
+        $response = $this->listUsers(['name' => 'かず']);
 
         $response
             ->assertOk()
@@ -51,5 +49,10 @@ class AdminListUserTest extends TestCase
             ->assertViewHas('users', function ($users) use ($user2) {
                 return !$users->contains('id', $user2->id);
             });
+    }
+
+    private function listUsers($params = [])
+    {
+        return $this->get(route('admin.app.users.index', $params));
     }
 }
