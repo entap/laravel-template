@@ -112,6 +112,6 @@ class AdminListUserTest extends TestCase
 
     private function listUsers($params = [])
     {
-        return $this->get(route('admin.app.users.index', $params));
+        return $this->get(route('admin.users.index', $params));
     }
 }

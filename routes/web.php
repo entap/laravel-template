@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\Menu\MenuItemController;
 use App\Http\Controllers\Admin\UserController;
 use Entap\Admin\Facades\Admin;
 use Illuminate\Support\Facades\Route;
@@ -21,5 +20,7 @@ Route::get('/', function () {
 });
 
 Admin::routes(function () {
-    Route::get('users', [UserController::class, 'index'])->name('admin.app.users.index');
+    Route::get('users', [UserController::class, 'index'])->name(
+        'admin.users.index'
+    );
 });

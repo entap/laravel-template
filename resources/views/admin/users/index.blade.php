@@ -9,7 +9,7 @@
                 aria-controls="searchbox">
                 詳細検索
             </a>
-            <a href="{{ route('admin.app.users.index') }}" class="btn btn-link">
+            <a href="{{ route('admin.users.index') }}" class="btn btn-link">
                 検索クリア
             </a>
         </div>

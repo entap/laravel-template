@@ -16,7 +16,7 @@ class MenuSeeder extends Seeder
     {
         MenuItem::create([
             'title' => '一般ユーザー',
-            'uri' => route('admin.app.users.index', null, false),
+            'uri' => route('admin.users.index', null, false),
         ]);
     }
 }
