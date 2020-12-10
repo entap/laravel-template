@@ -43,6 +43,10 @@ class TestDatabaseSeeder extends Seeder
             'title' => 'クライアントパッケージ',
             'uri' => route('admin.packages.index', null, false),
         ]);
+        MenuItem::create([
+            'title' => 'ログ検索',
+            'uri' => route('log.tables.index', null, false),
+        ]);
 
         PackageRelease::truncate();
         Package::truncate();

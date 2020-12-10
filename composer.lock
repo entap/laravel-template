@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f5b8ebf3a8a714adfaaec97b2c3ec9a3",
+    "content-hash": "084f7f694b11cdabea40a1ca138ba166",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -795,16 +795,16 @@
         },
         {
             "name": "entap/laravel-admin",
-            "version": "0.0.21",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-admin.git",
-                "reference": "b77c14cd2f39e4cd7b0b1bda375a396107d6c4af"
+                "reference": "2dcbdd78fa9d8af5a90ef14947ac8fe99e24accb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/b77c14cd2f39e4cd7b0b1bda375a396107d6c4af",
-                "reference": "b77c14cd2f39e4cd7b0b1bda375a396107d6c4af",
+                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/2dcbdd78fa9d8af5a90ef14947ac8fe99e24accb",
+                "reference": "2dcbdd78fa9d8af5a90ef14947ac8fe99e24accb",
                 "shasum": ""
             },
             "require": {
@@ -831,6 +831,7 @@
             "autoload": {
                 "psr-4": {
                     "Entap\\Admin\\": "src/",
+                    "Database\\Seeders\\Entap\\Admin\\": "database/seeders",
                     "Database\\Factories\\Entap\\Admin\\Database\\Models\\": "database/factories"
                 }
             },
@@ -855,10 +856,10 @@
             ],
             "description": "Laravel Admin",
             "support": {
-                "source": "https://github.com/entap/laravel-admin/tree/0.0.21",
+                "source": "https://github.com/entap/laravel-admin/tree/0.1.1",
                 "issues": "https://github.com/entap/laravel-admin/issues"
             },
-            "time": "2020-12-09T00:41:22+00:00"
+            "time": "2020-12-09T21:48:51+00:00"
         },
         {
             "name": "entap/laravel-client-packager",
@@ -926,16 +927,16 @@
         },
         {
             "name": "entap/laravel-log-viewer",
-            "version": "0.0.3",
+            "version": "0.0.4",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-log-viewer.git",
-                "reference": "320030c75acb72a0f0ba2c39c3c008bab844cb69"
+                "reference": "27231895aa20861bc296d2364129014d5c4fad06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-log-viewer/zipball/320030c75acb72a0f0ba2c39c3c008bab844cb69",
-                "reference": "320030c75acb72a0f0ba2c39c3c008bab844cb69",
+                "url": "https://api.github.com/repos/entap/laravel-log-viewer/zipball/27231895aa20861bc296d2364129014d5c4fad06",
+                "reference": "27231895aa20861bc296d2364129014d5c4fad06",
                 "shasum": ""
             },
             "require": {
@@ -982,10 +983,10 @@
             ],
             "description": "Laravel Log Viewer",
             "support": {
-                "source": "https://github.com/entap/laravel-log-viewer/tree/0.0.3",
+                "source": "https://github.com/entap/laravel-log-viewer/tree/0.0.4",
                 "issues": "https://github.com/entap/laravel-log-viewer/issues"
             },
-            "time": "2020-12-10T01:12:28+00:00"
+            "time": "2020-12-10T04:00:37+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -5362,16 +5363,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.5.2",
+            "version": "2.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "08668034beb185fa2ac6f09b1034eaa440952ace"
+                "reference": "d8dc4f90ed469f9f9313b976fb078c20585d5c99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/08668034beb185fa2ac6f09b1034eaa440952ace",
-                "reference": "08668034beb185fa2ac6f09b1034eaa440952ace",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/d8dc4f90ed469f9f9313b976fb078c20585d5c99",
+                "reference": "d8dc4f90ed469f9f9313b976fb078c20585d5c99",
                 "shasum": ""
             },
             "require": {
@@ -5429,7 +5430,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2020-11-17T09:18:51+00:00"
+            "time": "2020-12-09T20:25:45+00:00"
         },
         {
             "name": "facade/ignition-contracts",
