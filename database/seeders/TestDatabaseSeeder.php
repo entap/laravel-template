@@ -4,12 +4,13 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Entap\Admin\Database\Models\Role;
 use Entap\ClientPackager\Models\Package;
 use Entap\Admin\Database\Models\MenuItem;
 use Entap\Admin\Database\Models\Permission;
-use Entap\Admin\Database\Models\Role;
-use Entap\Admin\Database\Models\User as AdminUser;
 use Entap\ClientPackager\Models\PackageRelease;
+use Entap\Admin\Database\Models\User as AdminUser;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 
 class TestDatabaseSeeder extends Seeder
 {
@@ -31,7 +32,9 @@ class TestDatabaseSeeder extends Seeder
 
     protected function runForApp()
     {
-        User::factory(3)->create();
+        User::factory(10)
+            ->state(new Sequence([], ['created_at' => now()->subDay(5)]))
+            ->create();
     }
 
     protected function runForAdmin()
