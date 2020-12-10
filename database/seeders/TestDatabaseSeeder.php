@@ -32,7 +32,7 @@ class TestDatabaseSeeder extends Seeder
 
     protected function runForApp()
     {
-        User::factory(10)
+        User::factory(50)
             ->state(new Sequence([], ['created_at' => now()->subDay(5)]))
             ->create();
     }

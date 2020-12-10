@@ -9,9 +9,12 @@
                 aria-controls="searchbox">
                 詳細検索
             </a>
+            <a href="{{ route('admin.app.users.index') }}" class="btn btn-link">
+                検索クリア
+            </a>
         </div>
         <div class="collapse" id="searchbox">
-            <div class="card card-body">
+            <div class="card card-body mb-4">
                 <form>
                     <div class="form-group">
                         <label for="name">{{ __('Name') }}</label>
@@ -52,6 +55,10 @@
     </div>
 
     @if (count($users))
+        <div class="d-flex justify-content-center">
+            {{ $users->withQueryString()->links() }}
+        </div>
+
         <table class="table mt-4">
             <thead>
                 <tr>
@@ -70,6 +77,10 @@
                 @endforeach
             </tbody>
         </table>
+
+        <div class="d-flex justify-content-center">
+            {{ $users->withQueryString()->links() }}
+        </div>
     @else
         <div class="mt-4">{{ __('No User.') }}</div>
     @endif

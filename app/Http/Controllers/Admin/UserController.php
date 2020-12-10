@@ -17,7 +17,8 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $users = $this->users->query($request->all())->get();
+        $users = $this->users->query($request->all())->paginate();
+
         return view('admin.users.index', compact('users'));
     }
 }
