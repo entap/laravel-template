@@ -11,6 +11,7 @@
         "php": "^7.3|^8.0",
         "entap/laravel-admin": ">=0.0.18",
         "entap/laravel-client-packager": ">=0.0.5",
+        "entap/laravel-log-viewer": "^0.0.3",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -65,6 +66,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/entap/laravel-admin"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/entap/laravel-log-viewer"
         },
         {
             "type": "vcs",
