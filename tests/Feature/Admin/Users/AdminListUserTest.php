@@ -39,6 +39,7 @@ class AdminListUserTest extends TestCase
         $user1 = User::factory()->create(['name' => '佐藤かずま']);
         $user2 = User::factory()->create(['name' => 'めぐみん']);
 
+        // 部分一致
         $response = $this->listUsers(['name' => 'かず']);
 
         $response
@@ -48,6 +49,24 @@ class AdminListUserTest extends TestCase
             })
             ->assertViewHas('users', function ($users) use ($user2) {
                 return !$users->contains('id', $user2->id);
+            });
+    }
+
+    public function test_メールアドレスで絞り込む()
+    {
+        $user1 = User::factory()->create(['email' => 'kazuma.sato@gmail.com']);
+        $user2 = User::factory()->create(['email' => 'meg.min@gmail.com']);
+
+        // 部分一致
+        $response = $this->listUsers(['email' => 'min']);
+
+        $response
+            ->assertOk()
+            ->assertViewHas('users', function ($users) use ($user1) {
+                return !$users->contains('id', $user1->id);
+            })
+            ->assertViewHas('users', function ($users) use ($user2) {
+                return $users->contains('id', $user2->id);
             });
     }
 

@@ -16,6 +16,14 @@ class UserQueryService
                 '%' . $options['name'] . '%'
             );
         }
+        if (isset($options['email'])) {
+            // TODO uniq貼ってるから前方一致でもいいかも
+            $query = $query->where(
+                'email',
+                'LIKE',
+                '%' . $options['email'] . '%'
+            );
+        }
         return $query;
     }
 }
