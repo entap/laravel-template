@@ -10,6 +10,7 @@ use Entap\Admin\Database\Models\MenuItem;
 use Entap\Admin\Database\Models\Permission;
 use Entap\ClientPackager\Models\PackageRelease;
 use Entap\Admin\Database\Models\User as AdminUser;
+use Entap\RequestLogger\Models\LogRequestEntry;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 
 class TestDatabaseSeeder extends Seeder
@@ -35,6 +36,8 @@ class TestDatabaseSeeder extends Seeder
         User::factory(50)
             ->state(new Sequence([], ['created_at' => now()->subDay(5)]))
             ->create();
+
+        LogRequestEntry::factory(20)->create();
     }
 
     protected function runForAdmin()

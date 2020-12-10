@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "084f7f694b11cdabea40a1ca138ba166",
+    "content-hash": "f6bb4a3044e43a73d4a21bbb68e6a912",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -987,6 +987,69 @@
                 "issues": "https://github.com/entap/laravel-log-viewer/issues"
             },
             "time": "2020-12-10T04:00:37+00:00"
+        },
+        {
+            "name": "entap/laravel-request-logger",
+            "version": "0.1.4",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:entap/laravel-request-logger.git",
+                "reference": "b2e018498f1e77333b44288b5e124fde9f4815a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/entap/laravel-request-logger/zipball/b2e018498f1e77333b44288b5e124fde9f4815a0",
+                "reference": "b2e018498f1e77333b44288b5e124fde9f4815a0",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^8.0",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.5",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Entap\\RequestLogger\\ServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Entap\\RequestLogger\\": "src/",
+                    "Database\\Factories\\Entap\\RequestLogger\\Models\\": "database/factories/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ii masamitsu",
+                    "email": "ii@entap.co.jp"
+                }
+            ],
+            "description": "Laravel Request Logger",
+            "support": {
+                "source": "https://github.com/entap/laravel-request-logger/tree/0.1.4",
+                "issues": "https://github.com/entap/laravel-request-logger/issues"
+            },
+            "time": "2020-12-10T23:48:22+00:00"
         },
         {
             "name": "fideloper/proxy",

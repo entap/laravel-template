@@ -12,6 +12,7 @@
         "entap/laravel-admin": "^0.1",
         "entap/laravel-client-packager": ">=0.0.5",
         "entap/laravel-log-viewer": ">=0.0.3",
+        "entap/laravel-request-logger": "^0.1",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -74,6 +75,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/entap/laravel-client-packager"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/entap/laravel-request-logger"
         }
     ]
 }

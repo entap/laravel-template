@@ -7,4 +7,8 @@ return [
         'middleware' => ['web', 'admin'],
         'prefix' => 'admin',
     ],
+
+    'view' => [
+        'layout' => 'admin::layouts.sidebar',
+    ],
 ];
