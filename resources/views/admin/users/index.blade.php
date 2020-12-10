@@ -3,6 +3,54 @@
 @section('content')
     <h1>{{ __('Users') }}</h1>
 
+    <div>
+        <div class="text-right">
+            <a class="btn btn-link" data-toggle="collapse" href="#searchbox" role="button" aria-expanded="false"
+                aria-controls="searchbox">
+                詳細検索
+            </a>
+        </div>
+        <div class="collapse" id="searchbox">
+            <div class="card card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name">{{ __('Name') }}</label>
+                        <div>
+                            <input type="text" id="name" class="form-control" name="name"
+                                value="{{ request()->input('name', '') }}" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">{{ __('E-mail') }}</label>
+                        <div>
+                            <input type="text" id="email" class="form-control" name="email"
+                                value="{{ request()->input('email', '') }}" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="start_created_at">{{ __('Start created at') }}</label>
+                        <div>
+                            <input type="datetime-local" id="start_created_at" class="form-control" name="start_created_at"
+                                value="{{ request()->input('start_created_at', '') }}" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stop_created_at">{{ __('Stop created at') }}</label>
+                        <div>
+                            <input type="datetime-local" id="stop_created_at" class="form-control" name="stop_created_at"
+                                value="{{ request()->input('stop_created_at', '') }}" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Search') }}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     @if (count($users))
         <table class="table mt-4">
             <thead>
