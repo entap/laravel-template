@@ -927,16 +927,16 @@
         },
         {
             "name": "entap/laravel-log-viewer",
-            "version": "0.0.4",
+            "version": "0.0.5",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-log-viewer.git",
-                "reference": "27231895aa20861bc296d2364129014d5c4fad06"
+                "reference": "3e86cbd1bcb9b3260836057316c58219731c2732"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-log-viewer/zipball/27231895aa20861bc296d2364129014d5c4fad06",
-                "reference": "27231895aa20861bc296d2364129014d5c4fad06",
+                "url": "https://api.github.com/repos/entap/laravel-log-viewer/zipball/3e86cbd1bcb9b3260836057316c58219731c2732",
+                "reference": "3e86cbd1bcb9b3260836057316c58219731c2732",
                 "shasum": ""
             },
             "require": {
@@ -983,10 +983,10 @@
             ],
             "description": "Laravel Log Viewer",
             "support": {
-                "source": "https://github.com/entap/laravel-log-viewer/tree/0.0.4",
+                "source": "https://github.com/entap/laravel-log-viewer/tree/0.0.5",
                 "issues": "https://github.com/entap/laravel-log-viewer/issues"
             },
-            "time": "2020-12-10T04:00:37+00:00"
+            "time": "2020-12-10T23:53:03+00:00"
         },
         {
             "name": "entap/laravel-request-logger",
