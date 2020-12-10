@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Query\Services\UserQueryService;
 
 class UserController extends Controller
 {
-    public function index()
+    private $users;
+
+    public function __construct(UserQueryService $users)
     {
-        $users = User::all();
+        $this->users = $users;
+    }
+
+    public function index(Request $request)
+    {
+        $users = $this->users->query($request->all())->get();
         return view('admin.users.index', compact('users'));
     }
 }

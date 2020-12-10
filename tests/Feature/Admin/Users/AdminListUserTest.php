@@ -33,4 +33,23 @@ class AdminListUserTest extends TestCase
         $response->assertOk();
         $response->assertSee(__('No User'));
     }
+
+    public function test_名前で絞り込む()
+    {
+        $user1 = User::factory()->create(['name' => '佐藤かずま']);
+        $user2 = User::factory()->create(['name' => 'めぐみん']);
+
+        $response = $this->get(
+            route('admin.app.users.index', ['name' => 'かず'])
+        );
+
+        $response
+            ->assertOk()
+            ->assertViewHas('users', function ($users) use ($user1) {
+                return $users->contains('id', $user1->id);
+            })
+            ->assertViewHas('users', function ($users) use ($user2) {
+                return !$users->contains('id', $user2->id);
+            });
+    }
 }
