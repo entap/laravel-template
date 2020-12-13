@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6bb4a3044e43a73d4a21bbb68e6a912",
+    "content-hash": "91c475d036f12c6630957f5e7958a40f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -971,16 +971,16 @@
         },
         {
             "name": "entap/laravel-log-viewer",
-            "version": "0.0.6",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-log-viewer.git",
-                "reference": "4c20d2c76d99ba90e3b5fe665d4b3283084e1028"
+                "reference": "d579be5eed4951f84c50751c68d8932e7749ccbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-log-viewer/zipball/4c20d2c76d99ba90e3b5fe665d4b3283084e1028",
-                "reference": "4c20d2c76d99ba90e3b5fe665d4b3283084e1028",
+                "url": "https://api.github.com/repos/entap/laravel-log-viewer/zipball/d579be5eed4951f84c50751c68d8932e7749ccbd",
+                "reference": "d579be5eed4951f84c50751c68d8932e7749ccbd",
                 "shasum": ""
             },
             "require": {
@@ -992,6 +992,7 @@
                 "orchestra/testbench": "^6.6",
                 "phpunit/phpunit": "^9.5"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -1027,10 +1028,10 @@
             ],
             "description": "Laravel Log Viewer",
             "support": {
-                "source": "https://github.com/entap/laravel-log-viewer/tree/0.0.6",
+                "source": "https://github.com/entap/laravel-log-viewer/tree/main",
                 "issues": "https://github.com/entap/laravel-log-viewer/issues"
             },
-            "time": "2020-12-13T22:11:20+00:00"
+            "time": "2020-12-13T22:33:43+00:00"
         },
         {
             "name": "entap/laravel-request-logger",
@@ -7974,7 +7975,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "entap/laravel-log-viewer": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

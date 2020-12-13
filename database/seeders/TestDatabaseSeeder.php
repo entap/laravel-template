@@ -37,7 +37,9 @@ class TestDatabaseSeeder extends Seeder
             ->state(new Sequence([], ['created_at' => now()->subDay(5)]))
             ->create();
 
-        LogRequestEntry::factory(20)->create();
+        LogRequestEntry::factory(20)
+            ->state(new Sequence([], ['created_at' => now()->subDay(5)]))
+            ->create();
     }
 
     protected function runForAdmin()
