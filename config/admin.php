@@ -3,11 +3,7 @@
 return [
     'title' => 'Laravel Admin',
 
-    'view' => [
-        'layouts' => [
-            'default' => 'admin::layouts.sidebar',
-        ],
-    ],
+    'guard' => 'admin',
 
     'auth' => [
         'guards' => [
@@ -22,6 +18,18 @@ return [
                 'driver' => 'eloquent',
                 'model' => Entap\Admin\Database\Models\User::class,
             ],
+        ],
+    ],
+
+    'route' => [
+        'prefix' => 'admin',
+        'middleware' => ['web'],
+    ],
+
+    'view' => [
+        'layouts' => [
+            'default' => 'admin::layouts.sidebar',
+            'login' => 'admin::layouts.simple',
         ],
     ],
 ];
