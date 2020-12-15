@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\Firebase\CreateCustomTokenController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Firebase\SignInController;
@@ -19,6 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('auth/firebase/token', SignInController::class)->name(
-    'api.auth.firebase.token'
-);
+Route::post('auth/firebase/token', SignInController::class);
+Route::post('auth/firebase/custom-token', CreateCustomTokenController::class);
