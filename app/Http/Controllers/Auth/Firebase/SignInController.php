@@ -17,6 +17,10 @@ class SignInController extends Controller
 
     function __invoke(Request $request)
     {
+        $request->validate([
+            'id_token' => 'required',
+        ]);
+
         $token = $this->auth->signIn($request->input('id_token'));
         return [
             'access_token' => $token->accessToken,
