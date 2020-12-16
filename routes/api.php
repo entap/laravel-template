@@ -23,6 +23,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('auth/firebase/token', SignInController::class);
-Route::post('auth/firebase/custom-token', CreateCustomTokenController::class);
-Route::post('auth/firebase/user', RegisterController::class);
-Route::delete('auth/firebase/user', UnregisterController::class);
+
+Route::middleware('auth:api')->group(function () {
+    Route::post(
+        'auth/firebase/custom-token',
+        CreateCustomTokenController::class
+    );
+    Route::post('auth/firebase/user', RegisterController::class);
+    Route::delete('auth/firebase/user', UnregisterController::class);
+});

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth\Firebase;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use UserCreateFirebaseCustomToken;
+use App\UseCases\UserCreateFirebaseCustomToken;
 
 class CreateCustomTokenController extends Controller
 {

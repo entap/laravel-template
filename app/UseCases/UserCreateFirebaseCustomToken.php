@@ -1,4 +1,5 @@
 <?php
+namespace App\UseCases;
 
 use Kreait\Firebase\Auth;
 
