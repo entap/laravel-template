@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Auth\Line;
 
 use App\Gateways\Line\VerifyIdTokenGateway;
 use App\Http\Controllers\Controller;
+use App\Models\LineNonce;
 use App\Models\User;
 use Illuminate\Http\Request;
 use UserCreateToken;
 
-class SignInController extends Controller
+class TokenController extends Controller
 {
     protected $line;
     protected $tokens;
@@ -25,19 +26,17 @@ class SignInController extends Controller
     {
         $request->validate([
             'id_token' => 'required',
-            // 'nonce_id' => 'required',
+            'nonce_id' => 'required|exists:line_nonces,id',
         ]);
 
-        // TODO nonce_idとnonceを記録しておいてとってくる
-        // $nonce = '';
+        $nonce = LineNonce::find($request->input('nonce_id'));
+        $nonce->delete();
 
         $verifiedIdToken = $this->line->verify(
-            $request->input('id_token')
-            // ,$nonce
+            $request->input('id_token'),
+            $nonce->nonce
         );
         // TODO 失敗したら400か401あたりで返そう
-
-        // TODO 成功でも失敗でもnonceを削除する
 
         $uid = $verifiedIdToken['sub'];
 
