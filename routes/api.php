@@ -1,11 +1,14 @@
 <?php
 
-use App\Http\Controllers\Auth\Firebase\CreateCustomTokenController;
-use App\Http\Controllers\Auth\Firebase\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Firebase\SignInController;
+use App\Http\Controllers\Auth\Firebase\RegisterController;
 use App\Http\Controllers\Auth\Firebase\UnregisterController;
+use App\Http\Controllers\Auth\Firebase\CreateCustomTokenController;
+use App\Http\Controllers\Auth\Line\SignInController as LineSignInController;
+use App\Http\Controllers\Auth\Line\RegisterController as LineRegisterController;
+use App\Http\Controllers\Auth\Line\UnregisterController as LineUnregisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +25,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Firebase
+
 Route::post('auth/firebase/token', SignInController::class);
 
 Route::middleware('auth:api')->group(function () {
@@ -31,4 +36,13 @@ Route::middleware('auth:api')->group(function () {
     );
     Route::post('auth/firebase/user', RegisterController::class);
     Route::delete('auth/firebase/user', UnregisterController::class);
+});
+
+// LINE
+
+Route::post('auth/line/token', LineSignInController::class);
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('auth/line/user', LineRegisterController::class);
+    Route::delete('auth/line/user', LineUnregisterController::class);
 });

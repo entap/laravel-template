@@ -35,6 +35,7 @@ class SignInController extends Controller
             $request->input('id_token')
             // ,$nonce
         );
+        // TODO 失敗したら400か401あたりで返そう
 
         // TODO 成功でも失敗でもnonceを削除する
 
