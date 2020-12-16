@@ -6,8 +6,8 @@ use App\Http\Controllers\Auth\Firebase\SignInController;
 use App\Http\Controllers\Auth\Firebase\RegisterController;
 use App\Http\Controllers\Auth\Firebase\UnregisterController;
 use App\Http\Controllers\Auth\Firebase\CreateCustomTokenController;
-use App\Http\Controllers\Auth\Line\NonceController;
-use App\Http\Controllers\Auth\Line\SignInController as LineSignInController;
+use App\Http\Controllers\Auth\Line\NonceController as LineNonceController;
+use App\Http\Controllers\Auth\Line\TokenController as LineTokenController;
 use App\Http\Controllers\Auth\Line\RegisterController as LineRegisterController;
 use App\Http\Controllers\Auth\Line\UnregisterController as LineUnregisterController;
 
@@ -41,8 +41,8 @@ Route::middleware('auth:api')->group(function () {
 
 // LINE
 
-Route::post('auth/line/nonce', NonceController::class);
-Route::post('auth/line/token', LineSignInController::class);
+Route::post('auth/line/nonce', LineNonceController::class);
+Route::post('auth/line/token', LineTokenController::class);
 
 Route::middleware('auth:api')->group(function () {
     Route::post('auth/line/user', LineRegisterController::class);
