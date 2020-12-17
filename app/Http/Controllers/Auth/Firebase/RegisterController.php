@@ -24,6 +24,11 @@ class RegisterController extends Controller
 
         // TODO 他人が既に使っているuidはダメ
 
-        $user->update(['firebase_id' => $uid]);
+        $user
+            ->authProviders()
+            ->updateOrCreate(
+                ['name' => 'firebase'],
+                ['name' => 'firebase', 'code' => $uid]
+            );
     }
 }

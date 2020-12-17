@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth\Line;
 
 use App\Gateways\Line\VerifyIdTokenGateway;
 use App\Http\Controllers\Controller;
+use App\Models\AuthProvider;
 use App\Models\LineNonce;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TokenController extends Controller
 {
@@ -35,9 +37,28 @@ class TokenController extends Controller
 
         $uid = $verifiedIdToken['sub'];
 
-        $user = User::where('line_id', $uid)->firstOrCreate([
-            'line_id' => $uid,
-        ]);
+        // TODO ここからサービスにまとめる
+        $provider = AuthProvider::where('name', 'line')
+            ->where('code', $uid)
+            ->first();
+        if ($provider) {
+            $user = $provider->user;
+        } else {
+            $user = DB::transaction(function () use ($uid) {
+                // TODO User作るのアプリケーション依存なので共通化できない
+                // 見つからないときはエラーにしてregisterしてもらう？
+                $user = User::create();
+
+                $user->authProviders()->create([
+                    'name' => 'line',
+                    'code' => $uid,
+                ]);
+
+                return $user;
+            });
+        }
+        // --- ここまで
+
         $token = $user->createToken('LINE Token');
 
         return [

@@ -10,6 +10,10 @@ class UnregisterController extends Controller
     public function __invoke(Request $request)
     {
         $user = $request->user();
-        $user->update(['firebase_id' => null]);
+
+        $user
+            ->authProviders()
+            ->where('name', 'firebase')
+            ->delete();
     }
 }

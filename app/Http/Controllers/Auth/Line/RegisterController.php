@@ -19,6 +19,7 @@ class RegisterController extends Controller
     {
         $request->validate([
             'id_token' => 'required',
+            // TODO nonceをオプションで使えるようにする
             // 'nonce_id' => 'required',
         ]);
 
@@ -32,7 +33,12 @@ class RegisterController extends Controller
 
         $uid = $verifyedIdToken['sub'];
 
-        $user->update(['line_id' => $uid]);
+        $user
+            ->authProviders()
+            ->updateOrCreate(
+                ['name' => 'line'],
+                ['name' => 'line', 'code' => $uid]
+            );
 
         // TODO nonceを削除する (userとは別のトランザクションでいい)
     }

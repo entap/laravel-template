@@ -10,6 +10,9 @@ class UnregisterController extends Controller
     public function __invoke(Request $request)
     {
         $user = $request->user();
-        $user->update(['line_id' => null]);
+        $user
+            ->authProviders()
+            ->where('name', 'line')
+            ->delete();
     }
 }

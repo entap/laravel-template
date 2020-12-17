@@ -11,6 +11,8 @@ class AuthProvider extends Model
 
     protected $fillable = ['name', 'code'];
 
+    protected $hidden = ['code'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
