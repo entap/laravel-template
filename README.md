@@ -11,7 +11,7 @@ GitHub のテンプレートとして利用します。
 
 クローンしたら以下を実行してください。
 
-```bash
+```sh
 composer install
 cp .env.example .env
 php artisan key:generate
@@ -21,12 +21,15 @@ php artisan passport:install
 
 ### Testing
 
-```bash
+```sh
 composer test
 ```
 
 ### Fresh database
 
-```bash
-php artisan migrate:fresh && php artisan admin:install && php artisan db:seed
+```sh
+php artisan migrate:fresh \
+    && php artisan passport:install \
+    && php artisan admin:install \
+    && php artisan db:seed
 ```
