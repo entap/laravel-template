@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82b0c51e5ba906467645431b63401c89",
+    "content-hash": "7ef2cf16598853621d808fef69554eda",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -971,6 +971,70 @@
                 "issues": "https://github.com/entap/laravel-admin/issues"
             },
             "time": "2020-12-09T21:48:51+00:00"
+        },
+        {
+            "name": "entap/laravel-auth",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:entap/laravel-auth.git",
+                "reference": "261217ab746f95ea20ed70f7b39304f4a5d41e25"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/entap/laravel-auth/zipball/261217ab746f95ea20ed70f7b39304f4a5d41e25",
+                "reference": "261217ab746f95ea20ed70f7b39304f4a5d41e25",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^8.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.7",
+                "phpunit/phpunit": "^9.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Entap\\Auth\\ServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Entap\\Auth\\": "src/",
+                    "Database\\Factories\\Entap\\Auth\\Models\\": "database/factories/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ii masamitsu",
+                    "email": "ii@entap.co.jp"
+                }
+            ],
+            "description": "Laravel Auth Package.",
+            "support": {
+                "source": "https://github.com/entap/laravel-auth/tree/main",
+                "issues": "https://github.com/entap/laravel-auth/issues"
+            },
+            "time": "2020-12-17T22:22:57+00:00"
         },
         {
             "name": "entap/laravel-client-packager",
@@ -9746,6 +9810,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "entap/laravel-auth": 20,
         "entap/laravel-log-viewer": 20
     },
     "prefer-stable": true,
