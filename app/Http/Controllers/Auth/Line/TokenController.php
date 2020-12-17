@@ -37,27 +37,8 @@ class TokenController extends Controller
 
         $uid = $verifiedIdToken['sub'];
 
-        // TODO ここからサービスにまとめる
-        $provider = AuthProvider::where('name', 'line')
-            ->where('code', $uid)
-            ->first();
-        if ($provider) {
-            $user = $provider->user;
-        } else {
-            $user = DB::transaction(function () use ($uid) {
-                // TODO User作るのアプリケーション依存なので共通化できない
-                // 見つからないときはエラーにしてregisterしてもらう？
-                $user = User::create();
-
-                $user->authProviders()->create([
-                    'name' => 'line',
-                    'code' => $uid,
-                ]);
-
-                return $user;
-            });
-        }
-        // --- ここまで
+        $user = User::withProvider('line', $uid)->firstOrCreate();
+        $user->saveProvider('line', $uid);
 
         $token = $user->createToken('LINE Token');
 

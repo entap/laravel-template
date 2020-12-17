@@ -33,12 +33,7 @@ class RegisterController extends Controller
 
         $uid = $verifyedIdToken['sub'];
 
-        $user
-            ->authProviders()
-            ->updateOrCreate(
-                ['name' => 'line'],
-                ['name' => 'line', 'code' => $uid]
-            );
+        $user->saveProvider('line', $uid);
 
         // TODO nonceを削除する (userとは別のトランザクションでいい)
     }

@@ -25,13 +25,8 @@ class RegisterController extends Controller
 
         $uid = $this->verifyService->verify($request->input('id_token'));
 
-        // TODO 他人が既に使っているuidはダメ
+        // TODO 別のユーザーが既に使っているuidはダメ
 
-        $user
-            ->authProviders()
-            ->updateOrCreate(
-                ['name' => 'firebase'],
-                ['name' => 'firebase', 'code' => $uid]
-            );
+        $user->saveProvider('firebase', $uid);
     }
 }

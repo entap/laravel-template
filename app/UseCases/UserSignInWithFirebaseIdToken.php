@@ -19,27 +19,8 @@ class UserSignInWithFirebaseIdToken
     {
         $uid = $this->verifyService->verify($idToken);
 
-        // TODO ここからサービスにまとめる
-        $provider = AuthProvider::where('name', 'firebase')
-            ->where('code', $uid)
-            ->first();
-        if ($provider) {
-            $user = $provider->user;
-        } else {
-            $user = DB::transaction(function () use ($uid) {
-                // TODO User作るのアプリケーション依存なので共通化できない
-                // 見つからないときはエラーにしてregisterしてもらう？
-                $user = User::create();
-
-                $user->authProviders()->create([
-                    'name' => 'firebase',
-                    'code' => $uid,
-                ]);
-
-                return $user;
-            });
-        }
-        // TODO ここまで？token作るとこまでやってもいいかも。
+        $user = User::withProvider('firebase', $uid)->firstOrCreate();
+        $user->saveProvider('firebase', $uid);
 
         return $user->createToken('Firebase Token');
     }
