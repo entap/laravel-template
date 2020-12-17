@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('firebase_id')->nullable();
+            $table->string('line_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

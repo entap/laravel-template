@@ -1,6 +1,7 @@
 <?php
 namespace App\Gateways\Line;
 
+use Exception;
 use Illuminate\Support\Facades\Http;
 
 class VerifyIdTokenGateway
@@ -8,16 +9,17 @@ class VerifyIdTokenGateway
     public function verify(string $idToken, string $nonce = '')
     {
         $clientId = config('services.line.client_id');
+        // TODO CLIENT_IDが設定されてないとエラー
 
         $response = $this->postVerify($idToken, $clientId, $nonce);
         if (!$response->successful()) {
             // TODO エラー
-            throw 'error';
+            throw new Exception('connection error: ' . $response->status());
         }
         if ($error = $response->json('error')) {
             $errorDescription = $response->json('error_description');
             // TODO エラー
-            throw 'error';
+            throw new Exception('line error: ' . $error);
         }
         return $response->json();
     }
@@ -25,12 +27,12 @@ class VerifyIdTokenGateway
     private function postVerify(
         string $idToken,
         string $clientId,
-        string $nonce
+        string $nonce = ''
     ) {
-        return Http::post($this->url(), [
+        return Http::asForm()->post($this->url(), [
             'id_token' => $idToken,
             'client_id' => $clientId,
-            'nonce' => $nonce,
+            // 'nonce' => $nonce,
         ]);
     }
 

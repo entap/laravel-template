@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class LineNonce extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nonce'];
 }

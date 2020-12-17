@@ -7,34 +7,29 @@ use App\Http\Controllers\Controller;
 use App\Models\LineNonce;
 use App\Models\User;
 use Illuminate\Http\Request;
-use UserCreateToken;
 
 class TokenController extends Controller
 {
     protected $line;
-    protected $tokens;
 
-    public function __construct(
-        VerifyIdTokenGateway $line,
-        UserCreateToken $tokens
-    ) {
+    public function __construct(VerifyIdTokenGateway $line)
+    {
         $this->line = $line;
-        $this->tokens = $tokens;
     }
 
     public function __invoke(Request $request)
     {
         $request->validate([
             'id_token' => 'required',
-            'nonce_id' => 'required|exists:line_nonces,id',
+            // 'nonce_id' => 'required|exists:line_nonces,id',
         ]);
 
-        $nonce = LineNonce::find($request->input('nonce_id'));
-        $nonce->delete();
+        // $nonce = LineNonce::find($request->input('nonce_id'));
+        // $nonce->delete();
 
         $verifiedIdToken = $this->line->verify(
-            $request->input('id_token'),
-            $nonce->nonce
+            $request->input('id_token')
+            // $nonce->nonce
         );
         // TODO 失敗したら400か401あたりで返そう
 
@@ -43,7 +38,7 @@ class TokenController extends Controller
         $user = User::where('line_id', $uid)->firstOrCreate([
             'line_id' => $uid,
         ]);
-        $$token = $user->createToken('LINE Token');
+        $token = $user->createToken('LINE Token');
 
         return [
             'access_token' => $token->accessToken,
