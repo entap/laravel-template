@@ -20,9 +20,12 @@ class CreateCustomTokenController extends Controller
     public function __invoke(Request $request)
     {
         $user = $request->user();
-        $customToken = $this->customTokenService->create(
-            $user->firebase_id ? $user->firebase_id : Str::uuid()
-        );
+        $provider = $user
+            ->authProviders()
+            ->where('name', 'firebase')
+            ->first();
+        $uid = $provider ? $provider->code : Str::uuid();
+        $customToken = $this->customTokenService->create($uid);
         return [
             'custom_token' => $customToken,
         ];
