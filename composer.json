@@ -13,6 +13,7 @@
         "entap/laravel-auth": "dev-main",
         "entap/laravel-client-packager": ">=0.0.5",
         "entap/laravel-log-viewer": "dev-main",
+        "entap/laravel-oauth-firebase": "dev-main",
         "entap/laravel-request-logger": "^0.1",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
@@ -71,6 +72,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/entap/laravel-auth"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/entap/laravel-oauth-firebase"
         },
         {
             "type": "vcs",

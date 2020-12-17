@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth\Firebase;
 
-use App\Gateways\Firebase\CreateCustomTokenGateway;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Entap\OAuth\Firebase\Application\Gateways\Firebase\CreateCustomTokenGateway;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CreateCustomTokenController extends Controller
 {
@@ -14,6 +14,8 @@ class CreateCustomTokenController extends Controller
     public function __construct(CreateCustomTokenGateway $firebase)
     {
         $this->firebase = $firebase;
+
+        $this->middleware(config('oauth-firebase.route.middleware'));
     }
 
     public function __invoke(Request $request)

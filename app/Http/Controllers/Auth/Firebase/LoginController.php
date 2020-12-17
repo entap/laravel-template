@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Auth\Firebase;
 
-use App\Gateways\Firebase\VerifyIdTokenGateway;
-use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\UseCases\UserSignInWithFirebaseIdToken;
-use App\UseCases\UserVerifyFirebaseIdToken;
+use App\Models\User;
+use Entap\OAuth\Firebase\Application\Gateways\Firebase\VerifyIdTokenGateway;
+use Illuminate\Http\Request;
 
-class SignInController extends Controller
+class LoginController extends Controller
 {
     protected $firebase;
 
