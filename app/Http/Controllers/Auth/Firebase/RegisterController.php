@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Auth\Firebase;
 
+use App\Gateways\Firebase\VerifyIdTokenGateway;
 use App\Http\Controllers\Controller;
 use App\UseCases\UserVerifyFirebaseIdToken;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    protected $verifyService;
+    protected $firebase;
 
-    public function __construct(UserVerifyFirebaseIdToken $verifyService)
+    public function __construct(VerifyIdTokenGateway $firebase)
     {
-        $this->verifyService = $verifyService;
+        $this->firebase = $firebase;
     }
 
     public function __invoke(Request $request)
@@ -23,7 +24,7 @@ class RegisterController extends Controller
 
         $user = $request->user();
 
-        $uid = $this->verifyService->verify($request->input('id_token'));
+        $uid = $this->firebase->verify($request->input('id_token'));
 
         // TODO 別のユーザーが既に使っているuidはダメ
 

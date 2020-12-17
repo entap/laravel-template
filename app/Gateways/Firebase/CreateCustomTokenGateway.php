@@ -1,9 +1,9 @@
 <?php
-namespace App\UseCases;
+namespace App\Gateways\Firebase;
 
 use Kreait\Firebase\Auth;
 
-class UserCreateFirebaseCustomToken
+class CreateCustomTokenGateway
 {
     protected $auth;
 
@@ -12,7 +12,7 @@ class UserCreateFirebaseCustomToken
         $this->auth = $auth;
     }
 
-    public function create(string $uid): string
+    public function createCustomToken(string $uid): string
     {
         return (string) $this->auth->createCustomToken($uid);
     }

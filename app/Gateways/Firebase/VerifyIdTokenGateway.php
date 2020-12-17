@@ -1,10 +1,10 @@
 <?php
-namespace App\UseCases;
+namespace App\Gateways\Firebase;
 
 use Kreait\Firebase\Auth;
 use Firebase\Auth\Token\Exception\InvalidToken;
 
-class UserVerifyFirebaseIdToken
+class VerifyIdTokenGateway
 {
     protected $auth;
 
@@ -15,7 +15,6 @@ class UserVerifyFirebaseIdToken
 
     public function verify(string $idToken): string
     {
-        // TODO GWにでも突っ込むか？
         try {
             $verifiedIdToken = $this->auth->verifyIdToken($idToken);
         } catch (InvalidToken $e) {
