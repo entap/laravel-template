@@ -30,7 +30,7 @@ class RegisterController extends Controller
         $verifyedIdToken = $this->line->verify($idToken);
         // TODO 失敗したら400か401あたりで返そう
 
-        $uid = $verifyedIdToken->sub;
+        $uid = $verifyedIdToken['sub'];
 
         $user->update(['line_id' => $uid]);
 
