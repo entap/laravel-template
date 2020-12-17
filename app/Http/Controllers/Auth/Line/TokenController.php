@@ -29,13 +29,11 @@ class TokenController extends Controller
         // $nonce = LineNonce::find($request->input('nonce_id'));
         // $nonce->delete();
 
-        $verifiedIdToken = $this->line->verify(
+        $uid = $this->line->verify(
             $request->input('id_token')
             // $nonce->nonce
         );
         // TODO 失敗したら400か401あたりで返そう
-
-        $uid = $verifiedIdToken['sub'];
 
         $user = User::withProvider('line', $uid)->firstOrCreate();
         $user->saveProvider('line', $uid);
