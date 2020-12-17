@@ -17,9 +17,12 @@ class RegisterController extends Controller
 
     public function __invoke(Request $request)
     {
+        $request->validate([
+            'id_token' => 'required',
+        ]);
+
         $user = $request->user();
 
-        // TODO id_tokenは必須
         $uid = $this->verifyService->verify($request->input('id_token'));
 
         // TODO 他人が既に使っているuidはダメ
