@@ -20,10 +20,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Firebase
 
-// Route::post('auth/firebase/token', SignInController::class);
-// Route::post('auth/firebase/custom-token', CreateCustomTokenController::class);
+Route::post(
+    'auth/firebase/token',
+    \App\Http\Controllers\Auth\Firebase\LoginController::class
+);
+Route::post(
+    'auth/firebase/custom-token',
+    \App\Http\Controllers\Auth\Firebase\CreateCustomTokenController::class
+);
 
 // LINE
 
-// Route::post('auth/line/nonce', LineNonceController::class);
-// Route::post('auth/line/token', LineTokenController::class);
+Route::post(
+    'auth/line/token',
+    \App\Http\Controllers\Auth\Line\LoginController::class
+);
