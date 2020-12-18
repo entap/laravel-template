@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9bf6c8a1db842d466359a48f4835c760",
+    "content-hash": "2eab5da16023ff536ddfabe6560801c4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1227,6 +1227,70 @@
                 "issues": "https://github.com/entap/laravel-oauth-firebase/issues"
             },
             "time": "2020-12-18T00:00:18+00:00"
+        },
+        {
+            "name": "entap/laravel-oauth-line",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:entap/laravel-oauth-line.git",
+                "reference": "91cbfa355495ad4128eee373fcc916ad8b8534d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/entap/laravel-oauth-line/zipball/91cbfa355495ad4128eee373fcc916ad8b8534d4",
+                "reference": "91cbfa355495ad4128eee373fcc916ad8b8534d4",
+                "shasum": ""
+            },
+            "require": {
+                "entap/laravel-auth": "dev-main",
+                "laravel/framework": "^8.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.7",
+                "phpunit/phpunit": "^9.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Entap\\OAuth\\LINE\\ServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Entap\\OAuth\\LINE\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ii masamitsu",
+                    "email": "ii@entap.co.jp"
+                }
+            ],
+            "description": "Laravel OAuth Package for LINE.",
+            "support": {
+                "source": "https://github.com/entap/laravel-oauth-line/tree/main",
+                "issues": "https://github.com/entap/laravel-oauth-line/issues"
+            },
+            "time": "2020-12-18T00:33:29+00:00"
         },
         {
             "name": "entap/laravel-request-logger",
@@ -9877,7 +9941,8 @@
     "stability-flags": {
         "entap/laravel-auth": 20,
         "entap/laravel-log-viewer": 20,
-        "entap/laravel-oauth-firebase": 20
+        "entap/laravel-oauth-firebase": 20,
+        "entap/laravel-oauth-line": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

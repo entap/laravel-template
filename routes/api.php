@@ -2,10 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\Line\NonceController as LineNonceController;
-use App\Http\Controllers\Auth\Line\TokenController as LineTokenController;
-use App\Http\Controllers\Auth\Line\RegisterController as LineRegisterController;
-use App\Http\Controllers\Auth\Line\UnregisterController as LineUnregisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +25,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // LINE
 
-Route::post('auth/line/nonce', LineNonceController::class);
-Route::post('auth/line/token', LineTokenController::class);
-
-Route::middleware('auth:api')->group(function () {
-    Route::post('auth/line/user', LineRegisterController::class);
-    Route::delete('auth/line/user', LineUnregisterController::class);
-});
+// Route::post('auth/line/nonce', LineNonceController::class);
+// Route::post('auth/line/token', LineTokenController::class);
