@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth\Line;
 
-use App\Gateways\Line\VerifyIdTokenGateway;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Entap\OAuth\Line\Application\Gateways\VerifyIdTokenGateway;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
