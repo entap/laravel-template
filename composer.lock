@@ -1170,12 +1170,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-oauth-firebase.git",
-                "reference": "39227dab912ca0740cbf9c00b6257d5b2ea51ec3"
+                "reference": "a27763dcf23b05a05b248c1b803f6fe01aae7649"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-oauth-firebase/zipball/39227dab912ca0740cbf9c00b6257d5b2ea51ec3",
-                "reference": "39227dab912ca0740cbf9c00b6257d5b2ea51ec3",
+                "url": "https://api.github.com/repos/entap/laravel-oauth-firebase/zipball/a27763dcf23b05a05b248c1b803f6fe01aae7649",
+                "reference": "a27763dcf23b05a05b248c1b803f6fe01aae7649",
                 "shasum": ""
             },
             "require": {
@@ -1226,7 +1226,7 @@
                 "source": "https://github.com/entap/laravel-oauth-firebase/tree/main",
                 "issues": "https://github.com/entap/laravel-oauth-firebase/issues"
             },
-            "time": "2020-12-17T23:57:09+00:00"
+            "time": "2020-12-18T00:00:18+00:00"
         },
         {
             "name": "entap/laravel-request-logger",
