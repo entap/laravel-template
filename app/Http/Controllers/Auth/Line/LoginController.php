@@ -2,30 +2,39 @@
 
 namespace App\Http\Controllers\Auth\Line;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Entap\OAuth\Line\Application\Gateways\VerifyIdTokenGateway;
 use Illuminate\Http\Request;
+use InvalidArgumentException;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Entap\OAuth\Line\Application\Services\VerifyService;
 
 class LoginController extends Controller
 {
     protected $line;
 
-    public function __construct(VerifyIdTokenGateway $line)
+    public function __construct(VerifyService $line)
     {
         $this->line = $line;
     }
 
     public function __invoke(Request $request)
     {
-        $request->validate([
-            'id_token' => 'required',
-        ]);
+        $verifiedToken = $this->line->verify($request);
 
-        $uid = $this->line->verify($request->input('id_token'));
+        $uid = $verifiedToken->userId();
+        $user = User::withProvider('line', $uid)->first();
 
-        $user = User::withProvider('line', $uid)->firstOrCreate();
-        $user->saveProvider('line', $uid);
+        if (empty($user)) {
+            $user = DB::transaction(function () use ($uid) {
+                $user = User::create();
+                try {
+                    $user->saveProvider('line', $uid);
+                } catch (InvalidArgumentException $e) {
+                    abort(400, $e->getMessage());
+                }
+            });
+        }
 
         $token = $user->createToken('LINE Token');
 

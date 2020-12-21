@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth\Firebase;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Entap\OAuth\Firebase\Application\Gateways\Firebase\VerifyIdTokenGateway;
 use Illuminate\Http\Request;
+use InvalidArgumentException;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Entap\OAuth\Firebase\Application\Gateways\Firebase\VerifyIdTokenGateway;
 
 class LoginController extends Controller
 {
@@ -24,10 +26,20 @@ class LoginController extends Controller
 
         $idToken = $request->input('id_token');
 
-        $uid = $this->firebase->verify($idToken);
+        $verifiedToken = $this->firebase->verify($idToken);
+        $uid = $verifiedToken->userId();
+        $user = User::withProvider('firebase', $uid)->first();
 
-        $user = User::withProvider('firebase', $uid)->firstOrCreate();
-        $user->saveProvider('firebase', $uid);
+        if (empty($user)) {
+            $user = DB::transaction(function () use ($uid) {
+                $user = User::create();
+                try {
+                    $user->saveProvider('firebase', $uid);
+                } catch (InvalidArgumentException $e) {
+                    abort(400, $e->getMessage());
+                }
+            });
+        }
 
         $token = $user->createToken('Firebase Token');
 

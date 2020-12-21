@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\Auth\Firebase;
 
 use App\Http\Controllers\Controller;
-use Entap\OAuth\Firebase\Application\Gateways\Firebase\CreateCustomTokenGateway;
+use Entap\OAuth\Firebase\Application\Services\CreateCustomTokenService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class CreateCustomTokenController extends Controller
 {
     protected $firebase;
 
-    public function __construct(CreateCustomTokenGateway $firebase)
+    public function __construct(CreateCustomTokenService $firebase)
     {
         $this->firebase = $firebase;
 
@@ -20,12 +19,6 @@ class CreateCustomTokenController extends Controller
 
     public function __invoke(Request $request)
     {
-        $user = $request->user();
-        $provider = $user->getProvider('firebase');
-        $uid = $provider ? $provider->code : Str::uuid();
-        $customToken = $this->firebase->createCustomToken($uid);
-        return [
-            'custom_token' => $customToken,
-        ];
+        return $this->firebase->createCustomToken($request->user());
     }
 }
