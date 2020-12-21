@@ -14,7 +14,7 @@ class CreateCustomTokenController extends Controller
     {
         $this->firebase = $firebase;
 
-        $this->middleware(config('oauth-firebase.route.middleware'));
+        $this->middleware(config('oauth-firebase.routes.api.middleware'));
     }
 
     public function __invoke(Request $request)
