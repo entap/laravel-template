@@ -1235,12 +1235,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-oauth-line.git",
-                "reference": "42a6891fc7573fa7fd5f1ba322c82a87cf0aff4d"
+                "reference": "2f51e70b70645a5777855794c28cc6b71655af60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-oauth-line/zipball/42a6891fc7573fa7fd5f1ba322c82a87cf0aff4d",
-                "reference": "42a6891fc7573fa7fd5f1ba322c82a87cf0aff4d",
+                "url": "https://api.github.com/repos/entap/laravel-oauth-line/zipball/2f51e70b70645a5777855794c28cc6b71655af60",
+                "reference": "2f51e70b70645a5777855794c28cc6b71655af60",
                 "shasum": ""
             },
             "require": {
@@ -1291,7 +1291,7 @@
                 "source": "https://github.com/entap/laravel-oauth-line/tree/main",
                 "issues": "https://github.com/entap/laravel-oauth-line/issues"
             },
-            "time": "2020-12-21T01:45:18+00:00"
+            "time": "2020-12-21T22:48:59+00:00"
         },
         {
             "name": "entap/laravel-request-logger",
