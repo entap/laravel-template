@@ -9,8 +9,8 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
-        "entap/laravel-admin": "^0.1",
-        "entap/laravel-auth": "dev-main",
+        "entap/laravel-admin": "dev-main",
+        "entap/laravel-auth": "^0.1",
         "entap/laravel-client-packager": ">=0.0.5",
         "entap/laravel-log-viewer": "dev-main",
         "entap/laravel-oauth-firebase": "dev-main",
