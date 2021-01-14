@@ -23,8 +23,8 @@ class CreateMailTemplatesTable extends Migration
             $table->string('subject');
             $table->text('body');
             $table->string('status');
-            $table->dateTime('starts_at');
-            $table->dateTime('expires_at');
+            $table->dateTime('starts_at')->nullable();
+            $table->dateTime('expires_at')->nullable();
             $table->timestamps();
         });
     }

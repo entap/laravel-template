@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\MailTemplateController;
 use App\Http\Controllers\Admin\UserController;
 use Entap\Admin\Facades\Admin;
 use Illuminate\Support\Facades\Route;
@@ -23,4 +24,7 @@ Admin::routes(function () {
     Route::get('users', [UserController::class, 'index'])->name(
         'admin.users.index'
     );
+    Route::resource('mails', MailTemplateController::class, [
+        'except' => 'show',
+    ])->names('admin.mails');
 });

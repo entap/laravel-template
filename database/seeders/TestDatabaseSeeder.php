@@ -44,7 +44,7 @@ class TestDatabaseSeeder extends Seeder
             ->create();
 
         MailType::factory(5)
-            ->has(MailTemplate::factory(3))
+            ->has(MailTemplate::factory(3), 'templates')
             ->create();
     }
 
@@ -57,6 +57,10 @@ class TestDatabaseSeeder extends Seeder
         MenuItem::create([
             'title' => 'ログ検索',
             'uri' => route('log.tables.index', null, false),
+        ]);
+        MenuItem::create([
+            'title' => 'メールテンプレート',
+            'uri' => route('admin.mails.index', null, false),
         ]);
 
         PackageRelease::truncate();
