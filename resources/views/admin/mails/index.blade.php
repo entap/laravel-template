@@ -3,6 +3,12 @@
 @section('content')
     <h1>{{ __('Mail Templates') }}</h1>
 
+    <div class="text-right">
+        <a href="{{ route('admin.mails.create') }}" class="btn btn-primary">
+            {{ __('Add Mail Template') }}
+        </a>
+    </div>
+
     @if (count($mails))
         <table class="table mt-4">
             <thead>

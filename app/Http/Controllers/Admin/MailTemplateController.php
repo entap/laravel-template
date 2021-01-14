@@ -27,7 +27,10 @@ class MailTemplateController extends Controller
             ['name' => '無効', 'value' => 'unavailable'],
         ];
 
-        return view('admin.mails.create', compact('typeOptions'));
+        return view(
+            'admin.mails.create',
+            compact('typeOptions', 'statusOptions')
+        );
     }
 
     public function store(Request $request)
@@ -35,7 +38,7 @@ class MailTemplateController extends Controller
         $validatedData = $request->validate([
             'mail_type_id' => 'required|exists:mail_types,id',
             'title' => 'required|string|max:20',
-            'description' => 'required|string|max:1000',
+            'description' => 'nullable|string|max:1000',
             'from' => 'required|string|max:100',
             'to' => 'required|string|max:1000',
             'subject' => 'required|string|max:100',
@@ -69,7 +72,7 @@ class MailTemplateController extends Controller
         $validatedData = $request->validate([
             'mail_type_id' => 'required|exists:mail_types,id',
             'title' => 'required|string|max:20',
-            'description' => 'required|string|max:1000',
+            'description' => 'nullable|string|max:1000',
             'from' => 'required|string|max:100',
             'to' => 'required|string|max:1000',
             'subject' => 'required|string|max:100',

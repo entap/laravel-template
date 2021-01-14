@@ -17,7 +17,7 @@ class CreateMailTemplatesTable extends Migration
             $table->id();
             $table->foreignId('mail_type_id')->constrained();
             $table->string('title');
-            $table->string('description');
+            $table->text('description')->nullable();
             $table->string('from');
             $table->text('to');
             $table->string('subject');

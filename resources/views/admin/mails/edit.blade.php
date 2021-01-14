@@ -3,6 +3,13 @@
 @section('content')
     <h1>{{ __('Edit Mail Template') }}</h1>
 
+    <div class="alert alert-secondary">
+        <ul class="small m-0">
+            <li>メールテンプレートの送信元、宛先、題名、本文には、{変数名}の形式で変数を埋め込みできます。</li>
+            <li>宛先はセミコロンで区切ることで複数のアドレスを指定ができます。</li>
+        </ul>
+    </div>
+
     <form action="{{ route('admin.mails.update', $mail) }}" method="POST">
         @csrf
         @method('PUT')
@@ -24,7 +31,7 @@
             <label for="description">{{ __('Description') }}</label>
             <div>
                 <textarea id="description" class="form-control @error('description') is-invalid @enderror"
-                    name="description" required autocomplete="off">{{ old('description', $mail->description) }}</textarea>
+                    name="description" autocomplete="off">{{ old('description', $mail->description) }}</textarea>
                 @error('description')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
