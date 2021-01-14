@@ -30,6 +30,15 @@
                             </a>
                         </td>
                         <td>
+                            <form action="{{ route('admin.mails.duplicate', $mail) }}" method="POST">
+                                @csrf
+
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Duplicate') }}
+                                </button>
+                            </form>
+                        </td>
+                        <td>
                             <form action="{{ route('admin.mails.destroy', $mail) }}" method="POST">
                                 @csrf
                                 @method('DELETE')

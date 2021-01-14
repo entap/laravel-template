@@ -3,6 +3,12 @@
 @section('content')
     <h1>{{ __('Add Mail Template') }}</h1>
 
+    <div class="mb-3">
+        <a href="{{ route('admin.mails.index') }}" class="btn btn-info">
+            Back
+        </a>
+    </div>
+
     @include('admin.mails.note')
 
     <form action="{{ route('admin.mails.store') }}" method="POST">

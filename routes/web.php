@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DuplicateMailTemplateController;
 use App\Http\Controllers\Admin\MailTemplateController;
 use App\Http\Controllers\Admin\UserController;
 use Entap\Admin\Facades\Admin;
@@ -27,4 +28,8 @@ Admin::routes(function () {
     Route::resource('mails', MailTemplateController::class, [
         'except' => 'show',
     ])->names('admin.mails');
+    Route::post(
+        'mails/{mail}/duplicate',
+        DuplicateMailTemplateController::class
+    )->name('admin.mails.duplicate');
 });
