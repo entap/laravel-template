@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\MailTemplate;
+use App\Models\MailType;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Entap\Admin\Database\Models\Role;
@@ -39,6 +41,10 @@ class TestDatabaseSeeder extends Seeder
 
         LogRequestEntry::factory(20)
             ->state(new Sequence([], ['created_at' => now()->subDay(5)]))
+            ->create();
+
+        MailType::factory(5)
+            ->has(MailTemplate::factory(3))
             ->create();
     }
 
