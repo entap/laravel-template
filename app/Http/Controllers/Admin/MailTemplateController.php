@@ -66,6 +66,21 @@ class MailTemplateController extends Controller
 
     public function update(Request $request, MailTemplate $mail)
     {
+        $validatedData = $request->validate([
+            'mail_type_id' => 'required|exists:mail_types,id',
+            'title' => 'required|string|max:20',
+            'description' => 'required|string|max:1000',
+            'from' => 'required|string|max:100',
+            'to' => 'required|string|max:1000',
+            'subject' => 'required|string|max:100',
+            'body' => 'required|string|max:10000',
+            'status' => 'required|string',
+            'starts_at' => 'nullable|date',
+            'expires_at' => 'nullable|date',
+        ]);
+
+        $mail->update($validatedData);
+
         return redirect()->route('admin.mails.index');
     }
 
