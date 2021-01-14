@@ -11,7 +11,9 @@ class MailTemplateController extends Controller
 {
     public function index()
     {
-        $mails = MailTemplate::with('type')->paginate();
+        $mails = MailTemplate::with('type')
+            ->latest()
+            ->paginate();
 
         // TODO タイトルの部分一致で絞り込める
         // TODO 種類で絞り込める
