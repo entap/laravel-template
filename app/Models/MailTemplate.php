@@ -22,6 +22,10 @@ class MailTemplate extends Model
         'expires_at',
     ];
 
+    protected $attributes = [
+        'status' => 'available',
+    ];
+
     protected $dates = ['starts_at', 'expires_at'];
 
     public function type()

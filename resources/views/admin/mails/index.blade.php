@@ -13,18 +13,32 @@
         <table class="table mt-4">
             <thead>
                 <tr>
-                    <th>{{ __('Title') }}</th>
+                    <th class="col-2">{{ __('Type') }}</th>
+                    <th class="col-8">{{ __('Title') }}</th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($mails as $mail)
                     <tr>
+                        <td>{{ $mail->type->name }}</td>
                         <td>{{ $mail->title }}</td>
                         <td>
                             <a href="{{ route('admin.mails.edit', $mail) }}" class="btn btn-primary">
                                 {{ __('Edit') }}
                             </a>
+                        </td>
+                        <td>
+                            <form action="{{ route('admin.mails.destroy', $mail) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+
+                                <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('{{ __('Are you sure you want to delete?') }}')">
+                                    {{ __('Delete') }}
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
