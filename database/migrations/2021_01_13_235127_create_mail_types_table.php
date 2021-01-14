@@ -15,7 +15,7 @@ class CreateMailTypesTable extends Migration
     {
         Schema::create('mail_types', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('name');
             $table->text('description');
             $table->timestamps();
         });

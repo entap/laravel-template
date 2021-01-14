@@ -22,7 +22,7 @@ class MailTypeFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->title(),
+            'name' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
         ];
     }

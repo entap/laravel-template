@@ -15,7 +15,11 @@
                 @foreach ($mails as $mail)
                     <tr>
                         <td>{{ $mail->title }}</td>
-                        <td></td>
+                        <td>
+                            <a href="{{ route('admin.mails.edit', $mail) }}" class="btn btn-primary">
+                                {{ __('Edit') }}
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -25,6 +29,6 @@
             {{ $mails->withQueryString()->links() }}
         </div>
     @else
-        <div class="mt-4">{{ __('No User.') }}</div>
+        <div class="mt-4">{{ __('No Mail Template.') }}</div>
     @endif
 @endsection

@@ -21,7 +21,11 @@ class MailTemplateController extends Controller
 
     public function create()
     {
-        $typeOptions = MailType::all(['id', 'title']);
+        $typeOptions = MailType::all(['id', 'name']);
+        $statusOptions = [
+            ['name' => '有効', 'value' => 'available'],
+            ['name' => '無効', 'value' => 'unavailable'],
+        ];
 
         return view('admin.mails.create', compact('typeOptions'));
     }
@@ -48,9 +52,16 @@ class MailTemplateController extends Controller
 
     public function edit(MailTemplate $mail)
     {
-        $typeOptions = MailType::all(['id', 'title']);
+        $typeOptions = MailType::all(['id', 'name']);
+        $statusOptions = [
+            ['name' => '有効', 'value' => 'available'],
+            ['name' => '無効', 'value' => 'unavailable'],
+        ];
 
-        return view('admin.mails.edit', compact('mail', 'typeOptions'));
+        return view(
+            'admin.mails.edit',
+            compact('mail', 'typeOptions', 'statusOptions')
+        );
     }
 
     public function update(Request $request, MailTemplate $mail)
