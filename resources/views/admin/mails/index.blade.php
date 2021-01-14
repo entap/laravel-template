@@ -13,8 +13,9 @@
         <table class="table mt-4">
             <thead>
                 <tr>
-                    <th class="col-2">{{ __('Type') }}</th>
                     <th class="col-8">{{ __('Title') }}</th>
+                    <th class="col-2">{{ __('Status') }}</th>
+                    <th></th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -22,8 +23,8 @@
             <tbody>
                 @foreach ($mails as $mail)
                     <tr>
-                        <td>{{ $mail->type->name }}</td>
                         <td>{{ $mail->title }}</td>
+                        <td>{{ $mail->status }}</td>
                         <td>
                             <a href="{{ route('admin.mails.edit', $mail) }}" class="btn btn-primary">
                                 {{ __('Edit') }}
