@@ -1,43 +1,20 @@
 <?php
 namespace App\Services;
 
+use App\Mail\TemplateMail;
 use App\Models\MailTemplate;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Mail;
+use InvalidArgumentException;
 
 class SendMailTemplateService
 {
-    public function send(MailTemplate $mail, array $embeddedData)
+    public function send(int $mailId, array $embeddedData = [])
     {
-        $from = $this->embed($mail->from, $embeddedData);
-        $subject = $this->embed($mail->subject, $embeddedData);
-        $body = $this->embed($mail->body, $embeddedData);
-        $destinations = explode(';', $this->embed($mail->to, $embeddedData));
-
-        foreach ($destinations as $to) {
-            Mail::send([], [], function ($message) use (
-                $from,
-                $to,
-                $subject,
-                $body
-            ) {
-                return $message
-                    ->from($from)
-                    ->to($to)
-                    ->subject($subject)
-                    ->setBody($body);
-            });
+        $mail = MailTemplate::find($mailId);
+        if (empty($mail)) {
+            throw new InvalidArgumentException('Mail template is not found.');
         }
-    }
 
-    protected function embed($text, $data): string
-    {
-        return preg_replace_callback(
-            '/{(.*?)}',
-            function ($matches) use ($data) {
-                return Arr::get($data, $matches[1]);
-            },
-            $text
-        );
+        Mail::send(new TemplateMail($mail, $embeddedData));
     }
 }
