@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\MailTemplate;
 use App\Models\MailType;
+use App\Models\MailTemplate;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\SaveMailTemplateRequest;
 
 class MailTemplateController extends Controller
 {
@@ -38,22 +39,9 @@ class MailTemplateController extends Controller
         );
     }
 
-    public function store(Request $request)
+    public function store(SaveMailTemplateRequest $request)
     {
-        $validatedData = $request->validate([
-            'mail_type_id' => 'required|exists:mail_types,id',
-            'title' => 'required|string|max:20',
-            'description' => 'nullable|string|max:1000',
-            'from' => 'required|string|max:100',
-            'to' => 'required|string|max:1000',
-            'subject' => 'required|string|max:100',
-            'body' => 'required|string|max:10000',
-            'status' => 'required|string',
-            'starts_at' => 'nullable|date',
-            'expires_at' => 'nullable|date|after:starts_at',
-        ]);
-
-        MailTemplate::create($validatedData);
+        MailTemplate::create($request->validated());
 
         return redirect()->route('admin.mails.index');
     }
@@ -75,22 +63,9 @@ class MailTemplateController extends Controller
         );
     }
 
-    public function update(Request $request, MailTemplate $mail)
+    public function update(SaveMailTemplateRequest $request, MailTemplate $mail)
     {
-        $validatedData = $request->validate([
-            'mail_type_id' => 'required|exists:mail_types,id',
-            'title' => 'required|string|max:20',
-            'description' => 'nullable|string|max:1000',
-            'from' => 'required|string|max:100',
-            'to' => 'required|string|max:1000',
-            'subject' => 'required|string|max:100',
-            'body' => 'required|string|max:10000',
-            'status' => 'required|string',
-            'starts_at' => 'nullable|date',
-            'expires_at' => 'nullable|date|after:starts_at',
-        ]);
-
-        $mail->update($validatedData);
+        $mail->update($request->validated());
 
         return redirect()->route('admin.mails.index');
     }
