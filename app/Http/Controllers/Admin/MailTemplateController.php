@@ -25,8 +25,11 @@ class MailTemplateController extends Controller
     {
         $typeOptions = MailType::all(['id', 'name']);
         $statusOptions = [
-            ['name' => '有効', 'value' => 'available'],
-            ['name' => '無効', 'value' => 'unavailable'],
+            ['name' => trans('mail.status.available'), 'value' => 'available'],
+            [
+                'name' => trans('mail.status.unavailable'),
+                'value' => 'unavailable',
+            ],
         ];
 
         return view(
@@ -59,8 +62,11 @@ class MailTemplateController extends Controller
     {
         $typeOptions = MailType::all(['id', 'name']);
         $statusOptions = [
-            ['name' => '有効', 'value' => 'available'],
-            ['name' => '無効', 'value' => 'unavailable'],
+            ['name' => trans('mail.status.available'), 'value' => 'available'],
+            [
+                'name' => trans('mail.status.unavailable'),
+                'value' => 'unavailable',
+            ],
         ];
 
         return view(

@@ -24,7 +24,7 @@
                 @foreach ($mails as $mail)
                     <tr>
                         <td>{{ $mail->title }}</td>
-                        <td>{{ $mail->status }}</td>
+                        <td>{{ __('mail.status.' . $mail->status) }}</td>
                         <td>
                             <a href="{{ route('admin.mails.edit', $mail) }}" class="btn btn-primary">
                                 {{ __('Edit') }}
