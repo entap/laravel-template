@@ -24,7 +24,7 @@ class AdminSendMailTest extends TestCase
         $mail = MailTemplate::factory()->create();
 
         $s = new SendMailTemplateService();
-        $s->send($mail->id);
+        $s->sendById($mail->id);
 
         Mail::assertSent(TemplateMail::class);
     }
@@ -41,7 +41,7 @@ class AdminSendMailTest extends TestCase
         ]);
 
         $s = new SendMailTemplateService();
-        $s->send($mail->id, [
+        $s->sendById($mail->id, [
             'from' => 'from@example.com',
             'user' => [
                 'name' => 'Masamitsu',
