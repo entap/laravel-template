@@ -50,7 +50,7 @@ class MailTemplateController extends Controller
             'body' => 'required|string|max:10000',
             'status' => 'required|string',
             'starts_at' => 'nullable|date',
-            'expires_at' => 'nullable|date',
+            'expires_at' => 'nullable|date|after:starts_at',
         ]);
 
         MailTemplate::create($validatedData);
@@ -87,7 +87,7 @@ class MailTemplateController extends Controller
             'body' => 'required|string|max:10000',
             'status' => 'required|string',
             'starts_at' => 'nullable|date',
-            'expires_at' => 'nullable|date',
+            'expires_at' => 'nullable|date|after:starts_at',
         ]);
 
         $mail->update($validatedData);

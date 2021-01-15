@@ -127,7 +127,7 @@
             <input type="datetime-local" id="starts_at" class="form-control @error('starts_at') is-invalid @enderror"
                 name="starts_at"
                 value="{{ old('starts_at', isset($mail) ? optional($mail->starts_at)->format('Y-m-d\TH:i') : '') }}"
-                required autocomplete="off" />
+                autocomplete="off" />
             @error('starts_at')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -142,7 +142,7 @@
             <input type="datetime-local" id="expires_at" class="form-control @error('expires_at') is-invalid @enderror"
                 name="expires_at"
                 value="{{ old('expires_at', isset($mail) ? optional($mail->expires_at)->format('Y-m-d\TH:i') : '') }}"
-                required autocomplete="off" />
+                autocomplete="off" />
             @error('expires_at')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
