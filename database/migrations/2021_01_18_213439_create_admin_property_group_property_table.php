@@ -16,8 +16,10 @@ class CreateAdminPropertyGroupPropertyTable extends Migration
         Schema::create('admin_property_group_property', function (
             Blueprint $table
         ) {
-            $table->foreignId('property_id')->constrained();
-            $table->foreignId('property_group_id')->constrained();
+            $table->foreignId('property_id')->constrained('admin_properties');
+            $table
+                ->foreignId('property_group_id')
+                ->constrained('admin_property_groups');
             $table->timestamps();
         });
     }

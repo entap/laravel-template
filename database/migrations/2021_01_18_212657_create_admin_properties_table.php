@@ -15,10 +15,10 @@ class CreateAdminPropertiesTable extends Migration
     {
         Schema::create('admin_properties', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('type_id')->constrained();
+            $table->foreignId('type_id')->constrained('admin_property_types');
             $table->string('name')->unique();
             $table->string('display_name');
-            $table->string('description', 512);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
