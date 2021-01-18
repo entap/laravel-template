@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdminPropertyValuesTable extends Migration
+class CreateAdminPropertyGroupPropertyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateAdminPropertyValuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin_property_values', function (Blueprint $table) {
-            $table->id();
+        Schema::create('admin_property_group_property', function (
+            Blueprint $table
+        ) {
             $table->foreignId('property_id')->constrained();
+            $table->foreignId('property_group_id')->constrained();
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateAdminPropertyValuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin_property_values');
+        Schema::dropIfExists('admin_property_group_property');
     }
 }

@@ -15,6 +15,8 @@ class CreateAdminPropertyTypesTable extends Migration
     {
         Schema::create('admin_property_types', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->string('display_name');
             $table->timestamps();
         });
     }

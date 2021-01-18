@@ -9,3 +9,6 @@ class AdminProperty extends Model
 {
     use HasFactory;
 }
+
+// TODO 並べ替えたい
+// TODO デフォルト値を設定できるようにしたい
