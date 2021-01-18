@@ -16,6 +16,7 @@ class CreateAdminPropertyValuesTable extends Migration
         Schema::create('admin_property_values', function (Blueprint $table) {
             $table->id();
             $table->foreignId('property_id')->constrained();
+            $table->string('value');
             $table->timestamps();
         });
     }
