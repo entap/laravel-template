@@ -45,7 +45,7 @@ class TemplateMail extends Mailable
                 }, explode(';', $to))
             )
             ->subject($subject)
-            ->text('emails.plain', compact('body'));
+            ->html($body);
     }
 
     protected function embed($text, $data): string
