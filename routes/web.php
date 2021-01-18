@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\Admin\DuplicateMailTemplateController;
-use App\Http\Controllers\Admin\MailTemplateController;
-use App\Http\Controllers\Admin\PropertyController;
-use App\Http\Controllers\Admin\SettingsController;
-use App\Http\Controllers\Admin\UserController;
 use Entap\Admin\Facades\Admin;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\PropertyController;
+use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\MailTemplateController;
+use App\Http\Controllers\Admin\PropertyGroupController;
+use App\Http\Controllers\Admin\DuplicateMailTemplateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,16 +41,11 @@ Admin::routes(function () {
     );
     // Route::get('settings/edit');
     Route::resource('settings/properties', PropertyController::class, [
-        'only' => ['create', 'store', 'edit', 'update'],
+        'except' => ['index', 'show'],
     ])->names('admin.settings.properties');
-    // Route::get('settings/properties/{property}/edit');
-    // Route::put('settings/properties/{property}');
-    // Route::delete('settings/properties/{property}');
-    // Route::get('settings/groups/create');
-    // Route::post('settings/groups');
-    // Route::get('settings/groups/{group}/edit');
-    // Route::put('settings/groups/{group}');
-    // Route::delete('settings/groups/{group}');
+    Route::resource('settings/groups', PropertyGroupController::class, [
+        'except' => ['index', 'show'],
+    ])->names('admin.settings.groups');
     // Route::get('settings/csv/export');
     // Route::post('settings/csv/import');
 });

@@ -8,6 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class AdminPropertyGroup extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'description'];
+
+    public function properties()
+    {
+        return $this->belongsToMany(
+            AdminProperty::class,
+            'admin_property_group_property',
+            'property_id',
+            'property_group_id'
+        );
+    }
 }
 
 // TODO 並べ替えたい

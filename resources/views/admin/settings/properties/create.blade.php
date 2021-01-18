@@ -23,8 +23,8 @@
         <div class="form-group">
             <label for="description">{{ __('Description') }}</label>
             <div>
-                <textarea name="name" id="name" class="form-control @error('description') is-invalid @enderror"
-                    rows="3"></textarea>
+                <textarea name="description" id="description"
+                    class="form-control @error('description') is-invalid @enderror" rows="3"></textarea>
 
                 @error('description')
                     <span class="invalid-feedback" role="alert">
