@@ -3,13 +3,30 @@
 @section('content')
     <h1>@lang('Settings')</h1>
 
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a href="{{ route('admin.settings.index') }}" class="nav-link">
+                @lang('No Group')
+            </a>
+        </li>
+        @foreach ($groups as $g)
+            <li class="nav-item">
+                <a href="{{ route('admin.settings.groups.show', $g) }}" class="nav-link @if ($g->id
+                    === $group->id) active @endif">
+                    {{ $g->name }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
+
     <div class="text-right">
         <a href="{{ route('admin.settings.groups.properties.create', $group) }}" class="btn btn-primary">
             @lang('Add Property')
         </a>
+        <a href="{{ route('admin.settings.groups.create') }}" class="btn btn-primary">
+            @lang('Add Group')
+        </a>
     </div>
-
-    <h4>{{ $group->name }}</h4>
 
     <p class="small text-secondary">{{ $group->description }}</p>
 

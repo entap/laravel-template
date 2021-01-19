@@ -38,7 +38,8 @@ class PropertyGroupController extends Controller
 
     public function show(AdminPropertyGroup $group)
     {
-        return view('admin.settings.groups.show', compact('group'));
+        $groups = AdminPropertyGroup::all(['id', 'name']);
+        return view('admin.settings.groups.show', compact('group', 'groups'));
     }
 
     /**
