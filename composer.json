@@ -9,10 +9,10 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
-        "entap/laravel-admin": "dev-main",
+        "entap/laravel-admin": "^0.1",
         "entap/laravel-auth": "^0.1",
-        "entap/laravel-client-packager": ">=0.0.5",
-        "entap/laravel-log-viewer": "dev-main",
+        "entap/laravel-client-packager": "^0.1",
+        "entap/laravel-log-viewer": "^0.1",
         "entap/laravel-oauth-firebase": "dev-main",
         "entap/laravel-oauth-line": "dev-main",
         "entap/laravel-request-logger": "^0.1",
@@ -97,6 +97,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/entap/laravel-request-logger"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/entap/laravel-mail-logger"
         }
     ]
 }

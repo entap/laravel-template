@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e472d122e40b2c1aaf0de765981db9c",
+    "content-hash": "cdcaf6c0ae878cecb8b772259a8b11d3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -906,22 +906,22 @@
         },
         {
             "name": "entap/laravel-admin",
-            "version": "dev-main",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-admin.git",
-                "reference": "4f46aa3633b5bcc6ce47331a2f426445b3527e5a"
+                "reference": "7b4df99dd69375bb5372d1a9d1fdae5ecec12197"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/4f46aa3633b5bcc6ce47331a2f426445b3527e5a",
-                "reference": "4f46aa3633b5bcc6ce47331a2f426445b3527e5a",
+                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/7b4df99dd69375bb5372d1a9d1fdae5ecec12197",
+                "reference": "7b4df99dd69375bb5372d1a9d1fdae5ecec12197",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^8.0",
                 "laravel/ui": "^3.1",
-                "php": "^7.0"
+                "php": "^7.0|^8.0"
             },
             "require-dev": {
                 "laravel/laravel": "^8.4",
@@ -929,7 +929,6 @@
                 "orchestra/testbench": "^6.4",
                 "phpunit/phpunit": "^9.4"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -969,10 +968,10 @@
             ],
             "description": "Laravel Admin",
             "support": {
-                "source": "https://github.com/entap/laravel-admin/tree/main",
+                "source": "https://github.com/entap/laravel-admin/tree/v0.1.2",
                 "issues": "https://github.com/entap/laravel-admin/issues"
             },
-            "time": "2021-01-12T05:20:49+00:00"
+            "time": "2021-01-19T23:06:08+00:00"
         },
         {
             "name": "entap/laravel-auth",
@@ -1039,21 +1038,21 @@
         },
         {
             "name": "entap/laravel-client-packager",
-            "version": "0.0.5",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-client-packager.git",
-                "reference": "a7e1731028b0d005394deb145fbc06ba91cd9cee"
+                "reference": "ddc6b25224da19d514a9880e7cfae610a95949d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-client-packager/zipball/a7e1731028b0d005394deb145fbc06ba91cd9cee",
-                "reference": "a7e1731028b0d005394deb145fbc06ba91cd9cee",
+                "url": "https://api.github.com/repos/entap/laravel-client-packager/zipball/ddc6b25224da19d514a9880e7cfae610a95949d7",
+                "reference": "ddc6b25224da19d514a9880e7cfae610a95949d7",
                 "shasum": ""
             },
             "require": {
-                "entap/laravel-admin": ">=0.0.14",
-                "php": ">=7.0.0"
+                "entap/laravel-admin": "^0.1",
+                "php": "^7.0|^8.0"
             },
             "require-dev": {
                 "orchestra/testbench": "^6.5",
@@ -1096,35 +1095,34 @@
             ],
             "description": "Client Packager on Laravel",
             "support": {
-                "source": "https://github.com/entap/laravel-client-packager/tree/0.0.5",
+                "source": "https://github.com/entap/laravel-client-packager/tree/v0.1.0",
                 "issues": "https://github.com/entap/laravel-client-packager/issues"
             },
-            "time": "2020-12-08T01:29:16+00:00"
+            "time": "2021-01-19T23:47:39+00:00"
         },
         {
             "name": "entap/laravel-log-viewer",
-            "version": "dev-main",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-log-viewer.git",
-                "reference": "f5e6fecc9bca2482c93e0cc56069f1bae5a27536"
+                "reference": "329ad4f5d20f42631d71ec3d1fb66e99b7ddbacf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-log-viewer/zipball/f5e6fecc9bca2482c93e0cc56069f1bae5a27536",
-                "reference": "f5e6fecc9bca2482c93e0cc56069f1bae5a27536",
+                "url": "https://api.github.com/repos/entap/laravel-log-viewer/zipball/329ad4f5d20f42631d71ec3d1fb66e99b7ddbacf",
+                "reference": "329ad4f5d20f42631d71ec3d1fb66e99b7ddbacf",
                 "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "^3.0",
                 "laravel/framework": "^8.0",
-                "php": "^7.0"
+                "php": "^7.0|^8.0"
             },
             "require-dev": {
                 "orchestra/testbench": "^6.6",
                 "phpunit/phpunit": "^9.5"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -1160,10 +1158,10 @@
             ],
             "description": "Laravel Log Viewer",
             "support": {
-                "source": "https://github.com/entap/laravel-log-viewer/tree/main",
+                "source": "https://github.com/entap/laravel-log-viewer/tree/v0.1.0",
                 "issues": "https://github.com/entap/laravel-log-viewer/issues"
             },
-            "time": "2020-12-13T22:45:37+00:00"
+            "time": "2021-01-19T23:50:36+00:00"
         },
         {
             "name": "entap/laravel-oauth-firebase",
@@ -1296,21 +1294,21 @@
         },
         {
             "name": "entap/laravel-request-logger",
-            "version": "0.1.4",
+            "version": "v0.1.5",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-request-logger.git",
-                "reference": "b2e018498f1e77333b44288b5e124fde9f4815a0"
+                "reference": "d1132c7429cd43674a72ce1febdd8658d69fcdad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-request-logger/zipball/b2e018498f1e77333b44288b5e124fde9f4815a0",
-                "reference": "b2e018498f1e77333b44288b5e124fde9f4815a0",
+                "url": "https://api.github.com/repos/entap/laravel-request-logger/zipball/d1132c7429cd43674a72ce1febdd8658d69fcdad",
+                "reference": "d1132c7429cd43674a72ce1febdd8658d69fcdad",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^8.0",
-                "php": "^7.0"
+                "php": "^7.0|^8.0"
             },
             "require-dev": {
                 "orchestra/testbench": "^6.5",
@@ -1352,10 +1350,10 @@
             ],
             "description": "Laravel Request Logger",
             "support": {
-                "source": "https://github.com/entap/laravel-request-logger/tree/0.1.4",
+                "source": "https://github.com/entap/laravel-request-logger/tree/v0.1.5",
                 "issues": "https://github.com/entap/laravel-request-logger/issues"
             },
-            "time": "2020-12-10T23:48:22+00:00"
+            "time": "2021-01-19T23:10:43+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -1604,16 +1602,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "8.12.15",
+            "version": "8.12.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "c1f328bface2745ff1a292639dd68cafc673a456"
+                "reference": "d3d4ed9466249747249f3032717c4aebaaa8363e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/c1f328bface2745ff1a292639dd68cafc673a456",
-                "reference": "c1f328bface2745ff1a292639dd68cafc673a456",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/d3d4ed9466249747249f3032717c4aebaaa8363e",
+                "reference": "d3d4ed9466249747249f3032717c4aebaaa8363e",
                 "shasum": ""
             },
             "require": {
@@ -1673,7 +1671,7 @@
                 "issues": "https://github.com/giggsey/libphonenumber-for-php/issues",
                 "source": "https://github.com/giggsey/libphonenumber-for-php"
             },
-            "time": "2020-12-15T10:15:17+00:00"
+            "time": "2021-01-12T14:54:36+00:00"
         },
         {
             "name": "giggsey/locale",
@@ -1787,16 +1785,16 @@
         },
         {
             "name": "google/cloud-core",
-            "version": "v1.40.0",
+            "version": "v1.41.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-cloud-php-core.git",
-                "reference": "1f45457d796c3807bc4b19c3d7b7e89a2f59d63c"
+                "reference": "2e58627e1c4f1417631ba4b0a1098b66ac98665c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php-core/zipball/1f45457d796c3807bc4b19c3d7b7e89a2f59d63c",
-                "reference": "1f45457d796c3807bc4b19c3d7b7e89a2f59d63c",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-core/zipball/2e58627e1c4f1417631ba4b0a1098b66ac98665c",
+                "reference": "2e58627e1c4f1417631ba4b0a1098b66ac98665c",
                 "shasum": ""
             },
             "require": {
@@ -1845,22 +1843,22 @@
             ],
             "description": "Google Cloud PHP shared dependency, providing functionality useful to all components.",
             "support": {
-                "source": "https://github.com/googleapis/google-cloud-php-core/tree/v1.40.0"
+                "source": "https://github.com/googleapis/google-cloud-php-core/tree/v1.41.0"
             },
-            "time": "2020-10-30T21:33:33+00:00"
+            "time": "2021-01-13T22:28:48+00:00"
         },
         {
             "name": "google/cloud-storage",
-            "version": "v1.23.0",
+            "version": "v1.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-cloud-php-storage.git",
-                "reference": "42f7dfb248318aa152b4491b72279035df0d0900"
+                "reference": "ca3817dae90d7d757381f3f63c9d7df58ca1416f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php-storage/zipball/42f7dfb248318aa152b4491b72279035df0d0900",
-                "reference": "42f7dfb248318aa152b4491b72279035df0d0900",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-storage/zipball/ca3817dae90d7d757381f3f63c9d7df58ca1416f",
+                "reference": "ca3817dae90d7d757381f3f63c9d7df58ca1416f",
                 "shasum": ""
             },
             "require": {
@@ -1899,9 +1897,9 @@
             ],
             "description": "Cloud Storage Client for PHP",
             "support": {
-                "source": "https://github.com/googleapis/google-cloud-php-storage/tree/v1.23.0"
+                "source": "https://github.com/googleapis/google-cloud-php-storage/tree/v1.23.1"
             },
-            "time": "2020-09-08T20:52:20+00:00"
+            "time": "2021-01-13T22:28:48+00:00"
         },
         {
             "name": "google/crc32",
@@ -2559,16 +2557,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.21.0",
+            "version": "v8.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "a61cab167c35f465a923737ee6e6fb99cd5fde88"
+                "reference": "a813df1b248ca305e5f5ce23ea981ed6c6905504"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/a61cab167c35f465a923737ee6e6fb99cd5fde88",
-                "reference": "a61cab167c35f465a923737ee6e6fb99cd5fde88",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/a813df1b248ca305e5f5ce23ea981ed6c6905504",
+                "reference": "a813df1b248ca305e5f5ce23ea981ed6c6905504",
                 "shasum": ""
             },
             "require": {
@@ -2722,7 +2720,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-01-05T15:43:10+00:00"
+            "time": "2021-01-19T14:10:48+00:00"
         },
         {
             "name": "laravel/passport",
@@ -2928,69 +2926,53 @@
             "time": "2021-01-06T19:20:22+00:00"
         },
         {
-            "name": "lcobucci/jwt",
-            "version": "3.4.2",
+            "name": "lcobucci/clock",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "17cb82dd625ccb17c74bf8f38563d3b260306483"
+                "url": "https://github.com/lcobucci/clock.git",
+                "reference": "353d83fe2e6ae95745b16b3d911813df6a05bfb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/17cb82dd625ccb17c74bf8f38563d3b260306483",
-                "reference": "17cb82dd625ccb17c74bf8f38563d3b260306483",
+                "url": "https://api.github.com/repos/lcobucci/clock/zipball/353d83fe2e6ae95745b16b3d911813df6a05bfb3",
+                "reference": "353d83fe2e6ae95745b16b3d911813df6a05bfb3",
                 "shasum": ""
             },
             "require": {
-                "ext-mbstring": "*",
-                "ext-openssl": "*",
-                "php": "^5.6 || ^7.0"
+                "php": "^7.4 || ^8.0"
             },
             "require-dev": {
-                "mikey179/vfsstream": "~1.5",
-                "phpmd/phpmd": "~2.2",
-                "phpunit/php-invoker": "~1.1",
-                "phpunit/phpunit": "^5.7 || ^7.3",
-                "squizlabs/php_codesniffer": "~2.3"
-            },
-            "suggest": {
-                "lcobucci/clock": "*"
+                "infection/infection": "^0.17",
+                "lcobucci/coding-standard": "^6.0",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12",
+                "phpunit/php-code-coverage": "9.1.4",
+                "phpunit/phpunit": "9.3.7"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.1-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
-                    "Lcobucci\\JWT\\": "src"
-                },
-                "files": [
-                    "compat/class-aliases.php",
-                    "compat/json-exception-polyfill.php",
-                    "compat/lcobucci-clock-polyfill.php"
-                ]
+                    "Lcobucci\\Clock\\": "src"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Luís Otávio Cobucci Oblonczyk",
-                    "email": "lcobucci@gmail.com",
-                    "role": "Developer"
+                    "name": "Luís Cobucci",
+                    "email": "lcobucci@gmail.com"
                 }
             ],
-            "description": "A simple library to work with JSON Web Token and JSON Web Signature",
-            "keywords": [
-                "JWS",
-                "jwt"
-            ],
+            "description": "Yet another clock abstraction",
             "support": {
-                "issues": "https://github.com/lcobucci/jwt/issues",
-                "source": "https://github.com/lcobucci/jwt/tree/3.4.2"
+                "issues": "https://github.com/lcobucci/clock/issues",
+                "source": "https://github.com/lcobucci/clock/tree/2.0.x"
             },
             "funding": [
                 {
@@ -3002,7 +2984,83 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-12-03T13:43:45+00:00"
+            "time": "2020-08-27T18:56:02+00:00"
+        },
+        {
+            "name": "lcobucci/jwt",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/jwt.git",
+                "reference": "6d8665ccd924dc076a9b65d1ea8abe21d68f6958"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/6d8665ccd924dc076a9b65d1ea8abe21d68f6958",
+                "reference": "6d8665ccd924dc076a9b65d1ea8abe21d68f6958",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "lcobucci/clock": "^2.0",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "infection/infection": "^0.20",
+                "lcobucci/coding-standard": "^6.0",
+                "mikey179/vfsstream": "^1.6",
+                "phpbench/phpbench": "^0.17",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12",
+                "phpunit/php-invoker": "^3.1",
+                "phpunit/phpunit": "^9.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Cobucci",
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to work with JSON Web Token and JSON Web Signature",
+            "keywords": [
+                "JWS",
+                "jwt"
+            ],
+            "support": {
+                "issues": "https://github.com/lcobucci/jwt/issues",
+                "source": "https://github.com/lcobucci/jwt/tree/4.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/lcobucci",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/lcobucci",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2020-11-25T02:06:12+00:00"
         },
         {
             "name": "league/commonmark",
@@ -3256,16 +3314,16 @@
         },
         {
             "name": "league/mime-type-detection",
-            "version": "1.5.1",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/mime-type-detection.git",
-                "reference": "353f66d7555d8a90781f6f5e7091932f9a4250aa"
+                "reference": "3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/353f66d7555d8a90781f6f5e7091932f9a4250aa",
-                "reference": "353f66d7555d8a90781f6f5e7091932f9a4250aa",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3",
+                "reference": "3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3",
                 "shasum": ""
             },
             "require": {
@@ -3273,8 +3331,9 @@
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "phpstan/phpstan": "^0.12.36",
-                "phpunit/phpunit": "^8.5.8"
+                "friendsofphp/php-cs-fixer": "^2.18",
+                "phpstan/phpstan": "^0.12.68",
+                "phpunit/phpunit": "^8.5.8 || ^9.3"
             },
             "type": "library",
             "autoload": {
@@ -3295,7 +3354,7 @@
             "description": "Mime-type detection for Flysystem",
             "support": {
                 "issues": "https://github.com/thephpleague/mime-type-detection/issues",
-                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.5.1"
+                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.7.0"
             },
             "funding": [
                 {
@@ -3307,7 +3366,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-18T11:50:25+00:00"
+            "time": "2021-01-18T20:58:21+00:00"
         },
         {
             "name": "league/oauth2-server",
@@ -4541,16 +4600,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.10.5",
+            "version": "v0.10.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "7c710551d4a2653afa259c544508dc18a9098956"
+                "reference": "6f990c19f91729de8b31e639d6e204ea59f19cf3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/7c710551d4a2653afa259c544508dc18a9098956",
-                "reference": "7c710551d4a2653afa259c544508dc18a9098956",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/6f990c19f91729de8b31e639d6e204ea59f19cf3",
+                "reference": "6f990c19f91729de8b31e639d6e204ea59f19cf3",
                 "shasum": ""
             },
             "require": {
@@ -4579,7 +4638,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.10.x-dev"
+                    "dev-main": "0.10.x-dev"
                 }
             },
             "autoload": {
@@ -4611,9 +4670,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.10.5"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.10.6"
             },
-            "time": "2020-12-04T02:51:30+00:00"
+            "time": "2021-01-18T15:53:43+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -4930,16 +4989,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v6.2.4",
+            "version": "v6.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "56f0ab23f54c4ccbb0d5dcc67ff8552e0c98d59e"
+                "reference": "698a6a9f54d7eb321274de3ad19863802c879fb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/56f0ab23f54c4ccbb0d5dcc67ff8552e0c98d59e",
-                "reference": "56f0ab23f54c4ccbb0d5dcc67ff8552e0c98d59e",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/698a6a9f54d7eb321274de3ad19863802c879fb7",
+                "reference": "698a6a9f54d7eb321274de3ad19863802c879fb7",
                 "shasum": ""
             },
             "require": {
@@ -4989,7 +5048,7 @@
             ],
             "support": {
                 "issues": "https://github.com/swiftmailer/swiftmailer/issues",
-                "source": "https://github.com/swiftmailer/swiftmailer/tree/v6.2.4"
+                "source": "https://github.com/swiftmailer/swiftmailer/tree/v6.2.5"
             },
             "funding": [
                 {
@@ -5001,7 +5060,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-08T18:02:06+00:00"
+            "time": "2021-01-12T09:35:59+00:00"
         },
         {
             "name": "symfony/console",
@@ -8080,16 +8139,16 @@
         },
         {
             "name": "nunomaduro/collision",
-            "version": "v5.1.0",
+            "version": "v5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/collision.git",
-                "reference": "7c2b95589bf81e274e61e47f7672a1b2c3e06eaa"
+                "reference": "aca954fd03414ba0dd85d7d8e42ba9b251893d1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/7c2b95589bf81e274e61e47f7672a1b2c3e06eaa",
-                "reference": "7c2b95589bf81e274e61e47f7672a1b2c3e06eaa",
+                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/aca954fd03414ba0dd85d7d8e42ba9b251893d1f",
+                "reference": "aca954fd03414ba0dd85d7d8e42ba9b251893d1f",
                 "shasum": ""
             },
             "require": {
@@ -8099,16 +8158,16 @@
                 "symfony/console": "^5.0"
             },
             "require-dev": {
-                "fideloper/proxy": "^4.4.0",
-                "friendsofphp/php-cs-fixer": "^2.16.4",
-                "fruitcake/laravel-cors": "^2.0.1",
-                "laravel/framework": "^8.0",
-                "laravel/tinker": "^2.4.1",
+                "brianium/paratest": "^6.1",
+                "fideloper/proxy": "^4.4.1",
+                "friendsofphp/php-cs-fixer": "^2.17.3",
+                "fruitcake/laravel-cors": "^2.0.3",
+                "laravel/framework": "^9.0",
                 "nunomaduro/larastan": "^0.6.2",
                 "nunomaduro/mock-final-classes": "^1.0",
-                "orchestra/testbench": "^6.0",
-                "phpstan/phpstan": "^0.12.36",
-                "phpunit/phpunit": "^9.3.3"
+                "orchestra/testbench": "^7.0",
+                "phpstan/phpstan": "^0.12.64",
+                "phpunit/phpunit": "^9.5.0"
             },
             "type": "library",
             "extra": {
@@ -8164,7 +8223,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-10-29T14:50:40+00:00"
+            "time": "2021-01-13T10:00:08+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8822,16 +8881,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.0",
+            "version": "9.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "8e16c225d57c3d6808014df6b1dd7598d0a5bbbe"
+                "reference": "e7bdf4085de85a825f4424eae52c99a1cec2f360"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8e16c225d57c3d6808014df6b1dd7598d0a5bbbe",
-                "reference": "8e16c225d57c3d6808014df6b1dd7598d0a5bbbe",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e7bdf4085de85a825f4424eae52c99a1cec2f360",
+                "reference": "e7bdf4085de85a825f4424eae52c99a1cec2f360",
                 "shasum": ""
             },
             "require": {
@@ -8909,7 +8968,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.0"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.1"
             },
             "funding": [
                 {
@@ -8921,7 +8980,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-12-04T05:05:53+00:00"
+            "time": "2021-01-17T07:42:25+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -9941,8 +10000,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "entap/laravel-admin": 20,
-        "entap/laravel-log-viewer": 20,
         "entap/laravel-oauth-firebase": 20,
         "entap/laravel-oauth-line": 20
     },
