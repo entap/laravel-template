@@ -36,6 +36,11 @@ class PropertyGroupController extends Controller
         return redirect()->route('admin.settings.index');
     }
 
+    public function show(AdminPropertyGroup $group)
+    {
+        return view('admin.settings.groups.show', compact('group'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

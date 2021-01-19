@@ -32,7 +32,11 @@
     </table>
 
     @foreach ($groups as $group)
-        <h4>{{ $group->name }}</h4>
+        <h4>
+            <a href="{{ route('admin.settings.groups.show', $group) }}">
+                {{ $group->name }}
+            </a>
+        </h4>
 
         <p class="small text-secondary">{{ $group->description }}</p>
 

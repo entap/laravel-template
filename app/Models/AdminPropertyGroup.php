@@ -16,8 +16,8 @@ class AdminPropertyGroup extends Model
         return $this->belongsToMany(
             AdminProperty::class,
             'admin_property_group_property',
-            'property_id',
-            'property_group_id'
+            'property_group_id',
+            'property_id'
         );
     }
 }

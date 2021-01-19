@@ -27,14 +27,14 @@ class AdminProperty extends Model
         return $this->belongsToMany(
             AdminPropertyGroup::class,
             'admin_property_group_property',
-            'property_group_id',
-            'property_id'
+            'property_id',
+            'property_group_id'
         );
     }
 
     public function scopeIndependent(Builder $query)
     {
-        return $query->whereDoesntHave('groups');
+        return $query->doesntHave('groups');
     }
 }
 

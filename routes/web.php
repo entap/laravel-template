@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\MailTemplateController;
 use App\Http\Controllers\Admin\PropertyGroupController;
 use App\Http\Controllers\Admin\DuplicateMailTemplateController;
+use App\Http\Controllers\Admin\PropertyGroupPropertyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,8 +45,15 @@ Admin::routes(function () {
         'except' => ['index', 'show'],
     ])->names('admin.settings.properties');
     Route::resource('settings/groups', PropertyGroupController::class, [
-        'except' => ['index', 'show'],
+        'except' => ['index'],
     ])->names('admin.settings.groups');
+    Route::resource(
+        'settings/groups.properties',
+        PropertyGroupPropertyController::class,
+        [
+            'only' => ['create', 'store'],
+        ]
+    )->names('admin.settings.groups.properties');
     // Route::get('settings/csv/export');
     // Route::post('settings/csv/import');
 });
