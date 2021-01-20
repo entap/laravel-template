@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a8d4e108b015502c9b371bf27c45647",
+    "content-hash": "06ca4517104cd6a210436eceb9d609e4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1037,6 +1037,69 @@
             "time": "2020-12-21T00:55:15+00:00"
         },
         {
+            "name": "entap/laravel-basic",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:entap/laravel-basic.git",
+                "reference": "9a1c5d5576dc8c1775bced2c4d78a8b35c4f8644"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/entap/laravel-basic/zipball/9a1c5d5576dc8c1775bced2c4d78a8b35c4f8644",
+                "reference": "9a1c5d5576dc8c1775bced2c4d78a8b35c4f8644",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^8.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.7",
+                "phpunit/phpunit": "^9.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Entap\\Basic\\ServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Entap\\Basic\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ii masamitsu",
+                    "email": "ii@entap.co.jp"
+                }
+            ],
+            "description": "Laravel Basic Package",
+            "support": {
+                "source": "https://github.com/entap/laravel-basic/tree/main",
+                "issues": "https://github.com/entap/laravel-basic/issues"
+            },
+            "time": "2021-01-20T02:37:50+00:00"
+        },
+        {
             "name": "entap/laravel-client-packager",
             "version": "v0.1.0",
             "source": {
@@ -1162,68 +1225,6 @@
                 "issues": "https://github.com/entap/laravel-log-viewer/issues"
             },
             "time": "2021-01-19T23:50:36+00:00"
-        },
-        {
-            "name": "entap/laravel-mail-logger",
-            "version": "v0.1.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:entap/laravel-mail-logger.git",
-                "reference": "81db86d0c0f882e62dd037f21dc28d60beaeb030"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-mail-logger/zipball/81db86d0c0f882e62dd037f21dc28d60beaeb030",
-                "reference": "81db86d0c0f882e62dd037f21dc28d60beaeb030",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "^8.0",
-                "php": "^7.2|^8.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^6.7",
-                "phpunit/phpunit": "^9.5"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Entap\\Log\\Mail\\ServiceProvider"
-                    ],
-                    "aliases": []
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Entap\\Log\\Mail\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "ii masamitsu",
-                    "email": "ii@entap.co.jp"
-                }
-            ],
-            "description": "Laravel Mail Logger",
-            "support": {
-                "source": "https://github.com/entap/laravel-mail-logger/tree/v0.1.0",
-                "issues": "https://github.com/entap/laravel-mail-logger/issues"
-            },
-            "time": "2021-01-19T23:59:04+00:00"
         },
         {
             "name": "entap/laravel-oauth-firebase",
@@ -1353,69 +1354,6 @@
                 "issues": "https://github.com/entap/laravel-oauth-line/issues"
             },
             "time": "2020-12-21T22:58:40+00:00"
-        },
-        {
-            "name": "entap/laravel-request-logger",
-            "version": "v0.1.5",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:entap/laravel-request-logger.git",
-                "reference": "d1132c7429cd43674a72ce1febdd8658d69fcdad"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-request-logger/zipball/d1132c7429cd43674a72ce1febdd8658d69fcdad",
-                "reference": "d1132c7429cd43674a72ce1febdd8658d69fcdad",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "^8.0",
-                "php": "^7.0|^8.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^6.5",
-                "phpunit/phpunit": "^9.5"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Entap\\RequestLogger\\ServiceProvider"
-                    ],
-                    "aliases": []
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Entap\\RequestLogger\\": "src/",
-                    "Database\\Factories\\Entap\\RequestLogger\\Models\\": "database/factories/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "ii masamitsu",
-                    "email": "ii@entap.co.jp"
-                }
-            ],
-            "description": "Laravel Request Logger",
-            "support": {
-                "source": "https://github.com/entap/laravel-request-logger/tree/v0.1.5",
-                "issues": "https://github.com/entap/laravel-request-logger/issues"
-            },
-            "time": "2021-01-19T23:10:43+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -10062,6 +10000,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "entap/laravel-basic": 20,
         "entap/laravel-oauth-firebase": 20,
         "entap/laravel-oauth-line": 20
     },
