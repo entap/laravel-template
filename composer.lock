@@ -1221,7 +1221,7 @@
             ],
             "description": "Laravel Mail Logger",
             "support": {
-                "source": "https://github.com/entap/laravel-mail-logger/tree/main",
+                "source": "https://github.com/entap/laravel-mail-logger/tree/v0.1.0",
                 "issues": "https://github.com/entap/laravel-mail-logger/issues"
             },
             "time": "2021-01-19T23:59:04+00:00"
