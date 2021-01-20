@@ -15,6 +15,7 @@ class CreateMailTypesTable extends Migration
     {
         Schema::create('mail_types', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
             $table->string('name');
             $table->text('description');
             $table->timestamps();
