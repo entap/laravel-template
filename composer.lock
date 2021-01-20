@@ -1169,12 +1169,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-mail-logger.git",
-                "reference": "019f7a7973a30bad87b431678f3be7db9f6040b3"
+                "reference": "81db86d0c0f882e62dd037f21dc28d60beaeb030"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-mail-logger/zipball/019f7a7973a30bad87b431678f3be7db9f6040b3",
-                "reference": "019f7a7973a30bad87b431678f3be7db9f6040b3",
+                "url": "https://api.github.com/repos/entap/laravel-mail-logger/zipball/81db86d0c0f882e62dd037f21dc28d60beaeb030",
+                "reference": "81db86d0c0f882e62dd037f21dc28d60beaeb030",
                 "shasum": ""
             },
             "require": {
@@ -1224,7 +1224,7 @@
                 "source": "https://github.com/entap/laravel-mail-logger/tree/main",
                 "issues": "https://github.com/entap/laravel-mail-logger/issues"
             },
-            "time": "2021-01-19T07:57:19+00:00"
+            "time": "2021-01-19T23:59:04+00:00"
         },
         {
             "name": "entap/laravel-oauth-firebase",
