@@ -1042,12 +1042,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-basic.git",
-                "reference": "9a1c5d5576dc8c1775bced2c4d78a8b35c4f8644"
+                "reference": "5e656bd333f3c8b752c19ba02309a22f44a62e25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-basic/zipball/9a1c5d5576dc8c1775bced2c4d78a8b35c4f8644",
-                "reference": "9a1c5d5576dc8c1775bced2c4d78a8b35c4f8644",
+                "url": "https://api.github.com/repos/entap/laravel-basic/zipball/5e656bd333f3c8b752c19ba02309a22f44a62e25",
+                "reference": "5e656bd333f3c8b752c19ba02309a22f44a62e25",
                 "shasum": ""
             },
             "require": {
@@ -1070,7 +1070,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Entap\\Basic\\": "src/"
+                    "Entap\\Basic\\": "src/",
+                    "Database\\Factories\\Entap\\Basic\\Models\\": "database/factories/"
                 }
             },
             "autoload-dev": {
@@ -1097,7 +1098,7 @@
                 "source": "https://github.com/entap/laravel-basic/tree/main",
                 "issues": "https://github.com/entap/laravel-basic/issues"
             },
-            "time": "2021-01-20T02:37:50+00:00"
+            "time": "2021-01-20T02:48:44+00:00"
         },
         {
             "name": "entap/laravel-client-packager",
