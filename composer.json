@@ -13,7 +13,7 @@
         "entap/laravel-auth": "^0.1",
         "entap/laravel-client-packager": "^0.1",
         "entap/laravel-log-viewer": "^0.1",
-        "entap/laravel-mail-logger": "dev-main",
+        "entap/laravel-mail-logger": "^0.1",
         "entap/laravel-oauth-firebase": "dev-main",
         "entap/laravel-oauth-line": "dev-main",
         "entap/laravel-request-logger": "^0.1",
