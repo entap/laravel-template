@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DuplicateMailTemplateController;
 use App\Http\Controllers\Admin\MailTemplateController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UserGroupController;
 use Entap\Admin\Facades\Admin;
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +33,8 @@ Admin::routes(function () {
         'mails/{mail}/duplicate',
         DuplicateMailTemplateController::class
     )->name('admin.mails.duplicate');
+
+    Route::resource('user-groups', UserGroupController::class, [
+        'except' => 'show',
+    ])->names('admin.user-groups');
 });
