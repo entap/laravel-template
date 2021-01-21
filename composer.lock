@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "955c92c45b87aaad589de3ed8c4a6cbd",
+    "content-hash": "3e3523f8057f53b269c36fa5a80b3abf",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -906,16 +906,16 @@
         },
         {
             "name": "entap/laravel-admin",
-            "version": "v0.2.0",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-admin.git",
-                "reference": "d31cd562b765d6144e48586e9ef21e23646c9964"
+                "reference": "f789a818842a8806b7857293c7fb2dfbf1623d40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/d31cd562b765d6144e48586e9ef21e23646c9964",
-                "reference": "d31cd562b765d6144e48586e9ef21e23646c9964",
+                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/f789a818842a8806b7857293c7fb2dfbf1623d40",
+                "reference": "f789a818842a8806b7857293c7fb2dfbf1623d40",
                 "shasum": ""
             },
             "require": {
@@ -930,6 +930,7 @@
                 "orchestra/testbench": "^6.4",
                 "phpunit/phpunit": "^9.4"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -969,10 +970,10 @@
             ],
             "description": "Laravel Admin",
             "support": {
-                "source": "https://github.com/entap/laravel-admin/tree/v0.2.0",
+                "source": "https://github.com/entap/laravel-admin/tree/main",
                 "issues": "https://github.com/entap/laravel-admin/issues"
             },
-            "time": "2021-01-21T22:19:16+00:00"
+            "time": "2021-01-21T22:46:29+00:00"
         },
         {
             "name": "entap/laravel-auth",
@@ -1039,7 +1040,7 @@
         },
         {
             "name": "entap/laravel-basic",
-            "version": "v0.1.0",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-basic.git",
@@ -1059,6 +1060,7 @@
                 "orchestra/testbench": "^6.7",
                 "phpunit/phpunit": "^9.5"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -1106,16 +1108,16 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-client-packager.git",
-                "reference": "30398a62dbe7754cec65026de0250a605249755c"
+                "reference": "2d20ffabb657b211e45bf5bd1f17e41ae2e5949c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-client-packager/zipball/30398a62dbe7754cec65026de0250a605249755c",
-                "reference": "30398a62dbe7754cec65026de0250a605249755c",
+                "url": "https://api.github.com/repos/entap/laravel-client-packager/zipball/2d20ffabb657b211e45bf5bd1f17e41ae2e5949c",
+                "reference": "2d20ffabb657b211e45bf5bd1f17e41ae2e5949c",
                 "shasum": ""
             },
             "require": {
-                "entap/laravel-admin": "^0.2",
+                "entap/laravel-admin": "dev-main",
                 "php": "^7.0|^8.0"
             },
             "require-dev": {
@@ -1162,11 +1164,11 @@
                 "source": "https://github.com/entap/laravel-client-packager/tree/main",
                 "issues": "https://github.com/entap/laravel-client-packager/issues"
             },
-            "time": "2021-01-21T22:37:12+00:00"
+            "time": "2021-01-21T22:44:30+00:00"
         },
         {
             "name": "entap/laravel-log-viewer",
-            "version": "v0.1.0",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-log-viewer.git",
@@ -1187,6 +1189,7 @@
                 "orchestra/testbench": "^6.6",
                 "phpunit/phpunit": "^9.5"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -10068,7 +10071,10 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "entap/laravel-admin": 20,
+        "entap/laravel-basic": 20,
         "entap/laravel-client-packager": 20,
+        "entap/laravel-log-viewer": 20,
         "entap/laravel-oauth-firebase": 20,
         "entap/laravel-oauth-line": 20
     },
