@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Admin\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Admin\Controllers\Controller;
 use App\Query\Services\UserQueryService;
 
 class UserController extends Controller
@@ -12,6 +12,7 @@ class UserController extends Controller
 
     public function __construct(UserQueryService $users)
     {
+        parent::__construct();
         $this->users = $users;
     }
 

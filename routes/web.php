@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\DuplicateMailTemplateController;
-use App\Http\Controllers\Admin\MailTemplateController;
-use App\Http\Controllers\Admin\UserController;
 use Entap\Admin\Facades\Admin;
 use Illuminate\Support\Facades\Route;
+use App\Admin\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
