@@ -21,8 +21,8 @@ class CreateAdminUserGroupsTable extends Migration
         });
 
         Schema::create('admin_user_group_user', function (Blueprint $table) {
-            $table->foreignId('group_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('group_id')->constrained('admin_user_groups');
+            $table->foreignId('user_id')->constrained('admin_users');
             $table->timestamps();
 
             $table->index(['group_id', 'user_id']);
@@ -36,6 +36,7 @@ class CreateAdminUserGroupsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('admin_user_group_user');
         Schema::dropIfExists('admin_user_groups');
     }
 }

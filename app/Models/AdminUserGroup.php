@@ -12,6 +12,8 @@ class AdminUserGroup extends Model
     use HasFactory;
     use NodeTrait;
 
+    protected $fillable = ['name', 'parent_id'];
+
     public function users()
     {
         return $this->belongsToMany(

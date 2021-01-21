@@ -23,8 +23,13 @@
                     <td>{{ $group->name }}</td>
                     {{-- TODO SQLで用意する --}}
                     <td>{{ $group->users->count() }}</td>
-                    <td>
-                        <form action="{{ route('admin.user-groups.destroy', $group) }}" method="POST">
+                    <td class="d-flex">
+                        <div>
+                            <a href="{{ route('admin.user-groups.edit', $group) }}" class="btn btn-primary">
+                                @lang('Edit')
+                            </a>
+                        </div>
+                        <form action="{{ route('admin.user-groups.destroy', $group) }}" method="POST" class="ml-1">
                             @csrf
                             @method('DELETE')
 

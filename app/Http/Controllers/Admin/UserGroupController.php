@@ -17,26 +17,47 @@ class UserGroupController extends Controller
 
     public function create()
     {
-        //
+        $parentOptions = AdminUserGroup::all();
+
+        return view('admin.user-groups.create', compact('parentOptions'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|max:20',
+            'parent_id' => 'nullable|exists:admin_user_groups,id',
+        ]);
+
+        AdminUserGroup::create($data);
+
+        return redirect()->route('admin.user-groups.index');
     }
 
-    public function edit()
+    public function edit(AdminUserGroup $userGroup)
     {
-        //
+        $parentOptions = AdminUserGroup::all()->except($userGroup->id);
+
+        return view('admin.user-groups.edit', [
+            'group' => $userGroup,
+            'parentOptions' => $parentOptions,
+        ]);
     }
 
-    public function update()
+    public function update(Request $request, AdminUserGroup $userGroup)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|max:20',
+            'parent_id' => 'nullable|exists:admin_user_groups,id',
+        ]);
+
+        $userGroup->update($data);
+
+        return redirect()->route('admin.user-groups.index');
     }
 
-    public function destroy()
+    public function destroy(AdminUserGroup $userGroup)
     {
-        //
+        $userGroup->delete();
     }
 }
