@@ -23,4 +23,13 @@ class AdminUserGroup extends Model
             'user_id'
         );
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($group) {
+            $group->users()->detach();
+        });
+    }
 }
