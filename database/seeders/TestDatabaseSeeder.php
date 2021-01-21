@@ -58,10 +58,6 @@ class TestDatabaseSeeder extends Seeder
             'title' => 'ログ検索',
             'uri' => route('log.tables.index', null, false),
         ]);
-        MenuItem::create([
-            'title' => 'メールテンプレート',
-            'uri' => route('admin.mails.index', null, false),
-        ]);
 
         PackageRelease::truncate();
         Package::truncate();

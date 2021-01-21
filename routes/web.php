@@ -25,11 +25,4 @@ Admin::routes(function () {
     Route::get('users', [UserController::class, 'index'])->name(
         'admin.users.index'
     );
-    Route::resource('mails', MailTemplateController::class, [
-        'except' => 'show',
-    ])->names('admin.mails');
-    Route::post(
-        'mails/{mail}/duplicate',
-        DuplicateMailTemplateController::class
-    )->name('admin.mails.duplicate');
 });
