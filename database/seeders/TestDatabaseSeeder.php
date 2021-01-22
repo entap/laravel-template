@@ -3,14 +3,14 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\MailType;
-use App\Models\MailTemplate;
 use Illuminate\Database\Seeder;
 use Entap\Admin\Database\Models\Role;
 use Entap\Basic\Models\LogRequestEntry;
 use Entap\ClientPackager\Models\Package;
+use Entap\Admin\Database\Models\MailType;
 use Entap\Admin\Database\Models\MenuItem;
 use Entap\Admin\Database\Models\Permission;
+use Entap\Admin\Database\Models\MailTemplate;
 use Entap\ClientPackager\Models\PackageRelease;
 use Entap\Admin\Database\Models\User as AdminUser;
 use Illuminate\Database\Eloquent\Factories\Sequence;
