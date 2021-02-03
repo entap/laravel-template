@@ -40,8 +40,13 @@ class UserDeviceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $user = $request->user();
+        $device = $user->devices()->findOrFail($id);
+
+        $device->delete();
+
+        return response()->noContent();
     }
 }

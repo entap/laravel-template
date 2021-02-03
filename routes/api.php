@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('user/devices', UserDeviceController::class, [
-        'only' => ['store', 'update'],
+        'only' => ['store', 'update', 'destroy'],
     ]);
 });
 
