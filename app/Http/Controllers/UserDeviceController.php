@@ -28,7 +28,10 @@ class UserDeviceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = $request->user();
+        $device = $user->devices()->findOrFail($id);
+
+        return $device->update($request->all());
     }
 
     /**
