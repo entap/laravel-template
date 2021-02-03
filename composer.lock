@@ -910,12 +910,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-admin.git",
-                "reference": "05067a5d84484281d6ea91c0deb1f6779bb6459f"
+                "reference": "4e8b18deb7161465a97ffb1b48ffc0d166ece14f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/05067a5d84484281d6ea91c0deb1f6779bb6459f",
-                "reference": "05067a5d84484281d6ea91c0deb1f6779bb6459f",
+                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/4e8b18deb7161465a97ffb1b48ffc0d166ece14f",
+                "reference": "4e8b18deb7161465a97ffb1b48ffc0d166ece14f",
                 "shasum": ""
             },
             "require": {
@@ -973,7 +973,7 @@
                 "source": "https://github.com/entap/laravel-admin/tree/main",
                 "issues": "https://github.com/entap/laravel-admin/issues"
             },
-            "time": "2021-01-24T22:26:47+00:00"
+            "time": "2021-02-03T01:22:47+00:00"
         },
         {
             "name": "entap/laravel-auth",
