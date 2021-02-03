@@ -4,6 +4,8 @@ namespace Tests\Feature\Admin\Users;
 
 use Tests\TestCase;
 use App\Models\User;
+use Entap\Admin\Database\Models\Role;
+use Entap\Admin\Database\Models\User as AdminUser;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -108,6 +110,20 @@ class AdminListUserTest extends TestCase
             ->assertViewHas('users', function ($users) use ($user2) {
                 return !$users->contains('id', $user2->id);
             });
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $admin = AdminUser::factory()
+            ->has(
+                Role::factory()->state(function () {
+                    return ['name' => 'administrator'];
+                })
+            )
+            ->create();
+        $this->actingAs($admin, 'admin');
     }
 
     private function listUsers($params = [])
