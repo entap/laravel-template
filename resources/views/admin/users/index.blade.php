@@ -79,7 +79,7 @@
         </table>
 
         <div class="d-flex justify-content-center">
-            {{ $users->withQueryString()->links() }}
+            {{ $users->withQueryString()->links('') }}
         </div>
     @else
         <div class="mt-4">{{ __('No User.') }}</div>
