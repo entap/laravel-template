@@ -1,0 +1,20 @@
+version: "3"
+services:
+  mysql:
+    container_name: db
+    image: mysql:5
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "y"
+      MYSQL_DATABASE: example
+      TZ: Asia/Tokyo
+    ports:
+      - 3306:3306
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=
+    ports:
+      - 10080:80
