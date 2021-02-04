@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e3523f8057f53b269c36fa5a80b3abf",
+    "content-hash": "4d0465a88cbf9905b6f9578e2bf9243f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1037,70 +1037,6 @@
                 "issues": "https://github.com/entap/laravel-auth/issues"
             },
             "time": "2020-12-21T00:55:15+00:00"
-        },
-        {
-            "name": "entap/laravel-basic",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:entap/laravel-basic.git",
-                "reference": "b9cf1aa50538126144682b3eb7f6c29ae4693c36"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-basic/zipball/b9cf1aa50538126144682b3eb7f6c29ae4693c36",
-                "reference": "b9cf1aa50538126144682b3eb7f6c29ae4693c36",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "^8.0",
-                "php": "^7.2|^8.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^6.7",
-                "phpunit/phpunit": "^9.5"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Entap\\Basic\\ServiceProvider"
-                    ],
-                    "aliases": []
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Entap\\Basic\\": "src/",
-                    "Database\\Factories\\Entap\\Basic\\Models\\": "database/factories/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "ii masamitsu",
-                    "email": "ii@entap.co.jp"
-                }
-            ],
-            "description": "Laravel Basic Package",
-            "support": {
-                "source": "https://github.com/entap/laravel-basic/tree/main",
-                "issues": "https://github.com/entap/laravel-basic/issues"
-            },
-            "time": "2021-02-03T22:44:57+00:00"
         },
         {
             "name": "entap/laravel-client-packager",
@@ -10021,7 +9957,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "entap/laravel-admin": 20,
-        "entap/laravel-basic": 20,
         "entap/laravel-client-packager": 20,
         "entap/laravel-log-viewer": 20,
         "entap/laravel-oauth-firebase": 20,
