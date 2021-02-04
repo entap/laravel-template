@@ -1,4 +1,4 @@
-# laravel-template
+# Laravel 8 Template
 
 ## Usage
 
@@ -15,9 +15,14 @@ GitHub のテンプレートとして利用します。
 composer install
 cp .env.example .env
 php artisan key:generate
+```
+
+データベースに接続できる状態で以下を実行してください。
+
+```
 php artisan migrate
-php artisan passport:install
-php artisan admin:install
+php artisan admin:seed
+php artisan db:seed
 ```
 
 管理者の初期パスワードは `admin` / `password` です。
@@ -45,6 +50,6 @@ php artisan test
 ```sh
 php artisan migrate:fresh \
     && php artisan passport:install \
-    && php artisan admin:install \
+    && php artisan admin:seed \
     && php artisan db:seed
 ```

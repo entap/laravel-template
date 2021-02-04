@@ -59,8 +59,6 @@ class TestDatabaseSeeder extends Seeder
             'uri' => route('log.tables.index', null, false),
         ]);
 
-        PackageRelease::truncate();
-        Package::truncate();
         Package::factory(3)
             ->hasReleases(3)
             ->create();

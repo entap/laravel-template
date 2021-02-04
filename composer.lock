@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d0465a88cbf9905b6f9578e2bf9243f",
+    "content-hash": "adbbeb8530b0e1a7d6015c637bcbf165",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -910,12 +910,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-admin.git",
-                "reference": "aba3a8ead3a9b6b3d9cdceb97190fa178e0a654a"
+                "reference": "aa6e613c2b00f19bc0e23200a875ea63a2c85899"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/aba3a8ead3a9b6b3d9cdceb97190fa178e0a654a",
-                "reference": "aba3a8ead3a9b6b3d9cdceb97190fa178e0a654a",
+                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/aa6e613c2b00f19bc0e23200a875ea63a2c85899",
+                "reference": "aa6e613c2b00f19bc0e23200a875ea63a2c85899",
                 "shasum": ""
             },
             "require": {
@@ -973,7 +973,7 @@
                 "source": "https://github.com/entap/laravel-admin/tree/main",
                 "issues": "https://github.com/entap/laravel-admin/issues"
             },
-            "time": "2021-02-04T22:31:02+00:00"
+            "time": "2021-02-04T23:06:50+00:00"
         },
         {
             "name": "entap/laravel-auth",
