@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use Illuminate\Http\Request;
 use App\Admin\Controllers\Controller;
+use App\Http\Requests\UserQueryRequest;
 use App\Query\Services\UserQueryService;
 
 class UserController extends Controller
@@ -16,9 +17,9 @@ class UserController extends Controller
         $this->users = $users;
     }
 
-    public function index(Request $request)
+    public function index(UserQueryRequest $request)
     {
-        $users = $this->users->query($request->all())->paginate();
+        $users = $this->users->query($request->validated())->paginate();
 
         return view('admin.users.index', compact('users'));
     }

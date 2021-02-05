@@ -10,6 +10,9 @@ class UserQueryService
     public function query(array $options = []): Builder
     {
         $query = User::query();
+        if (isset($options['id'])) {
+            $query = $query->where('id', $options['id']);
+        }
         if (isset($options['name'])) {
             $query = $query->where(
                 'name',
@@ -32,11 +35,11 @@ class UserQueryService
                 Carbon::parse($options['start_created_at'])
             );
         }
-        if (isset($options['stop_created_at'])) {
+        if (isset($options['end_created_at'])) {
             $query = $query->where(
                 'created_at',
                 '<',
-                Carbon::parse($options['stop_created_at'])
+                Carbon::parse($options['end_created_at'])
             );
         }
         return $query;
