@@ -81,7 +81,13 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td></td>
+                        <td>
+                            <div class="d-flex">
+                                <a href="{{ route('admin.users.show', $user) }}" class="btn btn-sm btn-link">
+                                    @lang('Show')
+                                </a>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Admin\Controllers\Controller;
 use App\Http\Requests\UserQueryRequest;
@@ -22,5 +23,10 @@ class UserController extends Controller
         $users = $this->users->query($request->validated())->paginate();
 
         return view('admin.users.index', compact('users'));
+    }
+
+    public function show(User $user)
+    {
+        return view('admin.users.show', compact('user'));
     }
 }

@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Admin::routes(function () {
-    Route::get('users', [UserController::class, 'index'])->name(
-        'admin.users.index'
-    );
+    Route::resource('users', UserController::class, [
+        'only' => ['index', 'show'],
+    ])->names('admin.users');
 });
