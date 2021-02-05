@@ -20,7 +20,10 @@ class UserController extends Controller
 
     public function index(UserQueryRequest $request)
     {
-        $users = $this->users->query($request->validated())->paginate();
+        $users = $this->users
+            ->query($request->validated())
+            ->latest()
+            ->paginate();
 
         return view('admin.users.index', compact('users'));
     }
