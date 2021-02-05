@@ -99,7 +99,7 @@ class AdminListUserTest extends TestCase
         $user2 = User::factory()->create();
 
         $response = $this->listUsers([
-            'stop_created_at' => now()->format('c'),
+            'end_created_at' => now()->format('c'),
         ]);
 
         $response
