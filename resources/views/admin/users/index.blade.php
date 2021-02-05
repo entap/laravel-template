@@ -7,10 +7,10 @@
         <div class="text-right">
             <a class="btn btn-link" data-toggle="collapse" href="#searchbox" role="button" aria-expanded="false"
                 aria-controls="searchbox">
-                詳細検索
+                @lang('Advanced Search')
             </a>
             <a href="{{ route('admin.users.index') }}" class="btn btn-link">
-                検索クリア
+                @lang('Clear Condition')
             </a>
         </div>
         <div class="collapse" id="searchbox">

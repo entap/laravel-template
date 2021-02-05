@@ -4,5 +4,8 @@
     "Edit": "編集",
     "Update": "変更",
     "Delete": "削除",
-    "Back": "戻る"
+    "Back": "戻る",
+    "Search": "検索",
+    "Advanced Search": "詳細検索",
+    "Clear Condition": "条件クリア"
 }
