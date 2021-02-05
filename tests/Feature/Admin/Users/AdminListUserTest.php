@@ -4,8 +4,7 @@ namespace Tests\Feature\Admin\Users;
 
 use Tests\TestCase;
 use App\Models\User;
-use Entap\Admin\Database\Models\Role;
-use Entap\Admin\Database\Models\User as AdminUser;
+use Tests\Support\HasSuperUser;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -15,6 +14,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
  */
 class AdminListUserTest extends TestCase
 {
+    use HasSuperUser;
+
     public function test_一覧を表示する()
     {
         $items = User::factory(2)->create();
@@ -116,14 +117,7 @@ class AdminListUserTest extends TestCase
     {
         parent::setUp();
 
-        $admin = AdminUser::factory()
-            ->has(
-                Role::factory()->state(function () {
-                    return ['name' => 'administrator'];
-                })
-            )
-            ->create();
-        $this->actingAs($admin, 'admin');
+        $this->actingAsSuperUser();
     }
 
     private function listUsers($params = [])
