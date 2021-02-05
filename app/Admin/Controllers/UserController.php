@@ -27,6 +27,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+        $user->load(['devices']);
         return view('admin.users.show', compact('user'));
     }
 }
