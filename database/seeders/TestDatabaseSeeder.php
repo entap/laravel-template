@@ -37,6 +37,7 @@ class TestDatabaseSeeder extends Seeder
     {
         User::factory(50)
             ->state(new Sequence([], ['created_at' => now()->subDay(5)]))
+            ->hasDevices(2)
             ->create();
 
         LogRequestEntry::factory(20)
