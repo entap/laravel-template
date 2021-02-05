@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Admin;
+namespace Tests\Feature\Admin\Users;
 
 use Tests\TestCase;
 use App\Models\User;
@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Support\HasSuperUser;
 
-class AdminShowUserTest extends TestCase
+class AdminGetUserTest extends TestCase
 {
     use HasSuperUser;
 
