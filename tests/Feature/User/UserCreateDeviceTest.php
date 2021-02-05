@@ -12,7 +12,6 @@ class UserCreateDeviceTest extends TestCase
 {
     public function test_UserDeviceを追加する()
     {
-        $this->withoutExceptionHandling();
         $user = User::factory()->create();
         $newUserDevice = UserDevice::factory()->make();
 
