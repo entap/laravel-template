@@ -27,6 +27,8 @@ class UserDeviceFactory extends Factory
             'user_id' => User::factory(),
             'uuid' => Str::uuid(),
             'platform' => $this->faker->word,
+            'package' => $this->faker->word,
+            'package_version' => $this->faker->word,
             'screen_width' => $this->faker->randomNumber(3),
             'screen_height' => $this->faker->randomNumber(3),
         ];

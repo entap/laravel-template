@@ -12,7 +12,7 @@ class UserDevice extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['uuid', 'os', 'screen_width', 'screen_height'];
+    protected $fillable = ['uuid', 'platform', 'screen_width', 'screen_height'];
 
     public function user()
     {

@@ -18,6 +18,8 @@ class CreateUserDevicesTable extends Migration
             $table->string('uuid')->unique();
             $table->foreignId('user_id')->constrained();
             $table->string('platform')->nullable();
+            $table->string('package')->nullable();
+            $table->string('package_version')->nullable();
             $table->integer('screen_width')->nullable();
             $table->integer('screen_height')->nullable();
             // `device_model` VARCHAR(20) NOT NULL COMMENT 'デバイスのモデル',
