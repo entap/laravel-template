@@ -30,7 +30,7 @@ class TestDatabaseSeeder extends Seeder
         }
 
         $this->runForApp();
-        $this->runForAdmin();
+        // $this->runForAdmin();
     }
 
     protected function runForApp()
@@ -47,60 +47,38 @@ class TestDatabaseSeeder extends Seeder
         MailType::factory(5)
             ->has(MailTemplate::factory(3), 'templates')
             ->create();
-    }
-
-    protected function runForAdmin()
-    {
-        MenuItem::create([
-            'title' => 'クライアントパッケージ',
-            'uri' => route('admin.packages.index', null, false),
-        ]);
-        MenuItem::create([
-            'title' => 'ログ検索',
-            'uri' => route('log.tables.index', null, false),
-        ]);
 
         Package::factory(3)
             ->hasReleases(3)
             ->create();
-
-        $usersPermission = Permission::create(['name' => 'admin.users']);
-        $usersPermission
-            ->operations()
-            ->create(['method' => '*', 'action' => 'admin/auth/users*']);
-        $rolesPermission = Permission::create(['name' => 'admin.roles']);
-        $rolesPermission
-            ->operations()
-            ->create(['method' => '*', 'action' => 'admin/auth/roles*']);
-        $packagesPermission = Permission::create(['name' => 'admin.packages']);
-        $packagesPermission
-            ->operations()
-            ->create(['method' => '*', 'action' => 'admin/packages']);
-
-        $authRole = Role::create(['name' => 'Auth administrator']);
-        $authRole->permissions()->save($usersPermission);
-        $authRole->permissions()->save($rolesPermission);
-
-        $packageRole = Role::create(['name' => 'Package administrator']);
-        $packageRole->permissions()->save($packagesPermission);
-
-        $authAdministrator = AdminUser::factory()->create();
-        $authAdministrator->roles()->save($authRole);
-        $this->command->info(
-            'Auth administrator username: ' . $authAdministrator->username
-        );
-
-        $packageAdministrator = AdminUser::factory()->create();
-        $packageAdministrator->permissions()->save($packagesPermission);
-        $this->command->info(
-            'Package administrator username: ' . $packageAdministrator->username
-        );
-
-        $superAdministrator = AdminUser::factory()->create();
-        $superAdministrator->roles()->save($authRole);
-        $superAdministrator->roles()->save($packageRole);
-        $this->command->info(
-            'Super administrator username: ' . $superAdministrator->username
-        );
     }
+
+    // protected function runForAdmin()
+    // {
+    //     $authRole = Role::create(['name' => 'Auth administrator']);
+    //     $authRole->permissions()->save($usersPermission);
+    //     $authRole->permissions()->save($rolesPermission);
+
+    //     $packageRole = Role::create(['name' => 'Package administrator']);
+    //     $packageRole->permissions()->save($packagesPermission);
+
+    //     $authAdministrator = AdminUser::factory()->create();
+    //     $authAdministrator->roles()->save($authRole);
+    //     $this->command->info(
+    //         'Auth administrator username: ' . $authAdministrator->username
+    //     );
+
+    //     $packageAdministrator = AdminUser::factory()->create();
+    //     $packageAdministrator->permissions()->save($packagesPermission);
+    //     $this->command->info(
+    //         'Package administrator username: ' . $packageAdministrator->username
+    //     );
+
+    //     $superAdministrator = AdminUser::factory()->create();
+    //     $superAdministrator->roles()->save($authRole);
+    //     $superAdministrator->roles()->save($packageRole);
+    //     $this->command->info(
+    //         'Super administrator username: ' . $superAdministrator->username
+    //     );
+    // }
 }
