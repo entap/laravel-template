@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveUserDeviceRequest;
 use App\Models\UserDevice;
 use Illuminate\Http\Request;
 
@@ -10,28 +11,28 @@ class UserDeviceController extends Controller
     /**
      * 新しい端末を登録する
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\SaveUserDeviceRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaveUserDeviceRequest $request)
     {
         $user = $request->user();
-        return $user->devices()->create($request->all());
+        return $user->devices()->create($request->validated());
     }
 
     /**
      * 端末を更新する
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\SaveUserDeviceRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SaveUserDeviceRequest $request, int $id)
     {
         $user = $request->user();
         $device = $user->devices()->findOrFail($id);
 
-        return $device->update($request->all());
+        return $device->update($request->validated());
     }
 
     /**
@@ -40,7 +41,7 @@ class UserDeviceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, int $id)
     {
         $user = $request->user();
         $device = $user->devices()->findOrFail($id);
