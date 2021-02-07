@@ -174,6 +174,7 @@ class CreateUserDevicesTable extends Migration
                 ->integer('system_memory_size')
                 ->nullable()
                 ->comment('システムメモリ');
+            $table->timestamps();
         });
     }
 
