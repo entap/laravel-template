@@ -22,44 +22,158 @@ class CreateUserDevicesTable extends Migration
             $table->string('package_version')->nullable();
             $table->integer('screen_width')->nullable();
             $table->integer('screen_height')->nullable();
-            // `device_model` VARCHAR(20) NOT NULL COMMENT 'デバイスのモデル',
-            // `device_name` VARCHAR(20) NOT NULL COMMENT 'デバイス名',
-            // `device_type` INT NOT NULL COMMENT 'デバイスのタイプ',
-            // `graphics_device_id` INT NOT NULL COMMENT 'グラフィックデバイスの識別コード',
-            // `graphics_device_name` VARCHAR(20) NOT NULL COMMENT 'グラフィックデバイス名',
-            // `graphics_device_type` INT NOT NULL COMMENT 'グラフィックデバイスのタイプ',
-            // `graphics_device_vendor` VARCHAR(20) NOT NULL COMMENT 'グラフィックデバイスのベンダー',
-            // `graphics_device_vendor_id` INT NOT NULL COMMENT 'グラフィックデバイスのベンダーの識別コード',
-            // `graphics_device_version` VARCHAR(20) NOT NULL COMMENT 'グラフィックデバイスのAPIとバージョン',
-            // `graphics_memory_size` INT NOT NULL COMMENT 'ビデオメモリ',
-            // `graphics_multi_threaded` TINYINT(1) NOT NULL COMMENT 'グラフィックデバイスがマルチスレッドレンダリングを行うか？',
-            // `graphics_shader_level` INT NOT NULL COMMENT 'グラフィックデバイスのシェーダーの性能レベル',
-            // `max_texture_size` INT NOT NULL COMMENT 'テクスチャの最大サイズ',
-            // `npot_support` INT NOT NULL COMMENT '対応しているNPOTテクスチャ',
-            // `operating_system` VARCHAR(20) NOT NULL COMMENT 'OSとバージョン',
-            // `processor_count` INT NOT NULL COMMENT 'プロセッサーの数',
-            // `processor_frequency` INT NOT NULL COMMENT 'プロセッサーの周波数',
-            // `processor_type` VARCHAR(20) NOT NULL COMMENT 'プロセッサー名',
-            // `supported_render_target_count` INT NOT NULL COMMENT 'レンダリングターゲットの数',
-            // `supports_2darray_textures` TINYINT(1) NOT NULL COMMENT '2D配列テクスチャに対応しているか？',
-            // `supports_3dtextures` TINYINT(1) NOT NULL COMMENT '3Dテクスチャに対応しているか？',
-            // `supports_accelerometer` TINYINT(1) NOT NULL COMMENT '加速度センサーに対応しているか？',
-            // `supports_audio` TINYINT(1) NOT NULL COMMENT 'オーディオに対応しているか？',
-            // `supports_compute_shaders` TINYINT(1) NOT NULL COMMENT 'ComputeShaderに対応しているか？',
-            // `supports_gyroscope` TINYINT(1) NOT NULL COMMENT 'ジャイロスコープに対応しているか？',
-            // `supports_image_effects` TINYINT(1) NOT NULL COMMENT 'イメージエフェクトに対応しているか？',
-            // `supports_instancing` TINYINT(1) NOT NULL COMMENT 'GPUドローコールのインスタンス化に対応しているか？',
-            // `supports_location_service` TINYINT(1) NOT NULL COMMENT 'GPSに対応しているか？',
-            // `supports_motion_vectors` TINYINT(1) NOT NULL COMMENT 'モーションベクターに対応しているか？',
-            // `supports_raw_shadow_depth_sampling` TINYINT(1) NOT NULL COMMENT 'シャドウマップからのサンプリングは生のデプスか？',
-            // `supports_render_textures` TINYINT(1) NOT NULL COMMENT 'レンダリングテクスチャに対応しているか？',
-            // `supports_render_to_cubemap` TINYINT(1) NOT NULL COMMENT 'キューブマップに対するレンダリングに対応しているか？',
-            // `supports_shadows` TINYINT(1) NOT NULL COMMENT '影に対応しているか？',
-            // `supports_sparse_textures` TINYINT(1) NOT NULL COMMENT 'スパーステクスチャに対応しているか？',
-            // `supports_stencil` TINYINT(1) NOT NULL COMMENT 'ステンシルバッファに対応しているか？',
-            // `supports_vibration` TINYINT(1) NOT NULL COMMENT 'バイブレーションに対応しているか？',
-            // `system_memory_size` INT NOT NULL COMMENT 'システムメモリ',
-            $table->timestamps();
+            $table
+                ->string('device_model')
+                ->nullable()
+                ->comment('デバイスのモデル');
+            $table
+                ->string('device_name')
+                ->nullable()
+                ->comment('デバイス名');
+            $table
+                ->string('device_type')
+                ->nullable()
+                ->comment('デバイスのタイプ');
+            $table
+                ->string('graphics_device_id')
+                ->nullable()
+                ->comment('グラフィックデバイスの識別コード');
+            $table
+                ->string('graphics_device_name')
+                ->nullable()
+                ->comment('グラフィックデバイス名');
+            $table
+                ->string('graphics_device_type')
+                ->nullable()
+                ->comment('グラフィックデバイスのタイプ');
+            $table
+                ->string('graphics_device_vendor')
+                ->nullable()
+                ->comment('グラフィックデバイスのベンダー');
+            $table
+                ->string('graphics_device_vendor_id')
+                ->nullable()
+                ->comment('グラフィックデバイスのベンダーの識別コード');
+            $table
+                ->string('graphics_device_version')
+                ->nullable()
+                ->comment('グラフィックデバイスのAPIとバージョン');
+            $table
+                ->integer('graphics_memory_size')
+                ->nullable()
+                ->comment('ビデオメモリ');
+            $table
+                ->boolean('graphics_multi_threaded')
+                ->nullable()
+                ->comment(
+                    'グラフィックデバイスがマルチスレッドレンダリングを行うか？'
+                );
+            $table
+                ->integer('graphics_shader_level')
+                ->nullable()
+                ->comment('グラフィックデバイスのシェーダーの性能レベル');
+            $table
+                ->integer('max_texture_size')
+                ->nullable()
+                ->comment('テクスチャの最大サイズ');
+            $table
+                ->integer('npot_support')
+                ->nullable()
+                ->comment('対応しているNPOTテクスチャ');
+            $table
+                ->string('operating_system')
+                ->nullable()
+                ->comment('OSとバージョン');
+            $table
+                ->integer('processor_count')
+                ->nullable()
+                ->comment('プロセッサーの数');
+            $table
+                ->integer('processor_frequency')
+                ->nullable()
+                ->comment('プロセッサーの周波数');
+            $table
+                ->string('processor_type')
+                ->nullable()
+                ->comment('プロセッサー名');
+            $table
+                ->integer('supported_render_target_count')
+                ->nullable()
+                ->comment('レンダリングターゲットの数');
+            $table
+                ->boolean('supports_2darray_textures')
+                ->nullable()
+                ->comment('2D配列テクスチャに対応しているか？');
+            $table
+                ->boolean('supports_3dtextures')
+                ->nullable()
+                ->comment('3Dテクスチャに対応しているか？');
+            $table
+                ->boolean('supports_accelerometer')
+                ->nullable()
+                ->comment('加速度センサーに対応しているか？');
+            $table
+                ->boolean('supports_audio')
+                ->nullable()
+                ->comment('オーディオに対応しているか？');
+            $table
+                ->boolean('supports_compute_shaders')
+                ->nullable()
+                ->comment('ComputeShaderに対応しているか？');
+            $table
+                ->boolean('supports_gyroscope')
+                ->nullable()
+                ->comment('ジャイロスコープに対応しているか？');
+            $table
+                ->boolean('supports_image_effects')
+                ->nullable()
+                ->comment('イメージエフェクトに対応しているか？');
+            $table
+                ->boolean('supports_instancing')
+                ->nullable()
+                ->comment('GPUドローコールのインスタンス化に対応しているか？');
+            $table
+                ->boolean('supports_location_service')
+                ->nullable()
+                ->comment('GPSに対応しているか？');
+            $table
+                ->boolean('supports_motion_vectors')
+                ->nullable()
+                ->comment('モーションベクターに対応しているか？');
+            $table
+                ->boolean('supports_raw_shadow_depth_sampling')
+                ->nullable()
+                ->comment('シャドウマップからのサンプリングは生のデプスか？');
+            $table
+                ->boolean('supports_render_textures')
+                ->nullable()
+                ->comment('レンダリングテクスチャに対応しているか？');
+            $table
+                ->boolean('supports_render_to_cubemap')
+                ->nullable()
+                ->comment(
+                    'キューブマップに対するレンダリングに対応しているか？'
+                );
+            $table
+                ->boolean('supports_shadows')
+                ->nullable()
+                ->comment('影に対応しているか？');
+            $table
+                ->boolean('supports_sparse_textures')
+                ->nullable()
+                ->comment('スパーステクスチャに対応しているか？');
+            $table
+                ->boolean('supports_stencil')
+                ->nullable()
+                ->comment('ステンシルバッファに対応しているか？');
+            $table
+                ->boolean('supports_vibration')
+                ->nullable()
+                ->comment('バイブレーションに対応しているか？');
+            $table
+                ->integer('system_memory_size')
+                ->nullable()
+                ->comment('システムメモリ');
         });
     }
 
