@@ -14,7 +14,6 @@ class SaveUserDeviceRequest extends FormRequest
     public function rules()
     {
         return [
-            'uuid' => 'required',
             'platform' => 'nullable|string|max:255',
             'package' => 'nullable|string|max:255',
             'package_version' => 'nullable|string|max:255',

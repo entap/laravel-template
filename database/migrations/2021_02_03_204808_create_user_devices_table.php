@@ -15,7 +15,6 @@ class CreateUserDevicesTable extends Migration
     {
         Schema::create('user_devices', function (Blueprint $table) {
             $table->id();
-            $table->string('uuid')->unique();
             $table->foreignId('user_id')->constrained();
             $table->string('platform')->nullable();
             $table->string('package')->nullable();

@@ -13,7 +13,6 @@ class UserDevice extends Model
     use HasFactory;
 
     protected $fillable = [
-        'uuid',
         'platform',
         'package',
         'package_version',

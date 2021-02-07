@@ -28,7 +28,6 @@ class UserUpdateDeviceTest extends TestCase
         $this->assertDatabaseHas('user_devices', [
             'id' => $userDevice->id,
             'user_id' => $user->id,
-            'uuid' => $newUserDevice->uuid,
         ]);
     }
 

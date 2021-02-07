@@ -16,11 +16,13 @@ class UserCreateDeviceTest extends TestCase
         $newUserDevice = UserDevice::factory()->make();
 
         $response = $this->actingAs($user, 'api')->saveUserDevice(
-            $newUserDevice->only(['uuid'])
+            $newUserDevice->toArray()
         );
         $response->assertCreated();
 
-        $this->assertDatabaseHas('user_devices', []);
+        $this->assertDatabaseHas('user_devices', [
+            'user_id' => $user->id,
+        ]);
     }
 
     private function saveUserDevice($params = [])
