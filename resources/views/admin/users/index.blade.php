@@ -1,7 +1,7 @@
 @extends(config('admin.view.layouts.default'))
 
 @section('content')
-    <h1>@lang('Users')</h1>
+    <h1>@lang('entities.users.title')</h1>
 
     <div>
         <div class="text-right">
@@ -24,31 +24,31 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="name">@lang('Name')</label>
+                        <label for="name">@lang('entities.users.properties.name')</label>
                         <div>
                             <input type="text" id="name" class="form-control" name="name"
                                 value="{{ request()->input('name', '') }}" autocomplete="off" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="email">@lang('E-mail')</label>
+                        <label for="email">@lang('entities.users.properties.email')</label>
                         <div>
                             <input type="text" id="email" class="form-control" name="email"
                                 value="{{ request()->input('email', '') }}" autocomplete="off" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="start_created_at">@lang('Start created at')</label>
+                        <label for="start_created_at">@lang('validation.attriutes.start_created_at')</label>
                         <div>
                             <input type="datetime-local" id="start_created_at" class="form-control" name="start_created_at"
                                 value="{{ request()->input('start_created_at', '') }}" autocomplete="off" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="stop_created_at">@lang('Stop created at')</label>
+                        <label for="end_created_at">@lang('validation.attributes.end_created_at')</label>
                         <div>
-                            <input type="datetime-local" id="stop_created_at" class="form-control" name="stop_created_at"
-                                value="{{ request()->input('stop_created_at', '') }}" autocomplete="off" />
+                            <input type="datetime-local" id="end_created_at" class="form-control" name="end_created_at"
+                                value="{{ request()->input('end_created_at', '') }}" autocomplete="off" />
                         </div>
                     </div>
                     <div class="mt-4">
@@ -70,8 +70,8 @@
             <thead>
                 <tr>
                     <th>@lang('ID')</th>
-                    <th>@lang('Name')</th>
-                    <th>@lang('Email')</th>
+                    <th>@lang('entities.users.properties.name')</th>
+                    <th>@lang('entities.users.properties.email')</th>
                     <th></th>
                 </tr>
             </thead>
@@ -82,11 +82,9 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
-                            <div class="d-flex">
-                                <a href="{{ route('admin.users.show', $user) }}" class="btn btn-sm btn-link">
-                                    @lang('Show')
-                                </a>
-                            </div>
+                            <a href="{{ route('admin.users.show', $user) }}" class="btn btn-sm btn-link">
+                                @lang('Show')
+                            </a>
                         </td>
                     </tr>
                 @endforeach
@@ -94,7 +92,7 @@
         </table>
 
         <div class="d-flex justify-content-center">
-            {{ $users->withQueryString()->links('') }}
+            {{ $users->withQueryString()->links() }}
         </div>
     @else
         <div class="mt-4">@lang('No User.')</div>
