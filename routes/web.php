@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Admin::routes(function () {
+Admin::routeGroup(function () {
     Route::resource('users', UserController::class, [
         'only' => ['index', 'show'],
     ])->names('admin.users');
