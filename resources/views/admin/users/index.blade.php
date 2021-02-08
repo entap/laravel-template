@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="start_created_at">@lang('validation.attriutes.start_created_at')</label>
+                        <label for="start_created_at">@lang('validation.attributes.start_created_at')</label>
                         <div>
                             <input type="datetime-local" id="start_created_at" class="form-control" name="start_created_at"
                                 value="{{ request()->input('start_created_at', '') }}" autocomplete="off" />
