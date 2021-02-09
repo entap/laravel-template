@@ -26,6 +26,18 @@ paths:
       description: ログインしているユーザーにFirebaseアカウントを紐付けます。すでに紐づいている場合は何もしません。
       tags:
         - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_token:
+                  type: string
+                  description: FirebaseのIDトークン
+              required:
+                - id_token
+        description: ''
     delete:
       summary: Firebase連携を解除する
       operationId: delete-auth-firebase-user
@@ -87,6 +99,19 @@ paths:
       description: ログインしているユーザーにLINEのアカウントを紐付けます。すでに紐づいている場合は何もしません。
       tags:
         - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                access_token:
+                  type: string
+                  description: LINEのアクセストークン
+                id_token:
+                  type: string
+                  description: LINEのIDトークン
+        description: '`access_token`と`id_token`のどちらか必須。'
   /auth/line/token:
     post:
       summary: アクセストークンを発行する
