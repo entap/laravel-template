@@ -38,6 +38,7 @@ class LoginController extends Controller
                 } catch (InvalidArgumentException $e) {
                     abort(400, $e->getMessage());
                 }
+                return $user;
             });
         }
 
