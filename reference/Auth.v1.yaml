@@ -62,9 +62,7 @@ paths:
                 id_token:
                   type: string
                   description: ''
-                access_token:
-                  type: string
-        description: '`id_token`または`access_token`のどちらか必須。'
+        description: ''
       tags:
         - auth
   /auth/line/user:
@@ -106,6 +104,19 @@ paths:
       security: []
       tags:
         - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                access_token:
+                  type: string
+                  description: LINEのアクセストークン
+                id_token:
+                  type: string
+                  description: LINEのIDトークン
+        description: '`access_token`と`id_token`のどちらか必須。'
   /auth/firebase/custom-token:
     post:
       summary: カスタムトークンを発行する
@@ -145,8 +156,8 @@ components:
   schemas: {}
   securitySchemes:
     API Key - 1:
-      name: API Key
+      name: Authorization
       type: apiKey
-      in: query
+      in: header
 security:
   - API Key - 1: []
