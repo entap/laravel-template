@@ -1,0 +1,152 @@
+openapi: 3.0.0
+info:
+  title: Auth
+  version: '1.0'
+  contact:
+    name: Ii Masamitsu
+    url: 'https://www.github.com/entap'
+    email: ii@entap.co.jp
+  license:
+    name: MIT
+  description: 認証周りのAPI
+servers:
+  - url: 'http://localhost:8000/api'
+    description: local
+tags:
+  - name: auth
+    description: 認証系
+paths:
+  /auth/firebase/user:
+    post:
+      summary: Firebase連携を登録する
+      operationId: post-auth-firebase-user
+      responses:
+        '200':
+          description: OK
+      description: ログインしているユーザーにFirebaseアカウントを紐付けます。すでに紐づいている場合は何もしません。
+      tags:
+        - auth
+    delete:
+      summary: Firebase連携を解除する
+      operationId: delete-auth-firebase-user
+      responses:
+        '200':
+          description: OK
+      description: ログインしているユーザーに紐づいているFirebaseの情報を削除します。（サーバー上のみ）
+      tags:
+        - auth
+  /auth/firebase/token:
+    post:
+      summary: アクセストークンを発行する
+      operationId: post-auth-firebase-token
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+      description: |-
+        FirebaseのIDトークンから、サーバーのアクセストークンを発行します。
+        該当するユーザーが見つからない場合は、新たに作成します。
+      security: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_token:
+                  type: string
+                  description: ''
+                access_token:
+                  type: string
+        description: '`id_token`または`access_token`のどちらか必須。'
+      tags:
+        - auth
+  /auth/line/user:
+    delete:
+      summary: LINE連携を解除する
+      operationId: delete-auth-line-user
+      responses:
+        '200':
+          description: OK
+      description: ログインしているユーザーに紐づいているLINEの情報を削除します。（サーバー上のみ）
+      tags:
+        - auth
+    post:
+      summary: LINE連携を登録する
+      operationId: post-auth-line-user
+      responses:
+        '200':
+          description: OK
+      description: ログインしているユーザーにLINEのアカウントを紐付けます。すでに紐づいている場合は何もしません。
+      tags:
+        - auth
+  /auth/line/token:
+    post:
+      summary: アクセストークンを発行する
+      operationId: post-auth-line-token
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+      description: |-
+        LINEのIDトークンまたはアクセストークンから、サーバーのアクセストークンを発行します。
+        該当するユーザーが見つからない場合は、新たに作成します。
+      security: []
+      tags:
+        - auth
+  /auth/firebase/custom-token:
+    post:
+      summary: カスタムトークンを発行する
+      operationId: post-auth-firebase-custom-token
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  custom_token:
+                    type: string
+                    description: カスタムトークン
+      description: Firebaseの認証に必要なカスタムトークンを発行します。
+      tags:
+        - auth
+  /user:
+    get:
+      summary: ユーザー情報を取得する
+      tags:
+        - auth
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+      operationId: get-user
+      description: ログインしているユーザーの情報を取得します。
+components:
+  schemas: {}
+  securitySchemes:
+    API Key - 1:
+      name: API Key
+      type: apiKey
+      in: query
+security:
+  - API Key - 1: []
