@@ -25,7 +25,7 @@ class MenuSeeder extends Seeder
     protected function createUsersMenuItem()
     {
         MenuItem::create([
-            'title' => '一般ユーザー',
+            'title' => 'ユーザー',
             'uri' => route('admin.users.index', null, false),
         ]);
     }
@@ -33,7 +33,7 @@ class MenuSeeder extends Seeder
     protected function createUserSegmentsMenuItem()
     {
         MenuItem::create([
-            'title' => '一般ユーザーセグメント',
+            'title' => 'ユーザーセグメント',
             'uri' => route('admin.user-segments.index', null, false),
         ]);
     }
