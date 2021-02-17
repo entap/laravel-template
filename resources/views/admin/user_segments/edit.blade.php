@@ -24,10 +24,18 @@
 
         <pre class="small alert alert-secondary">{{ json_encode($userSegment->filter, JSON_PRETTY_PRINT) }}</pre>
 
-        <div class="mt-4">
+        <div class="mt-4 text-right">
             <button type="submit" class="btn btn-primary">
                 @lang('Update')
             </button>
         </div>
     </form>
+
+    <hr>
+
+    <div>
+        <a href="{{ route('admin.user-segments.index') }}" class="btn btn-link">
+            @lang('Back')
+        </a>
+    </div>
 @endsection
