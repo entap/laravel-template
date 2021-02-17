@@ -14,20 +14,9 @@ class UserSegmentController extends Controller
      */
     public function index()
     {
-        $userSegments = UserSegment::paginate();
+        $userSegments = UserSegment::latest()->paginate();
 
         return view('admin.user_segments.index', compact('userSegments'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
