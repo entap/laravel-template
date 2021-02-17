@@ -35,7 +35,7 @@ class MenuSeeder extends Seeder
     protected function createPackagesMenuItem()
     {
         MenuItem::create([
-            'title' => 'クライアントパッケージ',
+            'title' => 'パッケージ管理',
             'uri' => route('admin.packages.index', null, false),
         ]);
         $packagesPermission = Permission::create(['name' => 'admin.packages']);
