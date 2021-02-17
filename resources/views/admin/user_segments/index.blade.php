@@ -1,15 +1,15 @@
 @extends(config('admin.view.layouts.default'))
 
 @section('content')
-    <h1>@lang('User Segments')</h1>
+    <h1>@lang('user_segments.title')</h1>
 
-    @empty($userSegments)
-        <p>@lang('No User Segment.')</p>
+    @empty($userSegments->count())
+        <p>@lang('messages.missing', ['entity' => __('user_segments.title')])</p>
     @else
         <table class="table mt-4">
             <thead>
                 <tr>
-                    <th>@lang('Name')</th>
+                    <th>@lang('user_segments.properties.name')</th>
                     <th></th>
                     <th></th>
                     <th></th>

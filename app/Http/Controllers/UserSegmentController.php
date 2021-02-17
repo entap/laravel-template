@@ -39,8 +39,10 @@ class UserSegmentController extends Controller
         return redirect()->route('admin.user-segments.index');
     }
 
-    public function destroy()
+    public function destroy(UserSegment $userSegment)
     {
+        $userSegment->delete();
+
         return redirect()->route('admin.user-segments.index');
     }
 }
