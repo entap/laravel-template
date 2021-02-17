@@ -15,7 +15,13 @@ class MenuSeeder extends Seeder
      */
     public function run()
     {
-        // users
+        $this->createUsersMenuItem();
+        $this->createPackagesMenuItem();
+        $this->createLogsMenuItem();
+    }
+
+    protected function createUsersMenuItem()
+    {
         MenuItem::create([
             'title' => '一般ユーザー',
             'uri' => route('admin.users.index', null, false),
@@ -24,8 +30,10 @@ class MenuSeeder extends Seeder
         $usersPermission
             ->operations()
             ->create(['method' => '*', 'action' => 'admin/auth/users*']);
+    }
 
-        // packages
+    protected function createPackagesMenuItem()
+    {
         MenuItem::create([
             'title' => 'クライアントパッケージ',
             'uri' => route('admin.packages.index', null, false),
@@ -34,11 +42,13 @@ class MenuSeeder extends Seeder
         $packagesPermission
             ->operations()
             ->create(['method' => '*', 'action' => 'admin/packages*']);
+    }
 
-        // logs
+    protected function createLogsMenuItem()
+    {
         MenuItem::create([
             'title' => 'ログ検索',
-            'uri' => route('log.tables.index', null, false),
+            'uri' => route('admin.logs.index', null, false),
         ]);
         $logsPermission = Permission::create(['name' => 'admin.logs']);
         $logsPermission
