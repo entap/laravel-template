@@ -26,6 +26,6 @@ Admin::routeGroup(function () {
     ])->names('admin.users');
 
     Route::resource('user-segments', UserSegmentController::class, [
-        'only' => ['index', 'show', 'destroy'],
+        'except' => ['create', 'store'],
     ])->names('admin.user-segments');
 });

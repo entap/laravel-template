@@ -4,14 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\UserSegment;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserSegmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $userSegments = UserSegment::latest()->paginate();
@@ -19,23 +15,30 @@ class UserSegmentController extends Controller
         return view('admin.user_segments.index', compact('userSegments'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show(UserSegment $userSegment)
     {
         return redirect()->route('admin.users.index', $userSegment->filter);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function edit(UserSegment $userSegment)
+    {
+        return view('admin.user_segments.edit', compact('userSegment'));
+    }
+
+    public function update(Request $request, UserSegment $userSegment)
+    {
+        $data = $request->validate([
+            'name' => [
+                'required',
+                'string',
+                Rule::unique('user_segments')->ignore($userSegment),
+            ],
+        ]);
+        $userSegment->update($data);
+
+        return redirect()->route('admin.user-segments.index');
+    }
+
     public function destroy()
     {
         return redirect()->route('admin.user-segments.index');

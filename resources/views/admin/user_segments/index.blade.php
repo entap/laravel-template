@@ -11,6 +11,8 @@
                 <tr>
                     <th>@lang('Name')</th>
                     <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -20,6 +22,11 @@
                         <td>
                             <a href="{{ route('admin.user-segments.show', $segment) }}" class="btn btn-sm btn-link">
                                 @lang('Search')
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ route('admin.user-segments.edit', $segment) }}" class="btn btn-sm btn-primary">
+                                @lang('Edit')
                             </a>
                         </td>
                         <td>
