@@ -910,12 +910,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-admin.git",
-                "reference": "ca2f0ed11fead0c9508ffeadc60fc23c7dab8552"
+                "reference": "dcd2a80e958635762c9cc3d909538ac8741e64a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/ca2f0ed11fead0c9508ffeadc60fc23c7dab8552",
-                "reference": "ca2f0ed11fead0c9508ffeadc60fc23c7dab8552",
+                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/dcd2a80e958635762c9cc3d909538ac8741e64a6",
+                "reference": "dcd2a80e958635762c9cc3d909538ac8741e64a6",
                 "shasum": ""
             },
             "require": {
@@ -972,7 +972,7 @@
                 "source": "https://github.com/entap/laravel-admin/tree/main",
                 "issues": "https://github.com/entap/laravel-admin/issues"
             },
-            "time": "2021-02-17T00:49:03+00:00"
+            "time": "2021-02-17T01:12:16+00:00"
         },
         {
             "name": "entap/laravel-auth",
@@ -1107,16 +1107,17 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-log-viewer.git",
-                "reference": "329ad4f5d20f42631d71ec3d1fb66e99b7ddbacf"
+                "reference": "251cc4afe0f099609d272f3758e08cd50730c7b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-log-viewer/zipball/329ad4f5d20f42631d71ec3d1fb66e99b7ddbacf",
-                "reference": "329ad4f5d20f42631d71ec3d1fb66e99b7ddbacf",
+                "url": "https://api.github.com/repos/entap/laravel-log-viewer/zipball/251cc4afe0f099609d272f3758e08cd50730c7b8",
+                "reference": "251cc4afe0f099609d272f3758e08cd50730c7b8",
                 "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "^3.0",
+                "entap/laravel-admin": "dev-main",
                 "laravel/framework": "^8.0",
                 "php": "^7.0|^8.0"
             },
@@ -1160,10 +1161,10 @@
             ],
             "description": "Laravel Log Viewer",
             "support": {
-                "source": "https://github.com/entap/laravel-log-viewer/tree/v0.1.0",
+                "source": "https://github.com/entap/laravel-log-viewer/tree/main",
                 "issues": "https://github.com/entap/laravel-log-viewer/issues"
             },
-            "time": "2021-01-19T23:50:36+00:00"
+            "time": "2021-02-17T01:13:07+00:00"
         },
         {
             "name": "entap/laravel-oauth-firebase",
