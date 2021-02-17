@@ -55,6 +55,9 @@
                         <button type="submit" class="btn btn-primary">
                             @lang('Search')
                         </button>
+
+                        <input type="submit" name="saves_user_segment" value="@lang('Save User Segment')"
+                            class="btn btn-link" />
                     </div>
                 </form>
             </div>
