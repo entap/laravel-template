@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\UserSegment;
 use Illuminate\Database\Seeder;
 use Entap\Admin\Database\Models\Role;
 use Entap\ClientPackager\Models\Package;
@@ -51,6 +52,8 @@ class TestDatabaseSeeder extends Seeder
         Package::factory(3)
             ->hasReleases(3)
             ->create();
+
+        UserSegment::factory(5)->create();
     }
 
     // protected function runForAdmin()

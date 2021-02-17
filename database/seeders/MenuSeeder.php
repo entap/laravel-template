@@ -16,6 +16,8 @@ class MenuSeeder extends Seeder
     public function run()
     {
         $this->createUsersMenuItem();
+        $this->createUserSegmentsMenuItem();
+        $this->createUsersPermission();
         $this->createPackagesMenuItem();
         $this->createLogsMenuItem();
     }
@@ -26,10 +28,25 @@ class MenuSeeder extends Seeder
             'title' => '一般ユーザー',
             'uri' => route('admin.users.index', null, false),
         ]);
+    }
+
+    protected function createUserSegmentsMenuItem()
+    {
+        MenuItem::create([
+            'title' => '一般ユーザーセグメント',
+            'uri' => route('admin.user-segments.index', null, false),
+        ]);
+    }
+
+    protected function createUsersPermission()
+    {
         $usersPermission = Permission::create(['name' => 'admin.users']);
         $usersPermission
             ->operations()
-            ->create(['method' => '*', 'action' => 'admin/auth/users*']);
+            ->create(['method' => '*', 'action' => 'admin/users*']);
+        $usersPermission
+            ->operations()
+            ->create(['method' => '*', 'action' => 'admin/user-segments*']);
     }
 
     protected function createPackagesMenuItem()

@@ -3,6 +3,7 @@
 use Entap\Admin\Facades\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Admin\Controllers\UserController;
+use App\Http\Controllers\UserSegmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,8 @@ Admin::routeGroup(function () {
     Route::resource('users', UserController::class, [
         'only' => ['index', 'show'],
     ])->names('admin.users');
+
+    Route::resource('user-segments', UserSegmentController::class, [
+        'only' => ['index', 'show', 'destroy'],
+    ])->names('admin.user-segments');
 });
