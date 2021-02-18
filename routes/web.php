@@ -6,6 +6,8 @@ use App\Admin\Controllers\UserController;
 use App\Admin\Controllers\UserSegmentController;
 use App\Admin\Controllers\TemporaryUserController;
 use App\Http\Controllers\FixTemporaryUserController;
+use App\Http\Controllers\Admin\SuspendUserController;
+use App\Http\Controllers\Admin\UnsuspendUserController;
 use App\Admin\Controllers\AcceptTemporaryUserController;
 use App\Admin\Controllers\RejectTemporaryUserController;
 use App\Http\Controllers\RegisterTemporaryUserController;
@@ -29,6 +31,14 @@ Admin::routeGroup(function () {
     Route::resource('users', UserController::class, [
         'only' => ['index', 'show'],
     ])->names('admin.users');
+
+    Route::put('users/{user}/suspend', SuspendUserController::class)->name(
+        'admin.users.suspend'
+    );
+
+    Route::put('users/{user}/unsuspend', UnsuspendUserController::class)->name(
+        'admin.users.unsuspend'
+    );
 
     Route::resource('user-segments', UserSegmentController::class, [
         'except' => ['create', 'store'],

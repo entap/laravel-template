@@ -39,6 +39,16 @@ trait Suspendable
     }
 
     /**
+     * 凍結されている
+     */
+    public function isSuspended()
+    {
+        return $this->suspended_at &&
+            (empty($this->suspending_expires_at) ||
+                now()->lt($this->suspending_expires_at));
+    }
+
+    /**
      * 凍結された
      */
     public function scopeSuspended(Builder $query, Carbon $now = null): Builder
