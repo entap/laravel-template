@@ -9,7 +9,9 @@ class TemporaryUserController extends Controller
 {
     public function index()
     {
-        $users = TemporaryUser::latest()->paginate();
+        $users = TemporaryUser::pending()
+            ->latest()
+            ->paginate();
 
         return view('admin.temporary_users.index', compact('users'));
     }
