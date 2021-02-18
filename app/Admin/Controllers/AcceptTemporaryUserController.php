@@ -16,7 +16,7 @@ class AcceptTemporaryUserController extends Controller
     public function __invoke(TemporaryUser $temporaryUser)
     {
         DB::transaction(function () use ($temporaryUser) {
-            User::create($temporaryUser->only(['name']));
+            User::create($temporaryUser->only(['email', 'name']));
             $temporaryUser->delete();
         });
 

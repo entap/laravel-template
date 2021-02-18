@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RejectedTemporaryUser;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\RejectedTemporaryUser;
 
 class FixTemporaryUserController extends Controller
 {
@@ -24,8 +26,12 @@ class FixTemporaryUserController extends Controller
     ) {
         $temporaryUser = $rejectedTemporaryUser->temporaryUser;
         $data = $request->validate([
-            'email' => 'required|email|max:255',
+            'email' => ['required', 'email', 'max:255', Rule::unique('users')],
             'name' => 'nullable|string|max:255',
+        ]);
+        // uniqueは上書きされるので分けて実行する
+        $request->validate([
+            'email' => Rule::unique('temporary_users')->ignore($temporaryUser),
         ]);
 
         DB::transaction(function () use ($data, $temporaryUser) {

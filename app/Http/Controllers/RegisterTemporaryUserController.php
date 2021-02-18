@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TemporaryUser;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class RegisterTemporaryUserController extends Controller
 {
@@ -14,12 +15,15 @@ class RegisterTemporaryUserController extends Controller
 
     public function store(Request $request)
     {
-        // FIXME emailをユニークにする
-        // FIXME emailをusersとも合わせてユニークにする
         $data = $request->validate([
-            'email' => 'required|email|max:255',
+            'email' => ['required', 'email', 'max:255', Rule::unique('users')],
             'name' => 'nullable|string|max:255',
         ]);
+        // uniqueは上書きされるので分けて実行する
+        $request->validate([
+            'email' => Rule::unique('temporary_users'),
+        ]);
+
         $temporaryUser = TemporaryUser::create($data);
 
         if ($request->expectsJson()) {
