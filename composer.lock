@@ -910,12 +910,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-admin.git",
-                "reference": "bf1ed28f6cd2f2eba918709a42f6fc9b80761dc6"
+                "reference": "f6f4baacecf8260be58841d2df9d826866eb2a17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/bf1ed28f6cd2f2eba918709a42f6fc9b80761dc6",
-                "reference": "bf1ed28f6cd2f2eba918709a42f6fc9b80761dc6",
+                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/f6f4baacecf8260be58841d2df9d826866eb2a17",
+                "reference": "f6f4baacecf8260be58841d2df9d826866eb2a17",
                 "shasum": ""
             },
             "require": {
@@ -972,7 +972,7 @@
                 "source": "https://github.com/entap/laravel-admin/tree/main",
                 "issues": "https://github.com/entap/laravel-admin/issues"
             },
-            "time": "2021-02-17T23:57:34+00:00"
+            "time": "2021-02-18T02:51:58+00:00"
         },
         {
             "name": "entap/laravel-auth",
@@ -1043,12 +1043,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:entap/laravel-client-packager.git",
-                "reference": "2829433002edac027932b4bcf8c18e60c5aca9f6"
+                "reference": "a1f244ab9fa2266e39a46f0ed3a7ddbd3dab573b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-client-packager/zipball/2829433002edac027932b4bcf8c18e60c5aca9f6",
-                "reference": "2829433002edac027932b4bcf8c18e60c5aca9f6",
+                "url": "https://api.github.com/repos/entap/laravel-client-packager/zipball/a1f244ab9fa2266e39a46f0ed3a7ddbd3dab573b",
+                "reference": "a1f244ab9fa2266e39a46f0ed3a7ddbd3dab573b",
                 "shasum": ""
             },
             "require": {
@@ -1099,7 +1099,7 @@
                 "source": "https://github.com/entap/laravel-client-packager/tree/main",
                 "issues": "https://github.com/entap/laravel-client-packager/issues"
             },
-            "time": "2021-02-17T02:12:16+00:00"
+            "time": "2021-02-18T00:28:26+00:00"
         },
         {
             "name": "entap/laravel-log-viewer",
