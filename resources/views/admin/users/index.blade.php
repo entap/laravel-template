@@ -13,7 +13,7 @@
                 @lang('Clear Condition')
             </a>
         </div>
-        <div class="collapse" id="searchbox">
+        <div class="collapse mt-3" id="searchbox">
             <div class="card card-body mb-4">
                 <form>
                     <div class="form-group">
@@ -69,7 +69,7 @@
             {{ $users->withQueryString()->links() }}
         </div>
 
-        <table class="table mt-4">
+        <table class="table mt-3">
             <thead>
                 <tr>
                     <th>@lang('ID')</th>
