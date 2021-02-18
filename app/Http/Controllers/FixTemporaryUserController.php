@@ -22,16 +22,20 @@ class FixTemporaryUserController extends Controller
         Request $request,
         RejectedTemporaryUser $rejectedTemporaryUser
     ) {
+        $temporaryUser = $rejectedTemporaryUser->temporaryUser;
         $data = $request->validate([
+            'email' => 'required|email|max:255',
             'name' => 'nullable|string|max:255',
         ]);
-        $temporaryUser = $rejectedTemporaryUser->temporaryUser;
 
         DB::transaction(function () use ($data, $temporaryUser) {
             $temporaryUser->update($data);
             $temporaryUser->rejectedTemporaryUsers()->delete();
         });
 
+        if ($request->expectsJson()) {
+            return $temporaryUser;
+        }
         return view('temporary_users.fixed', compact('temporaryUser'));
     }
 }

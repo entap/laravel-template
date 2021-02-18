@@ -22,6 +22,9 @@ class RegisterTemporaryUserController extends Controller
         ]);
         $temporaryUser = TemporaryUser::create($data);
 
+        if ($request->expectsJson()) {
+            return $temporaryUser;
+        }
         return view('temporary_users.registered', compact('temporaryUser'));
     }
 }

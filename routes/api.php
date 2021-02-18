@@ -23,6 +23,15 @@ Route::middleware('auth:api')->group(function () {
     ]);
 });
 
+Route::post('temporary-users', [
+    RegisterTemporaryUserController::class,
+    'store',
+])->name('api.temporary-users.register');
+Route::put('temporary-users/{rejectedTemporaryUser:token}', [
+    FixTemporaryUserController::class,
+    'update',
+])->name('api.temporary-users.fix');
+
 // Firebase
 
 Route::post(
