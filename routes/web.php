@@ -4,6 +4,9 @@ use Entap\Admin\Facades\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Admin\Controllers\UserController;
 use App\Http\Controllers\UserSegmentController;
+use App\Http\Controllers\TemporaryUserController;
+use App\Http\Controllers\AcceptTemporaryUserController;
+use App\Http\Controllers\RejectTemporaryUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +31,18 @@ Admin::routeGroup(function () {
     Route::resource('user-segments', UserSegmentController::class, [
         'except' => ['create', 'store'],
     ])->names('admin.user-segments');
+
+    Route::resource('temporary-users', TemporaryUserController::class, [
+        'only' => ['index', 'show'],
+    ])->names('admin.temporary-users');
+
+    Route::post(
+        'temporary-users/{user}/accept',
+        AcceptTemporaryUserController::class
+    )->name('admin.temporary-users.accept');
+    
+    Route::post(
+        'temporary-users/{user}/reject',
+        RejectTemporaryUserController::class
+    )->name('admin.temporary-users.reject');
 });

@@ -13,6 +13,8 @@ class TemporaryUser extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function rejectedTemporaryUsers()
     {
         return $this->hasMany(RejectedTemporaryUser::class);
