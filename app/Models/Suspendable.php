@@ -45,7 +45,7 @@ trait Suspendable
     {
         return $query
             ->whereNotNull('suspended_at')
-            ->where('suspending_expires_at', '<=', $now ?? now());
+            ->where('suspending_expires_at', '>', $now ?? now());
     }
 
     /**
