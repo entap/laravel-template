@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TemporaryUser;
 use App\Models\User;
 use App\Models\UserSegment;
 use Illuminate\Database\Seeder;
@@ -54,6 +55,8 @@ class TestDatabaseSeeder extends Seeder
             ->create();
 
         UserSegment::factory(5)->create();
+
+        TemporaryUser::factory(15)->create();
     }
 
     // protected function runForAdmin()

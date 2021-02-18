@@ -17,6 +17,7 @@ class MenuSeeder extends Seeder
     {
         $this->createUsersMenuItem();
         $this->createUserSegmentsMenuItem();
+        $this->createTemporaryUsersMenuItem();
         $this->createUsersPermission();
         $this->createPackagesMenuItem();
         $this->createLogsMenuItem();
@@ -47,6 +48,14 @@ class MenuSeeder extends Seeder
         $usersPermission
             ->operations()
             ->create(['method' => '*', 'action' => 'admin/user-segments*']);
+    }
+
+    protected function createTemporaryUsersMenuItem()
+    {
+        MenuItem::create([
+            'title' => __('temporary_users.title'),
+            'uri' => route('admin.temporary-users.index', null, false),
+        ]);
     }
 
     protected function createPackagesMenuItem()
