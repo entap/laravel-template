@@ -37,12 +37,12 @@ Admin::routeGroup(function () {
     ])->names('admin.temporary-users');
 
     Route::post(
-        'temporary-users/{user}/accept',
+        'temporary-users/{temporaryUser}/accept',
         AcceptTemporaryUserController::class
     )->name('admin.temporary-users.accept');
-    
+
     Route::post(
-        'temporary-users/{user}/reject',
+        'temporary-users/{temporaryUser}/reject',
         RejectTemporaryUserController::class
     )->name('admin.temporary-users.reject');
 });
