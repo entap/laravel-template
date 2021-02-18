@@ -3,10 +3,10 @@
 use Entap\Admin\Facades\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Admin\Controllers\UserController;
-use App\Http\Controllers\UserSegmentController;
-use App\Http\Controllers\TemporaryUserController;
-use App\Http\Controllers\AcceptTemporaryUserController;
-use App\Http\Controllers\RejectTemporaryUserController;
+use App\Admin\Controllers\UserSegmentController;
+use App\Admin\Controllers\TemporaryUserController;
+use App\Admin\Controllers\AcceptTemporaryUserController;
+use App\Admin\Controllers\RejectTemporaryUserController;
 
 /*
 |--------------------------------------------------------------------------

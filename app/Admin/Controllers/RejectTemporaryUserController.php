@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Admin\Controllers;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -12,9 +12,6 @@ class RejectTemporaryUserController extends Controller
 {
     /**
      * 仮登録ユーザーを否認する
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function __invoke(Request $request, TemporaryUser $temporaryUser)
     {

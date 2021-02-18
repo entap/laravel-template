@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Admin\Controllers;
 
-use App\Models\TemporaryUser;
 use Illuminate\Http\Request;
+use App\Models\TemporaryUser;
+use App\Admin\Controllers\Controller;
 
 class TemporaryUserController extends Controller
 {
+    /**
+     * 一覧
+     */
     public function index()
     {
         $users = TemporaryUser::pending()

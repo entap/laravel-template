@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Admin\Controllers;
 
 use App\Models\UserSegment;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Admin\Controllers\Controller;
 
 class UserSegmentController extends Controller
 {

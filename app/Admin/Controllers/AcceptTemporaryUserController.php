@@ -1,19 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Admin\Controllers;
 
-use App\Models\TemporaryUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\TemporaryUser;
 use Illuminate\Support\Facades\DB;
+use App\Admin\Controllers\Controller;
 
 class AcceptTemporaryUserController extends Controller
 {
     /**
      * 仮登録ユーザーを承認する
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function __invoke(TemporaryUser $temporaryUser)
     {
