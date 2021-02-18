@@ -57,7 +57,7 @@
     <hr>
 
     <div>
-        <a href="{{ url()->previous(route('admin.users.index')) }}" class="btn btn-link">
+        <a href="{{ route('admin.users.index') }}" class="btn btn-link">
             @lang('Back')
         </a>
     </div>
