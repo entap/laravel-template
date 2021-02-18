@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\TemporaryUser;
 use App\Admin\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
+use App\Notifications\TemporaryUserRejected;
 
 class RejectTemporaryUserController extends Controller
 {
@@ -20,8 +20,13 @@ class RejectTemporaryUserController extends Controller
         ]);
         $data['token'] = Str::uuid();
 
-        $temporaryUser->rejectedTemporaryUsers()->delete();
-        $temporaryUser->rejectedTemporaryUsers()->create($data);
+        $rejectedTemporaryUser = $temporaryUser
+            ->rejectedTemporaryUsers()
+            ->create($data);
+
+        $temporaryUser->notify(
+            new TemporaryUserRejected($rejectedTemporaryUser)
+        );
 
         return redirect()->route('admin.temporary-users.index');
     }

@@ -8,6 +8,7 @@
             <thead>
                 <tr>
                     <th>@lang('temporary_users.properties.name')</th>
+                    <th>@lang('temporary_users.properties.email')</th>
                     <th></th>
                 </tr>
             </thead>
@@ -15,6 +16,7 @@
                 @foreach ($users as $user)
                     <tr>
                         <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
                         <td>
                             <form action="{{ route('admin.temporary-users.accept', $user) }}" method="POST">
                                 @csrf

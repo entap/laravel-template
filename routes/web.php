@@ -5,8 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Admin\Controllers\UserController;
 use App\Admin\Controllers\UserSegmentController;
 use App\Admin\Controllers\TemporaryUserController;
+use App\Http\Controllers\FixTemporaryUserController;
 use App\Admin\Controllers\AcceptTemporaryUserController;
 use App\Admin\Controllers\RejectTemporaryUserController;
+use App\Http\Controllers\RegisterTemporaryUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +48,20 @@ Admin::routeGroup(function () {
         RejectTemporaryUserController::class
     )->name('admin.temporary-users.reject');
 });
+
+Route::get('temporary-users', [
+    RegisterTemporaryUserController::class,
+    'create',
+]);
+Route::post('temporary-users', [
+    RegisterTemporaryUserController::class,
+    'store',
+])->name('temporary-users.register');
+Route::get('temporary-users/{rejectedTemporaryUser:token}/edit', [
+    FixTemporaryUserController::class,
+    'edit',
+])->name('temporary-users.edit');
+Route::put('temporary-users/{rejectedTemporaryUser:token}', [
+    FixTemporaryUserController::class,
+    'update',
+])->name('temporary-users.fix');
