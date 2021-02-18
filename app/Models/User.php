@@ -14,6 +14,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
     use HasApiTokens;
     use HasAuthProviders;
+    use Suspendable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +22,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = ['name', 'email', 'password'];
+
+    protected $dates = ['suspending_expires_at', 'suspended_at'];
 
     /**
      * The attributes that should be hidden for arrays.

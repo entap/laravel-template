@@ -22,6 +22,9 @@ class CreateUsersTable extends Migration
                 ->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
+            $table->timestamp('suspended_at')->nullable();
+            $table->dateTime('suspending_expires_at')->nullable();
+            $table->text('suspending_reason')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
