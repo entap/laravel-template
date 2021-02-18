@@ -11,5 +11,10 @@
     "Clear Condition": "条件クリア",
     "Login": "ログイン",
     "Logout": "ログアウト",
-    "Admin Settings": "管理設定"
+    "Admin Settings": "管理設定",
+    "Suspending": "凍結",
+    "Suspend": "凍結",
+    "Unsuspend": "凍結解除",
+    "This user has suspended.": "このユーザーは凍結されています。",
+    "Are you sure you want to suspend?": "本当に凍結してもよろしいですか？"
 }
