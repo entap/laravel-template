@@ -10,6 +10,7 @@
                     <th>@lang('temporary_users.properties.name')</th>
                     <th>@lang('temporary_users.properties.email')</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
