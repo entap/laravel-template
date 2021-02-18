@@ -15,6 +15,7 @@ class CreateTemporaryUsersTable extends Migration
     {
         Schema::create('temporary_users', function (Blueprint $table) {
             $table->id();
+            $table->string('email');
             $table->string('name')->nullable();
             $table->timestamps();
         });

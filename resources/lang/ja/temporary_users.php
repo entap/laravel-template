@@ -3,5 +3,6 @@ return [
     'title' => '仮登録ユーザー',
     'properties' => [
         'name' => '名前',
+        'email' => 'メールアドレス',
     ],
 ];
