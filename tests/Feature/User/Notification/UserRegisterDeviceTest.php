@@ -19,7 +19,7 @@ class UserRegisterDeviceTest extends TestCase
         $newDevice = UserNotificationDevice::factory()->make();
 
         $response = $this->actingAs($user, 'api')->postJson(
-            '/api/notifications/register',
+            '/api/notification/devices',
             [
                 'token' => $newDevice->token,
             ]

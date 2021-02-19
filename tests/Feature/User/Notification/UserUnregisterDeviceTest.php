@@ -12,17 +12,13 @@ class UserUnregisterDeviceTest extends TestCase
 {
     public function test_通知先を削除する()
     {
-        $this->withoutExceptionHandling();
         $user = User::factory()->create();
         $device = UserNotificationDevice::factory()->create([
             'user_id' => $user->id,
         ]);
 
         $response = $this->actingAs($user, 'api')->deleteJson(
-            '/api/notifications/unregister',
-            [
-                'token' => $device->token,
-            ]
+            "/api/notification/devices/{$device->token}"
         );
 
         $response->assertNoContent();

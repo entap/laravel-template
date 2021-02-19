@@ -23,12 +23,12 @@ Route::middleware('auth:api')->group(function () {
         'only' => ['store', 'update', 'destroy'],
     ]);
 
-    Route::post('/notifications/register', [
+    Route::post('/notification/devices', [
         UserNotificationDeviceController::class,
         'register',
     ]);
 
-    Route::delete('/notifications/unregister', [
+    Route::delete('/notification/devices/{device:token}', [
         UserNotificationDeviceController::class,
         'unregister',
     ]);
