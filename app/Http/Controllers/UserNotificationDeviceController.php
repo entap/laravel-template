@@ -22,4 +22,19 @@ class UserNotificationDeviceController extends Controller
 
         return $device;
     }
+
+    public function unregister(Request $request)
+    {
+        $validatedData = $request->validate([
+            'token' => 'required|string',
+        ]);
+
+        $user = $request->user();
+        $user
+            ->notificationDevices()
+            ->hasToken($validatedData['token'])
+            ->delete();
+
+        return response()->noContent();
+    }
 }

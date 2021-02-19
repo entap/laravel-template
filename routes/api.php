@@ -26,7 +26,12 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/notifications/register', [
         UserNotificationDeviceController::class,
         'register',
-    ])->name('api.notifications.register');
+    ]);
+
+    Route::delete('/notifications/unregister', [
+        UserNotificationDeviceController::class,
+        'unregister',
+    ]);
 });
 
 Route::post('temporary-users', [
