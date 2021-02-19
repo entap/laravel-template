@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserDeviceController;
+use App\Http\Controllers\UserNotificationDeviceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,11 @@ Route::middleware('auth:api')->group(function () {
     Route::apiResource('/user/devices', UserDeviceController::class, [
         'only' => ['store', 'update', 'destroy'],
     ]);
+
+    Route::post('/notifications/register', [
+        UserNotificationDeviceController::class,
+        'register',
+    ])->name('api.notifications.register');
 });
 
 Route::post('temporary-users', [
