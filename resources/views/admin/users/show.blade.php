@@ -17,16 +17,9 @@
                         </button>
                     </form>
                 @else
-                    <form action="{{ route('admin.users.suspend', $user) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-sm btn-danger text-nowrap"
-                                onclick="confirm('@lang('Are you sure you want to suspend?')')">
-                                @lang('Suspend')
-                            </button>
-                        </div>
-                    </form>
+                    <a href="{{ route('admin.users.suspend', $user) }}" class="btn btn-sm btn-danger text-nowrap">
+                        @lang('Suspend')
+                    </a>
                 @endif
             </dd>
         </div>

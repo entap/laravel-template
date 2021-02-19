@@ -32,9 +32,15 @@ Admin::routeGroup(function () {
         'only' => ['index', 'show'],
     ])->names('admin.users');
 
-    Route::put('users/{user}/suspend', SuspendUserController::class)->name(
-        'admin.users.suspend'
-    );
+    Route::get('users/{user}/suspend', [
+        SuspendUserController::class,
+        'showSuspendForm',
+    ]);
+
+    Route::put('users/{user}/suspend', [
+        SuspendUserController::class,
+        'suspend',
+    ])->name('admin.users.suspend');
 
     Route::put('users/{user}/unsuspend', UnsuspendUserController::class)->name(
         'admin.users.unsuspend'

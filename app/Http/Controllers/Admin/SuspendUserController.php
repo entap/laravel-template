@@ -9,12 +9,20 @@ use Illuminate\Http\Request;
 
 class SuspendUserController extends Controller
 {
-    public function __invoke(User $user)
+    public function showSuspendForm(User $user)
     {
-        $user->suspend();
+        return view('admin.users.suspend', compact('user'));
+    }
+
+    public function suspend(Request $request, User $user)
+    {
+        $data = $request->validate([
+            'suspending_reason' => 'nullable|string',
+        ]);
+        $user->suspend($data['suspending_reason']);
 
         event(new UserSuspended($user));
 
-        return back();
+        return view('admin.users.show', compact('user'));
     }
 }
