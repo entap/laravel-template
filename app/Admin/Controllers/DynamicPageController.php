@@ -47,7 +47,7 @@ class DynamicPageController extends Controller
         $content = $dynamicPage
             ->contents()
             ->latest()
-            ->firstOrFail();
+            ->firstOrNew();
 
         return view(
             'admin.dynamic_pages.edit',
