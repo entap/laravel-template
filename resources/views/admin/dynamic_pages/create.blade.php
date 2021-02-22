@@ -34,10 +34,6 @@
             <label for="body">@lang('Body')</label>
             <div>
                 {{-- Quill Editor --}}
-                <div id="toolbar">
-                    <button class="ql-bold">Bold</button>
-                    <button class="ql-italic">Italic</button>
-                </div>
                 <div id="editor"></div>
 
                 <input type="hidden" name="body" id="body" required />
@@ -65,11 +61,28 @@
         </a>
     </div>
 
-    <script src="https://cdn.quilljs.com/1.0.0/quill.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
     <script>
         var editor = new Quill('#editor', {
             modules: {
-                toolbar: '#toolbar'
+                toolbar: [
+                    ['bold', 'italic', 'underline', 'strike'],
+                    ['link'],
+                    [{
+                            'header': 1
+                        },
+                        {
+                            'header': 2
+                        }
+                    ], // custom button values
+                    [{
+                        'list': 'ordered'
+                    }, {
+                        'list': 'bullet'
+                    }],
+
+                    ['clean'] // remove formatting button
+                ],
             },
             theme: 'snow'
         });
@@ -78,5 +91,5 @@
 @endsection
 
 @push('head')
-    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 @endpush

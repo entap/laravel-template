@@ -28,7 +28,18 @@ class DynamicContent extends Model
                         function ($tag) {
                             return "<{$tag}>";
                         },
-                        ['a', 'strong']
+                        [
+                            'a',
+                            'br',
+                            'p',
+                            'strong',
+                            'em',
+                            'ul',
+                            'ol',
+                            'li',
+                            'u',
+                            's',
+                        ]
                     )
                 )
             )
