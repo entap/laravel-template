@@ -48,10 +48,22 @@ class DynamicPageController extends Controller
             ->contents()
             ->latest()
             ->firstOrNew();
+        $contentBody = strip_tags(
+            $content->body ?? '',
+            implode(
+                '',
+                array_map(
+                    function ($tag) {
+                        return "<{$tag}>";
+                    },
+                    ['a', 'strong']
+                )
+            )
+        );
 
         return view(
             'admin.dynamic_pages.edit',
-            compact('dynamicPage', 'content')
+            compact('dynamicPage', 'content', 'contentBody')
         );
     }
 

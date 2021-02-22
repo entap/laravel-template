@@ -33,9 +33,14 @@
         <div class="form-group">
             <label for="body">@lang('Body')</label>
             <div>
-                {{-- FIXME サニタイズする --}}
-                <textarea id="body" class="form-control @error('body') is-invalid @enderror" name="body"
-                    required>{{ old('body', $content->body) }}</textarea>
+                {{-- Quill Editor --}}
+                <div id="toolbar">
+                    <button class="ql-bold">Bold</button>
+                    <button class="ql-italic">Italic</button>
+                </div>
+                <div id="editor">{!! old('body', $contentBody) !!}</div>
+
+                <input type="hidden" name="body" id="body" required />
                 @error('body')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -45,8 +50,9 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary text-nowrap">
-                @lang('Create')
+            <button type="submit" class="btn btn-primary text-nowrap"
+                onclick="document.getElementById('body').value = document.getElementById('editor').innerHTML">
+                @lang('Update')
             </button>
         </div>
     </form>
@@ -58,4 +64,19 @@
             @lang('Back')
         </a>
     </div>
+
+    <script src="https://cdn.quilljs.com/1.0.0/quill.min.js"></script>
+    <script>
+        var editor = new Quill('#editor', {
+            modules: {
+                toolbar: '#toolbar'
+            },
+            theme: 'snow'
+        });
+
+    </script>
 @endsection
+
+@push('head')
+    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+@endpush
