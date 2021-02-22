@@ -1,8 +1,9 @@
 @extends(config('admin.view.layouts.default'))
 
 @section('content')
-    <form action="{{ route('admin.dynamic-pages.store') }}" method="POST">
+    <form action="{{ route('admin.dynamic-pages.update', $dynamicPage) }}" method="POST">
         @csrf
+        @method('PUT')
 
         <div class="form-group">
             <label for="slug">@lang('Slug')</label>

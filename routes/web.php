@@ -67,7 +67,7 @@ Admin::routeGroup(function () {
     )->name('admin.temporary-users.reject');
 
     Route::resource('dynamic-pages', DynamicPageController::class, [
-        'except' => ['show', 'update'],
+        'except' => ['show'],
     ])->names('admin.dynamic-pages');
 });
 
