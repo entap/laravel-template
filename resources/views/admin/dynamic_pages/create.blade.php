@@ -49,4 +49,12 @@
             </button>
         </div>
     </form>
+
+    <hr>
+
+    <div>
+        <a href="{{ route('admin.dynamic-pages.index') }}" class="btn btn-link text-nowrap">
+            @lang('Back')
+        </a>
+    </div>
 @endsection
