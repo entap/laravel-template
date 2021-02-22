@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DynamicPage;
 use Illuminate\Http\Request;
+use Illuminate\Support\HtmlString;
 
 class ShowDynamicPageController extends Controller
 {
@@ -16,15 +17,17 @@ class ShowDynamicPageController extends Controller
             ->contents()
             ->latest()
             ->first();
-        $contentBody = strip_tags(
-            $content->body,
-            implode(
-                '',
-                array_map(
-                    function ($tag) {
-                        return "<{$tag}>";
-                    },
-                    ['a', 'strong']
+        $contentBody = new HtmlString(
+            strip_tags(
+                $content->body,
+                implode(
+                    '',
+                    array_map(
+                        function ($tag) {
+                            return "<{$tag}>";
+                        },
+                        ['a', 'strong']
+                    )
                 )
             )
         );
