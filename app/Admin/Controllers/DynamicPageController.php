@@ -12,7 +12,9 @@ class DynamicPageController extends Controller
 {
     public function index()
     {
-        $pages = DynamicPage::with('contents')->get();
+        $pages = DynamicPage::with('contents')
+            ->latest('updated_at')
+            ->get();
 
         return view('admin.dynamic_pages.index', compact('pages'));
     }

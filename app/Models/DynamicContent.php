@@ -12,6 +12,8 @@ class DynamicContent extends Model
 
     protected $fillable = ['subject', 'body'];
 
+    protected $touches = ['page'];
+
     public function page()
     {
         return $this->belongsTo(DynamicPage::class, 'dynamic_page_id');
@@ -19,6 +21,7 @@ class DynamicContent extends Model
 
     public function getContentHtml(): HtmlString
     {
+        // TODO ビューのヘルパーにした方がいいかも
         return new HtmlString(
             strip_tags(
                 $this->body ?? '',
