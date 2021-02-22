@@ -9,8 +9,10 @@ use App\Http\Controllers\FixTemporaryUserController;
 use App\Http\Controllers\Admin\SuspendUserController;
 use App\Http\Controllers\Admin\UnsuspendUserController;
 use App\Admin\Controllers\AcceptTemporaryUserController;
+use App\Admin\Controllers\DynamicPageController;
 use App\Admin\Controllers\RejectTemporaryUserController;
 use App\Http\Controllers\RegisterTemporaryUserController;
+use App\Http\Controllers\ShowDynamicPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +65,10 @@ Admin::routeGroup(function () {
         'temporary-users/{temporaryUser}/reject',
         RejectTemporaryUserController::class
     )->name('admin.temporary-users.reject');
+
+    Route::resource('dynamic-pages', DynamicPageController::class, [
+        'except' => ['show', 'update'],
+    ])->names('admin.dynamic-pages');
 });
 
 Route::get('temporary-users', [
@@ -81,3 +87,5 @@ Route::put('temporary-users/{rejectedTemporaryUser:token}', [
     FixTemporaryUserController::class,
     'update',
 ])->name('temporary-users.fix');
+
+Route::get('dynamic-pages/{page:slug}', ShowDynamicPageController::class);

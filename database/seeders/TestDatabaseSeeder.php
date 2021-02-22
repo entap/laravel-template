@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\DynamicContent;
+use App\Models\DynamicPage;
 use App\Models\TemporaryUser;
 use App\Models\User;
 use App\Models\UserSegment;
@@ -57,6 +59,10 @@ class TestDatabaseSeeder extends Seeder
         UserSegment::factory(5)->create();
 
         TemporaryUser::factory(15)->create();
+
+        DynamicPage::factory(5)
+            ->has(DynamicContent::factory(5), 'contents')
+            ->create();
     }
 
     // protected function runForAdmin()
