@@ -19,6 +19,18 @@ class DynamicPageController extends Controller
         return view('admin.dynamic_pages.index', compact('pages'));
     }
 
+    public function show(DynamicPage $dynamicPage)
+    {
+        $contents = $dynamicPage
+            ->contents()
+            ->latest()
+            ->get();
+        return view('admin.dynamic_pages.show', [
+            'page' => $dynamicPage,
+            'contents' => $contents,
+        ]);
+    }
+
     public function create()
     {
         return view('admin.dynamic_pages.create');
@@ -32,7 +44,7 @@ class DynamicPageController extends Controller
             'body' => 'required|string',
         ]);
 
-        DB::transaction(function () use ($validatedData) {
+        $page = DB::transaction(function () use ($validatedData) {
             $dynamicPage = DynamicPage::create([
                 'slug' => $validatedData['slug'],
             ]);
@@ -40,9 +52,10 @@ class DynamicPageController extends Controller
                 'subject' => $validatedData['subject'],
                 'body' => $validatedData['body'],
             ]);
+            return $dynamicPage;
         });
 
-        return redirect()->route('admin.dynamic-pages.index');
+        return redirect()->route('admin.dynamic-pages.show', $page);
     }
 
     public function edit(DynamicPage $dynamicPage)
@@ -80,7 +93,7 @@ class DynamicPageController extends Controller
             ]);
         });
 
-        return redirect()->route('admin.dynamic-pages.index');
+        return redirect()->route('admin.dynamic-pages.show', $dynamicPage);
     }
 
     public function destroy(DynamicPage $dynamicPage)

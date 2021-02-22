@@ -16,6 +16,7 @@
                 <th>@lang('Subject')</th>
                 <th></th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +24,11 @@
                 <tr>
                     <td>{{ $page->slug }}</td>
                     <td>{{ optional($page->contents->last())->subject }}</td>
+                    <td>
+                        <a href="{{ route('admin.dynamic-pages.show', $page) }}" class="btn btn-sm btn-link text-nowrap">
+                            @lang('Show')
+                        </a>
+                    </td>
                     <td>
                         <a href="{{ route('admin.dynamic-pages.edit', $page) }}"
                             class="btn btn-sm btn-primary text-nowrap">

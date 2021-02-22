@@ -3,16 +3,17 @@
 use Entap\Admin\Facades\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Admin\Controllers\UserController;
+use App\Admin\Controllers\DynamicPageController;
 use App\Admin\Controllers\UserSegmentController;
 use App\Admin\Controllers\TemporaryUserController;
+use App\Admin\Controllers\DynamicContentController;
+use App\Http\Controllers\ShowDynamicPageController;
 use App\Http\Controllers\FixTemporaryUserController;
 use App\Http\Controllers\Admin\SuspendUserController;
 use App\Http\Controllers\Admin\UnsuspendUserController;
 use App\Admin\Controllers\AcceptTemporaryUserController;
-use App\Admin\Controllers\DynamicPageController;
 use App\Admin\Controllers\RejectTemporaryUserController;
 use App\Http\Controllers\RegisterTemporaryUserController;
-use App\Http\Controllers\ShowDynamicPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,9 +67,12 @@ Admin::routeGroup(function () {
         RejectTemporaryUserController::class
     )->name('admin.temporary-users.reject');
 
-    Route::resource('dynamic-pages', DynamicPageController::class, [
-        'except' => ['show'],
-    ])->names('admin.dynamic-pages');
+    Route::resource('dynamic-pages', DynamicPageController::class)->names(
+        'admin.dynamic-pages'
+    );
+    Route::resource('dynamic-contents', DynamicContentController::class, [
+        'only' => 'show',
+    ])->names('admin.dynamic-contents');
 });
 
 Route::get('temporary-users', [
