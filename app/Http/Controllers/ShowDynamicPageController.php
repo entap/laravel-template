@@ -17,24 +17,7 @@ class ShowDynamicPageController extends Controller
             ->contents()
             ->latest()
             ->first();
-        $contentBody = new HtmlString(
-            strip_tags(
-                $content->body,
-                implode(
-                    '',
-                    array_map(
-                        function ($tag) {
-                            return "<{$tag}>";
-                        },
-                        ['a', 'strong']
-                    )
-                )
-            )
-        );
 
-        return view(
-            'dynamic_pages.show',
-            compact('page', 'content', 'contentBody')
-        );
+        return view('dynamic_pages.show', compact('page', 'content'));
     }
 }

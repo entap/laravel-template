@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Admin\Controllers\Controller;
 use App\Models\DynamicPage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\HtmlString;
 
 class DynamicPageController extends Controller
 {
@@ -48,22 +49,10 @@ class DynamicPageController extends Controller
             ->contents()
             ->latest()
             ->firstOrNew();
-        $contentBody = strip_tags(
-            $content->body ?? '',
-            implode(
-                '',
-                array_map(
-                    function ($tag) {
-                        return "<{$tag}>";
-                    },
-                    ['a', 'strong']
-                )
-            )
-        );
 
         return view(
             'admin.dynamic_pages.edit',
-            compact('dynamicPage', 'content', 'contentBody')
+            compact('dynamicPage', 'content')
         );
     }
 

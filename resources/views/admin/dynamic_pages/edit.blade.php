@@ -38,7 +38,7 @@
                     <button class="ql-bold">Bold</button>
                     <button class="ql-italic">Italic</button>
                 </div>
-                <div id="editor">{!! old('body', $contentBody) !!}</div>
+                <div id="editor">{!! old('body', $content->getContentHtml()->toHtml()) !!}</div>
 
                 <input type="hidden" name="body" id="body" required />
                 @error('body')
