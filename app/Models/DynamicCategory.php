@@ -11,7 +11,7 @@ class DynamicCategory extends Model
     use HasFactory;
     use NodeTrait;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'parent_id'];
 
     public function pages()
     {

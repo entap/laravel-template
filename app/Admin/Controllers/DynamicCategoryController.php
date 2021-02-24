@@ -29,7 +29,12 @@ class DynamicCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.dynamic_categories.create');
+        $parentOptions = DynamicCategory::all();
+
+        return view(
+            'admin.dynamic_categories.create',
+            compact('parentOptions')
+        );
     }
 
     /**
@@ -42,6 +47,7 @@ class DynamicCategoryController extends Controller
     {
         $d = $request->validate([
             'name' => 'required|string|max:255',
+            'parent_id' => 'nullable|exists:dynamic_categories,id',
         ]);
 
         DynamicCategory::create($d);
@@ -70,8 +76,15 @@ class DynamicCategoryController extends Controller
      */
     public function edit(DynamicCategory $dynamicCategory)
     {
+        $parentOptions = DynamicCategory::where(
+            'id',
+            '<>',
+            $dynamicCategory->id
+        )->get();
+
         return view('admin.dynamic_categories.edit', [
             'category' => $dynamicCategory,
+            'parentOptions' => $parentOptions,
         ]);
     }
 
@@ -86,6 +99,7 @@ class DynamicCategoryController extends Controller
     {
         $d = $request->validate([
             'name' => 'required|string|max:255',
+            'parent_id' => 'nullable|exists:dynamic_categories,id',
         ]);
 
         $dynamicCategory->update($d);
