@@ -15,7 +15,6 @@
                 <th>@lang('Name')</th>
                 <th></th>
                 <th></th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -24,12 +23,6 @@
                     <td>
                         {{ str_repeat('——', $category->depth) }}
                         {{ $category->name }}
-                    </td>
-                    <td>
-                        <a href="{{ route('admin.dynamic-categories.show', $category) }}"
-                            class="btn btn-sm btn-link text-nowrap">
-                            @lang('Show')
-                        </a>
                     </td>
                     <td>
                         <a href="{{ route('admin.dynamic-categories.edit', $category) }}"
