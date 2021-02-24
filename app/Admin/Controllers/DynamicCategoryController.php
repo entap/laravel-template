@@ -29,7 +29,7 @@ class DynamicCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dynamic_categories.create');
     }
 
     /**
@@ -40,7 +40,13 @@ class DynamicCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $d = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        DynamicCategory::create($d);
+
+        return redirect()->route('admin.dynamic-categories.index');
     }
 
     /**
@@ -49,9 +55,11 @@ class DynamicCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(DynamicCategory $dynamicCategory)
     {
-        //
+        return view('admin.dynamic_categories.show', [
+            'category' => $dynamicCategory,
+        ]);
     }
 
     /**
@@ -60,9 +68,11 @@ class DynamicCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(DynamicCategory $dynamicCategory)
     {
-        //
+        return view('admin.dynamic_categories.edit', [
+            'category' => $dynamicCategory,
+        ]);
     }
 
     /**
@@ -72,9 +82,15 @@ class DynamicCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, DynamicCategory $dynamicCategory)
     {
-        //
+        $d = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $dynamicCategory->update($d);
+
+        return redirect()->route('admin.dynamic-categories.index');
     }
 
     /**
@@ -83,8 +99,10 @@ class DynamicCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DynamicCategory $dynamicCategory)
     {
-        //
+        $dynamicCategory->delete();
+
+        return redirect()->route('admin.dynamic-categories.index');
     }
 }
