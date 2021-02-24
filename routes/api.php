@@ -1,9 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserDeviceController;
+use App\Http\Controllers\ShowDynamicPageController;
+use App\Http\Controllers\FixTemporaryUserController;
+use App\Http\Controllers\RegisterTemporaryUserController;
 use App\Http\Controllers\UserNotificationDeviceController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,4 +62,10 @@ Route::post(
 Route::post(
     'auth/line/token',
     \App\Http\Controllers\Auth\Line\LoginController::class
+);
+
+// Dynamic Contents
+
+Route::get('dynamic-pages/{page:slug}', ShowDynamicPageController::class)->name(
+    'api.dynamic_pages.show'
 );
