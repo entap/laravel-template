@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDynamicContentCategoryDynamicPageTable extends Migration
+class CreateDynamicCategoryPageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateDynamicContentCategoryDynamicPageTable extends Migration
      */
     public function up()
     {
-        Schema::create('dynamic_content_category_dynamic_page', function (
-            Blueprint $table
-        ) {
+        Schema::create('dynamic_category_page', function (Blueprint $table) {
             $table
-                ->foreignId('dynamic_content_category_id')
+                ->foreignId('dynamic_category_id')
                 ->constrained()
                 ->onDelete('cascade');
             $table
@@ -35,6 +33,6 @@ class CreateDynamicContentCategoryDynamicPageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dynamic_content_category_dynamic_page');
+        Schema::dropIfExists('dynamic_category_page');
     }
 }

@@ -18,6 +18,9 @@ class DynamicPage extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(DynamicContentCategory::class);
+        return $this->belongsToMany(
+            DynamicCategory::class,
+            'dynamic_category_page'
+        );
     }
 }

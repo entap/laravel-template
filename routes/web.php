@@ -12,6 +12,7 @@ use App\Http\Controllers\FixTemporaryUserController;
 use App\Http\Controllers\Admin\SuspendUserController;
 use App\Http\Controllers\Admin\UnsuspendUserController;
 use App\Admin\Controllers\AcceptTemporaryUserController;
+use App\Admin\Controllers\DynamicCategoryController;
 use App\Admin\Controllers\RejectTemporaryUserController;
 use App\Http\Controllers\RegisterTemporaryUserController;
 
@@ -73,6 +74,11 @@ Admin::routeGroup(function () {
     Route::resource('dynamic-contents', DynamicContentController::class, [
         'only' => 'show',
     ])->names('admin.dynamic-contents');
+
+    Route::resource(
+        'dynamic-categories',
+        DynamicCategoryController::class
+    )->names('admin.dynamic-categories');
 });
 
 Route::get('temporary-users', [

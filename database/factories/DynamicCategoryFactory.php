@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\DynamicContentCategory;
+use App\Models\DynamicCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DynamicContentCategoryFactory extends Factory
+class DynamicCategoryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = DynamicContentCategory::class;
+    protected $model = DynamicCategory::class;
 
     /**
      * Define the model's default state.
