@@ -5,6 +5,8 @@ namespace App\Admin\Controllers;
 use Illuminate\Http\Request;
 use App\Admin\Controllers\Controller;
 use App\Models\DynamicCategory;
+use App\Models\DynamicPage;
+use Illuminate\Support\Facades\DB;
 
 class DynamicCategoryController extends Controller
 {
@@ -30,10 +32,11 @@ class DynamicCategoryController extends Controller
     public function create()
     {
         $parentOptions = DynamicCategory::all();
+        $pageOptions = DynamicPage::all();
 
         return view(
             'admin.dynamic_categories.create',
-            compact('parentOptions')
+            compact('parentOptions', 'pageOptions')
         );
     }
 
@@ -48,9 +51,15 @@ class DynamicCategoryController extends Controller
         $d = $request->validate([
             'name' => 'required|string|max:255',
             'parent_id' => 'nullable|exists:dynamic_categories,id',
+            'pages' => 'sometimes|array',
+            'pages.*' => 'required|exists:dynamic_pages,id',
         ]);
+        $pages = $request->input('pages');
 
-        DynamicCategory::create($d);
+        DB::transaction(function () use ($d, $pages) {
+            $category = DynamicCategory::create($d);
+            $category->pages()->sync($pages);
+        });
 
         return redirect()->route('admin.dynamic-categories.index');
     }
@@ -81,10 +90,12 @@ class DynamicCategoryController extends Controller
             '<>',
             $dynamicCategory->id
         )->get();
+        $pageOptions = DynamicPage::all();
 
         return view('admin.dynamic_categories.edit', [
             'category' => $dynamicCategory,
             'parentOptions' => $parentOptions,
+            'pageOptions' => $pageOptions,
         ]);
     }
 
@@ -100,9 +111,15 @@ class DynamicCategoryController extends Controller
         $d = $request->validate([
             'name' => 'required|string|max:255',
             'parent_id' => 'nullable|exists:dynamic_categories,id',
+            'pages' => 'sometimes|array',
+            'pages.*' => 'required|exists:dynamic_pages,id',
         ]);
+        $pages = $request->input('pages');
 
-        $dynamicCategory->update($d);
+        DB::transaction(function () use ($dynamicCategory, $d, $pages) {
+            $dynamicCategory->update($d);
+            $dynamicCategory->pages()->sync($pages);
+        });
 
         return redirect()->route('admin.dynamic-categories.index');
     }

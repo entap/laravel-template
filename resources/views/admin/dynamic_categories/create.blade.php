@@ -39,6 +39,26 @@
         </div>
 
         <div class="form-group">
+            <label for="pages">@lang('Pages')</label>
+            <div>
+                @foreach ($pageOptions as $option)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="pages[]" value="{{ $option->id }}"
+                            id="page_id_{{ $option->id }}" />
+                        <label class="form-check-label" for="page_id_{{ $option->id }}">
+                            {{ $option->slug }}
+                        </label>
+                    </div>
+                @endforeach
+                @error('pages')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="form-group">
             <button type="submit" class="btn btn-primary text-nowrap">
                 @lang('Create')
             </button>
