@@ -42,17 +42,25 @@ class DynamicPageController extends Controller
             'slug' => 'required|string|alpha_dash|max:255|unique:dynamic_pages',
             'subject' => 'required|string|max:255',
             'body' => 'required|string',
+            'cover' => 'nullable|file|mimes:jpg,png',
         ]);
+        $cover = $request->file('cover');
 
-        $page = DB::transaction(function () use ($validatedData) {
-            $dynamicPage = DynamicPage::create([
+        $page = DB::transaction(function () use ($validatedData, $cover) {
+            $page = DynamicPage::create([
                 'slug' => $validatedData['slug'],
             ]);
-            $dynamicPage->contents()->create([
+            $content = $page->contents()->create([
                 'subject' => $validatedData['subject'],
                 'body' => $validatedData['body'],
             ]);
-            return $dynamicPage;
+            if ($cover) {
+                $path = $cover->store('covers', 'public');
+                $content->cover = $path;
+                $content->save();
+            }
+
+            return $page;
         });
 
         return redirect()->route('admin.dynamic-pages.show', $page);
@@ -83,14 +91,28 @@ class DynamicPageController extends Controller
             ],
             'subject' => 'required|string|max:255',
             'body' => 'required|string',
+            'cover' => 'nullable|file|mimes:jpg,png',
         ]);
+        $cover = $request->file('cover');
 
-        DB::transaction(function () use ($dynamicPage, $validatedData) {
+        DB::transaction(function () use ($dynamicPage, $validatedData, $cover) {
             $dynamicPage->update(['slug' => $validatedData['slug']]);
-            $dynamicPage->contents()->create([
+            $oldContent = $dynamicPage
+                ->contents()
+                ->latest()
+                ->first();
+            $content = $dynamicPage->contents()->create([
                 'subject' => $validatedData['subject'],
                 'body' => $validatedData['body'],
             ]);
+            if ($cover) {
+                $path = $cover->store('covers', 'public');
+                $content->cover = $path;
+                $content->save();
+            } elseif ($oldContent) {
+                $content->cover = $oldContent->cover;
+                $content->save();
+            }
         });
 
         return redirect()->route('admin.dynamic-pages.show', $dynamicPage);

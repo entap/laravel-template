@@ -18,6 +18,7 @@ class CreateDynamicContentsTable extends Migration
             $table->foreignId('dynamic_page_id')->constrained();
             $table->string('subject');
             $table->text('body');
+            $table->string('cover')->nullable();
             $table->timestamps();
         });
     }
