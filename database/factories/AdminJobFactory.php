@@ -23,7 +23,7 @@ class AdminJobFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
+            'admin_user_id' => User::factory(),
             'title' => $this->faker->sentence(),
             'description' => $this->faker->sentence(),
         ];

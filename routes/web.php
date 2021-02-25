@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\SuspendUserController;
 use App\Http\Controllers\Admin\UnsuspendUserController;
 use App\Admin\Controllers\AcceptTemporaryUserController;
 use App\Admin\Controllers\RejectTemporaryUserController;
+use App\Http\Controllers\AdminJobController;
 use App\Http\Controllers\RegisterTemporaryUserController;
 
 /*
@@ -84,6 +85,12 @@ Admin::routeGroup(function () {
     Route::resource('opinions', UserOpinionController::class, [
         'only' => ['index', 'show', 'destroy'],
     ])->names('admin.opinions');
+
+    Route::resource('jobs', AdminJobController::class, [
+        'only' => ['index'],
+    ])
+        ->names('admin.jobs')
+        ->middleware('admin.auth');
 });
 
 Route::get('temporary-users', [
