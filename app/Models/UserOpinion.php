@@ -18,4 +18,9 @@ class UserOpinion extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getUserNameAttribute()
+    {
+        return $this->user->name;
+    }
 }

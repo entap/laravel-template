@@ -16,13 +16,9 @@
             @foreach ($opinions as $opinion)
                 <tr>
                     <td>
-                        @if ($opinion->user)
-                            <a href="{{ route('admin.users.show', $opinion->user) }}">
-                                {{ $opinion->user->name }}
-                            </a>
-                        @else
-                            {{ $opinion->email }}
-                        @endif
+                        <a href="{{ route('admin.users.show', $opinion->user) }}">
+                            {{ $opinion->userName }}
+                        </a>
                     </td>
                     <td>{{ $opinion->subject }}</td>
                     <td>
