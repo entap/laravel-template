@@ -6,6 +6,7 @@ use App\Http\Controllers\UserDeviceController;
 use App\Http\Controllers\ShowDynamicPageController;
 use App\Http\Controllers\FixTemporaryUserController;
 use App\Http\Controllers\RegisterTemporaryUserController;
+use App\Http\Controllers\SendOpinionController;
 use App\Http\Controllers\UserNotificationDeviceController;
 
 /*
@@ -35,6 +36,8 @@ Route::middleware('auth:api')->group(function () {
         UserNotificationDeviceController::class,
         'unregister',
     ]);
+
+    Route::post('opinions', [SendOpinionController::class, 'send']);
 });
 
 Route::post('temporary-users', [

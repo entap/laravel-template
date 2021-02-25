@@ -24,7 +24,6 @@ class UserOpinionFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'email' => $this->faker->safeEmail,
             'subject' => $this->faker->sentence(),
             'body' => $this->faker->paragraph(),
         ];
