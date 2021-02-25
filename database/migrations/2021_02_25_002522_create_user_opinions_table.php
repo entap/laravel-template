@@ -15,7 +15,10 @@ class CreateUserOpinionsTable extends Migration
     {
         Schema::create('user_opinions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table
+                ->foreignId('user_id')
+                ->constrained()
+                ->onDelete('cascade');
             $table->string('subject');
             $table->text('body');
             $table->timestamps();
