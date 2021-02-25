@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\DynamicCategory;
 use App\Models\DynamicContent;
 use App\Models\DynamicPage;
 use App\Models\TemporaryUser;
 use App\Models\User;
+use App\Models\UserOpinion;
 use App\Models\UserSegment;
 use Illuminate\Database\Seeder;
 use Entap\Admin\Database\Models\Role;
@@ -63,6 +65,10 @@ class TestDatabaseSeeder extends Seeder
         DynamicPage::factory(5)
             ->has(DynamicContent::factory(5), 'contents')
             ->create();
+
+        DynamicCategory::factory(5)->create();
+
+        UserOpinion::factory(10)->create();
     }
 
     // protected function runForAdmin()
