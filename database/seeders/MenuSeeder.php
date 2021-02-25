@@ -16,26 +16,36 @@ class MenuSeeder extends Seeder
     public function run()
     {
         $this->createUsersMenuItem();
-        $this->createUserSegmentsMenuItem();
-        $this->createTemporaryUsersMenuItem();
-        $this->createUsersPermission();
         $this->createPackagesMenuItem();
         $this->createLogsMenuItem();
+        $this->createDynamicContentsMenuItem();
+        $this->createUserOpinionsMenuItem();
     }
 
     protected function createUsersMenuItem()
     {
+        $parent = MenuItem::create([
+            'title' => 'ユーザー管理',
+        ]);
+
         MenuItem::create([
             'title' => 'ユーザー',
             'uri' => route('admin.users.index', null, false),
+            'parent_id' => $parent->id,
         ]);
+
+        $this->createTemporaryUsersMenuItem($parent);
+        $this->createUserSegmentsMenuItem($parent);
+
+        $this->createUsersPermission();
     }
 
-    protected function createUserSegmentsMenuItem()
+    protected function createUserSegmentsMenuItem(MenuItem $parent = null)
     {
         MenuItem::create([
             'title' => 'ユーザーセグメント',
             'uri' => route('admin.user-segments.index', null, false),
+            'parent_id' => $parent->id,
         ]);
     }
 
@@ -50,11 +60,12 @@ class MenuSeeder extends Seeder
             ->create(['method' => '*', 'action' => 'admin/user-segments*']);
     }
 
-    protected function createTemporaryUsersMenuItem()
+    protected function createTemporaryUsersMenuItem(MenuItem $parent = null)
     {
         MenuItem::create([
             'title' => __('temporary_users.title'),
             'uri' => route('admin.temporary-users.index', null, false),
+            'parent_id' => $parent->id,
         ]);
     }
 
@@ -80,5 +91,38 @@ class MenuSeeder extends Seeder
         $logsPermission
             ->operations()
             ->create(['method' => '*', 'action' => 'admin/log*']);
+    }
+
+    protected function createDynamicContentsMenuItem()
+    {
+        $parent = MenuItem::create([
+            'title' => 'コンテンツ管理',
+        ]);
+        MenuItem::create([
+            'title' => 'カテゴリ管理',
+            'uri' => route('admin.dynamic-categories.index', null, false),
+            'parent_id' => $parent->id,
+        ]);
+        MenuItem::create([
+            'title' => 'ページ管理',
+            'uri' => route('admin.dynamic-pages.index', null, false),
+            'parent_id' => $parent->id,
+        ]);
+        $permission = Permission::create(['name' => 'admin.contents']);
+        $permission
+            ->operations()
+            ->create(['method' => '*', 'action' => 'admin/dynamic-*']);
+    }
+
+    protected function createUserOpinionsMenuItem()
+    {
+        MenuItem::create([
+            'title' => '問い合わせ',
+            'uri' => route('admin.opinions.index', null, false),
+        ]);
+        $permission = Permission::create(['name' => 'admin.opinions']);
+        $permission
+            ->operations()
+            ->create(['method' => '*', 'action' => 'admin/opinions*']);
     }
 }
