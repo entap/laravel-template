@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DynamicCategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserDeviceController;
@@ -72,3 +73,5 @@ Route::post(
 Route::get('dynamic-pages/{page:slug}', ShowDynamicPageController::class)->name(
     'api.dynamic_pages.show'
 );
+
+Route::get('dynamic-categories', [DynamicCategoryController::class, 'index']);
