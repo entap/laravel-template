@@ -34,63 +34,64 @@ Route::get('/', function () {
 });
 
 Admin::routeGroup(function () {
-    Route::resource('users', UserController::class, [
-        'only' => ['index', 'show'],
-    ])->names('admin.users');
+    Route::middleware('admin.auth')->group(function () {
+        Route::resource('users', UserController::class, [
+            'only' => ['index', 'show'],
+        ])->names('admin.users');
 
-    Route::get('users/{user}/suspend', [
-        SuspendUserController::class,
-        'showSuspendForm',
-    ]);
+        Route::get('users/{user}/suspend', [
+            SuspendUserController::class,
+            'showSuspendForm',
+        ]);
 
-    Route::put('users/{user}/suspend', [
-        SuspendUserController::class,
-        'suspend',
-    ])->name('admin.users.suspend');
+        Route::put('users/{user}/suspend', [
+            SuspendUserController::class,
+            'suspend',
+        ])->name('admin.users.suspend');
 
-    Route::put('users/{user}/unsuspend', UnsuspendUserController::class)->name(
-        'admin.users.unsuspend'
-    );
+        Route::put(
+            'users/{user}/unsuspend',
+            UnsuspendUserController::class
+        )->name('admin.users.unsuspend');
 
-    Route::resource('user-segments', UserSegmentController::class, [
-        'except' => ['create', 'store'],
-    ])->names('admin.user-segments');
+        Route::resource('user-segments', UserSegmentController::class, [
+            'except' => ['create', 'store'],
+        ])->names('admin.user-segments');
 
-    Route::resource('temporary-users', TemporaryUserController::class, [
-        'only' => ['index', 'show'],
-    ])->names('admin.temporary-users');
+        Route::resource('temporary-users', TemporaryUserController::class, [
+            'only' => ['index', 'show'],
+        ])->names('admin.temporary-users');
 
-    Route::post(
-        'temporary-users/{temporaryUser}/accept',
-        AcceptTemporaryUserController::class
-    )->name('admin.temporary-users.accept');
+        Route::post(
+            'temporary-users/{temporaryUser}/accept',
+            AcceptTemporaryUserController::class
+        )->name('admin.temporary-users.accept');
 
-    Route::post(
-        'temporary-users/{temporaryUser}/reject',
-        RejectTemporaryUserController::class
-    )->name('admin.temporary-users.reject');
+        Route::post(
+            'temporary-users/{temporaryUser}/reject',
+            RejectTemporaryUserController::class
+        )->name('admin.temporary-users.reject');
 
-    Route::resource('dynamic-pages', DynamicPageController::class)->names(
-        'admin.dynamic-pages'
-    );
-    Route::resource('dynamic-contents', DynamicContentController::class, [
-        'only' => 'show',
-    ])->names('admin.dynamic-contents');
+        Route::resource('dynamic-pages', DynamicPageController::class)->names(
+            'admin.dynamic-pages'
+        );
+        Route::resource('dynamic-contents', DynamicContentController::class, [
+            'only' => 'show',
+        ])->names('admin.dynamic-contents');
 
-    Route::resource(
-        'dynamic-categories',
-        DynamicCategoryController::class
-    )->names('admin.dynamic-categories');
+        Route::resource(
+            'dynamic-categories',
+            DynamicCategoryController::class
+        )->names('admin.dynamic-categories');
 
-    Route::resource('opinions', UserOpinionController::class, [
-        'only' => ['index', 'show', 'destroy'],
-    ])->names('admin.opinions');
+        Route::resource('opinions', UserOpinionController::class, [
+            'only' => ['index', 'show', 'destroy'],
+        ])->names('admin.opinions');
 
-    Route::resource('jobs', AdminJobController::class, [
-        'only' => ['index'],
-    ])
-        ->names('admin.jobs')
-        ->middleware('admin.auth');
+        Route::resource('jobs', AdminJobController::class, [
+            'only' => ['index'],
+        ])->names('admin.jobs');
+    });
 });
 
 Route::get('temporary-users', [
