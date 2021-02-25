@@ -41,6 +41,10 @@ class TestDatabaseSeeder extends Seeder
 
     protected function runForApp()
     {
+        User::factory()->create([
+            'email' => 'test@example.com',
+        ]);
+
         User::factory(50)
             ->state(new Sequence([], ['created_at' => now()->subDay(5)]))
             ->hasDevices(2)
