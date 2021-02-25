@@ -4,15 +4,16 @@ use Entap\Admin\Facades\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Admin\Controllers\UserController;
 use App\Admin\Controllers\DynamicPageController;
+use App\Admin\Controllers\UserOpinionController;
 use App\Admin\Controllers\UserSegmentController;
 use App\Admin\Controllers\TemporaryUserController;
 use App\Admin\Controllers\DynamicContentController;
 use App\Http\Controllers\ShowDynamicPageController;
+use App\Admin\Controllers\DynamicCategoryController;
 use App\Http\Controllers\FixTemporaryUserController;
 use App\Http\Controllers\Admin\SuspendUserController;
 use App\Http\Controllers\Admin\UnsuspendUserController;
 use App\Admin\Controllers\AcceptTemporaryUserController;
-use App\Admin\Controllers\DynamicCategoryController;
 use App\Admin\Controllers\RejectTemporaryUserController;
 use App\Http\Controllers\RegisterTemporaryUserController;
 
@@ -79,6 +80,10 @@ Admin::routeGroup(function () {
         'dynamic-categories',
         DynamicCategoryController::class
     )->names('admin.dynamic-categories');
+
+    Route::resource('opinions', UserOpinionController::class, [
+        'only' => ['index', 'show', 'destroy'],
+    ])->names('admin.opinions');
 });
 
 Route::get('temporary-users', [
