@@ -71,10 +71,7 @@ class User extends Authenticatable
             return false;
         }
         if ($agreementType->isStrictMode()) {
-            // 新しい契約が作られてなければ真
-            return $agreementType
-                ->where('created_at', '>', $agreement->created_at)
-                ->count() === 0;
+            return !$agreementType->hasNewAgreements($agreement->created_at);
         }
         return true;
     }

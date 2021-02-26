@@ -13,7 +13,14 @@ class UserAgreementController extends Controller
 
         if ($request->expectsJson()) {
             return [
-                'agreed' => $user->hasAgreed($agreementType),
+                'status' => $user->hasAgreed($agreementType) ? 'agreed' : '',
+                'agreement_id' => optional(
+                    $user
+                        ->agreements()
+                        ->where('agreement_type_id', $agreementType->id)
+                        ->latest()
+                        ->first()
+                )->id,
             ];
         }
     }
