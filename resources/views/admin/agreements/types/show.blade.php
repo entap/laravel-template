@@ -44,4 +44,12 @@
             @endforeach
         </tbody>
     </table>
+
+    <hr>
+
+    <div>
+        <a href="{{ route('admin.agreement_types.index') }}" class="btn btn-link text-nowrap">
+            @lang('Back')
+        </a>
+    </div>
 @endsection
