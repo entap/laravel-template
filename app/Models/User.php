@@ -51,6 +51,11 @@ class User extends Authenticatable
         return $this->hasMany(UserNotificationDevice::class);
     }
 
+    public function agreements()
+    {
+        return $this->belongsToMany(Agreement::class);
+    }
+
     public function getDeviceTokens()
     {
         return $this->notificationDevices->pluck('token');
