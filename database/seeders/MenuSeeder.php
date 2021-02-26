@@ -20,6 +20,7 @@ class MenuSeeder extends Seeder
         $this->createLogsMenuItem();
         $this->createDynamicContentsMenuItem();
         $this->createUserOpinionsMenuItem();
+        $this->createUserAgreements();
     }
 
     protected function createUsersMenuItem()
@@ -124,5 +125,18 @@ class MenuSeeder extends Seeder
         $permission
             ->operations()
             ->create(['method' => '*', 'action' => 'admin/opinions*']);
+    }
+
+    protected function createUserAgreements()
+    {
+        MenuItem::create([
+            'title' => '契約',
+            'uri' => route('admin.agreement_types.index', null, false),
+        ]);
+
+        $permission = Permission::create(['name' => 'admin.agreements']);
+        $permission
+            ->operations()
+            ->create(['method' => '*', 'action' => 'admin/agreement_types*']);
     }
 }
