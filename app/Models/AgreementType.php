@@ -14,7 +14,7 @@ class AgreementType extends Model
 
     protected $fillable = ['slug', 'name'];
 
-    protected function agreements()
+    public function agreements()
     {
         return $this->hasMany(Agreement::class);
     }

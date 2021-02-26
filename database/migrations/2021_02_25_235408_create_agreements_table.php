@@ -13,6 +13,13 @@ class CreateAgreementsTable extends Migration
      */
     public function up()
     {
+        Schema::create('agreement_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('slug')->unique();
+            $table->string('name');
+            $table->timestamps();
+        });
+
         Schema::create('agreements', function (Blueprint $table) {
             $table->id();
             $table->foreignId('agreement_type_id')->constrained();
@@ -30,5 +37,6 @@ class CreateAgreementsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('agreements');
+        Schema::dropIfExists('agreement_types');
     }
 }

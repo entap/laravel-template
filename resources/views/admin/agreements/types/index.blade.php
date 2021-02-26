@@ -4,7 +4,7 @@
     <h1>@lang('Agreement Types')</h1>
 
     <div class="text-right">
-        <a href="{{ route('admin.agreement_types.create') }}" class="btn btn-link text-nowrap">
+        <a href="{{ route('admin.agreement_types.create') }}" class="btn btn-primary text-nowrap">
             @lang('Add Agreement Type')
         </a>
     </div>

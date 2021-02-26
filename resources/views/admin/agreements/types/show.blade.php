@@ -9,6 +9,12 @@
 
     <h5>@lang('Agreements')</h5>
 
+    <div class="text-right">
+        <a href="{{ route('admin.agreement_types.agreements.create', $type) }}" class="btn btn-primary text-nowrap">
+            @lang('Add Agreement')
+        </a>
+    </div>
+
     <table class="table mt-3">
         <thead>
             <tr>
