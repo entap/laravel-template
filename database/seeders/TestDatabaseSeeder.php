@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Agreement;
+use App\Models\AgreementType;
 use App\Models\DynamicCategory;
 use App\Models\DynamicContent;
 use App\Models\DynamicPage;
@@ -75,6 +76,9 @@ class TestDatabaseSeeder extends Seeder
 
         UserOpinion::factory(10)->create();
 
+        AgreementType::factory()
+            ->hasAgreements(3)
+            ->create(['slug' => 'test']);
         Agreement::factory(10)->create();
     }
 

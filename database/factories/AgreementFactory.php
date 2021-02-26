@@ -24,6 +24,7 @@ class AgreementFactory extends Factory
     {
         return [
             'agreement_type_id' => AgreementType::factory(),
+            'name' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
         ];
     }
