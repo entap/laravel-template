@@ -60,4 +60,22 @@ class User extends Authenticatable
     {
         return $this->notificationDevices->pluck('token');
     }
+
+    public function hasAgreed($agreementType)
+    {
+        $agreement = $this->agreements()
+            ->where('agreement_type_id', $agreementType->id)
+            ->latest()
+            ->first();
+        if (empty($agreement)) {
+            return false;
+        }
+        if ($agreementType->isStrictMode()) {
+            // 新しい契約が作られてなければ真
+            return $agreementType
+                ->where('created_at', '>', $agreement->created_at)
+                ->count() === 0;
+        }
+        return true;
+    }
 }

@@ -48,6 +48,7 @@ class AgreementTypeController extends Controller
                 Rule::unique('agreement_types'),
             ],
             'name' => ['required', 'string', 'max:255'],
+            'confirmation_mode' => ['nullable', 'string', 'in:strict'],
         ]);
         AgreementType::create($d);
 
@@ -104,6 +105,7 @@ class AgreementTypeController extends Controller
                 Rule::unique('agreement_types')->ignore($agreementType),
             ],
             'name' => ['required', 'string', 'max:255'],
+            'confirmation_mode' => ['nullable', 'string', 'in:strict'],
         ]);
 
         $agreementType->update($d);

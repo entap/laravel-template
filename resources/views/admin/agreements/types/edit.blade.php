@@ -34,6 +34,23 @@
         </div>
 
         <div class="form-group">
+            <div>
+                <div class="form-check">
+                    <input type="checkbox" name="confirmation_mode" value="strict" id="confirmation_mode"
+                        class="form-check-input" />
+                    <label class="form-check-label" for="confirmation_mode">
+                        新しい契約を追加したら改めて同意を求める
+                    </label>
+                </div>
+                @error('confirmation_mode')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="form-group">
             <button type="submit" class="btn btn-primary text-nowrap">
                 @lang('Update')
             </button>

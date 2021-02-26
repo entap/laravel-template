@@ -17,6 +17,7 @@ class CreateAgreementsTable extends Migration
             $table->id();
             $table->string('slug')->unique();
             $table->string('name');
+            $table->string('confirmation_mode')->nullable();
             $table->timestamps();
         });
 
