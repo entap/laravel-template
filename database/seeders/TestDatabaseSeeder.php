@@ -22,6 +22,7 @@ use Entap\ClientPackager\Models\PackageRelease;
 use Entap\Admin\Database\Models\LogRequestEntry;
 use Entap\Admin\Database\Models\User as AdminUser;
 use Illuminate\Database\Eloquent\Factories\Sequence;
+use Illuminate\Support\Facades\DB;
 
 class TestDatabaseSeeder extends Seeder
 {
@@ -43,6 +44,17 @@ class TestDatabaseSeeder extends Seeder
 
     protected function runForApp()
     {
+        // Passport
+        DB::table('oauth_clients')->insert([
+            'id' => 1,
+            'name' => 'Laravel Password Grant Client',
+            'secret' => '2Tk9FPCPmXJHcBTwF0SBNAszGThZ3QtV8qtfPT1Q',
+            'redirect' => 'http://localhost',
+            'personal_access_client' => 0,
+            'password_client' => 1,
+            'revoked' => 0,
+        ]);
+
         User::factory()->create([
             'email' => 'test@example.com',
         ]);

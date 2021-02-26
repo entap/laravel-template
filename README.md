@@ -49,7 +49,6 @@ php artisan test
 
 ```sh
 php artisan migrate:fresh \
-    && php artisan passport:install \
     && php artisan admin:seed \
     && php artisan db:seed
 ```
