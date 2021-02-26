@@ -8,6 +8,8 @@ use App\Http\Controllers\ShowDynamicPageController;
 use App\Http\Controllers\FixTemporaryUserController;
 use App\Http\Controllers\RegisterTemporaryUserController;
 use App\Http\Controllers\SendOpinionController;
+use App\Http\Controllers\UserAgreeController;
+use App\Http\Controllers\UserAgreementController;
 use App\Http\Controllers\UserNotificationDeviceController;
 
 /*
@@ -39,6 +41,15 @@ Route::middleware('auth:api')->group(function () {
     ]);
 
     Route::post('opinions', [SendOpinionController::class, 'send']);
+
+    Route::get(
+        'agreements/{agreementType:slug}',
+        UserAgreementController::class
+    );
+    Route::post(
+        'agreements/{agreementType:slug}/agree',
+        UserAgreeController::class
+    );
 });
 
 Route::post('temporary-users', [
