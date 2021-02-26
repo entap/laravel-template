@@ -16,7 +16,6 @@ class CreateAgreementsTable extends Migration
         Schema::create('agreements', function (Blueprint $table) {
             $table->id();
             $table->foreignId('agreement_type_id')->constrained();
-            $table->integer('version');
             $table->text('description')->nullable();
             $table->timestamps();
         });

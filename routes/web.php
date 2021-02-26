@@ -15,6 +15,8 @@ use App\Http\Controllers\Admin\SuspendUserController;
 use App\Http\Controllers\Admin\UnsuspendUserController;
 use App\Admin\Controllers\AcceptTemporaryUserController;
 use App\Admin\Controllers\RejectTemporaryUserController;
+use App\Http\Controllers\Admin\AgreementTypeAgreementController;
+use App\Http\Controllers\Admin\AgreementTypeController;
 use App\Http\Controllers\AdminJobController;
 use App\Http\Controllers\RegisterTemporaryUserController;
 
@@ -91,6 +93,17 @@ Admin::routeGroup(function () {
         Route::resource('jobs', AdminJobController::class, [
             'only' => ['index'],
         ])->names('admin.jobs');
+
+        Route::resource(
+            'agreement_types',
+            AgreementTypeController::class
+        )->names('admin.agreement_types');
+
+        Route::resource(
+            'agreement_types.agreements',
+            AgreementTypeAgreementController::class,
+            ['only' => ['create', 'store', 'destroy']]
+        )->names('admin.agreement_types.agreements');
     });
 });
 
