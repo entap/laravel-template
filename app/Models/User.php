@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function agreements()
     {
-        return $this->belongsToMany(Agreement::class);
+        return $this->belongsToMany(Agreement::class, 'user_agreement');
     }
 
     public function getDeviceTokens()
