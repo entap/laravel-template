@@ -25,12 +25,14 @@
                     <td>{{ $type->slug }}</td>
                     <td>{{ $type->name }}</td>
                     <td>
-                        <a href="{{ route('admin.agreement_types.show', $type) }}" class="btn btn-sm btn-link">
+                        <a href="{{ route('admin.agreement_types.show', $type) }}"
+                            class="btn btn-sm btn-link text-nowrap">
                             @lang('Show')
                         </a>
                     </td>
                     <td>
-                        <a href="{{ route('admin.agreement_types.edit', $type) }}" class="btn btn-sm btn-primary">
+                        <a href="{{ route('admin.agreement_types.edit', $type) }}"
+                            class="btn btn-sm btn-primary text-nowrap">
                             @lang('Edit')
                         </a>
                     </td>
