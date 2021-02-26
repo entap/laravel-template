@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Agreement;
 use App\Models\DynamicCategory;
 use App\Models\DynamicContent;
 use App\Models\DynamicPage;
@@ -73,6 +74,8 @@ class TestDatabaseSeeder extends Seeder
         DynamicCategory::factory(5)->create();
 
         UserOpinion::factory(10)->create();
+
+        Agreement::factory(10)->create();
     }
 
     // protected function runForAdmin()
