@@ -62,10 +62,11 @@ class AgreementTypeController extends Controller
      */
     public function show(AgreementType $agreementType)
     {
-        $agreementType->load('agreements');
+        $agreements = $agreementType->agreements;
 
         return view('admin.agreements.types.show', [
             'type' => $agreementType,
+            'agreements' => $agreements,
         ]);
     }
 

@@ -30,6 +30,7 @@ class AgreementTypeAgreementController extends Controller
     public function store(Request $request, AgreementType $agreementType)
     {
         $d = $request->validate([
+            'name' => 'required|string|max:255',
             'description' => 'nullable|string',
         ]);
         $agreementType->agreements()->create($d);
