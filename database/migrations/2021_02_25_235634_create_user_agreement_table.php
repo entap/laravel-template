@@ -17,6 +17,8 @@ class CreateUserAgreementTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('agreement_id')->constrained();
             $table->timestamps();
+
+            $table->index(['user_id', 'agreement_id']);
         });
     }
 
