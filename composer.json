@@ -58,7 +58,7 @@
     "scripts": {
         "test": "php artisan test",
         "deploy:dev": "dep deploy development",
-        "deploy:dev:env": "dep deploy:dotenv development",
+        "deploy:dev:env": "dep deploy:dotenv development && dep artisan:config:cache development",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
