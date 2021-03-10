@@ -13,7 +13,7 @@ set('repository', 'git@github.com:entap/laravel-template.git');
 set('git_tty', true);
 
 // Shared files/dirs between deploys
-add('shared_files', ['.env']);
+add('shared_files', ['.env', 'firebase-credentials.json']);
 add('shared_dirs', ['storage']);
 
 // Writable dirs by web server
