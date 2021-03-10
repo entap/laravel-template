@@ -57,6 +57,8 @@
     "prefer-stable": true,
     "scripts": {
         "test": "php artisan test",
+        "deploy:dev": "dep deploy development",
+        "deploy:dev:env": "dep deploy:dotenv development",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
