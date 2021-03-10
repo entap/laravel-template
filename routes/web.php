@@ -31,9 +31,7 @@ use App\Http\Controllers\RegisterTemporaryUserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome');
 
 Admin::routeGroup(function () {
     Route::middleware('admin.auth')->group(function () {
