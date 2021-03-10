@@ -52,3 +52,17 @@ php artisan migrate:fresh \
     && php artisan admin:seed \
     && php artisan db:seed
 ```
+
+### Deployment
+
+開発環境にデプロイする。
+
+```sh
+composer deploy:dev
+```
+
+環境設定を更新する場合、アップしたい `.env.development` を用意してコマンドを実行する。
+
+```sh
+composer deploy:dev:env
+```
