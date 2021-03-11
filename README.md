@@ -15,6 +15,7 @@ GitHub のテンプレートとして利用します。
 composer install
 cp .env.example .env
 php artisan key:generate
+php artisan passport:keys
 ```
 
 データベースに接続できる状態で以下を実行してください。
@@ -23,6 +24,7 @@ php artisan key:generate
 php artisan migrate
 php artisan admin:seed
 php artisan db:seed
+php artisan passport:client --personal
 ```
 
 管理者の初期パスワードは `admin` / `password` です。
