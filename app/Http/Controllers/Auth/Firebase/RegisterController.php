@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Auth\Firebase;
 
 use Illuminate\Http\Request;
-use Entap\OAuth\Firebase\Application\Controllers\Controller;
-use Entap\OAuth\Firebase\Application\Gateways\Firebase\VerifyIdTokenGateway;
+use App\Http\Controllers\Controller;
+use App\Gateways\Firebase\VerifyIdTokenGateway;
 
 class RegisterController extends Controller
 {

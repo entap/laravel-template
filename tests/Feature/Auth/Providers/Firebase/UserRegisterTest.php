@@ -3,8 +3,8 @@ namespace Tests\Feature\Auth\Providers\Firebase;
 
 use Tests\TestCase;
 use App\Models\User;
-use Entap\OAuth\Firebase\Application\Gateways\Firebase\VerifiedToken;
-use Entap\OAuth\Firebase\Application\Gateways\Firebase\VerifyIdTokenGateway;
+use App\Gateways\Firebase\VerifiedToken;
+use App\Gateways\Firebase\VerifyIdTokenGateway;
 
 class UserRegisterTest extends TestCase
 {

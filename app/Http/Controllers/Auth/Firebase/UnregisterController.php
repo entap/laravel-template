@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth\Firebase;
 
 use Illuminate\Http\Request;
-use Entap\OAuth\Firebase\Application\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 class UnregisterController extends Controller
 {

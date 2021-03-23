@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth\Firebase;
 
-use App\Http\Controllers\Controller;
-use Entap\OAuth\Firebase\Application\Services\CreateCustomTokenService;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\Firebase\CreateCustomTokenService;
 
 class CreateCustomTokenController extends Controller
 {

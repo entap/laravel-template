@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth\Firebase;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Entap\OAuth\Firebase\Application\Gateways\Firebase\VerifyIdTokenGateway;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Gateways\Firebase\VerifyIdTokenGateway;
 
 class LoginController extends Controller
 {

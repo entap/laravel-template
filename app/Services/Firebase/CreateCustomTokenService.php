@@ -1,8 +1,8 @@
 <?php
 namespace App\Services\Firebase;
 
-use Entap\OAuth\Firebase\Application\Gateways\Firebase\CreateCustomTokenGateway;
 use Illuminate\Support\Str;
+use App\Gateways\Firebase\CreateCustomTokenGateway;
 
 class CreateCustomTokenService
 {
