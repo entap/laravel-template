@@ -4,7 +4,6 @@ namespace App\Gateways\Firebase;
 use Kreait\Firebase\Auth;
 use InvalidArgumentException;
 use App\Gateways\Firebase\VerifiedToken;
-use Firebase\Auth\Token\Exception\InvalidToken;
 
 class VerifyIdTokenGateway
 {
