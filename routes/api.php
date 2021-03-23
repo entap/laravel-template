@@ -62,15 +62,9 @@ Route::put('temporary-users/{rejectedTemporaryUser:token}', [
 ])->name('api.temporary-users.fix');
 
 // Firebase
-
-Route::post(
-    'auth/firebase/token',
-    \App\Http\Controllers\Auth\Firebase\LoginController::class
-);
-Route::post(
-    'auth/firebase/custom-token',
-    \App\Http\Controllers\Auth\Firebase\CreateCustomTokenController::class
-);
+Route::group(['prefix' => 'auth'], function () {
+    Route::prefix('firebase')->group(base_path('routes/api/auth/firebase.php'));
+});
 
 // LINE
 
