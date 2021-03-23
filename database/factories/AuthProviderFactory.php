@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use Entap\Auth\Models\AuthProvider;
+use App\Models\AuthProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AuthProviderFactory extends Factory

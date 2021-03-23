@@ -1,10 +1,10 @@
 <?php
 namespace App\Models;
 
-use Entap\Auth\Models\AuthProvider;
+use App\Models\AuthProvider;
+use InvalidArgumentException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use InvalidArgumentException;
 
 trait HasAuthProviders
 {

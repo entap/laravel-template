@@ -61,17 +61,10 @@ Route::put('temporary-users/{rejectedTemporaryUser:token}', [
     'update',
 ])->name('api.temporary-users.fix');
 
-// Firebase
 Route::group(['prefix' => 'auth'], function () {
     Route::prefix('firebase')->group(base_path('routes/api/auth/firebase.php'));
+    Route::prefix('line')->group(base_path('routes/api/auth/line.php'));
 });
-
-// LINE
-
-Route::post(
-    'auth/line/token',
-    \App\Http\Controllers\Auth\Line\LoginController::class
-);
 
 // Dynamic Contents
 

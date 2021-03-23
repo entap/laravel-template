@@ -10,10 +10,8 @@
     "require": {
         "php": "^7.3|^8.0",
         "entap/laravel-admin": "dev-main",
-        "entap/laravel-auth": "^0.1",
         "entap/laravel-client-packager": "dev-main",
         "entap/laravel-log-viewer": "dev-main",
-        "entap/laravel-oauth-line": "dev-main",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -71,14 +69,6 @@
         ]
     },
     "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/entap/laravel-auth"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/entap/laravel-oauth-line"
-        },
         {
             "type": "vcs",
             "url": "https://github.com/entap/laravel-admin"

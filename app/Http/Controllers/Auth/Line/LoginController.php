@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use InvalidArgumentException;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Entap\OAuth\Line\Application\Services\VerifyService;
+use App\Services\Line\VerifyService;
 
 class LoginController extends Controller
 {
