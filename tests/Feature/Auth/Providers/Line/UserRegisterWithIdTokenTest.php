@@ -1,5 +1,5 @@
 <?php
-namespace Tests\Feature;
+namespace Tests\Feature\Auth\Providers\Line;
 
 use Tests\TestCase;
 use App\Models\User;
