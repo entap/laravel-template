@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\HasAuthProviders;
 use Laravel\Passport\HasApiTokens;
-use Entap\Auth\Traits\HasAuthProviders;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
