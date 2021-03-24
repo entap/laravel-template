@@ -3,6 +3,9 @@
 use Entap\Admin\Facades\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Admin\Controllers\UserController;
+use App\Admin\Controllers\EntryController;
+use App\Admin\Controllers\TableController;
+use App\Http\Controllers\AdminJobController;
 use App\Admin\Controllers\DynamicPageController;
 use App\Admin\Controllers\UserOpinionController;
 use App\Admin\Controllers\UserSegmentController;
@@ -12,13 +15,12 @@ use App\Http\Controllers\ShowDynamicPageController;
 use App\Admin\Controllers\DynamicCategoryController;
 use App\Http\Controllers\FixTemporaryUserController;
 use App\Http\Controllers\Admin\SuspendUserController;
+use App\Http\Controllers\Admin\AgreementTypeController;
 use App\Http\Controllers\Admin\UnsuspendUserController;
 use App\Admin\Controllers\AcceptTemporaryUserController;
 use App\Admin\Controllers\RejectTemporaryUserController;
-use App\Http\Controllers\Admin\AgreementTypeAgreementController;
-use App\Http\Controllers\Admin\AgreementTypeController;
-use App\Http\Controllers\AdminJobController;
 use App\Http\Controllers\RegisterTemporaryUserController;
+use App\Http\Controllers\Admin\AgreementTypeAgreementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,6 +104,14 @@ Admin::routeGroup(function () {
             AgreementTypeAgreementController::class,
             ['only' => ['create', 'store', 'destroy']]
         )->names('admin.agreement_types.agreements');
+
+        // Logs
+        Route::get('logs', [TableController::class, 'index'])->name(
+            'admin.logs.index'
+        );
+        Route::get('logs/show', [EntryController::class, 'index'])->name(
+            'admin.logs.show'
+        );
     });
 });
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "562b94f5f280d3a957d5e59c0a3e0952",
+    "content-hash": "58bed38f206dc36a89d598e4d7e74a45",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1037,71 +1037,6 @@
                 "issues": "https://github.com/entap/laravel-client-packager/issues"
             },
             "time": "2021-02-18T00:28:26+00:00"
-        },
-        {
-            "name": "entap/laravel-log-viewer",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:entap/laravel-log-viewer.git",
-                "reference": "251cc4afe0f099609d272f3758e08cd50730c7b8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-log-viewer/zipball/251cc4afe0f099609d272f3758e08cd50730c7b8",
-                "reference": "251cc4afe0f099609d272f3758e08cd50730c7b8",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/dbal": "^3.0",
-                "entap/laravel-admin": "dev-main",
-                "laravel/framework": "^8.0",
-                "php": "^7.0|^8.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^6.6",
-                "phpunit/phpunit": "^9.5"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Entap\\LogViewer\\ServiceProvider"
-                    ],
-                    "aliases": []
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Entap\\LogViewer\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "ii masamitsu",
-                    "email": "ii@entap.co.jp"
-                }
-            ],
-            "description": "Laravel Log Viewer",
-            "support": {
-                "source": "https://github.com/entap/laravel-log-viewer/tree/main",
-                "issues": "https://github.com/entap/laravel-log-viewer/issues"
-            },
-            "time": "2021-02-17T01:13:07+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -9973,8 +9908,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "entap/laravel-admin": 20,
-        "entap/laravel-client-packager": 20,
-        "entap/laravel-log-viewer": 20
+        "entap/laravel-client-packager": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
