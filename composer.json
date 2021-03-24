@@ -10,7 +10,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "doctrine/dbal": "^3.0",
-        "entap/laravel-admin": "dev-main",
+        "entap/laravel-admin": "*",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -69,8 +69,8 @@
     },
     "repositories": [
         {
-            "type": "vcs",
-            "url": "https://github.com/entap/laravel-admin"
+            "type": "path",
+            "url": "packages/laravel-admin"
         }
     ]
 }

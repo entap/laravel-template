@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "076fc6c90ab40d072de21e68c65bb9d0",
+    "content-hash": "878a7b3bae33529ae0d1cb6c1681e0ea",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -907,16 +907,10 @@
         {
             "name": "entap/laravel-admin",
             "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:entap/laravel-admin.git",
-                "reference": "c7ee3f4b0f3af1c38db3519239d3e541ee5ef1a4"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-admin/zipball/c7ee3f4b0f3af1c38db3519239d3e541ee5ef1a4",
-                "reference": "c7ee3f4b0f3af1c38db3519239d3e541ee5ef1a4",
-                "shasum": ""
+                "type": "path",
+                "url": "packages/laravel-admin",
+                "reference": "a8abcb45b0304bcf8a589bb8012bfc4fee1c6247"
             },
             "require": {
                 "kalnoy/nestedset": "^5.0",
@@ -929,7 +923,6 @@
                 "orchestra/testbench": "^6.4",
                 "phpunit/phpunit": "^9.4"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -968,11 +961,9 @@
                 }
             ],
             "description": "Laravel Admin",
-            "support": {
-                "source": "https://github.com/entap/laravel-admin/tree/main",
-                "issues": "https://github.com/entap/laravel-admin/issues"
-            },
-            "time": "2021-02-26T00:39:56+00:00"
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "fideloper/proxy",
@@ -7420,16 +7411,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.5.14",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "17097f7a83e200d90d1cf9f4d1b35c1001513a47"
+                "reference": "4be10a998815f77952b9eb983fb0b64c8a4defbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/17097f7a83e200d90d1cf9f4d1b35c1001513a47",
-                "reference": "17097f7a83e200d90d1cf9f4d1b35c1001513a47",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/4be10a998815f77952b9eb983fb0b64c8a4defbb",
+                "reference": "4be10a998815f77952b9eb983fb0b64c8a4defbb",
                 "shasum": ""
             },
             "require": {
@@ -7493,7 +7484,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2021-03-04T08:48:01+00:00"
+            "time": "2021-03-24T18:58:31+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -9842,9 +9833,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "entap/laravel-admin": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
