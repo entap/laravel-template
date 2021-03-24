@@ -7,5 +7,5 @@ API リクエストの内容を記録する。
 API のコントローラーやルーターに登録する。
 
 ```php
-Route::get('/api/users', UserController:class)->middleware('log.request');
+Route::get('/api/users', UserController::class)->middleware('log.request');
 ```
