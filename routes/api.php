@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\DynamicCategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserAgreeController;
 use App\Http\Controllers\UserDeviceController;
+use App\Http\Controllers\SendOpinionController;
+use App\Http\Controllers\UserAgreementController;
+use App\Http\Controllers\PackageReleaseController;
+use App\Http\Controllers\DynamicCategoryController;
 use App\Http\Controllers\ShowDynamicPageController;
 use App\Http\Controllers\FixTemporaryUserController;
 use App\Http\Controllers\RegisterTemporaryUserController;
-use App\Http\Controllers\SendOpinionController;
-use App\Http\Controllers\UserAgreeController;
-use App\Http\Controllers\UserAgreementController;
 use App\Http\Controllers\UserNotificationDeviceController;
 
 /*
@@ -50,6 +51,12 @@ Route::middleware('auth:api')->group(function () {
         'agreements/{agreementType:slug}/agree',
         UserAgreeController::class
     );
+
+    // Package
+    Route::get('packages/{package}/releases', [
+        PackageReleaseController::class,
+        'index',
+    ])->name('api.packages.releases');
 });
 
 Route::post('temporary-users', [

@@ -5,12 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Admin\Controllers\UserController;
 use App\Admin\Controllers\EntryController;
 use App\Admin\Controllers\TableController;
+use App\Admin\Controllers\PackageController;
 use App\Http\Controllers\AdminJobController;
 use App\Admin\Controllers\DynamicPageController;
 use App\Admin\Controllers\UserOpinionController;
 use App\Admin\Controllers\UserSegmentController;
 use App\Admin\Controllers\TemporaryUserController;
 use App\Admin\Controllers\DynamicContentController;
+use App\Admin\Controllers\PackageReleaseController;
 use App\Http\Controllers\ShowDynamicPageController;
 use App\Admin\Controllers\DynamicCategoryController;
 use App\Http\Controllers\FixTemporaryUserController;
@@ -112,6 +114,14 @@ Admin::routeGroup(function () {
         Route::get('logs/show', [EntryController::class, 'index'])->name(
             'admin.logs.show'
         );
+
+        // Packages
+        Route::resource('packages', PackageController::class)->names(
+            'admin.packages'
+        );
+        Route::resource('packages.releases', PackageReleaseController::class, [
+            'except' => ['index', 'show'],
+        ])->names('admin.packages.releases');
     });
 });
 

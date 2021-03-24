@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "58bed38f206dc36a89d598e4d7e74a45",
+    "content-hash": "076fc6c90ab40d072de21e68c65bb9d0",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -973,70 +973,6 @@
                 "issues": "https://github.com/entap/laravel-admin/issues"
             },
             "time": "2021-02-26T00:39:56+00:00"
-        },
-        {
-            "name": "entap/laravel-client-packager",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:entap/laravel-client-packager.git",
-                "reference": "a1f244ab9fa2266e39a46f0ed3a7ddbd3dab573b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/entap/laravel-client-packager/zipball/a1f244ab9fa2266e39a46f0ed3a7ddbd3dab573b",
-                "reference": "a1f244ab9fa2266e39a46f0ed3a7ddbd3dab573b",
-                "shasum": ""
-            },
-            "require": {
-                "entap/laravel-admin": "dev-main",
-                "php": "^7.0|^8.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^6.5",
-                "phpunit/phpunit": "^9.5"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Entap\\ClientPackager\\ServiceProvider"
-                    ],
-                    "aliases": []
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Entap\\ClientPackager\\": "src/",
-                    "Database\\Factories\\Entap\\ClientPackager\\Models\\": "database/factories/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "ii masamitsu",
-                    "email": "ii@entap.co.jp"
-                }
-            ],
-            "description": "Client Packager on Laravel",
-            "support": {
-                "source": "https://github.com/entap/laravel-client-packager/tree/main",
-                "issues": "https://github.com/entap/laravel-client-packager/issues"
-            },
-            "time": "2021-02-18T00:28:26+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -9907,8 +9843,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "entap/laravel-admin": 20,
-        "entap/laravel-client-packager": 20
+        "entap/laravel-admin": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

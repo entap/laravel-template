@@ -8,13 +8,20 @@ trait HasSuperUser
 {
     protected function createSuperUser()
     {
-        return User::factory()
-            ->has(
-                Role::factory()->state(function () {
-                    return ['name' => 'administrator'];
-                })
-            )
-            ->create();
+        $user = User::factory()->create();
+        $role = $this->createSuperRole();
+        $user->roles()->save($role);
+        return $user;
+    }
+
+    protected function createSuperRole()
+    {
+        if ($role = Role::where('name', 'administrator')->first()) {
+            return $role;
+        }
+        return Role::factory()->create([
+            'name' => 'administrator',
+        ]);
     }
 
     public function actingAsSuperUser($driver = 'admin')
