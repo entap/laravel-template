@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Listeners\LoginSubscriber;
 use App\Listeners\MessageLogger;
 use App\Listeners\RequestLogger;
 use Illuminate\Support\Facades\Event;
@@ -23,6 +24,8 @@ class EventServiceProvider extends ServiceProvider
         MessageSent::class => [MessageLogger::class],
         RequestHandled::class => [RequestLogger::class],
     ];
+
+    protected $subscribe = [LoginSubscriber::class];
 
     /**
      * Register any events for your application.
