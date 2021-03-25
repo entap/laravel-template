@@ -2,12 +2,9 @@
 
 namespace App\Providers;
 
-use App\Listeners\MessageLogger;
 use App\Admin\Middleware\Authorize;
-use Illuminate\Support\Facades\Event;
 use App\Admin\Middleware\Authenticate;
 use App\Admin\Middleware\RequestLogger;
-use Illuminate\Mail\Events\MessageSent;
 use Illuminate\Support\ServiceProvider;
 use App\Admin\Middleware\RedirectIfAuthenticated;
 use App\Console\Commands\Admin\CreateAdministrator;
@@ -31,8 +28,6 @@ class AdminServiceProvider extends ServiceProvider
     {
         $this->registerRouteMiddleware();
         $this->registerMiddlewareGroups();
-
-        Event::listen(MessageSent::class, MessageLogger::class);
     }
 
     /**
