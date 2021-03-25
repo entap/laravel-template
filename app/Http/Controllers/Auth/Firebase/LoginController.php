@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use InvalidArgumentException;
 use Illuminate\Support\Facades\DB;
+use App\Events\Auth\Firebase\Login;
 use App\Http\Controllers\Controller;
 use App\Gateways\Firebase\VerifyIdTokenGateway;
 
@@ -44,8 +45,15 @@ class LoginController extends Controller
 
         $token = $user->createToken('Firebase Token');
 
+        $this->didLogin($user);
+
         return [
             'access_token' => $token->accessToken,
         ];
+    }
+
+    protected function didLogin($user)
+    {
+        event(new Login('api', $user));
     }
 }
