@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace App\Events\Auth\Line;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -14,11 +14,9 @@ use Illuminate\Queue\SerializesModels;
 /**
  * LINEでログインした
  */
-class LineLogin
+class Login
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
-    const PROVIDER = 'LINE';
 
     protected $guard;
     protected $user;

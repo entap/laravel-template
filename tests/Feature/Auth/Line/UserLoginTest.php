@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Auth\Line;
 
-use App\Events\LineLogin;
+use App\Events\Auth\Line\Login;
 use Tests\TestCase;
 use App\Models\User;
 use App\Services\Line\VerifiedToken;
@@ -35,7 +35,7 @@ class UserLoginTest extends TestCase
         $this->assertNotNull($user);
 
         Event::assertDispatched(AccessTokenCreated::class);
-        Event::assertDispatched(LineLogin::class);
+        Event::assertDispatched(Login::class);
     }
 
     protected function setUp(): void

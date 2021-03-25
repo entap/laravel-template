@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth\Line;
 
-use App\Events\LineLogin;
+use App\Events\Auth\Line\Login;
 use App\Models\User;
 use Illuminate\Http\Request;
 use InvalidArgumentException;
@@ -50,6 +50,6 @@ class LoginController extends Controller
 
     protected function didLogin(Authenticatable $user)
     {
-        event(new LineLogin('api', $user));
+        event(new Login('api', $user));
     }
 }
