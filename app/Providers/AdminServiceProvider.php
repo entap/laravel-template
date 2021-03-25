@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Admin\Middleware\Authorize;
 use App\Admin\Middleware\Authenticate;
 use Illuminate\Support\ServiceProvider;
-use App\Admin\Middleware\RedirectIfAuthenticated;
 use App\Console\Commands\Admin\CreateAdministrator;
 
 class AdminServiceProvider extends ServiceProvider
@@ -14,7 +13,6 @@ class AdminServiceProvider extends ServiceProvider
 
     protected $routeMiddleware = [
         'admin.auth' => Authenticate::class . ':admin',
-        'admin.guest' => RedirectIfAuthenticated::class,
         'admin.permission' => Authorize::class,
     ];
 
