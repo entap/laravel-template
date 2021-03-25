@@ -10,7 +10,7 @@ use App\Admin\Middleware\RequestLogger;
 use Illuminate\Mail\Events\MessageSent;
 use Illuminate\Support\ServiceProvider;
 use App\Admin\Middleware\RedirectIfAuthenticated;
-use App\Console\Commands\CreateAdministrator;
+use App\Console\Commands\Admin\CreateAdministrator;
 
 class AdminServiceProvider extends ServiceProvider
 {

@@ -1,5 +1,5 @@
 <?php
-namespace App\Console\Commands;
+namespace App\Console\Commands\Admin;
 
 use App\Models\Admin\User;
 use Illuminate\Console\Command;
