@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Line;
+namespace App\Services\Auth\Line;
 
 class VerifiedToken
 {

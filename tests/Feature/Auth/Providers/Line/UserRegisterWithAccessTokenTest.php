@@ -3,8 +3,8 @@ namespace Tests\Feature\Auth\Providers\Line;
 
 use Tests\TestCase;
 use App\Models\User;
-use App\Services\Line\VerifiedToken;
-use App\Services\Line\VerifyService;
+use App\Services\Auth\Line\VerifiedToken;
+use App\Services\Auth\Line\VerifyService;
 
 class UserRegisterWithAccessTokenTest extends TestCase
 {

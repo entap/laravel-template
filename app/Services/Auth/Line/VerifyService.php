@@ -1,8 +1,8 @@
 <?php
-namespace App\Services\Line;
+namespace App\Services\Auth\Line;
 
 use Illuminate\Http\Request;
-use App\Services\Line\VerifiedToken;
+use App\Services\Auth\Line\VerifiedToken;
 use App\Gateways\Line\GetUserIdGateway;
 use App\Gateways\Line\VerifyIdTokenGateway;
 use App\Exceptions\Line\InvalidTokenException;

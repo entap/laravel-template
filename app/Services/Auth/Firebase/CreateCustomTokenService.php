@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Firebase;
+namespace App\Services\Auth\Firebase;
 
 use Illuminate\Support\Str;
 use App\Gateways\Firebase\CreateCustomTokenGateway;

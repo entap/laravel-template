@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth\Line;
 use Illuminate\Http\Request;
 use InvalidArgumentException;
 use App\Http\Controllers\Controller;
-use App\Services\Line\VerifyService;
+use App\Services\Auth\Line\VerifyService;
 
 class RegisterController extends Controller
 {
