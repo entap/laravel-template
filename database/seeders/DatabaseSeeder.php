@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(AdminTablesSeeder::class);
         $this->call(MenuSeeder::class);
 
         if (config('app.env') === 'local') {

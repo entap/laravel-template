@@ -10,10 +10,10 @@
     "require": {
         "php": "^7.3|^8.0",
         "doctrine/dbal": "^3.0",
-        "entap/laravel-admin": "*",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "kalnoy/nestedset": "^5.0",
         "kreait/laravel-firebase": "^3.1",
         "laravel/framework": "^8.12",
         "laravel/passport": "^10.1",
@@ -66,11 +66,5 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "packages/laravel-admin"
-        }
-    ]
+    }
 }

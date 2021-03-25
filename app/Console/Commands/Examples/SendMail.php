@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands\Examples;
 
-use Entap\Admin\Application\Services\SendMailTemplateService;
-use Entap\Admin\Database\Models\MailTemplate;
-use Entap\Admin\Database\Models\MailType;
+use App\Models\Admin\MailType;
 use Illuminate\Console\Command;
+use App\Models\Admin\MailTemplate;
+use App\Services\SendMailTemplateService;
 
 class SendMail extends Command
 {

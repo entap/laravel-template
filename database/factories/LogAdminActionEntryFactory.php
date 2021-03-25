@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\LogAdminActionEntry;
-use Entap\Admin\Database\Models\User;
+use App\Models\Admin\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LogAdminActionEntryFactory extends Factory

@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Entap\Admin\Database\Models\MenuItem;
-use Entap\Admin\Database\Models\Permission;
+use App\Models\Admin\MenuItem;
+use App\Models\Admin\Permission;
 
 class MenuSeeder extends Seeder
 {

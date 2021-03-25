@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Models\LogAdminActionEntry;
-use Entap\Admin\Facades\Admin;
+use App\Facades\Admin;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 

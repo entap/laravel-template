@@ -1,106 +1,174 @@
 <?php
 
-use Entap\Admin\Facades\Admin;
+use App\Facades\Admin;
 use Illuminate\Support\Facades\Route;
-use App\Admin\Controllers\UserController;
-use App\Admin\Controllers\EntryController;
-use App\Admin\Controllers\TableController;
-use App\Admin\Controllers\PackageController;
-use App\Http\Controllers\AdminJobController;
-use App\Admin\Controllers\DynamicPageController;
-use App\Admin\Controllers\UserOpinionController;
-use App\Admin\Controllers\UserSegmentController;
-use App\Admin\Controllers\TemporaryUserController;
-use App\Admin\Controllers\DynamicContentController;
-use App\Admin\Controllers\PackageReleaseController;
-use App\Admin\Controllers\DynamicCategoryController;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\EntryController;
+use App\Http\Controllers\Admin\TableController;
+use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\AdminJobController;
+use App\Http\Controllers\Admin\MenuItemController;
+use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\DynamicPageController;
 use App\Http\Controllers\Admin\SuspendUserController;
+use App\Http\Controllers\Admin\UserOpinionController;
+use App\Http\Controllers\Admin\UserSegmentController;
+use App\Http\Controllers\Admin\MailTemplateController;
 use App\Http\Controllers\Admin\AgreementTypeController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\TemporaryUserController;
 use App\Http\Controllers\Admin\UnsuspendUserController;
-use App\Admin\Controllers\AcceptTemporaryUserController;
-use App\Admin\Controllers\RejectTemporaryUserController;
+use App\Http\Controllers\Admin\DynamicContentController;
+use App\Http\Controllers\Admin\PackageReleaseController;
+use App\Http\Controllers\Admin\DynamicCategoryController;
+use App\Http\Controllers\Admin\Settings\UserGroupController;
+use App\Http\Controllers\Admin\AcceptTemporaryUserController;
+use App\Http\Controllers\Admin\RejectTemporaryUserController;
+use App\Http\Controllers\Admin\DuplicateMailTemplateController;
 use App\Http\Controllers\Admin\AgreementTypeAgreementController;
 
 Admin::routeGroup(function () {
-    Route::resource('users', UserController::class, [
-        'only' => ['index', 'show'],
-    ])->names('admin.users');
-
-    Route::get('users/{user}/suspend', [
-        SuspendUserController::class,
-        'showSuspendForm',
-    ]);
-
-    Route::put('users/{user}/suspend', [
-        SuspendUserController::class,
-        'suspend',
-    ])->name('admin.users.suspend');
-
-    Route::put('users/{user}/unsuspend', UnsuspendUserController::class)->name(
-        'admin.users.unsuspend'
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name(
+        'admin.login'
     );
+    Route::post('/login', [LoginController::class, 'login']);
 
-    Route::resource('user-segments', UserSegmentController::class, [
-        'except' => ['create', 'store'],
-    ])->names('admin.user-segments');
+    Route::middleware('admin.auth')->group(function () {
+        Route::get('/', HomeController::class)->name('admin.home');
 
-    Route::resource('temporary-users', TemporaryUserController::class, [
-        'only' => ['index', 'show'],
-    ])->names('admin.temporary-users');
+        /*
+        |--------------------------------------------------------------------------
+        | 認証
+        |--------------------------------------------------------------------------
+        */
+        Route::post('/logout', [LoginController::class, 'logout'])->name(
+            'admin.logout'
+        );
 
-    Route::post(
-        'temporary-users/{temporaryUser}/accept',
-        AcceptTemporaryUserController::class
-    )->name('admin.temporary-users.accept');
+        /*
+        |--------------------------------------------------------------------------
+        | 基本設定
+        |--------------------------------------------------------------------------
+        */
 
-    Route::post(
-        'temporary-users/{temporaryUser}/reject',
-        RejectTemporaryUserController::class
-    )->name('admin.temporary-users.reject');
+        Route::resource(
+            'settings/users',
+            \App\Http\Controllers\Admin\Settings\UserController::class
+        )->names('admin.settings.users');
 
-    Route::resource('dynamic-pages', DynamicPageController::class)->names(
-        'admin.dynamic-pages'
-    );
-    Route::resource('dynamic-contents', DynamicContentController::class, [
-        'only' => 'show',
-    ])->names('admin.dynamic-contents');
+        Route::resource('settings/roles', RoleController::class)->names(
+            'admin.settings.roles'
+        );
 
-    Route::resource(
-        'dynamic-categories',
-        DynamicCategoryController::class
-    )->names('admin.dynamic-categories');
+        Route::resource(
+            'settings/menu/items',
+            MenuItemController::class
+        )->names('admin.settings.menu.items');
 
-    Route::resource('opinions', UserOpinionController::class, [
-        'only' => ['index', 'show', 'destroy'],
-    ])->names('admin.opinions');
+        Route::resource('settings/user-groups', UserGroupController::class, [
+            'except' => 'show',
+        ])->names('admin.settings.user-groups');
 
-    Route::resource('jobs', AdminJobController::class, [
-        'only' => ['index'],
-    ])->names('admin.jobs');
+        /*
+        |--------------------------------------------------------------------------
+        | メール
+        |--------------------------------------------------------------------------
+        */
 
-    Route::resource('agreement_types', AgreementTypeController::class)->names(
-        'admin.agreement_types'
-    );
+        Route::resource('mails', MailTemplateController::class, [
+            'except' => 'show',
+        ])->names('admin.mails');
 
-    Route::resource(
-        'agreement_types.agreements',
-        AgreementTypeAgreementController::class,
-        ['only' => ['create', 'store', 'destroy']]
-    )->names('admin.agreement_types.agreements');
+        Route::post(
+            'mails/{mail}/duplicate',
+            DuplicateMailTemplateController::class
+        )->name('admin.mails.duplicate');
 
-    // Logs
-    Route::get('logs', [TableController::class, 'index'])->name(
-        'admin.logs.index'
-    );
-    Route::get('logs/show', [EntryController::class, 'index'])->name(
-        'admin.logs.show'
-    );
+        // その他
 
-    // Packages
-    Route::resource('packages', PackageController::class)->names(
-        'admin.packages'
-    );
-    Route::resource('packages.releases', PackageReleaseController::class, [
-        'except' => ['index', 'show'],
-    ])->names('admin.packages.releases');
+        Route::resource('users', UserController::class, [
+            'only' => ['index', 'show'],
+        ])->names('admin.users');
+
+        Route::get('users/{user}/suspend', [
+            SuspendUserController::class,
+            'showSuspendForm',
+        ]);
+
+        Route::put('users/{user}/suspend', [
+            SuspendUserController::class,
+            'suspend',
+        ])->name('admin.users.suspend');
+
+        Route::put(
+            'users/{user}/unsuspend',
+            UnsuspendUserController::class
+        )->name('admin.users.unsuspend');
+
+        Route::resource('user-segments', UserSegmentController::class, [
+            'except' => ['create', 'store'],
+        ])->names('admin.user-segments');
+
+        Route::resource('temporary-users', TemporaryUserController::class, [
+            'only' => ['index', 'show'],
+        ])->names('admin.temporary-users');
+
+        Route::post(
+            'temporary-users/{temporaryUser}/accept',
+            AcceptTemporaryUserController::class
+        )->name('admin.temporary-users.accept');
+
+        Route::post(
+            'temporary-users/{temporaryUser}/reject',
+            RejectTemporaryUserController::class
+        )->name('admin.temporary-users.reject');
+
+        Route::resource('dynamic-pages', DynamicPageController::class)->names(
+            'admin.dynamic-pages'
+        );
+        Route::resource('dynamic-contents', DynamicContentController::class, [
+            'only' => 'show',
+        ])->names('admin.dynamic-contents');
+
+        Route::resource(
+            'dynamic-categories',
+            DynamicCategoryController::class
+        )->names('admin.dynamic-categories');
+
+        Route::resource('opinions', UserOpinionController::class, [
+            'only' => ['index', 'show', 'destroy'],
+        ])->names('admin.opinions');
+
+        Route::resource('jobs', AdminJobController::class, [
+            'only' => ['index'],
+        ])->names('admin.jobs');
+
+        Route::resource(
+            'agreement_types',
+            AgreementTypeController::class
+        )->names('admin.agreement_types');
+
+        Route::resource(
+            'agreement_types.agreements',
+            AgreementTypeAgreementController::class,
+            ['only' => ['create', 'store', 'destroy']]
+        )->names('admin.agreement_types.agreements');
+
+        // Logs
+        Route::get('logs', [TableController::class, 'index'])->name(
+            'admin.logs.index'
+        );
+        Route::get('logs/show', [EntryController::class, 'index'])->name(
+            'admin.logs.show'
+        );
+
+        // Packages
+        Route::resource('packages', PackageController::class)->names(
+            'admin.packages'
+        );
+        Route::resource('packages.releases', PackageReleaseController::class, [
+            'except' => ['index', 'show'],
+        ])->names('admin.packages.releases');
+    });
 });

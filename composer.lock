@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "878a7b3bae33529ae0d1cb6c1681e0ea",
+    "content-hash": "7f2c8e6f81acedee8dbccf3247cba8ba",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -903,67 +903,6 @@
                 }
             ],
             "time": "2020-12-29T14:50:06+00:00"
-        },
-        {
-            "name": "entap/laravel-admin",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "packages/laravel-admin",
-                "reference": "a8abcb45b0304bcf8a589bb8012bfc4fee1c6247"
-            },
-            "require": {
-                "kalnoy/nestedset": "^5.0",
-                "laravel/framework": "^8.0",
-                "laravel/ui": "^3.1",
-                "php": "^7.0|^8.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.4",
-                "orchestra/testbench": "^6.4",
-                "phpunit/phpunit": "^9.4"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Entap\\Admin\\AdminServiceProvider"
-                    ],
-                    "aliases": {
-                        "Admin": "Entap\\Admin\\Facades\\Admin"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Entap\\Admin\\": "src/",
-                    "Database\\Seeders\\Entap\\Admin\\": "database/seeders",
-                    "Database\\Factories\\Entap\\Admin\\Database\\Models\\": "database/factories"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "ii masamitsu",
-                    "email": "ii@entap.co.jp"
-                }
-            ],
-            "description": "Laravel Admin",
-            "transport-options": {
-                "relative": true
-            }
         },
         {
             "name": "fideloper/proxy",

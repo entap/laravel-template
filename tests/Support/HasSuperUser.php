@@ -1,8 +1,8 @@
 <?php
 namespace Tests\Support;
 
-use Entap\Admin\Database\Models\Role;
-use Entap\Admin\Database\Models\User;
+use App\Models\Admin\Role;
+use App\Models\Admin\User;
 
 trait HasSuperUser
 {

@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\AdminJob;
-use Entap\Admin\Database\Models\User;
+use App\Models\Admin\Job;
+use App\Models\Admin\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AdminJobFactory extends Factory

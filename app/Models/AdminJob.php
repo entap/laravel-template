@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Entap\Admin\Database\Models\User;
+use App\Models\Admin\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;

@@ -18,7 +18,7 @@ use App\Http\Controllers\RegisterTemporaryUserController;
 
 Route::view('/', 'welcome');
 
-Route::middleware('admin.auth')->group(base_path('routes/web/admin.php'));
+Route::group([], base_path('routes/web/admin.php'));
 
 Route::get('temporary-users', [
     RegisterTemporaryUserController::class,

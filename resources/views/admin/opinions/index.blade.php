@@ -32,7 +32,7 @@
                             @method('DELETE')
 
                             <button type="submit" class="btn btn-sm btn-danger text-nowrap"
-                                onclick="return confirm('@lang('admin::messages.confirmations.delete')')">
+                                onclick="return confirm('@lang('messages.confirmations.delete')')">
                                 @lang('Delete')
                             </button>
                         </form>
