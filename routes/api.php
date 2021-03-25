@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserAgreeController;
 use App\Http\Controllers\UserDeviceController;
 use App\Http\Controllers\SendOpinionController;
+use App\Http\Controllers\Settings\UserController;
 use App\Http\Controllers\UserAgreementController;
 use App\Http\Controllers\PackageReleaseController;
 use App\Http\Controllers\DynamicCategoryController;
@@ -25,7 +25,7 @@ use App\Http\Controllers\UserNotificationDeviceController;
 */
 
 Route::middleware('auth:api')->group(function () {
-    Route::get('/user', UserController::class);
+    Route::get('/user', [UserController::class, 'show']);
 
     Route::apiResource('/user/devices', UserDeviceController::class, [
         'only' => ['store', 'update', 'destroy'],
