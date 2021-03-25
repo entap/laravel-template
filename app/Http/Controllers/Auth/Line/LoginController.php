@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth\Line;
 
+use App\Events\LineLogin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use InvalidArgumentException;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Services\Line\VerifyService;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 class LoginController extends Controller
 {
@@ -39,8 +41,15 @@ class LoginController extends Controller
 
         $token = $user->createToken('LINE Token');
 
+        $this->didLogin($user);
+
         return [
             'access_token' => $token->accessToken,
         ];
+    }
+
+    protected function didLogin(Authenticatable $user)
+    {
+        event(new LineLogin('api', $user));
     }
 }
