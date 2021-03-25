@@ -1,25 +1,29 @@
 <?php
-namespace App\Admin\Middleware;
 
-use Closure;
+namespace App\Listeners;
+
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Models\Admin\LogRequestEntry;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Http\Events\RequestHandled;
 
 class RequestLogger
 {
     /**
-     * Handle an incoming request.
+     * Handle the event.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param  object  $event
+     * @return void
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(RequestHandled $event)
     {
-        $response = $next($request);
+        $this->log($event->request, $event->response);
+    }
 
-        LogRequestEntry::create([
+    protected function log($request, $response)
+    {
+        return LogRequestEntry::create([
             'uuid' => Str::uuid(),
             'host' => $request->ip(),
             'method' => Str::lower($request->method()),
@@ -27,7 +31,7 @@ class RequestLogger
             'status' => $response->status(),
             'request_body' => $request->getContent(),
             'response_body' => $response->content(),
-            'user_id' => $request->user() ? $request->user()->id : null,
+            'user_id' => optional($request->user())->id,
             'device' => $request->header(config('admin.custom.headers.device')),
             'device_brand' => $request->header(
                 config('admin.custom.headers.device_brand')
@@ -45,7 +49,5 @@ class RequestLogger
                 config('admin.custom.headers.package_version')
             ),
         ]);
-
-        return $response;
     }
 }
