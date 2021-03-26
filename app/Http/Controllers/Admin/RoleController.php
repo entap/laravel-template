@@ -73,7 +73,7 @@ class RoleController extends Controller
         return redirect()->route('admin.settings.roles.index');
     }
 
-    public function validateRole(Request $request, Role $role = null)
+    protected function validateRole(Request $request, Role $role = null)
     {
         $request->validate([
             'name' => [
