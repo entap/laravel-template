@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\AgreementTypeCreated;
+use App\Events\AgreementTypeDeleted;
+use App\Events\AgreementTypeUpdated;
 use App\Http\Controllers\Controller;
 use App\Models\AgreementType;
 use Illuminate\Http\Request;
@@ -50,7 +53,9 @@ class AgreementTypeController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'confirmation_mode' => ['nullable', 'string', 'in:strict'],
         ]);
-        AgreementType::create($d);
+        $type = AgreementType::create($d);
+
+        event(new AgreementTypeCreated(request()->user(), $type));
 
         return redirect()->route('admin.agreement_types.index');
     }
@@ -110,6 +115,8 @@ class AgreementTypeController extends Controller
 
         $agreementType->update($d);
 
+        event(new AgreementTypeUpdated(request()->user(), $agreementType));
+
         return redirect()->route('admin.agreement_types.index');
     }
 
@@ -122,6 +129,8 @@ class AgreementTypeController extends Controller
     public function destroy(AgreementType $agreementType)
     {
         $agreementType->delete();
+
+        event(new AgreementTypeDeleted(request()->user(), $agreementType));
 
         return redirect()->route('admin.agreement_types.index');
     }
