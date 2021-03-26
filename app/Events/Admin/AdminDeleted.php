@@ -16,7 +16,7 @@ class AdminDeleted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $user;
+    public $actor;
     public $admin;
 
     /**
@@ -24,9 +24,9 @@ class AdminDeleted
      *
      * @return void
      */
-    public function __construct(Authenticatable $user, User $admin)
+    public function __construct(Authenticatable $actor, User $admin)
     {
-        $this->user = $user;
+        $this->actor = $actor;
         $this->admin = $admin;
     }
 }

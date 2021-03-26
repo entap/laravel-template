@@ -19,10 +19,17 @@ class SuspendUserController extends Controller
         $data = $request->validate([
             'suspending_reason' => 'nullable|string',
         ]);
-        $user->suspend($data['suspending_reason']);
 
-        event(new UserSuspended($user));
+        if (!$user->isSuspended()) {
+            $user->suspend($data['suspending_reason']);
+            $this->suspended($user);
+        }
 
         return view('admin.users.show', compact('user'));
+    }
+
+    protected function suspended(User $user): void
+    {
+        event(new UserSuspended(request()->user(), $user));
     }
 }

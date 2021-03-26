@@ -27,6 +27,6 @@ class UnsuspendUserController extends Controller
      */
     protected function unsuspended(User $user)
     {
-        event(new UserUnsuspended($user));
+        event(new UserUnsuspended(request()->user(), $user));
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -18,6 +19,7 @@ class UserSuspended
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $actor;
     public $user;
 
     /**
@@ -25,8 +27,9 @@ class UserSuspended
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(Authenticatable $actor, User $user)
     {
+        $this->actor = $actor;
         $this->user = $user;
     }
 }
