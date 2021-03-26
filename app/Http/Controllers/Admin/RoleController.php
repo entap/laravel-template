@@ -1,6 +1,9 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
+use App\Events\Admin\RoleCreated;
+use App\Events\Admin\RoleDeleted;
+use App\Events\Admin\RoleUpdated;
 use App\Models\Admin\Permission;
 use App\Models\Admin\Role;
 use Illuminate\Http\Request;
@@ -27,12 +30,15 @@ class RoleController extends Controller
     {
         $this->validateRole($request);
 
-        return DB::transaction(function () use ($request) {
+        $role = DB::transaction(function () use ($request) {
             $role = Role::create($request->only('name'));
             $role->permissions()->sync($request->input('permissions'));
-
-            return redirect()->route('admin.settings.roles.index');
+            return $role;
         });
+
+        event(new RoleCreated($request->user(), $role));
+
+        return redirect()->route('admin.settings.roles.index');
     }
 
     public function show(Role $role)
@@ -51,16 +57,19 @@ class RoleController extends Controller
     {
         $this->validateRole($request, $role);
 
-        return DB::transaction(function () use ($request, $role) {
+        DB::transaction(function () use ($request, $role) {
             $role->update($request->only('name'));
             $role->permissions()->sync($request->input('permissions'));
-
-            return redirect()->route('admin.settings.roles.show', $role);
         });
+
+        event(new RoleUpdated($request->user(), $role));
+
+        return redirect()->route('admin.settings.roles.show', $role);
     }
 
     public function destroy(Role $role)
     {
+        // TODO Policy にまとめる
         if ($role->users()->count() > 0) {
             return back()->with(
                 'error',
@@ -70,11 +79,14 @@ class RoleController extends Controller
 
         $role->delete();
 
+        event(new RoleDeleted(request()->user(), $role));
+
         return redirect()->route('admin.settings.roles.index');
     }
 
     protected function validateRole(Request $request, Role $role = null)
     {
+        // TODO FormRequest にまとめる
         $request->validate([
             'name' => [
                 'required',
