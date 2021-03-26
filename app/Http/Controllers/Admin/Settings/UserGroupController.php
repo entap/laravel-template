@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Settings;
 
+use App\Events\Admin\AdminGroupCreated;
+use App\Events\Admin\AdminGroupDeleted;
+use App\Events\Admin\AdminGroupUpdated;
 use Illuminate\Http\Request;
 use App\Models\Admin\UserGroup;
 use App\Http\Controllers\Admin\Controller;
@@ -43,7 +46,9 @@ class UserGroupController extends Controller
             'parent_id' => 'nullable|exists:admin_user_groups,id',
         ]);
 
-        UserGroup::create($data);
+        $userGroup = UserGroup::create($data);
+
+        event(new AdminGroupCreated(request()->user(), $userGroup));
 
         return redirect()->route('admin.settings.user-groups.index');
     }
@@ -67,12 +72,16 @@ class UserGroupController extends Controller
 
         $userGroup->update($data);
 
+        event(new AdminGroupUpdated(request()->user(), $userGroup));
+
         return redirect()->route('admin.settings.user-groups.index');
     }
 
     public function destroy(UserGroup $userGroup)
     {
         $userGroup->delete();
+
+        event(new AdminGroupDeleted(request()->user(), $userGroup));
 
         return redirect()->route('admin.settings.user-groups.index');
     }
