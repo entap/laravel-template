@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin\MailType;
+use App\Events\Admin\MailCreated;
+use App\Events\Admin\MailDeleted;
+use App\Events\Admin\MailUpdated;
 use App\Models\Admin\MailTemplate;
 use App\Http\Controllers\Admin\Controller;
 use App\Http\Requests\SaveMailTemplateRequest;
@@ -40,7 +43,9 @@ class MailTemplateController extends Controller
 
     public function store(SaveMailTemplateRequest $request)
     {
-        MailTemplate::create($request->validated());
+        $mail = MailTemplate::create($request->validated());
+
+        event(new MailCreated(request()->user(), $mail));
 
         return redirect()->route('admin.mails.index');
     }
@@ -66,12 +71,16 @@ class MailTemplateController extends Controller
     {
         $mail->update($request->validated());
 
+        event(new MailUpdated(request()->user(), $mail));
+
         return redirect()->route('admin.mails.index');
     }
 
     public function destroy(MailTemplate $mail)
     {
         $mail->delete();
+
+        event(new MailDeleted(request()->user(), $mail));
 
         return redirect()->route('admin.mails.index');
     }
