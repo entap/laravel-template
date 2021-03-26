@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\Admin\DynamicPageCreated;
+use App\Events\Admin\DynamicPageDeleted;
+use App\Events\Admin\DynamicPageUpdated;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\Controller;
 use App\Models\DynamicPage;
@@ -63,6 +66,8 @@ class DynamicPageController extends Controller
             return $page;
         });
 
+        event(new DynamicPageCreated(request()->user(), $page));
+
         return redirect()->route('admin.dynamic-pages.show', $page);
     }
 
@@ -115,6 +120,8 @@ class DynamicPageController extends Controller
             }
         });
 
+        event(new DynamicPageUpdated(request()->user(), $dynamicPage));
+
         return redirect()->route('admin.dynamic-pages.show', $dynamicPage);
     }
 
@@ -124,6 +131,8 @@ class DynamicPageController extends Controller
             $dynamicPage->contents()->delete();
             $dynamicPage->delete();
         });
+
+        event(new DynamicPageDeleted(request()->user(), $dynamicPage));
 
         return redirect()->route('admin.dynamic-pages.index');
     }
