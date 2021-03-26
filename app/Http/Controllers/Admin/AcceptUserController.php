@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\UserAccepted;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\TemporaryUser;
@@ -15,10 +16,13 @@ class AcceptUserController extends Controller
      */
     public function __invoke(TemporaryUser $temporaryUser)
     {
-        DB::transaction(function () use ($temporaryUser) {
-            User::create($temporaryUser->only(['email', 'name']));
+        $user = DB::transaction(function () use ($temporaryUser) {
+            $user = User::create($temporaryUser->only(['email', 'name']));
             $temporaryUser->delete();
+            return $user;
         });
+
+        event(new UserAccepted(request()->user(), $temporaryUser, $user));
 
         return redirect()->route('admin.temporary-users.index');
     }

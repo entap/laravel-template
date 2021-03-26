@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\UserRejected;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\TemporaryUser;
@@ -27,6 +28,8 @@ class RejectUserController extends Controller
         $temporaryUser->notify(
             new TemporaryUserRejected($rejectedTemporaryUser)
         );
+
+        event(new UserRejected(request()->user(), $temporaryUser));
 
         return redirect()->route('admin.temporary-users.index');
     }
