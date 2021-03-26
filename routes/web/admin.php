@@ -4,7 +4,7 @@ use App\Facades\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LogController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\Settings\RoleController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\AdminJobController;
 use App\Http\Controllers\Admin\User\UserController;
@@ -60,10 +60,9 @@ Admin::routeGroup(function () {
             'admin.settings.roles'
         );
 
-        Route::resource(
-            'settings/menu/items',
-            MenuController::class
-        )->names('admin.settings.menu.items');
+        Route::resource('settings/menu/items', MenuController::class)->names(
+            'admin.settings.menu.items'
+        );
 
         Route::resource('settings/user-groups', UserGroupController::class, [
             'except' => 'show',

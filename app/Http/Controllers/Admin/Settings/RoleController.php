@@ -1,14 +1,15 @@
 <?php
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Settings;
 
+use App\Models\Admin\Role;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Models\Admin\Permission;
 use App\Events\Admin\RoleCreated;
 use App\Events\Admin\RoleDeleted;
 use App\Events\Admin\RoleUpdated;
-use App\Models\Admin\Permission;
-use App\Models\Admin\Role;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rule;
+use App\Http\Controllers\Admin\Controller;
 
 class RoleController extends Controller
 {
