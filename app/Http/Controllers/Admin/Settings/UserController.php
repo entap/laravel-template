@@ -1,6 +1,9 @@
 <?php
 namespace App\Http\Controllers\Admin\Settings;
 
+use App\Events\Admin\AdminCreated;
+use App\Events\Admin\AdminDeleted;
+use App\Events\Admin\AdminUpdated;
 use App\Facades\Admin;
 use App\Models\Admin\Role;
 use App\Models\Admin\User;
@@ -40,6 +43,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        // TODO FormRequest にまとめる
         $request->validate([
             'name' => 'required|string|max:255',
             'username' => [
@@ -57,7 +61,7 @@ class UserController extends Controller
             'group_id' => 'nullable|integer|exists:admin_user_groups,id',
         ]);
 
-        return DB::transaction(function () use ($request) {
+        $user = DB::transaction(function () use ($request) {
             $user = User::create(
                 array_merge($request->only(['name', 'username']), [
                     'password' => Hash::make($request->input('password')),
@@ -70,8 +74,12 @@ class UserController extends Controller
 
             $user->groups()->sync($request->input('group_id'));
 
-            return redirect()->route('admin.settings.users.index');
+            return $user;
         });
+
+        event(new AdminCreated($request->user(), $user));
+
+        return redirect()->route('admin.settings.users.index');
     }
 
     public function show(User $user)
@@ -93,6 +101,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
+        // TODO FormRequest にまとめる
         $request->validate([
             'name' => 'required|string|max:255',
             'username' => [
@@ -110,24 +119,28 @@ class UserController extends Controller
             'group_id' => 'nullable|integer|exists:admin_user_groups,id',
         ]);
 
-        return DB::transaction(function () use ($request, $user) {
+        DB::transaction(function () use ($request, $user) {
             $user->update($request->only(['name', 'username']));
             $this->updatePassword($request, $user);
             $this->updateRoles($request, $user);
             $this->updatePermissions($request, $user);
             $user->groups()->sync($request->input('group_id'));
-
-            return redirect()->route('admin.settings.users.show', $user);
         });
+
+        event(new AdminUpdated($request->user(), $user));
+
+        return redirect()->route('admin.settings.users.show', $user);
     }
 
-    public function destroy(User $user)
+    public function destroy(Request $request, User $user)
     {
+        // TODO Policy にまとめる
         if (Admin::user()->id === $user->id) {
             abort(403, '自分自身は削除できません。');
         }
 
         $user->delete();
+        event(new AdminDeleted($request->user(), $user));
 
         return redirect()->route('admin.settings.users.index');
     }
