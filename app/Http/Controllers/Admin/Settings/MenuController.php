@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Settings;
 
+use App\Events\Admin\MenuUpdated;
 use Illuminate\Http\Request;
 use App\Models\Admin\MenuItem;
 use App\Http\Controllers\Admin\Controller;
@@ -49,6 +50,8 @@ class MenuController extends Controller
 
         MenuItem::create($request->all());
 
+        event(new MenuUpdated(request()->user()));
+
         return redirect()->route('admin.settings.menu.items.index');
     }
 
@@ -72,6 +75,8 @@ class MenuController extends Controller
 
         $item->update($request->all());
 
+        event(new MenuUpdated(request()->user()));
+
         return redirect()->route('admin.settings.menu.items.index');
     }
 
@@ -84,6 +89,8 @@ class MenuController extends Controller
     public function destroy(MenuItem $item)
     {
         $item->delete();
+
+        event(new MenuUpdated(request()->user()));
 
         return redirect()->route('admin.settings.menu.items.index');
     }
