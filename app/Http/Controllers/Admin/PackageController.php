@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\PackageCreated;
+use App\Events\PackageDeleted;
+use App\Events\PackageUpdated;
 use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -47,7 +50,9 @@ class PackageController extends Controller
             ],
         ]);
 
-        Package::create($request->all());
+        $package = Package::create($request->all());
+
+        event(new PackageCreated(request()->user(), $package));
 
         return redirect()->route('admin.packages.index');
     }
@@ -94,6 +99,8 @@ class PackageController extends Controller
 
         $package->update($request->all());
 
+        event(new PackageUpdated(request()->user(), $package));
+
         return redirect()->route('admin.packages.show', $package);
     }
 
@@ -107,6 +114,8 @@ class PackageController extends Controller
     {
         $package->releases()->delete();
         $package->delete();
+
+        event(new PackageDeleted(request()->user(), $package));
 
         return redirect()
             ->route('admin.packages.index')
