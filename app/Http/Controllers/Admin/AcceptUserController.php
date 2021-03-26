@@ -8,10 +8,10 @@ use App\Models\TemporaryUser;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Admin\Controller;
 
-class AcceptTemporaryUserController extends Controller
+class AcceptUserController extends Controller
 {
     /**
-     * 仮登録ユーザーを承認する
+     * ユーザーを承認する
      */
     public function __invoke(TemporaryUser $temporaryUser)
     {

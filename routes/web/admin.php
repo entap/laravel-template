@@ -23,8 +23,8 @@ use App\Http\Controllers\Admin\DynamicContentController;
 use App\Http\Controllers\Admin\PackageReleaseController;
 use App\Http\Controllers\Admin\DynamicCategoryController;
 use App\Http\Controllers\Admin\Settings\UserGroupController;
-use App\Http\Controllers\Admin\AcceptTemporaryUserController;
-use App\Http\Controllers\Admin\RejectTemporaryUserController;
+use App\Http\Controllers\Admin\AcceptUserController;
+use App\Http\Controllers\Admin\RejectUserController;
 use App\Http\Controllers\Admin\DuplicateMailTemplateController;
 use App\Http\Controllers\Admin\AgreementTypeAgreementController;
 
@@ -116,12 +116,12 @@ Admin::routeGroup(function () {
 
         Route::post(
             'temporary-users/{temporaryUser}/accept',
-            AcceptTemporaryUserController::class
+            AcceptUserController::class
         )->name('admin.temporary-users.accept');
 
         Route::post(
             'temporary-users/{temporaryUser}/reject',
-            RejectTemporaryUserController::class
+            RejectUserController::class
         )->name('admin.temporary-users.reject');
 
         Route::resource('dynamic-pages', DynamicPageController::class)->names(

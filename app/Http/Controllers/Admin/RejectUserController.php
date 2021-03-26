@@ -8,10 +8,10 @@ use App\Models\TemporaryUser;
 use App\Http\Controllers\Admin\Controller;
 use App\Notifications\TemporaryUserRejected;
 
-class RejectTemporaryUserController extends Controller
+class RejectUserController extends Controller
 {
     /**
-     * 仮登録ユーザーを否認する
+     * ユーザーを否認する
      */
     public function __invoke(Request $request, TemporaryUser $temporaryUser)
     {
