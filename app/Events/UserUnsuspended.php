@@ -12,9 +12,9 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
 /**
- * ユーザーを凍結した
+ * ユーザーの凍結を解除した
  */
-class UserSuspended
+class UserUnsuspended
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
