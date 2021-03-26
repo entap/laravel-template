@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\AgreementTypeUpdated;
 use App\Http\Controllers\Controller;
 use App\Models\Agreement;
 use App\Models\AgreementType;
@@ -35,6 +36,8 @@ class AgreementTypeAgreementController extends Controller
         ]);
         $agreementType->agreements()->create($d);
 
+        event(new AgreementTypeUpdated($request->user(), $agreementType));
+
         return redirect()->route('admin.agreement_types.show', $agreementType);
     }
 
@@ -47,6 +50,8 @@ class AgreementTypeAgreementController extends Controller
     public function destroy(AgreementType $agreementType, Agreement $agreement)
     {
         $agreement->delete();
+
+        event(new AgreementTypeUpdated(request()->user(), $agreementType));
 
         return redirect()->route('admin.agreement_types.show', $agreementType);
     }
