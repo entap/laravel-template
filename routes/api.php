@@ -10,6 +10,7 @@ use App\Http\Controllers\PackageReleaseController;
 use App\Http\Controllers\DynamicCategoryController;
 use App\Http\Controllers\ShowDynamicPageController;
 use App\Http\Controllers\FixTemporaryUserController;
+use App\Http\Controllers\Settings\SystemController;
 use App\Http\Controllers\RegisterTemporaryUserController;
 use App\Http\Controllers\UserNotificationDeviceController;
 
@@ -23,6 +24,8 @@ use App\Http\Controllers\UserNotificationDeviceController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::get('system', SystemController::class);
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/user', [UserController::class, 'show']);
