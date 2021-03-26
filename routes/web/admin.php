@@ -4,8 +4,6 @@ use App\Facades\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\EntryController;
-use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\AdminJobController;
 use App\Http\Controllers\Admin\MenuItemController;
@@ -27,6 +25,7 @@ use App\Http\Controllers\Admin\User\AcceptUserController;
 use App\Http\Controllers\Admin\User\RejectUserController;
 use App\Http\Controllers\Admin\DuplicateMailTemplateController;
 use App\Http\Controllers\Admin\AgreementTypeAgreementController;
+use App\Http\Controllers\Admin\LogController;
 
 Admin::routeGroup(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name(
@@ -156,10 +155,10 @@ Admin::routeGroup(function () {
         )->names('admin.agreement_types.agreements');
 
         // Logs
-        Route::get('logs', [TableController::class, 'index'])->name(
+        Route::get('logs', [LogController::class, 'index'])->name(
             'admin.logs.index'
         );
-        Route::get('logs/show', [EntryController::class, 'index'])->name(
+        Route::get('logs/show', [LogController::class, 'show'])->name(
             'admin.logs.show'
         );
 

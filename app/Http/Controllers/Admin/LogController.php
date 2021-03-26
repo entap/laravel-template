@@ -4,20 +4,38 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Admin\Controller;
 use Illuminate\Support\Facades\Schema;
 use App\Query\Services\EntryQueryService;
+use App\Query\Services\TableQueryService;
+use App\Http\Controllers\Admin\Controller;
 
-class EntryController extends Controller
+class LogController extends Controller
 {
-    private $entries;
+    protected $tables;
+    protected $entries;
 
-    public function __construct(EntryQueryService $entries)
-    {
+    public function __construct(
+        TableQueryService $tables,
+        EntryQueryService $entries
+    ) {
+        $this->tables = $tables;
         $this->entries = $entries;
     }
 
-    public function index(Request $request)
+    /**
+     * テーブル一覧
+     */
+    public function index()
+    {
+        $tables = $this->tables->all();
+
+        return view('admin.logs.index', compact('tables'));
+    }
+
+    /**
+     * レコード一覧
+     */
+    public function show(Request $request)
     {
         $request->validate([
             'table' => 'required',
