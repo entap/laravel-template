@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\Admin\DynamicCategoryCreated;
+use App\Events\Admin\DynamicCategoryDeleted;
+use App\Events\Admin\DynamicCategoryUpdated;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\Controller;
 use App\Models\DynamicCategory;
@@ -56,10 +59,13 @@ class DynamicCategoryController extends Controller
         ]);
         $pages = $request->input('pages');
 
-        DB::transaction(function () use ($d, $pages) {
+        $category = DB::transaction(function () use ($d, $pages) {
             $category = DynamicCategory::create($d);
             $category->pages()->sync($pages);
+            return $category;
         });
+
+        event(new DynamicCategoryCreated(request()->user(), $category));
 
         return redirect()->route('admin.dynamic-categories.index');
     }
@@ -121,6 +127,8 @@ class DynamicCategoryController extends Controller
             $dynamicCategory->pages()->sync($pages);
         });
 
+        event(new DynamicCategoryUpdated(request()->user(), $dynamicCategory));
+
         return redirect()->route('admin.dynamic-categories.index');
     }
 
@@ -133,6 +141,8 @@ class DynamicCategoryController extends Controller
     public function destroy(DynamicCategory $dynamicCategory)
     {
         $dynamicCategory->delete();
+
+        event(new DynamicCategoryDeleted(request()->user(), $dynamicCategory));
 
         return redirect()->route('admin.dynamic-categories.index');
     }
