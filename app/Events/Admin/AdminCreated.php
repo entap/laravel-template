@@ -12,6 +12,9 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
+/**
+ * 管理ユーザーを作成した
+ */
 class AdminCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;

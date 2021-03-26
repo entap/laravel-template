@@ -12,6 +12,9 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
+/**
+ * 管理ユーザーを削除した
+ */
 class AdminDeleted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
