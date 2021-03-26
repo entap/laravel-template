@@ -2,30 +2,30 @@
 
 use App\Facades\Admin;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\LogController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\AdminJobController;
-use App\Http\Controllers\Admin\MenuItemController;
+use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\DynamicPageController;
-use App\Http\Controllers\Admin\User\SuspendUserController;
 use App\Http\Controllers\Admin\UserOpinionController;
-use App\Http\Controllers\Admin\User\UserSegmentController;
 use App\Http\Controllers\Admin\MailTemplateController;
 use App\Http\Controllers\Admin\AgreementTypeController;
-use App\Http\Controllers\Admin\User\UserController;
-use App\Http\Controllers\Admin\User\TemporaryUserController;
-use App\Http\Controllers\Admin\User\UnsuspendUserController;
+use App\Http\Controllers\Admin\Settings\MenuController;
 use App\Http\Controllers\Admin\DynamicContentController;
 use App\Http\Controllers\Admin\PackageReleaseController;
 use App\Http\Controllers\Admin\DynamicCategoryController;
-use App\Http\Controllers\Admin\Settings\UserGroupController;
 use App\Http\Controllers\Admin\User\AcceptUserController;
 use App\Http\Controllers\Admin\User\RejectUserController;
+use App\Http\Controllers\Admin\User\SuspendUserController;
+use App\Http\Controllers\Admin\User\UserSegmentController;
+use App\Http\Controllers\Admin\Settings\UserGroupController;
+use App\Http\Controllers\Admin\User\TemporaryUserController;
+use App\Http\Controllers\Admin\User\UnsuspendUserController;
 use App\Http\Controllers\Admin\DuplicateMailTemplateController;
 use App\Http\Controllers\Admin\AgreementTypeAgreementController;
-use App\Http\Controllers\Admin\LogController;
 
 Admin::routeGroup(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name(
@@ -62,7 +62,7 @@ Admin::routeGroup(function () {
 
         Route::resource(
             'settings/menu/items',
-            MenuItemController::class
+            MenuController::class
         )->names('admin.settings.menu.items');
 
         Route::resource('settings/user-groups', UserGroupController::class, [

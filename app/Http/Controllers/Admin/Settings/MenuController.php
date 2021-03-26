@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Settings;
 
 use Illuminate\Http\Request;
 use App\Models\Admin\MenuItem;
 use App\Http\Controllers\Admin\Controller;
 use Illuminate\Validation\Rule;
 
-class MenuItemController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
