@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\ReleaseCreated;
+use App\Events\ReleaseDeleted;
+use App\Events\ReleaseUpdated;
 use App\Models\Package;
 use Illuminate\Http\Request;
 use App\Models\PackageRelease;
@@ -44,7 +47,7 @@ class PackageReleaseController extends Controller
         ]);
 
         // TODO dateは必須にしてビューから渡す方がいいかも
-        $package->releases()->create([
+        $release = $package->releases()->create([
             'version' => $request->input('version'),
             'uri' => $request->input('uri'),
             'publish_date' =>
@@ -52,6 +55,8 @@ class PackageReleaseController extends Controller
             'expire_date' =>
                 $request->input('expire_date') ?? '9999-12-31 23:59:59',
         ]);
+
+        event(new ReleaseCreated(request()->user(), $release));
 
         return redirect()->route('admin.packages.show', $package);
     }
@@ -100,6 +105,8 @@ class PackageReleaseController extends Controller
 
         $release->update($request->all());
 
+        event(new ReleaseUpdated(request()->user(), $release));
+
         return redirect()->route('admin.packages.show', $package);
     }
 
@@ -112,6 +119,8 @@ class PackageReleaseController extends Controller
     public function destroy(Package $package, PackageRelease $release)
     {
         $release->delete();
+
+        event(new ReleaseDeleted(request()->user(), $release));
 
         return redirect()->route('admin.packages.show', $package);
     }
