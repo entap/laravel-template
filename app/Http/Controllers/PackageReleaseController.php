@@ -11,6 +11,7 @@ class PackageReleaseController extends Controller
         $availableReleases = $package
             ->releases()
             ->available()
+            ->latest('publish_date')
             ->get();
 
         return [

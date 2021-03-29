@@ -9,7 +9,7 @@
         </a>
     </div>
 
-    @if (empty($package->releases->count()))
+    @if (empty($releases))
         @lang('No Release')
     @else
         <table class="table mt-4">
@@ -24,7 +24,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($package->releases as $release)
+                @foreach ($releases as $release)
                     <tr>
                         <td>{{ $release->version }}</td>
                         <td>{{ $release->uri }}</td>

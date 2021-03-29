@@ -65,7 +65,11 @@ class PackageController extends Controller
      */
     public function show(Package $package)
     {
-        return view('admin.packages.show', compact('package'));
+        $releases = $package
+            ->releases()
+            ->latest('publish_date')
+            ->get();
+        return view('admin.packages.show', compact('package', 'releases'));
     }
 
     /**
