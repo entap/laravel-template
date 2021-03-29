@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\User;
 
+use App\Events\UserSegmentCreated;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\Controller;
@@ -41,10 +42,12 @@ class UserController extends Controller
 
     protected function saveUserSegment(UserQueryRequest $request)
     {
-        UserSegment::create([
+        $segment = UserSegment::create([
             'name' => now()->format('Y-m-d H:i'),
             'filter' => $request->except('saves_user_segment'),
         ]);
+
+        event(new UserSegmentCreated(request()->user(), $segment));
 
         return redirect()->route('admin.user-segments.index');
     }

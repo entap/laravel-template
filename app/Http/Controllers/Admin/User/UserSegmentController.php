@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin\User;
 
+use App\Events\UserSegmentDeleted;
+use App\Events\UserSegmentUpdated;
 use App\Models\UserSegment;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -37,12 +39,16 @@ class UserSegmentController extends Controller
         ]);
         $userSegment->update($data);
 
+        event(new UserSegmentUpdated(request()->user(), $userSegment));
+
         return redirect()->route('admin.user-segments.index');
     }
 
     public function destroy(UserSegment $userSegment)
     {
         $userSegment->delete();
+
+        event(new UserSegmentDeleted(request()->user(), $userSegment));
 
         return redirect()->route('admin.user-segments.index');
     }
