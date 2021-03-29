@@ -22,7 +22,6 @@ php artisan passport:keys
 
 ```
 php artisan migrate
-php artisan admin:seed
 php artisan db:seed
 php artisan passport:client --personal
 ```
@@ -51,7 +50,6 @@ php artisan test
 
 ```sh
 php artisan migrate:fresh \
-    && php artisan admin:seed \
     && php artisan db:seed
 ```
 
