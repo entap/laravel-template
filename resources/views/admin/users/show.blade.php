@@ -1,7 +1,39 @@
 @extends(config('admin.view.layouts.default'))
 
 @section('content')
+    @include('admin.partials.alerts.success')
+
     <h1>{{ $user->name }}</h1>
+
+    @if ($user->isTester())
+        <p>検証ユーザーです。</p>
+    @endif
+
+    <div class="text-right">
+        <div>
+            @if ($user->isTester())
+                <form action="{{ route('admin.users.remove-tester-role', $user) }}" method="POST">
+                    @csrf
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary text-nowrap">
+                            @lang('admin/actions.tester.remove')
+                        </button>
+                    </div>
+                </form>
+            @else
+                <form action="{{ route('admin.users.assign-tester-role', $user) }}" method="POST">
+                    @csrf
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary text-nowrap">
+                            @lang('admin/actions.tester.assign')
+                        </button>
+                    </div>
+                </form>
+            @endif
+        </div>
+    </div>
 
     <dl>
         <div>

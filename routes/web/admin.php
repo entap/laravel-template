@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\User\TemporaryUserController;
 use App\Http\Controllers\Admin\User\UnsuspendUserController;
 use App\Http\Controllers\Admin\DuplicateMailTemplateController;
 use App\Http\Controllers\Admin\AgreementTypeAgreementController;
+use App\Http\Controllers\Settings\UserRoleController;
 
 Admin::routeGroup(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name(
@@ -45,11 +46,7 @@ Admin::routeGroup(function () {
             'admin.logout'
         );
 
-        /*
-        |--------------------------------------------------------------------------
-        | 基本設定
-        |--------------------------------------------------------------------------
-        */
+        // 管理ユーザー
 
         Route::resource(
             'settings/users',
@@ -60,30 +57,27 @@ Admin::routeGroup(function () {
             'admin.settings.roles'
         );
 
-        Route::resource('settings/menu/items', MenuController::class)->names(
-            'admin.settings.menu.items'
-        );
-
         Route::resource('settings/user-groups', UserGroupController::class, [
             'except' => 'show',
         ])->names('admin.settings.user-groups');
 
-        /*
-        |--------------------------------------------------------------------------
-        | メール
-        |--------------------------------------------------------------------------
-        */
+        // 管理メニュー
+
+        Route::resource('settings/menu/items', MenuController::class)->names(
+            'admin.settings.menu.items'
+        );
+
+        // メール
 
         Route::resource('mails', MailTemplateController::class, [
             'except' => 'show',
         ])->names('admin.mails');
-
         Route::post(
             'mails/{mail}/duplicate',
             DuplicateMailTemplateController::class
         )->name('admin.mails.duplicate');
 
-        // その他
+        // 一般ユーザー
 
         Route::resource('users', UserController::class, [
             'only' => ['index', 'show'],
@@ -93,20 +87,29 @@ Admin::routeGroup(function () {
             SuspendUserController::class,
             'showSuspendForm',
         ]);
-
         Route::put('users/{user}/suspend', [
             SuspendUserController::class,
             'suspend',
         ])->name('admin.users.suspend');
-
         Route::put(
             'users/{user}/unsuspend',
             UnsuspendUserController::class
         )->name('admin.users.unsuspend');
 
+        Route::post('users/{user}/tester/assign', [
+            UserRoleController::class,
+            'assignTesterRole',
+        ])->name('admin.users.assign-tester-role');
+        Route::post('users/{user}/tester/remove', [
+            UserRoleController::class,
+            'removeTesterRole',
+        ])->name('admin.users.remove-tester-role');
+
         Route::resource('user-segments', UserSegmentController::class, [
             'except' => ['create', 'store'],
         ])->names('admin.user-segments');
+
+        // 仮登録
 
         Route::resource('temporary-users', TemporaryUserController::class, [
             'only' => ['index', 'show'],
@@ -122,6 +125,8 @@ Admin::routeGroup(function () {
             RejectUserController::class
         )->name('admin.temporary-users.reject');
 
+        // 動的コンテンツ
+
         Route::resource('dynamic-pages', DynamicPageController::class)->names(
             'admin.dynamic-pages'
         );
@@ -134,13 +139,19 @@ Admin::routeGroup(function () {
             DynamicCategoryController::class
         )->names('admin.dynamic-categories');
 
+        // 問い合わせ
+
         Route::resource('opinions', UserOpinionController::class, [
             'only' => ['index', 'show', 'destroy'],
         ])->names('admin.opinions');
 
+        // 管理ジョブ
+
         Route::resource('jobs', AdminJobController::class, [
             'only' => ['index'],
         ])->names('admin.jobs');
+
+        // 規約管理
 
         Route::resource(
             'agreement_types',

@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(AdminTablesSeeder::class);
         $this->call(MenuSeeder::class);
+        $this->call(UserRoleSeeder::class);
 
         if (config('app.env') === 'local') {
             $this->call(TestDatabaseSeeder::class);

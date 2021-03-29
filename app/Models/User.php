@@ -68,6 +68,7 @@ class User extends Authenticatable
      */
     public function hasAgreed($agreementType)
     {
+        // TODO DBアクセスしない形の方がいいかも
         $agreement = $this->agreements()
             ->where('agreement_type_id', $agreementType->id)
             ->latest()
@@ -79,5 +80,13 @@ class User extends Authenticatable
             return !$agreementType->hasNewAgreements($agreement->created_at);
         }
         return true;
+    }
+
+    /**
+     * 検証ユーザーかどうか
+     */
+    public function isTester(string $guard = null)
+    {
+        return $this->hasRole('tester', $guard);
     }
 }
