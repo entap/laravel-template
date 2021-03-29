@@ -25,7 +25,9 @@ class SuspendUserController extends Controller
             $this->suspended($user);
         }
 
-        return view('admin.users.show', compact('user'));
+        return redirect()
+            ->route('admin.users.show', $user)
+            ->with('success', 'ユーザーを凍結しました。');
     }
 
     protected function suspended(User $user): void

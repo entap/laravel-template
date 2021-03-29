@@ -5,8 +5,12 @@
 
     <h1>{{ $user->name }}</h1>
 
+    @if ($user->isSuspended())
+        <p class="alert alert-danger">@lang('This user has suspended.')</p>
+    @endif
+
     @if ($user->isTester())
-        <p>検証ユーザーです。</p>
+        <p class="alert alert-secondary">このユーザーは検証ユーザーです。</p>
     @endif
 
     <div class="text-right">
@@ -35,27 +39,22 @@
         </div>
     </div>
 
-    <dl>
-        <div>
-            <dt>@lang('Suspending')</dt>
-            <dd>
-                @if ($user->isSuspended())
-                    <p>@lang('This user has suspended.')</p>
-                    <form action="{{ route('admin.users.unsuspend', $user) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <button type="submit" class="btn btn-sm btn-primary text-nowrap">
-                            @lang('Unsuspend')
-                        </button>
-                    </form>
-                @else
-                    <a href="{{ route('admin.users.suspend', $user) }}" class="btn btn-sm btn-danger text-nowrap">
-                        @lang('Suspend')
-                    </a>
-                @endif
-            </dd>
-        </div>
-    </dl>
+    <div class="text-right">
+
+        @if ($user->isSuspended())
+            <form action="{{ route('admin.users.unsuspend', $user) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <button type="submit" class="btn btn-primary text-nowrap">
+                    @lang('Unsuspend')
+                </button>
+            </form>
+        @else
+            <a href="{{ route('admin.users.suspend', $user) }}" class="btn btn-danger text-nowrap">
+                @lang('Suspend')
+            </a>
+        @endif
+    </div>
 
     <h5 class="mt-4">@lang('entities.user_devices.title')</h5>
     <table class="table">

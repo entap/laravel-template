@@ -19,7 +19,9 @@ class UnsuspendUserController extends Controller
             $this->unsuspended($user);
         }
 
-        return back();
+        return redirect()
+            ->route('admin.users.show', $user)
+            ->with('success', 'ユーザーの凍結を解除しました。');
     }
 
     /**
