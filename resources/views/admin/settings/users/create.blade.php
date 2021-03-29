@@ -24,7 +24,8 @@
             <label for="username">@lang('users.properties.username')</label>
             <div>
                 <input type="text" name="username" id="username"
-                    class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" />
+                    class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}"
+                    autocomplete="off" />
 
                 @error('username')
                     <span class="invalid-feedback" role="alert">
@@ -38,7 +39,7 @@
             <label for="password">@lang('users.properties.password')</label>
             <div>
                 <input type="password" name="password" id="password"
-                    class="form-control @error('password') is-invalid @enderror" />
+                    class="form-control @error('password') is-invalid @enderror" autocomplete="new-password" />
 
                 @error('password')
                     <span class="invalid-feedback" role="alert">
@@ -52,7 +53,7 @@
             <label for="password">@lang('users.properties.password_confirmation')</label>
             <div>
                 <input type="password" name="password_confirmation" id="password_confirmation"
-                    class="form-control @error('password') is-invalid @enderror" />
+                    class="form-control @error('password') is-invalid @enderror" autocomplete="new-password" />
             </div>
         </div>
 
