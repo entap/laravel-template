@@ -23,6 +23,11 @@ class RequestLogger
 
     protected function log($request, $response)
     {
+        // APIのみ
+        if (!$request->expectsJson()) {
+            return;
+        }
+
         return LogRequestEntry::create([
             'uuid' => Str::uuid(),
             'host' => $request->ip(),

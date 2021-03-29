@@ -16,7 +16,8 @@ class CreateLogAdminActionEntriesTable extends Migration
         Schema::create('log_admin_action_entries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('admin_user_id');
-            $table->string('aciton');
+            $table->string('admin_name')->nullable();
+            $table->string('action');
             $table->string('note')->nullable();
             $table->timestamps();
         });
