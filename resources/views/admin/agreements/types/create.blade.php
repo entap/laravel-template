@@ -11,11 +11,7 @@
             <div>
                 <input type="text" id="slug" class="form-control @error('slug') is-invalid @enderror" name="slug"
                     value="{{ old('slug') }}" required autocomplete="off" />
-                @error('slug')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                    <x-error name="slug"></x-error>
             </div>
         </div>
 
@@ -24,11 +20,7 @@
             <div>
                 <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"
                     value="{{ old('name') }}" required autocomplete="off" />
-                @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                    <x-error name="name"></x-error>
             </div>
         </div>
 
@@ -41,11 +33,7 @@
                         新しい契約を追加したら改めて同意を求める
                     </label>
                 </div>
-                @error('confirmation_mode')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="confirmation_mode"></x-error>
             </div>
         </div>
 

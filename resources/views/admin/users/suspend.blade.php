@@ -20,11 +20,7 @@
                                         class="form-control @error('suspending_reason') is-invalid @enderror"
                                         name="suspending_reason">{{ old('suspending_reason') }}</textarea>
 
-                                    @error('suspending_reason')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <x-error name="suspending_reason"></x-error>
                                 </div>
                             </div>
 

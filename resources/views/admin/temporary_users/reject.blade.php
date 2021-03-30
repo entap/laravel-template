@@ -16,11 +16,7 @@
                                     <textarea id="reason" class="form-control @error('reason') is-invalid @enderror"
                                         name="reason" placeholder="名前の入力が漏れています。（任意）">{{ old('reason') }}</textarea>
 
-                                    @error('reason')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <x-error name="reason"></x-error>
                                 </div>
                             </div>
 

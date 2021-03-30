@@ -15,11 +15,7 @@
                         @endforeach
                     </select>
 
-                    @error('table')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <x-error name="table"></x-error>
                 </div>
             </div>
 
@@ -38,11 +34,7 @@
                             </div>
                         </div>
                     @endfor
-                    @error('fields')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <x-error name="fields"></x-error>
                 </div>
             </div>
 
@@ -52,21 +44,13 @@
                     <input type="datetime-local" id="start_created_at"
                         class="form-control @error('start_created_at') is-invalid @enderror" name="start_created_at"
                         value="{{ old('start_created_at', '') }}" autocomplete="off" />
-                    @error('start_created_at')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <x-error name="start_created_at"></x-error>
                 </div>
                 <div>
                     <input type="datetime-local" id="stop_created_at"
                         class="form-control @error('stop_created_at') is-invalid @enderror" name="stop_created_at"
                         value="{{ old('stop_created_at', '') }}" autocomplete="off" />
-                    @error('stop_created_at')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <x-error name="stop_created_at"></x-error>
                 </div>
             </div>
 

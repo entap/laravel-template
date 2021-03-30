@@ -11,11 +11,7 @@
                 <input id="title" class="form-control @error('title') is-invalid @enderror" type="text" name="title"
                     value="{{ old('title', $item->title) }}" required autocomplete="off" />
 
-                @error('title')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="title"></x-error>
             </div>
         </div>
 
@@ -25,11 +21,7 @@
                 <input id="uri" class="form-control @error('uri') is-invalid @enderror" type="text" name="uri"
                     value="{{ old('uri', $item->uri) }}" autocomplete="off" />
 
-                @error('uri')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="uri"></x-error>
             </div>
         </div>
 
@@ -46,11 +38,7 @@
                     @endforeach
                 </select>
 
-                @error('parent_id')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="parent_id"></x-error>
             </div>
         </div>
 

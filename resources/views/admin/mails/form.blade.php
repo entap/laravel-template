@@ -4,11 +4,7 @@
         <div>
             <input type="text" id="title" class="form-control @error('title') is-invalid @enderror" name="title"
                 value="{{ old('title', isset($mail) ? $mail->title : '') }}" required autocomplete="off" />
-            @error('title')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+            <x-error name="title"></x-error>
         </div>
     </div>
 
@@ -18,11 +14,7 @@
             <textarea id="description" class="form-control @error('description') is-invalid @enderror"
                 name="description"
                 autocomplete="off">{{ old('description', isset($mail) ? $mail->description : '') }}</textarea>
-            @error('description')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+            <x-error name="description"></x-error>
         </div>
     </div>
 </fieldset>
@@ -40,11 +32,7 @@
                     </option>
                 @endforeach
             </select>
-            @error('mail_type_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+            <x-error name="mail_type_id"></x-error>
         </div>
     </div>
 
@@ -53,11 +41,7 @@
         <div>
             <input type="text" id="from" class="form-control @error('from') is-invalid @enderror" name="from"
                 value="{{ old('from', isset($mail) ? $mail->from : '') }}" required autocomplete="off" />
-            @error('from')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+            <x-error name="from"></x-error>
         </div>
     </div>
 
@@ -66,11 +50,7 @@
         <div>
             <input type="text" id="to" class="form-control @error('to') is-invalid @enderror" name="to"
                 value="{{ old('to', isset($mail) ? $mail->to : '') }}" required autocomplete="off" />
-            @error('to')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+            <x-error name="to"></x-error>
         </div>
     </div>
 
@@ -79,11 +59,7 @@
         <div>
             <input type="text" id="subject" class="form-control @error('subject') is-invalid @enderror" name="subject"
                 value="{{ old('subject', isset($mail) ? $mail->subject : '') }}" required autocomplete="off" />
-            @error('subject')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+            <x-error name="subject"></x-error>
         </div>
     </div>
 
@@ -92,11 +68,7 @@
         <div>
             <textarea type="text" id="body" class="form-control @error('body') is-invalid @enderror" name="body"
                 required autocomplete="off">{{ old('body', isset($mail) ? $mail->body : '') }}</textarea>
-            @error('body')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+            <x-error name="body"></x-error>
         </div>
     </div>
 </fieldset>
@@ -113,11 +85,7 @@
                     </option>
                 @endforeach
             </select>
-            @error('status')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+            <x-error name="status"></x-error>
         </div>
     </div>
 
@@ -128,11 +96,7 @@
                 name="starts_at"
                 value="{{ old('starts_at', isset($mail) ? optional($mail->starts_at)->format('Y-m-d\TH:i') : '') }}"
                 autocomplete="off" />
-            @error('starts_at')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+            <x-error name="starts_at"></x-error>
         </div>
     </div>
 
@@ -143,11 +107,7 @@
                 name="expires_at"
                 value="{{ old('expires_at', isset($mail) ? optional($mail->expires_at)->format('Y-m-d\TH:i') : '') }}"
                 autocomplete="off" />
-            @error('expires_at')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+            <x-error name="expires_at"></x-error>
         </div>
     </div>
 </fieldset>

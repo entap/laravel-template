@@ -13,11 +13,7 @@
                 <input type="text" name="version" id="version" class="form-control @error('version') is-invalid @enderror"
                     value="{{ old('version', $release->version) }}" />
 
-                @error('version')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="version"></x-error>
             </div>
         </div>
 
@@ -27,11 +23,7 @@
                 <input type="text" name="uri" id="uri" class="form-control @error('uri') is-invalid @enderror"
                     value="{{ old('uri', $release->uri) }}" />
 
-                @error('uri')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="uri"></x-error>
             </div>
         </div>
 
@@ -42,11 +34,7 @@
                     class="form-control @error('publish_date') is-invalid @enderror"
                     value="{{ old('publish_date', $release->publish_date) }}" />
 
-                @error('publish_date')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="publish_date"></x-error>
             </div>
         </div>
 
@@ -58,11 +46,7 @@
                     class="form-control @error('expire_date') is-invalid @enderror"
                     value="{{ old('expire_date', $release->expire_date) }}" />
 
-                @error('expire_date')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="expire_date"></x-error>
             </div>
         </div>
 

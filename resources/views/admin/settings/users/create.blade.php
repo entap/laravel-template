@@ -12,11 +12,7 @@
                 <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
                     value="{{ old('name') }}" />
 
-                @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="name"></x-error>
             </div>
         </div>
 
@@ -27,11 +23,7 @@
                     class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}"
                     autocomplete="off" />
 
-                @error('username')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="username"></x-error>
             </div>
         </div>
 
@@ -41,11 +33,7 @@
                 <input type="password" name="password" id="password"
                     class="form-control @error('password') is-invalid @enderror" autocomplete="new-password" />
 
-                @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="password"></x-error>
             </div>
         </div>
 
@@ -70,11 +58,7 @@
                     </div>
                 @endforeach
 
-                @error('roles')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="roles"></x-error>
             </div>
         </div>
 
@@ -92,11 +76,7 @@
                     </div>
                 @endforeach
 
-                @error('permissions')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="permissions"></x-error>
             </div>
         </div>
 
@@ -112,11 +92,7 @@
                     @endforeach
                 </select>
 
-                @error('group_id')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="group_id"></x-error>
             </div>
         </div>
 

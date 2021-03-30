@@ -10,11 +10,7 @@
                 <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
                     value="{{ old('name') }}" />
 
-                @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="name"></x-error>
             </div>
         </div>
 
@@ -32,11 +28,7 @@
                     </div>
                 @endforeach
 
-                @error('permissions')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="permissions"></x-error>
             </div>
         </div>
 

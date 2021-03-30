@@ -11,11 +11,7 @@
                     <div>
                         <input type="text" id="slug" class="form-control @error('slug') is-invalid @enderror" name="slug"
                             value="{{ old('slug') }}" required autocomplete="off" />
-                        @error('slug')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <x-error name="slug"></x-error>
                     </div>
                 </div>
 
@@ -29,11 +25,7 @@
                             </a>
                             <input type="file" name="cover" id="cover" class="d-none" accept="image/png,image/jpeg" />
                         </div>
-                        @error('cover')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <x-error name="cover"></x-error>
                     </div>
                 </div>
 
@@ -42,11 +34,7 @@
                     <div>
                         <input type="text" id="subject" class="form-control @error('subject') is-invalid @enderror"
                             name="subject" value="{{ old('subject') }}" required autocomplete="off" />
-                        @error('subject')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <x-error name="subject"></x-error>
                     </div>
                 </div>
 
@@ -57,11 +45,7 @@
                         <div id="editor"></div>
 
                         <input type="hidden" name="body" id="body" required />
-                        @error('body')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <x-error name="body"></x-error>
                     </div>
                 </div>
 

@@ -12,11 +12,7 @@
             <div>
                 <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"
                     value="{{ old('name', $group->name) }}" required autocomplete="off" />
-                @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="name"></x-error>
             </div>
         </div>
 
@@ -32,11 +28,7 @@
                         </option>
                     @endforeach
                 </select>
-                @error('parent_id')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <x-error name="parent_id"></x-error>
             </div>
         </div>
 

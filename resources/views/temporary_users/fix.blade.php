@@ -13,11 +13,7 @@
                         <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"
                             value="{{ old('name', $temporaryUser->name) }}" autocomplete="off" />
 
-                        @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <x-error name="name"></x-error>
                     </div>
                 </div>
 
@@ -27,11 +23,7 @@
                         <input type="text" id="email" class="form-control @error('email') is-invalid @enderror" name="email"
                             value="{{ old('email', $temporaryUser->email) }}" required autocomplete="off" />
 
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <x-error name="email"></x-error>
                     </div>
                 </div>
 
