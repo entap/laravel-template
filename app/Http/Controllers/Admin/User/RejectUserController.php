@@ -11,10 +11,15 @@ use App\Notifications\TemporaryUserRejected;
 
 class RejectUserController extends Controller
 {
+    public function showRejectForm(TemporaryUser $temporaryUser)
+    {
+        return view('admin.temporary_users.reject', compact('temporaryUser'));
+    }
+
     /**
      * ユーザーを否認する
      */
-    public function __invoke(Request $request, TemporaryUser $temporaryUser)
+    public function reject(Request $request, TemporaryUser $temporaryUser)
     {
         $data = $request->validate([
             'reason' => 'nullable|string|max:1000',

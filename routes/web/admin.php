@@ -114,16 +114,18 @@ Admin::routeGroup(function () {
         Route::resource('temporary-users', TemporaryUserController::class, [
             'only' => ['index', 'show'],
         ])->names('admin.temporary-users');
-
         Route::post(
             'temporary-users/{temporaryUser}/accept',
             AcceptUserController::class
         )->name('admin.temporary-users.accept');
-
-        Route::post(
-            'temporary-users/{temporaryUser}/reject',
-            RejectUserController::class
-        )->name('admin.temporary-users.reject');
+        Route::get('temporary-users/{temporaryUser}/reject', [
+            RejectUserController::class,
+            'showRejectForm',
+        ])->name('admin.temporary-users.reject');
+        Route::post('temporary-users/{temporaryUser}/reject', [
+            RejectUserController::class,
+            'reject',
+        ]);
 
         // 動的コンテンツ
 

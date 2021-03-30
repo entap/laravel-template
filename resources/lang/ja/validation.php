@@ -174,5 +174,6 @@ return [
         'suspending_reason' => '凍結理由',
         'start_created_at' => '作成日時（開始）',
         'end_created_at' => '作成日時（終了）',
+        'reason' => '理由',
     ],
 ];

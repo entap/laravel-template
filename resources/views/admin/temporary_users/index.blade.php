@@ -29,14 +29,10 @@
                             </form>
                         </td>
                         <td>
-                            <form action="{{ route('admin.temporary-users.reject', $user) }}" method="POST">
-                                @csrf
-                                <div>
-                                    <button type="submit" class="btn btn-sm btn-danger text-nowrap">
-                                        @lang('Reject')
-                                    </button>
-                                </div>
-                            </form>
+                            <a href="{{ route('admin.temporary-users.reject', $user) }}"
+                                class="btn btn-sm btn-danger text-nowrap">
+                                @lang('Reject')
+                            </a>
                         </td>
                     </tr>
                 @endforeach
