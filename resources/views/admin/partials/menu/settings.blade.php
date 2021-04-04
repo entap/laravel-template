@@ -15,4 +15,8 @@
     <a href="{{ route('admin.mails.index') }}" class="dropdown-item">
         @lang('mails.title')
     </a>
+    <div class="dropdown-divider"></div>
+    <a href="{{ route('admin.settings.edit') }}" class="dropdown-item">
+        @lang('App Settings')
+    </a>
 </div>

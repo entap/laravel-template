@@ -19,5 +19,8 @@
     "Are you sure you want to suspend?": "本当に凍結してもよろしいですか？",
     "Suspend :user.": ":userを凍結します。",
     "No user device.": "端末が登録されていません。",
-    "Reject User": "登録を拒否する"
+    "Reject User": "登録を拒否する",
+
+    "App Settings": "アプリケーション設定",
+    "Settings are updated.": "設定を更新しました。"
 }

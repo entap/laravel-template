@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\User\TemporaryUserController;
 use App\Http\Controllers\Admin\User\UnsuspendUserController;
 use App\Http\Controllers\Admin\DuplicateMailTemplateController;
 use App\Http\Controllers\Admin\AgreementTypeAgreementController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Settings\UserRoleController;
 
 Admin::routeGroup(function () {
@@ -181,5 +182,14 @@ Admin::routeGroup(function () {
         Route::resource('packages.releases', PackageReleaseController::class, [
             'except' => ['index', 'show'],
         ])->names('admin.packages.releases');
+
+        // Settings
+
+        Route::get('settings', [SettingsController::class, 'edit'])->name(
+            'admin.settings.edit'
+        );
+        Route::put('settings', [SettingsController::class, 'update'])->name(
+            'admin.settings.update'
+        );
     });
 });
