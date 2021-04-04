@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Settings;
 use Illuminate\Pagination\AbstractPaginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,5 +25,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // 設定
+        $this->app->bind('settings', function () {
+            return Settings::latest()->firstOrCreate(
+                [],
+                ['welcome_message' => 'Welcome!']
+            );
+        });
     }
 }
