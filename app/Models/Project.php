@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model implements GroupOwnership
 {
     use HasFactory;
-    use OwnedByGroup;
+    use HasOwnerGroup;
 
     protected $fillable = ['name'];
 }

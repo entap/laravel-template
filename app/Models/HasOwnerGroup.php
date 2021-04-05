@@ -6,7 +6,7 @@ use App\Models\AdminGroup;
 /**
  * グループに所有される
  */
-trait OwnedByGroup
+trait HasOwnerGroup
 {
     /**
      * 所有グループ
