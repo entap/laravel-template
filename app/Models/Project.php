@@ -11,18 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model implements GroupOwnership
 {
     use HasFactory;
+    use OwnedByGroup;
 
-    public function ownerGroup()
-    {
-        return $this->belongsTo(AdminGroup::class, 'owner_group_id');
-    }
-
-    /**
-     * グループに所有されているか
-     */
-    public function isOwnedByGroup(AdminGroup $ownerGroup): bool
-    {
-        return $this->ownerGroup->id === $ownerGroup->id ||
-            optional($ownerGroup->parent)->owns($this);
-    }
+    protected $fillable = ['name'];
 }

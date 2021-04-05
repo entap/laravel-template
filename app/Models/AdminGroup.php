@@ -15,6 +15,8 @@ class AdminGroup extends Model
     use HasFactory;
     use NodeTrait;
 
+    protected $fillable = ['name', 'parent_id'];
+
     public function users()
     {
         return $this->belongsToMany(
@@ -28,8 +30,8 @@ class AdminGroup extends Model
     /**
      * リソースを所有しているか
      */
-    public function owns(GroupOwnership $ownership): bool
+    public function owns(GroupOwnership $resource): bool
     {
-        return $ownership->isOwnedByGroup($this);
+        return $resource->isOwnedByGroupSelfOrAncestors($this);
     }
 }
