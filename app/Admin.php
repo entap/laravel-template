@@ -32,6 +32,24 @@ class Admin
         return (new MenuQueryService())->items($this->user())->toTree();
     }
 
+    public function notifications($limit = null)
+    {
+        return optional($this->user(), function ($user) use ($limit) {
+            return $user
+                ->notifications()
+                ->latest()
+                ->take($limit)
+                ->get();
+        }) ?? collect();
+    }
+
+    public function unreadNotificationsCount()
+    {
+        return optional($this->user(), function ($user) {
+            return $user->unreadNotifications()->count();
+        }) ?? 0;
+    }
+
     private function groupAttributes()
     {
         return [

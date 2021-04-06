@@ -47,6 +47,24 @@
                             </form>
                         </div>
                     </li>
+
+                    <form class="form-inline">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-outline-primary" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Notifications
+                                <span class="badge badge-light">{{ Admin::unreadNotificationsCount() }}</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right p-4">
+                                @forelse (Admin::notifications() as $notification)
+                                    <div>{{ $notification->type }}</div>
+                                    <div>{{ $notification->data['message'] }}</div>
+                                @empty
+                                    No notification.
+                                @endforelse
+                            </div>
+                        </div>
+                    </form>
                 @endguest
             </ul>
         </div>
