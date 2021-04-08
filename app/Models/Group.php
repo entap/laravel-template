@@ -18,6 +18,8 @@ class Group extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)
+            ->using(GroupUser::class)
+            ->withPivot(['id']);
     }
 }
