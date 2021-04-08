@@ -5,6 +5,7 @@ use App\Http\Controllers\ShowDynamicPageController;
 use App\Http\Controllers\FixTemporaryUserController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GroupDescendantController;
+use App\Http\Controllers\GroupUserController;
 use App\Http\Controllers\RegisterTemporaryUserController;
 
 /*
@@ -51,3 +52,5 @@ Route::get('groups/{group}/descendants', [
     GroupDescendantController::class,
     'index',
 ])->name('groups.descendants.index');
+
+Route::get('groups/{group}/users', [GroupUserController::class, 'index']);

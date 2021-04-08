@@ -15,4 +15,9 @@ class Group extends Model
     use NodeTrait;
 
     protected $fillable = ['name'];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
