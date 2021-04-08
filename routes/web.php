@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShowDynamicPageController;
 use App\Http\Controllers\FixTemporaryUserController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\RegisterTemporaryUserController;
 
 /*
@@ -38,3 +39,9 @@ Route::put('temporary-users/{rejectedTemporaryUser:token}', [
 ])->name('temporary-users.fix');
 
 Route::get('dynamic-pages/{page:slug}', ShowDynamicPageController::class);
+
+// Grouping
+
+Route::get('groups/{group}', [GroupController::class, 'show'])->name(
+    'groups.show'
+);
