@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShowDynamicPageController;
 use App\Http\Controllers\FixTemporaryUserController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\GroupDescendantController;
 use App\Http\Controllers\RegisterTemporaryUserController;
 
 /*
@@ -45,3 +46,8 @@ Route::get('dynamic-pages/{page:slug}', ShowDynamicPageController::class);
 Route::get('groups/{group}', [GroupController::class, 'show'])->name(
     'groups.show'
 );
+
+Route::get('groups/{group}/descendants', [
+    GroupDescendantController::class,
+    'index',
+])->name('groups.descendants.index');
