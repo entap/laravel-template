@@ -22,10 +22,7 @@ class GroupPolicy
 
     public function writeMember(User $user, Group $group)
     {
-        $member = $group
-            ->members()
-            ->where('user_id', $user->id)
-            ->first();
+        $member = $group->getUser($user->id);
         return optional($member)->hasPermissionTo('group/members/write');
     }
 
@@ -38,10 +35,7 @@ class GroupPolicy
             return false;
         }
 
-        $member = $group
-            ->members()
-            ->where('user_id', $user->id)
-            ->first();
+        $member = $group->getUser($user->id);
         return optional($member)->hasPermissionTo(
             'group/descendant/members/write'
         );

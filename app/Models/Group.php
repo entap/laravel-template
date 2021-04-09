@@ -34,8 +34,16 @@ class Group extends Model
     /**
      * ユーザーがメンバーに入っているかどうか
      */
-    public function hasUser($userId)
+    public function hasUser(int $userId)
     {
         return $this->members->contains('user_id', $userId);
+    }
+
+    /**
+     * ユーザーからメンバーを取得する
+     */
+    public function getUser(int $userId)
+    {
+        return $this->members->firstWhere('user_id', $userId);
     }
 }
