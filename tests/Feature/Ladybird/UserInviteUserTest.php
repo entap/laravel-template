@@ -10,7 +10,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
-class GroupOwnerInviteUserTest extends TestCase
+class UserInviteUserTest extends TestCase
 {
     public function test_ユーザーを招待する()
     {

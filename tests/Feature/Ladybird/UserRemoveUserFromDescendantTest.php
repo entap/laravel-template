@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class GroupOwnerGetUserTest extends TestCase
+class UserRemoveUserFromDescendantTest extends TestCase
 {
     /**
      * A basic feature test example.
