@@ -89,4 +89,12 @@ class User extends Authenticatable
     {
         return $this->hasRole('tester', $guard);
     }
+
+    /**
+     * メールアドレスから検索する
+     */
+    public static function findByEmail(string $email)
+    {
+        return self::where('email', $email)->first();
+    }
 }

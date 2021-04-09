@@ -54,3 +54,5 @@ Route::get('groups/{group}/descendants', [
 ])->name('groups.descendants.index');
 
 Route::get('groups/{group}/users', [GroupUserController::class, 'index']);
+
+Route::post('groups/{group}/users', [GroupUserController::class, 'invite']);

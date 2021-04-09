@@ -16,10 +16,26 @@ class Group extends Model
 
     protected $fillable = ['name'];
 
-    public function users()
+    public function members()
     {
-        return $this->belongsToMany(User::class)
-            ->using(GroupUser::class)
-            ->withPivot(['id']);
+        return $this->hasMany(GroupMember::class);
+    }
+
+    /**
+     * ユーザーをメンバーに加える
+     */
+    public function assignUser(int $userId)
+    {
+        return $this->members()->create([
+            'user_id' => $userId,
+        ]);
+    }
+
+    /**
+     * ユーザーがメンバーに入っているかどうか
+     */
+    public function hasUser($userId)
+    {
+        return $this->members->contains('user_id', $userId);
     }
 }

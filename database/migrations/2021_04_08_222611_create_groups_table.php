@@ -19,19 +19,6 @@ class CreateGroupsTable extends Migration
             $table->nestedSet();
             $table->timestamps();
         });
-
-        Schema::create('group_user', function (Blueprint $table) {
-            $table->id();
-            $table
-                ->foreignId('group_id')
-                ->constrained()
-                ->cascadeOnDelete();
-            $table
-                ->foreignId('user_id')
-                ->constrained()
-                ->cascadeOnDelete();
-            $table->timestamps();
-        });
     }
 
     /**
