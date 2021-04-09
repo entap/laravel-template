@@ -18,14 +18,15 @@ class GroupDescendantController extends Controller
     /**
      * 配下のグループにユーザーを追加する
      */
-    public function assign(Request $request, Group $group, string $descendant)
+    public function assign(Request $request, Group $group, Group $descendant)
     {
-        $descendantGroup = $group->descendants()->findOrFail($descendant);
+        $this->authorize('writeDescendantMember', [$group, $descendant]);
+
         $request->validate([
             'member_id' => ['required'],
         ]);
         $parentMember = $group->members()->find($request->member_id);
 
-        $descendantGroup->assignUser($parentMember->user_id);
+        $descendant->assignUser($parentMember->user_id);
     }
 }

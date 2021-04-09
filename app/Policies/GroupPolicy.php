@@ -28,4 +28,22 @@ class GroupPolicy
             ->first();
         return optional($member)->hasPermissionTo('group/members/write');
     }
+
+    public function writeDescendantMember(
+        User $user,
+        Group $group,
+        Group $descendant
+    ) {
+        if (!$group->descendants->contains('id', $descendant->id)) {
+            return false;
+        }
+
+        $member = $group
+            ->members()
+            ->where('user_id', $user->id)
+            ->first();
+        return optional($member)->hasPermissionTo(
+            'group/descendant/members/write'
+        );
+    }
 }
