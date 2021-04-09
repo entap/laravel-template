@@ -21,6 +21,8 @@ class GroupUserController extends Controller
      */
     public function invite(Request $request, Group $group)
     {
+        $this->authorize('writeMember', $group);
+
         $request->validate([
             'email' => 'required|exists:users,email',
             'role' => 'required|in:group_owner,group_member',
