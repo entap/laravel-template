@@ -20,21 +20,38 @@ class GroupPolicy
         //
     }
 
+    public function readMember(User $user, Group $group)
+    {
+        // FAKE IT
+        return false;
+    }
+
     public function writeMember(User $user, Group $group)
     {
         $member = $group->getUser($user->id);
         return optional($member)->hasPermissionTo('group/members/write');
     }
 
-    public function writeDescendantMember(
-        User $user,
-        Group $group,
-        Group $descendant
-    ) {
-        if (!$group->descendants->contains('id', $descendant->id)) {
-            return false;
-        }
+    public function readDescendantGroup(User $user, Group $group)
+    {
+        // FAKE IT
+        return false;
+    }
 
+    public function writeDescendantGroup(User $user, Group $group)
+    {
+        // FAKE IT
+        return false;
+    }
+
+    public function readDescendantMember(User $user, Group $group)
+    {
+        // FAKE IT
+        return false;
+    }
+
+    public function writeDescendantMember(User $user, Group $group)
+    {
         $member = $group->getUser($user->id);
         return optional($member)->hasPermissionTo(
             'group/descendant/members/write'
