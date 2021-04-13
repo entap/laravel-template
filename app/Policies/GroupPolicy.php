@@ -40,8 +40,8 @@ class GroupPolicy
 
     public function writeDescendantGroup(User $user, Group $group)
     {
-        // FAKE IT
-        return false;
+        $member = $group->getUser($user->id);
+        return optional($member)->hasPermissionTo('group/descendants/write');
     }
 
     public function readDescendantMember(User $user, Group $group)

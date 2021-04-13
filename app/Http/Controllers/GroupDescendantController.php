@@ -25,6 +25,8 @@ class GroupDescendantController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
+        $this->authorize('writeDescendantGroup', $group);
+
         abort_unless(
             $group->id == $request->parent_id ||
                 $group->descendants()->find($request->parent_id),
