@@ -14,6 +14,7 @@ class UserGetMemberTest extends TestCase
     public function test_メンバーを取得する()
     {
         $member = GroupMember::factory()->create();
+        $member->givePermissionTo('group/members/read');
         $group = $member->group;
         $otherMember = GroupMember::factory()
             ->for($group, 'group')
@@ -39,15 +40,25 @@ class UserGetMemberTest extends TestCase
         $response->assertForbidden();
     }
 
-    // public function test_ユーザーに権限がないと失敗する()
-    // {
-    //     //
-    // }
+    public function test_ユーザーに権限がないと失敗する()
+    {
+        $member = GroupMember::factory()->create();
+        $group = $member->group;
+        $otherMember = GroupMember::factory()
+            ->for($group, 'group')
+            ->create();
 
-    // protected function setUp(): void
-    // {
-    //     parent::setUp();
+        $response = $this->actingAs($member->user)->get(
+            "/groups/{$group->id}/members/{$otherMember->id}"
+        );
 
-    //     $this->permission = Permission::findOrCreate('group/members/read');
-    // }
+        $response->assertForbidden();
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->permission = Permission::findOrCreate('group/members/read');
+    }
 }
