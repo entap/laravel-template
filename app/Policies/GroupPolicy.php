@@ -22,8 +22,9 @@ class GroupPolicy
 
     public function readMember(User $user, Group $group)
     {
-        // FAKE IT
-        return false;
+        $member = $group->getUser($user->id);
+        return $member;
+        // return optional($member)->hasPermissionTo('group/members/read');
     }
 
     public function writeMember(User $user, Group $group)
