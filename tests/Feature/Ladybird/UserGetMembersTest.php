@@ -2,29 +2,35 @@
 
 namespace Tests\Feature\Ladybird;
 
-use App\Models\Group;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\Group;
+use Spatie\Permission\Models\Permission;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserGetMembers extends TestCase
 {
     public function test_メンバーを一覧する()
     {
-        $group = Group::factory()->create();
+        $group = Group::factory()
+            ->hasMembers(2)
+            ->create();
+        $member = $group->members->first();
+        $member->givePermissionTo('group/members/read');
 
-        $response = $this->get("/groups/{$group->id}/members");
+        $response = $this->actingAs($member->user)->get(
+            "/groups/{$group->id}/members"
+        );
 
         $response->assertOk();
     }
 
-    // public function test_ユーザーがメンバーでないと失敗する()
-    // {
-    //     $this->fail();
-    // }
+    // 権限周りは詳細と同じなので省略
 
-    // public function test_ユーザーに権限がないと失敗する()
-    // {
-    //     $this->fail();
-    // }
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->permission = Permission::findOrCreate('group/members/read');
+    }
 }

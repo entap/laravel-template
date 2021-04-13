@@ -14,7 +14,9 @@ class GroupMemberController extends Controller
      */
     public function index(Group $group)
     {
-        //
+        $this->authorize('readMember', $group);
+
+        return $group->members;
     }
 
     /**
