@@ -16,10 +16,25 @@ class GroupDescendantController extends Controller
     }
 
     /**
+     * 配下のグループを作成する
+     */
+    public function store(Request $request, Group $group)
+    {
+        $request->validate([
+            'parent_id' => 'required|exists:groups,id',
+            'name' => 'required|string|max:255',
+        ]);
+
+        $group->descendants()->create($request->all());
+    }
+
+    /**
      * 配下のグループにユーザーを追加する
      */
     public function assign(Request $request, Group $group, string $descendant)
     {
+        // TODO コントローラーを分ける
+
         $descendant = $group->descendants()->findOrFail($descendant);
         $this->authorize('writeDescendantMember', $group);
 

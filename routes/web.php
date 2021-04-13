@@ -66,6 +66,11 @@ Route::get('groups/{group}/members/{member}', [
 
 Route::post('groups/{group}/users', [GroupUserController::class, 'invite']);
 
+Route::post('groups/{group}/descendants', [
+    GroupDescendantController::class,
+    'store',
+]);
+
 Route::post('groups/{group}/descendants/{descendant}/users', [
     GroupDescendantController::class,
     'assign',

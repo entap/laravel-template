@@ -14,7 +14,7 @@ class Group extends Model
     use HasFactory;
     use NodeTrait;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['parent_id', 'name'];
 
     public function members()
     {
