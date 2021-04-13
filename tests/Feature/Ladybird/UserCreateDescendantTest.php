@@ -13,72 +13,45 @@ class UserCreateDescendantTest extends TestCase
 {
     public function test_配下のグループを追加する()
     {
-        $group = Group::factory()
-            ->hasMembers(1)
-            ->create();
-        $member = $group->members->first();
-        $member->givePermissionTo($this->permission->name);
-        $newGroup = Group::factory()->make(['parent_id' => null]);
-
-        // TODO parent_idなしでもいいかも
-        $response = $this->actingAs($member->user)->post(
-            "/groups/{$group->id}/descendants",
-            [
-                'parent_id' => $group->id,
-                'name' => $newGroup->name,
-            ]
+        $response = $this->actingAs($this->member->user)->createDescendant(
+            $this->group,
+            $this->newGroup
         );
         $response->assertOk();
 
         $this->assertDatabaseHas('groups', [
-            'parent_id' => $group->id,
-            'name' => $newGroup->name,
+            'parent_id' => $this->group->id,
+            'name' => $this->newGroup->name,
         ]);
     }
 
     public function test_孫も追加できる()
     {
-        $group = Group::factory()
-            ->hasMembers(1)
-            ->create();
-        $member = $group->members->first();
-        $member->givePermissionTo($this->permission->name);
         $groupChild = Group::factory()
-            ->for($group, 'parent')
+            ->for($this->group, 'parent')
             ->create();
-        $newGroup = Group::factory()->make(['parent_id' => null]);
 
-        $response = $this->actingAs($member->user)->post(
-            "/groups/{$group->id}/descendants",
-            [
-                'parent_id' => $groupChild->id,
-                'name' => $newGroup->name,
-            ]
+        $response = $this->actingAs($this->member->user)->createDescendant(
+            $this->group,
+            $this->newGroup,
+            $groupChild
         );
         $response->assertOk();
 
         $this->assertDatabaseHas('groups', [
             'parent_id' => $groupChild->id,
-            'name' => $newGroup->name,
+            'name' => $this->newGroup->name,
         ]);
     }
 
     public function test_関係ないグループには追加できない()
     {
-        $group = Group::factory()
-            ->hasMembers(1)
-            ->create();
-        $member = $group->members->first();
-        $member->givePermissionTo($this->permission->name);
         $otherGroup = Group::factory()->create();
-        $newGroup = Group::factory()->make(['parent_id' => null]);
 
-        $response = $this->actingAs($member->user)->post(
-            "/groups/{$group->id}/descendants",
-            [
-                'parent_id' => $otherGroup->id,
-                'name' => $newGroup->name,
-            ]
+        $response = $this->actingAs($this->member->user)->createDescendant(
+            $this->group,
+            $this->newGroup,
+            $otherGroup
         );
         $response->assertForbidden();
     }
@@ -86,37 +59,22 @@ class UserCreateDescendantTest extends TestCase
     public function test_ユーザーがグループに入ってないと失敗する()
     {
         $user = User::factory()->create();
-        $group = Group::factory()
-            ->hasMembers(1)
-            ->create();
-        $newGroup = Group::factory()->make(['parent_id' => null]);
 
-        // TODO parent_idなしでもいいかも
-        $response = $this->actingAs($user)->post(
-            "/groups/{$group->id}/descendants",
-            [
-                'parent_id' => $group->id,
-                'name' => $newGroup->name,
-            ]
+        $response = $this->actingAs($user)->createDescendant(
+            $this->group,
+            $this->newGroup
         );
+
         $response->assertForbidden();
     }
 
     public function test_ユーザーに権限がないと失敗する()
     {
-        $group = Group::factory()
-            ->hasMembers(1)
-            ->create();
-        $member = $group->members->first();
-        $newGroup = Group::factory()->make(['parent_id' => null]);
+        $this->member->revokePermissionTo($this->permission->name);
 
-        // TODO parent_idなしでもいいかも
-        $response = $this->actingAs($member->user)->post(
-            "/groups/{$group->id}/descendants",
-            [
-                'parent_id' => $group->id,
-                'name' => $newGroup->name,
-            ]
+        $response = $this->actingAs($this->member->user)->createDescendant(
+            $this->group,
+            $this->newGroup
         );
         $response->assertForbidden();
     }
@@ -126,5 +84,22 @@ class UserCreateDescendantTest extends TestCase
         parent::setUp();
 
         $this->permission = Permission::findOrCreate('group/descendants/write');
+
+        $this->group = Group::factory()
+            ->hasMembers(1)
+            ->create();
+        $this->member = $this->group->members->first();
+        $this->member->givePermissionTo($this->permission->name);
+        $this->newGroup = Group::factory()->make(['parent_id' => null]);
+    }
+
+    protected function createDescendant($group, $newGroup, $parent = null)
+    {
+        // TODO 直下に入れる場合はparent_idなしでもいいかも
+
+        return $this->post("/groups/{$group->id}/descendants", [
+            'parent_id' => ($parent ?? $group)->id,
+            'name' => $newGroup->name,
+        ]);
     }
 }
