@@ -25,6 +25,12 @@ class GroupDescendantController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
+        abort_unless(
+            $group->id == $request->parent_id ||
+                $group->descendants()->find($request->parent_id),
+            403
+        );
+
         $group->descendants()->create($request->all());
     }
 
