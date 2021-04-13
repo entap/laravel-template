@@ -13,15 +13,9 @@ class UserGetMemberTest extends TestCase
 {
     public function test_メンバーを取得する()
     {
-        $member = GroupMember::factory()->create();
-        $member->givePermissionTo('group/members/read');
-        $group = $member->group;
-        $otherMember = GroupMember::factory()
-            ->for($group, 'group')
-            ->create();
-
-        $response = $this->actingAs($member->user)->get(
-            "/groups/{$group->id}/members/{$otherMember->id}"
+        $response = $this->actingAs($this->member->user)->getMember(
+            $this->group,
+            $this->otherMember
         );
 
         $response->assertOk();
@@ -30,11 +24,10 @@ class UserGetMemberTest extends TestCase
     public function test_ユーザーがグループに入っていないと失敗する()
     {
         $user = User::factory()->create();
-        $otherMember = GroupMember::factory()->create();
-        $group = $otherMember->group;
 
-        $response = $this->actingAs($user)->get(
-            "/groups/{$group->id}/members/{$otherMember->id}"
+        $response = $this->actingAs($user)->getMember(
+            $this->group,
+            $this->otherMember
         );
 
         $response->assertForbidden();
@@ -42,14 +35,11 @@ class UserGetMemberTest extends TestCase
 
     public function test_ユーザーに権限がないと失敗する()
     {
-        $member = GroupMember::factory()->create();
-        $group = $member->group;
-        $otherMember = GroupMember::factory()
-            ->for($group, 'group')
-            ->create();
+        $this->member->revokePermissionTo('group/members/read');
 
-        $response = $this->actingAs($member->user)->get(
-            "/groups/{$group->id}/members/{$otherMember->id}"
+        $response = $this->actingAs($this->member->user)->getMember(
+            $this->group,
+            $this->otherMember
         );
 
         $response->assertForbidden();
@@ -60,5 +50,17 @@ class UserGetMemberTest extends TestCase
         parent::setUp();
 
         $this->permission = Permission::findOrCreate('group/members/read');
+
+        $this->member = GroupMember::factory()->create();
+        $this->member->givePermissionTo('group/members/read');
+        $this->group = $this->member->group;
+        $this->otherMember = GroupMember::factory()
+            ->for($this->group, 'group')
+            ->create();
+    }
+
+    protected function getMember($group, $member)
+    {
+        return $this->get("/groups/{$group->id}/members/{$member->id}");
     }
 }
