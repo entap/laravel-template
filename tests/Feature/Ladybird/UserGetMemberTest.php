@@ -45,6 +45,11 @@ class UserGetMemberTest extends TestCase
         $response->assertForbidden();
     }
 
+    // public function test_グループのメンバー以外は取得できない()
+    // {
+    //     $this->fail();
+    // }
+
     protected function setUp(): void
     {
         parent::setUp();

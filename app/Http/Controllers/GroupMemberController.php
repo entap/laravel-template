@@ -10,6 +10,14 @@ use App\Http\Controllers\Controller;
 class GroupMemberController extends Controller
 {
     /**
+     * メンバーを一覧する
+     */
+    public function index(Group $group)
+    {
+        //
+    }
+
+    /**
      * メンバーを取得する
      */
     public function show(Group $group, GroupMember $member)
