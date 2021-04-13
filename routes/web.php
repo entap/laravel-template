@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GroupController;
+use App\Http\Controllers\GroupUserController;
+use App\Http\Controllers\GroupMemberController;
+use App\Http\Controllers\GroupDescendantController;
 use App\Http\Controllers\ShowDynamicPageController;
 use App\Http\Controllers\FixTemporaryUserController;
-use App\Http\Controllers\GroupController;
-use App\Http\Controllers\GroupDescendantController;
-use App\Http\Controllers\GroupUserController;
 use App\Http\Controllers\RegisterTemporaryUserController;
 
 /*
@@ -53,7 +54,13 @@ Route::get('groups/{group}/descendants', [
     'index',
 ])->name('groups.descendants.index');
 
+// TODO membersにする
 Route::get('groups/{group}/users', [GroupUserController::class, 'index']);
+
+Route::get('groups/{group}/members/{member}', [
+    GroupMemberController::class,
+    'show',
+]);
 
 Route::post('groups/{group}/users', [GroupUserController::class, 'invite']);
 

@@ -2,21 +2,30 @@
 
 namespace Tests\Feature\Ladybird;
 
+use App\Models\GroupMember;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class UserGetUserTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_example()
+    public function test_ユーザーを取得する()
     {
-        $response = $this->get('/');
+        $member = GroupMember::factory()->create();
+        $group = $member->group;
 
-        $response->assertStatus(200);
+        $response = $this->get("/groups/{$group->id}/members/{$member->id}");
+
+        $response->assertOk();
     }
+
+    // public function test_グループに入っていないと失敗する()
+    // {
+    //     //
+    // }
+
+    // public function test_権限がないと失敗する()
+    // {
+    //     //
+    // }
 }
