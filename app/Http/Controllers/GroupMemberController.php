@@ -15,5 +15,7 @@ class GroupMemberController extends Controller
     public function show(Group $group, GroupMember $member)
     {
         $this->authorize('readMember', $group);
+
+        return $member;
     }
 }
