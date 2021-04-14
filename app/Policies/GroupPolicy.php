@@ -10,16 +10,6 @@ class GroupPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Create a new policy instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
     public function readMember(User $user, Group $group)
     {
         $member = $group->getUser($user->id);
@@ -34,8 +24,8 @@ class GroupPolicy
 
     public function readDescendantGroup(User $user, Group $group)
     {
-        // FAKE IT
-        return false;
+        $member = $group->getUser($user->id);
+        return optional($member)->hasPermissionTo('group/descendants/read');
     }
 
     public function writeDescendantGroup(User $user, Group $group)
@@ -46,8 +36,10 @@ class GroupPolicy
 
     public function readDescendantMember(User $user, Group $group)
     {
-        // FAKE IT
-        return false;
+        $member = $group->getUser($user->id);
+        return optional($member)->hasPermissionTo(
+            'group/descendant/members/read'
+        );
     }
 
     public function writeDescendantMember(User $user, Group $group)
