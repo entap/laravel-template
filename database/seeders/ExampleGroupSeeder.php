@@ -15,9 +15,14 @@ class ExampleGroupSeeder extends Seeder
      */
     public function run()
     {
+        $user = User::factory()->create();
+        $this->command->info('Add user: ' . $user->email);
+
         $group = Group::factory()
             ->hasMembers(3)
             ->create();
+        $member = $group->assignUser($user->id);
+        $member->assignRole('group_owner');
         $children = Group::factory(3)
             ->for($group, 'parent')
             ->hasMembers(3)
@@ -28,5 +33,7 @@ class ExampleGroupSeeder extends Seeder
                 ->hasMembers(3)
                 ->create();
         }
+
+        $this->command->info('Add group: ' . $group->id);
     }
 }

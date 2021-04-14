@@ -12,6 +12,8 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
+        $this->authorize('read', $group);
+        
         return view('groups.show', compact('group'));
     }
 }

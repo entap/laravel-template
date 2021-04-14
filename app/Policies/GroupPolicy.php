@@ -10,6 +10,18 @@ class GroupPolicy
 {
     use HandlesAuthorization;
 
+    public function read(User $user, Group $group)
+    {
+        $member = $group->getUser($user->id);
+        return optional($member)->hasPermissionTo('groups/read');
+    }
+
+    public function write(User $user, Group $group)
+    {
+        $member = $group->getUser($user->id);
+        return optional($member)->hasPermissionTo('groups/write');
+    }
+
     public function readMember(User $user, Group $group)
     {
         $member = $group->getUser($user->id);

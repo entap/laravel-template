@@ -9,6 +9,8 @@ use Spatie\Permission\Models\Role;
 class LadybirdSeeder extends Seeder
 {
     protected $permissions = [
+        'groups/read',
+        'groups/write',
         'group/members/read',
         'group/members/write',
         'group/descendants/read',
