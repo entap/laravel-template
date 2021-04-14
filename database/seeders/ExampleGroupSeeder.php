@@ -16,16 +16,16 @@ class ExampleGroupSeeder extends Seeder
     public function run()
     {
         $group = Group::factory()
-            ->hasUsers(3)
+            ->hasMembers(3)
             ->create();
         $children = Group::factory(3)
             ->for($group, 'parent')
-            ->hasUsers(3)
+            ->hasMembers(3)
             ->create();
         foreach ($children as $child) {
             Group::factory(3)
                 ->for($child, 'parent')
-                ->hasUsers(3)
+                ->hasMembers(3)
                 ->create();
         }
     }
