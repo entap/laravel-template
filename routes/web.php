@@ -54,7 +54,10 @@ Route::get('groups/{group}/descendants', [
     'index',
 ])->name('groups.descendants.index');
 
-Route::get('groups/{group}/members', [GroupMemberController::class, 'index']);
+Route::get('groups/{group}/members', [
+    GroupMemberController::class,
+    'index',
+])->name('groups.members.index');
 
 Route::get('groups/{group}/members/{member}', [
     GroupMemberController::class,
