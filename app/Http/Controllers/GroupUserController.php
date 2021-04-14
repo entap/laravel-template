@@ -9,14 +9,6 @@ use Illuminate\Http\Request;
 class GroupUserController extends Controller
 {
     /**
-     * グループに所属するユーザーを一覧する
-     */
-    public function index(Group $group)
-    {
-        return $group->users;
-    }
-
-    /**
      * ユーザーを招待する
      */
     public function invite(Request $request, Group $group)

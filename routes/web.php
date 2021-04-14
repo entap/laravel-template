@@ -54,9 +54,6 @@ Route::get('groups/{group}/descendants', [
     'index',
 ])->name('groups.descendants.index');
 
-// FIXME 廃止する
-Route::get('groups/{group}/users', [GroupUserController::class, 'index']);
-
 Route::get('groups/{group}/members', [GroupMemberController::class, 'index']);
 
 Route::get('groups/{group}/members/{member}', [
