@@ -105,6 +105,11 @@ Route::group(['middleware' => 'auth'], function () {
         'update',
     ])->name('groups.descendants.update');
 
+    Route::delete('groups/{group}/descendants/{descendant}', [
+        GroupDescendantController::class,
+        'destroy',
+    ])->name('groups.descendants.destroy');
+
     Route::post('groups/{group}/descendants/{descendant}/users', [
         GroupDescendantController::class,
         'assign',

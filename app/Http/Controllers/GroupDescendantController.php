@@ -79,6 +79,18 @@ class GroupDescendantController extends Controller
     }
 
     /**
+     * 配下のグループを削除する
+     */
+    public function destroy(Request $request, Group $group, Group $descendant)
+    {
+        $this->authorize('writeDescendantGroup', $group);
+
+        $descendant->delete();
+
+        return redirect()->route('groups.descendants.index', $group);
+    }
+
+    /**
      * 配下のグループにユーザーを追加する
      */
     public function assign(Request $request, Group $group, string $descendant)

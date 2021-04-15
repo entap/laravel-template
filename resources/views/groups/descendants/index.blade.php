@@ -14,7 +14,7 @@
 
         <ul>
             @foreach ($group->descendants->toTree() as $child)
-                <li>
+                <li class="pt-1">
                     @include('groups.descendants._group', ['root' => $group, 'group' => $child])
                 </li>
             @endforeach
