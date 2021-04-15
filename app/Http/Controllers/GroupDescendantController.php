@@ -12,6 +12,8 @@ class GroupDescendantController extends Controller
      */
     public function index(Request $request, Group $group)
     {
+        $this->authorize('readDescendantGroup', $group);
+
         if ($request->expectsJson()) {
             return $group->descendants->toTree();
         }
@@ -33,12 +35,12 @@ class GroupDescendantController extends Controller
      */
     public function store(Request $request, Group $group)
     {
+        $this->authorize('writeDescendantGroup', $group);
+
         $validatedData = $request->validate([
             'parent_id' => 'required|exists:groups,id',
             'name' => 'required|string|max:255',
         ]);
-
-        $this->authorize('writeDescendantGroup', $group);
 
         // TODO バリデーションエラーの方がいいか
         abort_unless(
@@ -59,6 +61,8 @@ class GroupDescendantController extends Controller
     {
         $this->authorize('writeDescendantGroup', $group);
 
+        $group->descendants()->findOrFail($descendant->id);
+
         return view('groups.descendants.edit', compact('group', 'descendant'));
     }
 
@@ -67,11 +71,13 @@ class GroupDescendantController extends Controller
      */
     public function update(Request $request, Group $group, Group $descendant)
     {
+        $this->authorize('writeDescendantGroup', $group);
+
+        $group->descendants()->findOrFail($descendant->id);
+
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
         ]);
-
-        $this->authorize('writeDescendantGroup', $group);
 
         $descendant->update($validatedData);
 
@@ -83,6 +89,8 @@ class GroupDescendantController extends Controller
      */
     public function destroy(Request $request, Group $group, Group $descendant)
     {
+        $group->descendants()->findOrFail($descendant->id);
+
         $this->authorize('writeDescendantGroup', $group);
 
         $descendant->delete();
