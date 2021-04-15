@@ -18,6 +18,9 @@ class CreateCustomTokenService
         $provider = $user->getProvider('firebase');
         $uid = $provider ? $provider->code : Str::uuid();
         $customToken = $this->firebase->createCustomToken($uid);
+
+        $user->saveProvider('firebase', $uid);
+
         return [
             'custom_token' => $customToken,
         ];
