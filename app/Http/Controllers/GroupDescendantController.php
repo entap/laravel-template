@@ -23,6 +23,8 @@ class GroupDescendantController extends Controller
      */
     public function create(Request $request, Group $group)
     {
+        $this->authorize('writeDescendantGroup', $group);
+
         return view('groups.descendants.create', compact('group'));
     }
 
@@ -31,20 +33,47 @@ class GroupDescendantController extends Controller
      */
     public function store(Request $request, Group $group)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'parent_id' => 'required|exists:groups,id',
             'name' => 'required|string|max:255',
         ]);
 
         $this->authorize('writeDescendantGroup', $group);
 
+        // TODO バリデーションエラーの方がいいか
         abort_unless(
             $group->id == $request->parent_id ||
                 $group->descendants()->find($request->parent_id),
             403
         );
 
-        $group->descendants()->create($request->all());
+        $group->descendants()->create($validatedData);
+
+        return redirect()->route('groups.descendants.index', $group);
+    }
+
+    /**
+     * 編集フォームを表示する
+     */
+    public function edit(Request $request, Group $group, Group $descendant)
+    {
+        $this->authorize('writeDescendantGroup', $group);
+
+        return view('groups.descendants.edit', compact('group', 'descendant'));
+    }
+
+    /**
+     * 配下のグループを更新する
+     */
+    public function update(Request $request, Group $group, Group $descendant)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $this->authorize('writeDescendantGroup', $group);
+
+        $descendant->update($validatedData);
 
         return redirect()->route('groups.descendants.index', $group);
     }
