@@ -161,9 +161,11 @@ return [
 
     'attributes' => [
         'name' => '名前',
+        'email' => 'メールアドレス',
         'username' => 'ログインID',
         'password' => 'パスワード',
         'password_confirmation' => 'パスワード（確認）',
+        'role' => '管理権限セット',
         'roles' => '管理権限セット',
         'permissions' => '管理権限',
         'group_id' => '管理グループ',

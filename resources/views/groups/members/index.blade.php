@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- <div class="text-right">
-        <a href="{{ route('groups.descendants.create', $group) }}" class="btn btn-primary text-nowrap">
-            @lang('Create')
+    <div class="text-right">
+        <a href="{{ route('groups.members.invite', $group) }}" class="btn btn-primary text-nowrap">
+            @lang('Invite')
         </a>
-    </div> --}}
+    </div>
 
     <ul class="list-group">
         @foreach ($members as $member)
