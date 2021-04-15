@@ -12,11 +12,17 @@ class GroupMemberController extends Controller
     /**
      * メンバーを一覧する
      */
-    public function index(Group $group)
+    public function index(Request $request, Group $group)
     {
         $this->authorize('readMember', $group);
 
-        return $group->members;
+        if ($request->expectsJson()) {
+            return $group->members;
+        }
+        return view('groups.members.index', [
+            'group' => $group,
+            'members' => $group->members,
+        ]);
     }
 
     /**

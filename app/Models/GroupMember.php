@@ -27,4 +27,9 @@ class GroupMember extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getNameAttribute()
+    {
+        return $this->user->name;
+    }
 }
