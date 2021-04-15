@@ -58,6 +58,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Agreement::class, 'user_agreement');
     }
 
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'group_members');
+    }
+
     public function getDeviceTokens()
     {
         return $this->notificationDevices->pluck('token');

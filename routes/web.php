@@ -62,6 +62,8 @@ Route::get('dynamic-pages/{page:slug}', ShowDynamicPageController::class);
 // Grouping
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('groups', [GroupController::class, 'index']);
+
     Route::get('groups/{group}', [GroupController::class, 'show'])->name(
         'groups.show'
     );
