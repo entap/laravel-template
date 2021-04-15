@@ -18,14 +18,14 @@ class UserInviteUserTest extends TestCase
         $group = Group::factory()->create();
         $user = User::factory()->create();
 
-        $response = $this->actingAsUserHasPermission($group)->post(
-            "/groups/{$group->id}/users",
+        $response = $this->actingAsUserHasPermission($group)->postJson(
+            "/groups/{$group->id}/members/invite",
             [
                 'email' => $user->email,
                 'role' => $role->name,
             ]
         );
-        $response->assertOk();
+        $response->assertCreated();
 
         $this->assertDatabaseHas('group_members', [
             'group_id' => $group->id,
@@ -39,8 +39,8 @@ class UserInviteUserTest extends TestCase
         $group = Group::factory()->create();
         $user = User::factory()->create();
 
-        $response = $this->actingAsUserNotHasPermission($group)->post(
-            "/groups/{$group->id}/users",
+        $response = $this->actingAsUserNotHasPermission($group)->postJson(
+            "/groups/{$group->id}/members/invite",
             [
                 'email' => $user->email,
                 'role' => $role->name,

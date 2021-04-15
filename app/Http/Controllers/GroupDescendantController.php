@@ -49,8 +49,11 @@ class GroupDescendantController extends Controller
             403
         );
 
-        $group->descendants()->create($validatedData);
+        $descendant = $group->descendants()->create($validatedData);
 
+        if ($request->expectsJson()) {
+            return $descendant;
+        }
         return redirect()->route('groups.descendants.index', $group);
     }
 

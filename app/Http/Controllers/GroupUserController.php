@@ -37,13 +37,15 @@ class GroupUserController extends Controller
         $this->authorize('writeMember', $group);
 
         $targetUser = User::findByEmail($request->email);
-        if ($group->hasUser($targetUser->id)) {
-            return;
+        $member =$group->getUser($targetUser->id);
+        if (empty($member)) {
+            $member = $group->assignUser($targetUser->id);
+            $member->syncRoles([$request->role]);
         }
 
-        $member = $group->assignUser($targetUser->id);
-        $member->syncRoles([$request->role]);
-
+        if ($request->expectsJson()) {
+            return $member;
+        }
         return redirect()->route('groups.members.index', $group)->with('success', __('Member is invisted.'));
     }
 }

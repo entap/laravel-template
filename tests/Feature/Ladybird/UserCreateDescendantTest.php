@@ -17,7 +17,7 @@ class UserCreateDescendantTest extends TestCase
             $this->group,
             $this->newGroup
         );
-        $response->assertOk();
+        $response->assertCreated();
 
         $this->assertDatabaseHas('groups', [
             'parent_id' => $this->group->id,
@@ -36,7 +36,7 @@ class UserCreateDescendantTest extends TestCase
             $this->newGroup,
             $groupChild
         );
-        $response->assertOk();
+        $response->assertCreated();
 
         $this->assertDatabaseHas('groups', [
             'parent_id' => $groupChild->id,
@@ -97,7 +97,7 @@ class UserCreateDescendantTest extends TestCase
     {
         // TODO 直下に入れる場合はparent_idなしでもいいかも
 
-        return $this->post("/groups/{$group->id}/descendants", [
+        return $this->postJson("/groups/{$group->id}/descendants", [
             'parent_id' => ($parent ?? $group)->id,
             'name' => $newGroup->name,
         ]);
