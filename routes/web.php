@@ -68,20 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
         'groups.show'
     );
 
-    Route::get('groups/{group}/descendants', [
-        GroupDescendantController::class,
-        'index',
-    ])->name('groups.descendants.index');
-
-    Route::get('groups/{group}/descendants/create', [
-        GroupDescendantController::class,
-        'create',
-    ])->name('groups.descendants.create');
-
-    Route::get('groups/{group}/descendants/{descendant}/edit', [
-        GroupDescendantController::class,
-        'edit',
-    ])->name('groups.descendants.edit');
+    Route::resource('groups.descendants', GroupDescendantController::class);
 
     Route::get('groups/{group}/members', [
         GroupMemberController::class,
@@ -94,21 +81,6 @@ Route::group(['middleware' => 'auth'], function () {
     ]);
 
     Route::post('groups/{group}/users', [GroupUserController::class, 'invite']);
-
-    Route::post('groups/{group}/descendants', [
-        GroupDescendantController::class,
-        'store',
-    ])->name('groups.descendants.store');
-
-    Route::put('groups/{group}/descendants/{descendant}', [
-        GroupDescendantController::class,
-        'update',
-    ])->name('groups.descendants.update');
-
-    Route::delete('groups/{group}/descendants/{descendant}', [
-        GroupDescendantController::class,
-        'destroy',
-    ])->name('groups.descendants.destroy');
 
     Route::post('groups/{group}/descendants/{descendant}/users', [
         GroupDescendantController::class,
