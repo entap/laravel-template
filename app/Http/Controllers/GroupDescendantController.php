@@ -10,9 +10,14 @@ class GroupDescendantController extends Controller
     /**
      * 配下のグループを一覧する
      */
-    public function index(Group $group)
+    public function index(Request $request, Group $group)
     {
-        return $group->descendants->toTree();
+        if ($request->expectsJson()) {
+            return $group->descendants->toTree();
+        }
+        return view('groups.descendants.index', [
+            'group' => $group,
+        ]);
     }
 
     /**
