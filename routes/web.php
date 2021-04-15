@@ -73,6 +73,11 @@ Route::group(['middleware' => 'auth'], function () {
         'index',
     ])->name('groups.descendants.index');
 
+    Route::get('groups/{group}/descendants/create', [
+        GroupDescendantController::class,
+        'create',
+    ])->name('groups.descendants.create');
+
     Route::get('groups/{group}/members', [
         GroupMemberController::class,
         'index',
@@ -88,7 +93,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('groups/{group}/descendants', [
         GroupDescendantController::class,
         'store',
-    ]);
+    ])->name('groups.descendants.store');
 
     Route::post('groups/{group}/descendants/{descendant}/users', [
         GroupDescendantController::class,

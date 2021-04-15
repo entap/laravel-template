@@ -15,9 +15,15 @@ class GroupDescendantController extends Controller
         if ($request->expectsJson()) {
             return $group->descendants->toTree();
         }
-        return view('groups.descendants.index', [
-            'group' => $group,
-        ]);
+        return view('groups.descendants.index', compact('group'));
+    }
+
+    /**
+     * 作成フォームを表示する
+     */
+    public function create(Request $request, Group $group)
+    {
+        return view('groups.descendants.create', compact('group'));
     }
 
     /**
@@ -39,6 +45,8 @@ class GroupDescendantController extends Controller
         );
 
         $group->descendants()->create($request->all());
+
+        return redirect()->route('groups.descendants.index', $group);
     }
 
     /**

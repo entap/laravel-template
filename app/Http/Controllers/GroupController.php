@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class GroupController extends Controller
 {
+    /**
+     * 自分が所属するグループを一覧する
+     */
     public function index(Request $request)
     {
         $user = $request->user();
