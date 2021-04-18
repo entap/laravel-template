@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GroupUserController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\GroupMemberController;
 use App\Http\Controllers\GroupDescendantController;
 use App\Http\Controllers\ShowDynamicPageController;
 use App\Http\Controllers\FixTemporaryUserController;
+use App\Http\Controllers\GroupDescendantMemberController;
 use App\Http\Controllers\RegisterTemporaryUserController;
 
 /*
@@ -80,7 +81,10 @@ Route::group(['middleware' => 'auth'], function () {
         'showInviteForm',
     ])->name('groups.members.invite');
 
-    Route::post('groups/{group}/members/invite', [GroupUserController::class, 'invite']);
+    Route::post('groups/{group}/members/invite', [
+        GroupUserController::class,
+        'invite',
+    ]);
 
     Route::get('groups/{group}/members/{member}', [
         GroupMemberController::class,
@@ -91,4 +95,9 @@ Route::group(['middleware' => 'auth'], function () {
         GroupDescendantController::class,
         'assign',
     ]);
+
+    Route::delete('groups/{group}/descendants/{descendant}/members/{member}', [
+        GroupDescendantMemberController::class,
+        'destroy',
+    ])->name('groups.descendants.members.destroy');
 });
