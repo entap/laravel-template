@@ -4,6 +4,13 @@
     <p>{{ $group->name }}</p>
     <p>{{ $descendant->name }}</p>
 
+    <div class="text-right">
+        <a href="{{ route('groups.descendants.members.create', [$group, $descendant]) }}"
+            class="btn btn-primary text-nowrap">
+            @lang('Add Member')
+        </a>
+    </div>
+
     <table class="table">
         <thead>
             <tr>

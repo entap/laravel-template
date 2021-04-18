@@ -96,8 +96,8 @@ Route::group(['middleware' => 'auth'], function () {
         'assign',
     ]);
 
-    Route::delete('groups/{group}/descendants/{descendant}/members/{member}', [
-        GroupDescendantMemberController::class,
-        'destroy',
-    ])->name('groups.descendants.members.destroy');
+    Route::resource(
+        'groups.descendants.members',
+        GroupDescendantMemberController::class
+    );
 });

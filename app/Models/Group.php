@@ -26,6 +26,8 @@ class Group extends Model
      */
     public function assignUser(int $userId)
     {
+        // TODO 名前がイマイチかも
+        // TODO すでに存在する場合はエラー
         return $this->members()->create([
             'user_id' => $userId,
         ]);
