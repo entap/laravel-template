@@ -5,6 +5,12 @@
         </div>
 
         <div class="ml-1">
+            <a href="{{ route('groups.descendants.show', [$root, $group]) }}" class="btn btn-link text-nowrap">
+                @lang('Show')
+            </a>
+        </div>
+
+        <div class="ml-1">
             <a href="{{ route('groups.descendants.edit', [$root, $group]) }}" class="btn btn-primary text-nowrap">
                 @lang('Edit')
             </a>

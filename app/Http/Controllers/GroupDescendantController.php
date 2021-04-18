@@ -58,6 +58,22 @@ class GroupDescendantController extends Controller
     }
 
     /**
+     * 詳細を表示する
+     */
+    public function show(Request $request, Group $group, Group $descendant)
+    {
+        $this->authorize('readDescendantGroup', $group);
+        $group->descendants()->findOrFail($descendant->id);
+
+        $members = $descendant->members;
+
+        return view(
+            'groups.descendants.show',
+            compact('group', 'descendant', 'members')
+        );
+    }
+
+    /**
      * 編集フォームを表示する
      */
     public function edit(Request $request, Group $group, Group $descendant)
