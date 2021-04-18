@@ -71,29 +71,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('groups.descendants', GroupDescendantController::class);
 
-    Route::get('groups/{group}/members', [
-        GroupMemberController::class,
-        'index',
-    ])->name('groups.members.index');
-
-    Route::get('groups/{group}/members/invite', [
-        GroupUserController::class,
-        'showInviteForm',
-    ])->name('groups.members.invite');
-
-    Route::post('groups/{group}/members/invite', [
-        GroupUserController::class,
-        'invite',
-    ]);
-
-    Route::get('groups/{group}/members/{member}', [
-        GroupMemberController::class,
-        'show',
-    ]);
-
-    Route::post('groups/{group}/descendants/{descendant}/users', [
-        GroupDescendantController::class,
-        'assign',
+    Route::resource('groups.members', GroupMemberController::class, [
+        'only' => ['index', 'create', 'store', 'show'],
     ]);
 
     Route::resource(

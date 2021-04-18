@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="text-right">
-        <a href="{{ route('groups.members.invite', $group) }}" class="btn btn-primary text-nowrap">
+        <a href="{{ route('groups.members.create', $group) }}" class="btn btn-primary text-nowrap">
             @lang('Invite')
         </a>
     </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{ route('groups.members.invite', $group->id) }}" method="POST">
+    <form action="{{ route('groups.members.create', $group->id) }}" method="POST">
         @csrf
 
         <div class="form-group">
