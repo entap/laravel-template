@@ -98,6 +98,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource(
         'groups.descendants.members',
-        GroupDescendantMemberController::class
+        GroupDescendantMemberController::class,
+        ['only' => ['create', 'store', 'destroy']]
     );
 });
