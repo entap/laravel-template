@@ -48,4 +48,13 @@ class Group extends Model
     {
         return $this->members->firstWhere('user_id', $userId);
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($group) {
+            $group->descendants()->delete();
+        });
+    }
 }
