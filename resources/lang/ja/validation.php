@@ -178,5 +178,6 @@ return [
         'end_created_at' => '作成日時（終了）',
         'reason' => '理由',
         'welcome_message' => 'ウェルカムメッセージ',
+        'member_id' => 'メンバー',
     ],
 ];

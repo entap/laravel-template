@@ -22,10 +22,16 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group text-right">
             <button type="submit" class="btn btn-primary text-nowrap">
-                @lang('Create')
+                @lang('Add Member')
             </button>
         </div>
     </form>
+
+    <hr>
+
+    <a href="{{ route('groups.descendants.show', [$group, $descendant]) }}" class="btn btn-link text-nowrap">
+        @lang('Back')
+    </a>
 @endsection

@@ -1,13 +1,15 @@
 @extends('layouts.ladybird')
 
 @section('content')
+    <p>{{ $group->name }}</p>
+
     <div class="text-right">
         <a href="{{ route('groups.members.create', $group) }}" class="btn btn-primary text-nowrap">
             @lang('Invite')
         </a>
     </div>
 
-    <table class="table">
+    <table class="table mt-3">
         <thead>
             <tr>
                 <th>@lang('Name')</th>

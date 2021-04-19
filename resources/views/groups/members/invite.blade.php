@@ -31,10 +31,16 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group text-right">
             <button type="submit" class="btn btn-primary text-nowrap">
                 @lang('Invite')
             </button>
         </div>
     </form>
+
+    <hr>
+
+    <a href="{{ route('groups.members.index', $group) }}" class="btn btn-link text-nowrap">
+        @lang('Back')
+    </a>
 @endsection
