@@ -14,7 +14,8 @@
     <table class="table">
         <thead>
             <tr>
-                <th class="col">@lang('Name')</th>
+                <th>@lang('Name')</th>
+                <th>@lang('E-mail')</th>
                 <th></th>
             </tr>
         </thead>
@@ -22,6 +23,7 @@
             @foreach ($members as $member)
                 <tr>
                     <td>{{ $member->name }}</td>
+                    <td>{{ $member->email }}</td>
                     <td>
                         <form action="{{ route('groups.descendants.members.destroy', [$group, $descendant, $member]) }}"
                             method="POST">
