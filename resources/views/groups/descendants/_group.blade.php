@@ -5,13 +5,14 @@
         </div>
 
         <div class="ml-1">
-            <a href="{{ route('groups.descendants.show', [$root, $group]) }}" class="btn btn-link text-nowrap">
+            <a href="{{ route('groups.descendants.show', [$root, $group]) }}" class="btn btn-sm btn-link text-nowrap">
                 @lang('Show')
             </a>
         </div>
 
         <div class="ml-1">
-            <a href="{{ route('groups.descendants.edit', [$root, $group]) }}" class="btn btn-primary text-nowrap">
+            <a href="{{ route('groups.descendants.edit', [$root, $group]) }}"
+                class="btn btn-sm btn-primary text-nowrap">
                 @lang('Edit')
             </a>
         </div>
@@ -20,18 +21,20 @@
             @csrf
             @method('DELETE')
 
-            <button type="submit" class="btn btn-danger text-nowrap"
+            <button type="submit" class="btn btn-sm btn-danger text-nowrap"
                 onclick="return confirm('@lang('Are you sure you want to delete?')')">
                 @lang('Delete')
             </button>
         </form>
     </div>
 
-    <ul>
-        @foreach ($group->children as $child)
-            <li class="pt-1">
-                @include('groups.descendants._group', ['root' => $root, 'group' => $child])
-            </li>
-        @endforeach
-    </ul>
+    @if ($group->children->count())
+        <ul class="list-group">
+            @foreach ($group->children as $child)
+                <li class="list-group-item">
+                    @include('groups.descendants._group', ['root' => $root, 'group' => $child])
+                </li>
+            @endforeach
+        </ul>
+    @endif
 </div>

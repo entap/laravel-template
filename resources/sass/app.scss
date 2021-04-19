@@ -1,8 +1,31 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+// TODO 各リストの最後のpadding埋めたい
+
+.list-group.list-group-nested {
+    border-radius: 0;
+
+    .list-group {
+        border-radius: 0;
+        .list-group-item {
+            padding-right: 0;
+        }
+    }
+
+    .list-group-item .list-group {
+        margin-top: 0.5rem;
+
+        .list-group-item {
+            border-left: none;
+            border-right: none;
+            padding-left: 1.5rem;
+        }
+    }
+}

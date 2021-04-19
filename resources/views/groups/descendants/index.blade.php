@@ -7,17 +7,21 @@
         </a>
     </div>
 
-    <div>
-        <div class="group-title">
-            {{ $group->name }}
-        </div>
+    <ul class="list-group list-group-nested">
+        <li class="list-group-item">
+            <div class="group-title">
+                {{ $group->name }}
+            </div>
 
-        <ul>
-            @foreach ($group->descendants->toTree() as $child)
-                <li class="pt-1">
-                    @include('groups.descendants._group', ['root' => $group, 'group' => $child])
-                </li>
-            @endforeach
-        </ul>
-    </div>
+            @if ($group->descendants->count())
+                <ul class="list-group">
+                    @foreach ($group->descendants->toTree() as $child)
+                        <li class="list-group-item">
+                            @include('groups.descendants._group', ['root' => $group, 'group' => $child])
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+        </li>
+    </ul>
 @endsection
