@@ -1,4 +1,4 @@
-@extends('layouts.ladybird')
+@extends('layouts.app')
 
 @section('content')
     <div class="list-group">
