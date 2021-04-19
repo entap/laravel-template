@@ -52,8 +52,9 @@ class GroupDescendantMemberController extends Controller
             ],
         ]);
 
-        $member = $group->members()->find($request->member_id);
-        $descendant->assignUser($member->user_id);
+        $parentMember = $group->members()->find($request->member_id);
+        $member = $descendant->assignUser($parentMember->user_id);
+        $member->assignRole('group_member');
 
         return redirect()->route('groups.descendants.show', [
             $group,

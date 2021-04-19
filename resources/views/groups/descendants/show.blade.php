@@ -16,6 +16,7 @@
             <tr>
                 <th>@lang('Name')</th>
                 <th>@lang('E-mail')</th>
+                <th>@lang('Role')</th>
                 <th></th>
             </tr>
         </thead>
@@ -24,6 +25,9 @@
                 <tr>
                     <td>{{ $member->name }}</td>
                     <td>{{ $member->email }}</td>
+                    <td>
+                        {{ $member->roles->pluck('name')->join(', ') }}
+                    </td>
                     <td>
                         <form action="{{ route('groups.descendants.members.destroy', [$group, $descendant, $member]) }}"
                             method="POST">
