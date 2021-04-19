@@ -21,6 +21,10 @@ class GroupMemberRoleController extends Controller
         $this->authorize('writeMember', $group);
         $group->members()->findOrFail($member->id);
 
+        if ($request->user()->id == $member->user_id) {
+            abort(403, '自分の権限は変更できません。');
+        }
+
         $request->validate([
             'role' => 'required|in:group_owner,group_member',
         ]);

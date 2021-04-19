@@ -95,10 +95,14 @@ class GroupMemberController extends Controller
     /**
      * メンバーを削除する
      */
-    public function destroy(Group $group, GroupMember $member)
+    public function destroy(Request $request, Group $group, GroupMember $member)
     {
         $this->authorize('writeMember', $group);
         $group->members()->findOrFail($member->id);
+
+        if ($request->user()->id == $member->user_id) {
+            abort(403, '自分は削除できません。');
+        }
 
         $member->delete();
 
