@@ -89,7 +89,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('groups.users', GroupMemberUserController::class, [
         'only' => ['create', 'store'],
-    ]);
+    ])->names('groups.members.users');
 
     Route::put('groups/{group}/members/{member}/roles', [
         GroupMemberRoleController::class,

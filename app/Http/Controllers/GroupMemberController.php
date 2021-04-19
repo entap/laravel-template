@@ -55,7 +55,7 @@ class GroupMemberController extends Controller
         $targetUser = User::findByEmail($request->email);
         if (empty($targetUser->id)) {
             return redirect()
-                ->route('groups.users.create', [
+                ->route('groups.members.users.create', [
                     $group,
                     'email' => $request->email,
                     'role' => $request->role,

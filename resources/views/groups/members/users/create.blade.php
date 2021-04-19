@@ -7,7 +7,7 @@
         </div>
     @endif
 
-    <form action="{{ route('groups.users.store', $group) }}" method="POST">
+    <form action="{{ route('groups.members.users.store', $group) }}" method="POST">
         @csrf
 
         <div class="form-group">

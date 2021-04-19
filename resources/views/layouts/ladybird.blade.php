@@ -24,14 +24,14 @@
         <div class="container mt-4">
             <div class="row">
                 <nav class="col-3">
-                    <ul class="nav flex-column">
+                    <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('groups.descendants.index', $group) }}">
+                            <a class="nav-link @if (request()->route()->named('groups.descendants.*')) active @endif" href="{{ route('groups.descendants.index', $group) }}">
                                 @lang('Groups')
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('groups.members.index', $group) }}">
+                            <a class="nav-link @if (request()->route()->named('groups.members.*')) active @endif" href="{{ route('groups.members.index', $group) }}">
                                 @lang('Members')
                             </a>
                         </li>
