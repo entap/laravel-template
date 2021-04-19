@@ -2,13 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GroupController;
-use App\Http\Controllers\GroupUserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\GroupMemberController;
 use App\Http\Controllers\GroupDescendantController;
 use App\Http\Controllers\ShowDynamicPageController;
 use App\Http\Controllers\FixTemporaryUserController;
 use App\Http\Controllers\GroupDescendantMemberController;
+use App\Http\Controllers\GroupMemberUserController;
 use App\Http\Controllers\RegisterTemporaryUserController;
 
 /*
@@ -80,4 +80,8 @@ Route::group(['middleware' => 'auth'], function () {
         GroupDescendantMemberController::class,
         ['only' => ['create', 'store', 'destroy']]
     );
+
+    Route::resource('groups.users', GroupMemberUserController::class, [
+        'only' => ['create', 'store'],
+    ]);
 });

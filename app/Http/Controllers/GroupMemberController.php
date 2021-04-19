@@ -44,13 +44,26 @@ class GroupMemberController extends Controller
         // TODO 存在しないユーザーは招待メールとかから作成する流れにする
 
         $request->validate([
-            'email' => 'required|exists:users,email',
+            'email' => 'required|email',
             'role' => 'required|in:group_owner,group_member',
         ]);
 
         $this->authorize('writeMember', $group);
 
         $targetUser = User::findByEmail($request->email);
+        if (empty($targetUser->id)) {
+            return redirect()
+                ->route('groups.users.create', [
+                    $group,
+                    'email' => $request->email,
+                    'role' => $request->role,
+                ])
+                ->with(
+                    'message',
+                    'ユーザーが存在しません。新たに作成してメンバーを追加します。'
+                );
+        }
+
         $member = $group->getUser($targetUser->id);
         if (empty($member)) {
             $member = $group->assignUser($targetUser->id);
