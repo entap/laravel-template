@@ -1,8 +1,7 @@
 @extends('layouts.ladybird')
 
 @section('content')
-    <p>{{ $group->name }}</p>
-    <p>{{ $descendant->name }}</p>
+    <p>{{ $group->name }} &gt; {{ $descendant->name }}</p>
 
     <div class="text-right">
         <a href="{{ route('groups.descendants.members.create', [$group, $descendant]) }}"
@@ -11,7 +10,7 @@
         </a>
     </div>
 
-    <table class="table">
+    <table class="table mt-3">
         <thead>
             <tr>
                 <th>@lang('Name')</th>
@@ -43,7 +42,7 @@
 
                                         <input type="hidden" name="role" value="{{ $role }}">
 
-                                        <button type="submit" class="btn btn-link text-nowrap">
+                                        <button type="submit" class="btn btn-sm btn-link text-nowrap">
                                             {{ $role }}
                                         </button>
                                     </form>
@@ -57,7 +56,7 @@
                             @csrf
                             @method('DELETE')
 
-                            <button type="submit" class="btn btn-danger text-nowrap"
+                            <button type="submit" class="btn btn-sm btn-danger text-nowrap"
                                 onclick="return confirm('@lang('Are you sure you want to delete?')')">
                                 @lang('Delete')
                             </button>
