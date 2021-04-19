@@ -26,6 +26,10 @@ use App\Http\Controllers\RegisterTemporaryUserController;
 
 Route::view('/', 'welcome');
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::view('/home', 'home');
+});
+
 // Auth
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name(
