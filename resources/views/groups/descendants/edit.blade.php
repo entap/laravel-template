@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.ladybird')
 
 @section('content')
     <form action="{{ route('groups.descendants.update', [$group, $descendant]) }}" method="POST">

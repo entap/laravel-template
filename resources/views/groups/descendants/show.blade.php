@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.ladybird')
 
 @section('content')
     <p>{{ $group->name }}</p>

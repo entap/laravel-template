@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.ladybird')
 
 @section('content')
     <form action="{{ route('groups.descendants.members.store', [$group, $descendant]) }}" method="POST">
@@ -9,8 +9,7 @@
             <div>
                 <select name="member_id" id="member_id" class="form-control @error('member_id') is-invalid @enderror">
                     @foreach ($memberOptions as $option)
-                        <option value="{{ $option->id }}"
-                            {{ $option->id === old('member_id', '') ? 'selected' : '' }}>
+                        <option value="{{ $option->id }}" {{ $option->id === old('member_id', '') ? 'selected' : '' }}>
                             {{ $option->name }}
                         </option>
                     @endforeach

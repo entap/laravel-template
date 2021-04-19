@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.ladybird')
 
 @section('content')
     <form action="{{ route('groups.members.store', $group) }}" method="POST">
