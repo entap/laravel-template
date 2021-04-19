@@ -20,9 +20,11 @@ class GroupMemberController extends Controller
         if ($request->expectsJson()) {
             return $group->members;
         }
+
         return view('groups.members.index', [
             'group' => $group,
             'members' => $group->members,
+            'roleOptions' => collect(['group_owner', 'group_member']),
         ]);
     }
 
