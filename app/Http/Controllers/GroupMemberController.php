@@ -89,4 +89,19 @@ class GroupMemberController extends Controller
 
         return $member;
     }
+
+    /**
+     * メンバーを削除する
+     */
+    public function destroy(Group $group, GroupMember $member)
+    {
+        $this->authorize('writeMember', $group);
+        $group->members()->findOrFail($member->id);
+
+        $member->delete();
+
+        return redirect()
+            ->route('groups.members.index', $group)
+            ->with('success', __('Member is deleted.'));
+    }
 }

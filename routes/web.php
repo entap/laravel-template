@@ -72,7 +72,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('groups.descendants', GroupDescendantController::class);
 
     Route::resource('groups.members', GroupMemberController::class, [
-        'only' => ['index', 'create', 'store', 'show'],
+        'except' => ['edit', 'update'],
     ]);
 
     Route::resource(
