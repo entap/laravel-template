@@ -26,7 +26,30 @@
                     <td>{{ $member->name }}</td>
                     <td>{{ $member->email }}</td>
                     <td>
-                        {{ $member->roles->pluck('name')->join(', ') }}
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-link dropdown-toggle" type="button"
+                                id="dropdownRoleSwitch-{{ $member->id }}" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                {{ $member->roles->pluck('name')->join(', ') }}
+                            </button>
+
+                            <div class="dropdown-menu">
+                                @foreach ($roleOptions->diff($member->roles->pluck('name')) as $role)
+                                    <form
+                                        action="{{ route('groups.descendants.members.roles.update', [$group, $descendant, $member]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('PUT')
+
+                                        <input type="hidden" name="role" value="{{ $role }}">
+
+                                        <button type="submit" class="btn btn-link text-nowrap">
+                                            {{ $role }}
+                                        </button>
+                                    </form>
+                                @endforeach
+                            </div>
+                        </div>
                     </td>
                     <td>
                         <form action="{{ route('groups.descendants.members.destroy', [$group, $descendant, $member]) }}"

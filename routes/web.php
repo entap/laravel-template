@@ -8,6 +8,7 @@ use App\Http\Controllers\GroupDescendantController;
 use App\Http\Controllers\ShowDynamicPageController;
 use App\Http\Controllers\FixTemporaryUserController;
 use App\Http\Controllers\GroupDescendantMemberController;
+use App\Http\Controllers\GroupDescendantMemberRoleController;
 use App\Http\Controllers\GroupMemberRoleController;
 use App\Http\Controllers\GroupMemberUserController;
 use App\Http\Controllers\RegisterTemporaryUserController;
@@ -90,4 +91,9 @@ Route::group(['middleware' => 'auth'], function () {
         GroupMemberRoleController::class,
         'update',
     ])->name('groups.members.roles.update');
+
+    Route::put(
+        'groups/{group}/descendants/{descendant}/members/{member}/roles',
+        [GroupDescendantMemberRoleController::class, 'update']
+    )->name('groups.descendants.members.roles.update');
 });

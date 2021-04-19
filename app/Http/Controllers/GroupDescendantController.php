@@ -66,10 +66,11 @@ class GroupDescendantController extends Controller
         $group->descendants()->findOrFail($descendant->id);
 
         $members = $descendant->members;
+        $roleOptions = collect(['group_owner', 'group_member']);
 
         return view(
             'groups.descendants.show',
-            compact('group', 'descendant', 'members')
+            compact('group', 'descendant', 'members', 'roleOptions')
         );
     }
 
