@@ -21,10 +21,11 @@ add('writable_dirs', ['bootstrap/cache', 'storage']);
 
 // Hosts
 
-host('grasshopper.entap.dev')
+host('grasshopper.entap.works')
     ->stage('development')
     ->user('grasshopper')
-    ->set('deploy_path', '~/{{application}}');
+    ->set('deploy_path', '~/{{application}}')
+    ->set('writable_mode', 'chmod');
 
 // Tasks
 

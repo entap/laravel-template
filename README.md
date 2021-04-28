@@ -64,5 +64,5 @@ composer deploy:dev
 環境設定を更新する場合、アップしたい `.env.development` を用意してコマンドを実行する。
 
 ```sh
-composer deploy:dev:env
+composer deploy:env:dev
 ```
