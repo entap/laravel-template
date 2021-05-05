@@ -18,8 +18,8 @@ class Login
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    protected $guard;
-    protected $user;
+    public $guard;
+    public $user;
 
     /**
      * Create a new event instance.
