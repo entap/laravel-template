@@ -1,0 +1,66 @@
+openapi: 3.1.0
+info:
+  title: App
+  version: '1.0'
+  description: アプリのAPI
+  contact:
+    name: Ii Masamitsu
+    url: 'https://www.github.com/entap'
+    email: ii@entap.co.jp
+  license:
+    name: MIT
+    identifier: MIT
+  summary: アプリのAPI
+servers:
+  - url: 'http://localhost:8000/api'
+    description: local
+paths:
+  /notification/devices:
+    post:
+      summary: 通知先を登録する
+      operationId: post-notification-devices
+      responses:
+        '200':
+          description: Updated
+        '201':
+          description: Created
+      description: |-
+        通知先を登録する。
+        ユーザーの通知先の中でtokenが重複する場合は上書きする。
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: 通知先のトークン
+              required:
+                - token
+        description: ''
+  '/notification/devices/{deviceToken}':
+    parameters:
+      - schema:
+          type: string
+        name: deviceToken
+        in: path
+        required: true
+    delete:
+      summary: 通知先を削除する
+      operationId: delete-notification-devices-deviceToken
+      responses:
+        '204':
+          description: No Content
+      description: |-
+        通知先を削除する。
+        トークンに対応する通知先がなければ何もしない。
+components:
+  schemas: {}
+  securitySchemes:
+    Auth:
+      name: Authorization
+      type: apiKey
+      in: header
+security:
+  - API Key - 1: []

@@ -39,7 +39,7 @@ Route::middleware('auth:api')->group(function () {
         'register',
     ]);
 
-    Route::delete('/notification/devices/{device:token}', [
+    Route::delete('/notification/devices/{deviceToken}', [
         UserNotificationDeviceController::class,
         'unregister',
     ]);

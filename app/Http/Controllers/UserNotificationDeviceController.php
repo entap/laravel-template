@@ -30,12 +30,12 @@ class UserNotificationDeviceController extends Controller
     /**
      * 通知先の端末を削除する
      */
-    public function unregister(Request $request, string $token)
+    public function unregister(Request $request, string $deviceToken)
     {
         $user = $request->user();
         $user
             ->notificationDevices()
-            ->hasToken($token)
+            ->hasToken($deviceToken)
             ->delete();
 
         return response()->noContent();
